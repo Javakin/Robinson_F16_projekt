@@ -1,0 +1,7 @@
+\section{Videreudvikling}
+
+Det er muligt at øge båndbredden ved at overlejre flere DTMF-toner, så man på den måde kan få flere signalniveauer. Implementeringen kan foregå udelukkende på det fysiske lag, og vil derfor ikke kræve store ændringer i programmet. Der kan potentielt opstå et problem, hvor flere samtidige toner genererer mere interferens. Altså forudsætter den videreudvikling flere undersøgelser.
+
+Programmet kan yderligere opgraderes, ved at benytte kumulative acknowledgements, fremfor de enkelte, så der kan kvitteres for mere end en pakke ad gangen. Dette reducerer den samlede ventetid for systemet, og øger hermed transmissionshastigheden.
+
+Endelig kunne det være en fordel at strømline koden, så der ikke er så store forskelle på kodeskikken i klasserne. Koden indeholder sporadisk redundans, der stammer fra kodens oprindelse som separat udviklede dele, fra forskellige programmører.  
