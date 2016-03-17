@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.12.8)  3 MAR 2016 10:51
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.12.8)  17 MAR 2016 14:55
 entering extended mode
 **Master.tex
 (Master.tex
@@ -1260,7 +1260,7 @@ LaTeX Info: Redefining \labelcref on input line 2230.
 LaTeX Info: Redefining \labelcpageref on input line 2230.
 Package cleveref Info: `listings' support loaded on input line 2950.
 ))
-(Master.aux)
+No file Master.aux.
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 2.
 LaTeX Font Info:    ... okay on input line 2.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 2.
@@ -1277,13 +1277,14 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 2.
 LaTeX Font Info:    ... okay on input line 2.
 LaTeX Font Info:    Checking defaults for LGR/cmr/m/n on input line 2.
 LaTeX Font Info:    Try loading font information for LGR+cmr on input line 2.
- ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\cbfonts-fd\lgrcmr.fd"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\cbfonts-fd\lgrcmr.fd"
 File: lgrcmr.fd 2013/09/01 v1.0 Greek European Computer Regular
 )
 LaTeX Font Info:    ... okay on input line 2.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 2.
 LaTeX Font Info:    Try loading font information for TS1+cmr on input line 2.
- ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 2.
@@ -1356,8 +1357,6 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 2.
 LaTeX Info: Redefining \pageref on input line 2.
 LaTeX Info: Redefining \nameref on input line 2.
-
-(Master.out) (Master.out)
 \@outlinefile=\write3
 \c@lstlisting=\count149
 Package caption Info: Begin \AtBeginDocument code.
@@ -1382,7 +1381,7 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <17.28> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 21.
 )
-<Billeder/SDU-logo.png, id=323, 855.195pt x 846.16125pt>
+<Billeder/SDU-logo.png, id=3, 855.195pt x 846.16125pt>
 File: Billeder/SDU-logo.png Graphic file (type png)
 
 <use Billeder/SDU-logo.png>
@@ -1435,32 +1434,20 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
+
+LaTeX Warning: Reference `LastPage' on page 2 undefined on input line 4.
+
 [2
 
 
-] (Master.toc [3
-
 ]
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[4])
 \tf@toc=\write4
+ [3
 
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[5] (Sections/Indledning.tex
-<Billeder/DTMF1.JPG, id=437, 455.7025pt x 384.43625pt>
+] (Sections/Indledning.tex
+<Billeder/DTMF1.JPG, id=25, 455.7025pt x 384.43625pt>
 File: Billeder/DTMF1.JPG Graphic file (type jpg)
-
-<use Billeder/DTMF1.JPG>
+ <use Billeder/DTMF1.JPG>
 Package pdftex.def Info: Billeder/DTMF1.JPG used on input line 9.
 (pdftex.def)             Requested size: 227.85068pt x 192.21765pt.
 ) (sections/Problemformulering.tex
@@ -1470,7 +1457,10 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[6 <./Billeder/DTMF1.JPG>]
+
+LaTeX Warning: Reference `LastPage' on page 4 undefined on input line 1.
+
+[4 <./Billeder/DTMF1.JPG>]
 LaTeX Font Info:    Try loading font information for TS1+ptm on input line 6.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\ts1ptm.fd"
@@ -1486,28 +1476,41 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[7]) (sections/Kravspecifikation.tex
+
+LaTeX Warning: Reference `LastPage' on page 5 undefined on input line 17.
+
+[5]) (sections/Kravspecifikation.tex
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[8]) (sections/Programstruktur.tex
+
+LaTeX Warning: Reference `LastPage' on page 6 undefined on input line 4.
+
+[6]) (sections/Programstruktur.tex
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[9] <Billeder/ProgramOpbygning1.JPG, id=461, 712.16063pt x 182.93344pt>
+
+LaTeX Warning: Reference `LastPage' on page 7 undefined on input line 4.
+
+[7] <Billeder/ProgramOpbygning1.JPG, id=55, 712.16063pt x 182.93344pt>
 File: Billeder/ProgramOpbygning1.JPG Graphic file (type jpg)
 
 <use Billeder/ProgramOpbygning1.JPG>
 Package pdftex.def Info: Billeder/ProgramOpbygning1.JPG used on input line 7.
 (pdftex.def)             Requested size: 356.07944pt x 91.46649pt.
 
-<Billeder/Klassediagram_v1.jpg, id=463, 632.3625pt x 943.525pt>
+
+LaTeX Warning: Reference `fig:Blokdiagram' on page 8 undefined on input line 12
+.
+
+<Billeder/Klassediagram_v1.jpg, id=56, 632.3625pt x 943.525pt>
 File: Billeder/Klassediagram_v1.jpg Graphic file (type jpg)
 
 <use Billeder/Klassediagram_v1.jpg>
@@ -1518,33 +1521,56 @@ Package pdftex.def Info: Billeder/Klassediagram_v1.jpg used on input line 22.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
+LaTeX Warning: Reference `fig:Klassediagram_v1' on page 8 undefined on input li
+ne 27.
 
-[10 <./Billeder/ProgramOpbygning1.JPG>]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[11 <./Billeder/Klassediagram_v1.jpg>]) (Sections/Physical.tex
+
+LaTeX Warning: Reference `LastPage' on page 8 undefined on input line 29.
+
+[8 <./Billeder/ProgramOpbygning1.JPG>]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[12]
+
+LaTeX Warning: Reference `LastPage' on page 9 undefined on input line 36.
+
+[9 <./Billeder/Klassediagram_v1.jpg>]) (Sections/Physical.tex
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[13]
+
+LaTeX Warning: Reference `LastPage' on page 10 undefined on input line 4.
+
+[10]
+
+LaTeX Warning: Reference `sec:hastighedstest' on page 11 undefined on input lin
+e 5.
+
+
+LaTeX Warning: Reference `DTMFBitTabel' on page 11 undefined on input line 11.
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+
+LaTeX Warning: Reference `LastPage' on page 11 undefined on input line 12.
+
+[11]
 
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 13.
@@ -1555,6 +1581,43 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
+
+LaTeX Warning: Reference `LastPage' on page 12 undefined on input line 47.
+
+[12]
+
+LaTeX Warning: Reference `sec:ToneTransition' on page 13 undefined on input lin
+e 55.
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+
+LaTeX Warning: Reference `LastPage' on page 13 undefined on input line 62.
+
+[13]
+
+LaTeX Warning: Reference `eq:targetBin' on page 14 undefined on input line 66.
+
+
+LaTeX Warning: Reference `eq:omega' on page 14 undefined on input line 66.
+
+
+LaTeX Warning: Reference `eq:transferfunction' on page 14 undefined on input li
+ne 81.
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+
+LaTeX Warning: Reference `LastPage' on page 14 undefined on input line 91.
+
 [14]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1562,21 +1625,15 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
+
+LaTeX Warning: Reference `LastPage' on page 15 undefined on input line 117.
+
 [15]
 
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
+LaTeX Warning: Reference `eq:sampleWindow' on page 16 undefined on input line 1
+19.
 
-[16]
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[17] <Billeder/Samplewindow.PNG, id=524, 828.09375pt x 107.65219pt>
+<Billeder/Samplewindow.PNG, id=116, 828.09375pt x 107.65219pt>
 File: Billeder/Samplewindow.PNG Graphic file (type png)
 
 <use Billeder/Samplewindow.PNG>
@@ -1589,8 +1646,14 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[18 <./Billeder/Samplewindow.PNG>]
-<Billeder/Threshold.PNG, id=534, 420.06938pt x 107.65219pt>
+
+LaTeX Warning: Reference `LastPage' on page 16 undefined on input line 137.
+
+[16 <./Billeder/Samplewindow.PNG>]
+
+LaTeX Warning: Reference `sec:afstand' on page 17 undefined on input line 137.
+
+<Billeder/Threshold.PNG, id=125, 420.06938pt x 107.65219pt>
 File: Billeder/Threshold.PNG Graphic file (type png)
 
 <use Billeder/Threshold.PNG>
@@ -1598,19 +1661,39 @@ Package pdftex.def Info: Billeder/Threshold.PNG used on input line 141.
 (pdftex.def)             Requested size: 294.04655pt x 75.356pt.
 
 
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
+LaTeX Warning: Reference `fig:threshold' on page 17 undefined on input line 146
+.
 
-[19 <./Billeder/Threshold.PNG>]) (sections/DataLinkLaget.tex
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[20] <Billeder/DataLinkLogical.PNG, id=551, 548.80031pt x 237.13594pt>
+
+LaTeX Warning: Reference `LastPage' on page 17 undefined on input line 154.
+
+[17 <./Billeder/Threshold.PNG>]
+
+LaTeX Warning: Reference `sec:Windowfunction' on page 18 undefined on input lin
+e 158.
+
+) (sections/DataLinkLaget.tex
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+
+LaTeX Warning: Reference `LastPage' on page 18 undefined on input line 7.
+
+[18]
+
+LaTeX Warning: Reference `fig:DataLinkLogical' on page 19 undefined on input li
+ne 8.
+
+<Billeder/DataLinkLogical.PNG, id=138, 548.80031pt x 237.13594pt>
 File: Billeder/DataLinkLogical.PNG Graphic file (type png)
 
 <use Billeder/DataLinkLogical.PNG>
@@ -1623,8 +1706,11 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[21 <./Billeder/DataLinkLogical.PNG>]
-<Billeder/DataLinkFrame.PNG, id=559, 523.9575pt x 48.93282pt>
+
+LaTeX Warning: Reference `LastPage' on page 19 undefined on input line 22.
+
+[19 <./Billeder/DataLinkLogical.PNG>]
+<Billeder/DataLinkFrame.PNG, id=148, 523.9575pt x 48.93282pt>
 File: Billeder/DataLinkFrame.PNG Graphic file (type png)
 
 <use Billeder/DataLinkFrame.PNG>
@@ -1637,28 +1723,45 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[22 <./Billeder/DataLinkFrame.PNG>]
+
+LaTeX Warning: Reference `LastPage' on page 20 undefined on input line 42.
+
+[20 <./Billeder/DataLinkFrame.PNG>]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
+
+
+LaTeX Warning: Reference `LastPage' on page 21 undefined on input line 65.
+
+[21]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+
+LaTeX Warning: Reference `LastPage' on page 22 undefined on input line 88.
+
+[22]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+
+LaTeX Warning: Reference `LastPage' on page 23 undefined on input line 104.
 
 [23]
 
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
+LaTeX Warning: Reference `fig:DataLinkExample' on page 24 undefined on input li
+ne 121.
 
-[24]
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[25] <Billeder/DataLinkExample.PNG, id=588, 760.34062pt x 346.29375pt>
+<Billeder/DataLinkExample.PNG, id=180, 760.34062pt x 346.29375pt>
 File: Billeder/DataLinkExample.PNG Graphic file (type png)
 
 <use Billeder/DataLinkExample.PNG>
@@ -1673,7 +1776,10 @@ Overfull \hbox (29.41653pt too wide) in paragraph at lines 125--126
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 ) (sections/Transportlaget.tex
-<Billeder/StopAndWait.png, id=590, 594.72188pt x 182.18062pt>
+
+LaTeX Warning: Reference `StopAndWait' on page 24 undefined on input line 5.
+
+<Billeder/StopAndWait.png, id=181, 594.72188pt x 182.18062pt>
 File: Billeder/StopAndWait.png Graphic file (type png)
 
 <use Billeder/StopAndWait.png>
@@ -1690,7 +1796,10 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[26]
+
+LaTeX Warning: Reference `LastPage' on page 24 undefined on input line 12.
+
+[24]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -1700,8 +1809,15 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[27 <./Billeder/DataLinkExample.PNG>]
-<Billeder/StopAndWaitFlow.png, id=605, 462.97969pt x 362.85562pt>
+
+LaTeX Warning: Reference `LastPage' on page 25 undefined on input line 15.
+
+[25 <./Billeder/DataLinkExample.PNG>]
+
+LaTeX Warning: Reference `StopAndWaitFlow' on page 26 undefined on input line 2
+0.
+
+<Billeder/StopAndWaitFlow.png, id=197, 462.97969pt x 362.85562pt>
 File: Billeder/StopAndWaitFlow.png Graphic file (type png)
 
 <use Billeder/StopAndWaitFlow.png>
@@ -1717,15 +1833,21 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[28 <./Billeder/StopAndWait.png>]
+
+LaTeX Warning: Reference `LastPage' on page 26 undefined on input line 31.
+
+[26 <./Billeder/StopAndWait.png>]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[29 <./Billeder/StopAndWaitFlow.png>]) (sections/Applikationslaget.tex
-<Billeder/ApplicationLayerDesignClass.PNG, id=619, 364.36125pt x 202.50656pt>
+
+LaTeX Warning: Reference `LastPage' on page 27 undefined on input line 34.
+
+[27 <./Billeder/StopAndWaitFlow.png>]) (sections/Applikationslaget.tex
+<Billeder/ApplicationLayerDesignClass.PNG, id=214, 364.36125pt x 202.50656pt>
 File: Billeder/ApplicationLayerDesignClass.PNG Graphic file (type png)
 
 <use Billeder/ApplicationLayerDesignClass.PNG>
@@ -1742,36 +1864,55 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
+
+LaTeX Warning: Reference `LastPage' on page 28 undefined on input line 16.
+
+[28]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+
+LaTeX Warning: Reference `LastPage' on page 29 undefined on input line 22.
+
+[29 <./Billeder/ApplicationLayerDesignClass.PNG>]) (sections/Opsamling.tex
+
+LaTeX Warning: Reference `itm:Klassediagramv3' on page 30 undefined on input li
+ne 3.
+
+) (sections/Opgradering.tex) (Sections/GUI.tex
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+
+LaTeX Warning: Reference `LastPage' on page 30 undefined on input line 1.
+
 [30]
 
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
+LaTeX Warning: Reference `fig:GUI' on page 31 undefined on input line 22.
 
-[31 <./Billeder/ApplicationLayerDesignClass.PNG>]) (sections/Opsamling.tex)
-(sections/Opgradering.tex) (Sections/GUI.tex
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[32]
 
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
+LaTeX Warning: Reference `LastPage' on page 31 undefined on input line 26.
 
-[33] <Billeder/GUI.PNG, id=647, 613.54219pt x 329.73187pt>
+[31] <Billeder/GUI.PNG, id=246, 613.54219pt x 329.73187pt>
 File: Billeder/GUI.PNG Graphic file (type png)
 
 <use Billeder/GUI.PNG>
 Package pdftex.def Info: Billeder/GUI.PNG used on input line 29.
 (pdftex.def)             Requested size: 306.77034pt x 164.86552pt.
 ) (Sections/Test.tex
-<Billeder/Opstillinger/AngleTest45deg.jpg, id=648, 1567.0545pt x 1164.14925pt>
+<Billeder/Opstillinger/AngleTest45deg.jpg, id=247, 1567.0545pt x 1164.14925pt>
 File: Billeder/Opstillinger/AngleTest45deg.jpg Graphic file (type jpg)
 
 <use Billeder/Opstillinger/AngleTest45deg.jpg>
@@ -1782,7 +1923,23 @@ Package pdftex.def Info: Billeder/Opstillinger/AngleTest45deg.jpg used on input
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Billeder/0degrees.jpg, id=654, 797.22844pt x 423.83344pt>
+
+LaTeX Warning: Reference `fig:degrees' on page 32 undefined on input line 14.
+
+
+LaTeX Warning: Reference `fig:degrees' on page 32 undefined on input line 14.
+
+
+LaTeX Warning: Reference `itm:45deg' on page 32 undefined on input line 14.
+
+
+LaTeX Warning: Reference `itm:90deg' on page 32 undefined on input line 14.
+
+
+LaTeX Warning: Reference `fig:opstilling' on page 32 undefined on input line 14
+.
+
+<Billeder/0degrees.jpg, id=248, 797.22844pt x 423.83344pt>
 File: Billeder/0degrees.jpg Graphic file (type jpg)
 
 <use Billeder/0degrees.jpg>
@@ -1793,34 +1950,43 @@ Package pdftex.def Info: Billeder/0degrees.jpg used on input line 18.
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
+LaTeX Warning: Reference `fig:Spectral' on page 32 undefined on input line 25.
 
-[34 <./Billeder/GUI.PNG>]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[35 <./Billeder/Opstillinger/AngleTest45deg.jpg> <./Billeder/0degrees.jpg>]
-<Billeder/SpectralLeak.PNG, id=674, 249.18094pt x 105.39375pt>
+
+LaTeX Warning: Reference `LastPage' on page 32 undefined on input line 25.
+
+[32 <./Billeder/GUI.PNG>]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+
+LaTeX Warning: Reference `LastPage' on page 33 undefined on input line 26.
+
+[33 <./Billeder/Opstillinger/AngleTest45deg.jpg> <./Billeder/0degrees.jpg>]
+<Billeder/SpectralLeak.PNG, id=266, 249.18094pt x 105.39375pt>
 File: Billeder/SpectralLeak.PNG Graphic file (type png)
 
 <use Billeder/SpectralLeak.PNG>
 Package pdftex.def Info: Billeder/SpectralLeak.PNG used on input line 30.
 (pdftex.def)             Requested size: 199.345pt x 84.3151pt.
 
-<Billeder/NoWindow.PNG, id=675, 343.2825pt x 86.57344pt>
+<Billeder/NoWindow.PNG, id=267, 343.2825pt x 86.57344pt>
 File: Billeder/NoWindow.PNG Graphic file (type png)
 
 <use Billeder/NoWindow.PNG>
 Package pdftex.def Info: Billeder/NoWindow.PNG used on input line 39.
 (pdftex.def)             Requested size: 274.62636pt x 69.25882pt.
 
-<Billeder/HannWindow.PNG, id=676, 341.77687pt x 86.57344pt>
+<Billeder/HannWindow.PNG, id=268, 341.77687pt x 86.57344pt>
 File: Billeder/HannWindow.PNG Graphic file (type png)
 
 <use Billeder/HannWindow.PNG>
@@ -1828,41 +1994,58 @@ Package pdftex.def Info: Billeder/HannWindow.PNG used on input line 46.
 (pdftex.def)             Requested size: 273.42186pt x 69.25882pt.
 
 
+LaTeX Warning: Reference `fig:NoWindow' on page 34 undefined on input line 51.
+
+
+LaTeX Warning: Reference `fig:HannWindow' on page 34 undefined on input line 51
+.
+
+
+LaTeX Warning: Reference `sec:hastighedstest' on page 34 undefined on input lin
+e 51.
+
+
+LaTeX Warning: Reference `fig:NoWindow' on page 34 undefined on input line 51.
+
+
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[36 <./Billeder/SpectralLeak.PNG> <./Billeder/NoWindow.PNG> <./Billeder/HannWin
-dow.PNG>] <Billeder/Speed10ms.PNG, id=691, 338.76563pt x 87.32625pt>
+
+LaTeX Warning: Reference `LastPage' on page 34 undefined on input line 56.
+
+[34 <./Billeder/SpectralLeak.PNG> <./Billeder/NoWindow.PNG> <./Billeder/HannWin
+dow.PNG>] <Billeder/Speed10ms.PNG, id=280, 338.76563pt x 87.32625pt>
 File: Billeder/Speed10ms.PNG Graphic file (type png)
 
 <use Billeder/Speed10ms.PNG>
 Package pdftex.def Info: Billeder/Speed10ms.PNG used on input line 59.
 (pdftex.def)             Requested size: 271.01285pt x 69.86108pt.
 
-<Billeder/Speed15ms.PNG, id=692, 344.78813pt x 87.32625pt>
+<Billeder/Speed15ms.PNG, id=281, 344.78813pt x 87.32625pt>
 File: Billeder/Speed15ms.PNG Graphic file (type png)
 
 <use Billeder/Speed15ms.PNG>
 Package pdftex.def Info: Billeder/Speed15ms.PNG used on input line 66.
 (pdftex.def)             Requested size: 275.83087pt x 69.86108pt.
 
-<Billeder/Speed20ms.PNG, id=693, 342.5297pt x 84.315pt>
+<Billeder/Speed20ms.PNG, id=282, 342.5297pt x 84.315pt>
 File: Billeder/Speed20ms.PNG Graphic file (type png)
 
 <use Billeder/Speed20ms.PNG>
 Package pdftex.def Info: Billeder/Speed20ms.PNG used on input line 73.
 (pdftex.def)             Requested size: 274.02412pt x 67.45207pt.
 
-<Billeder/Speed25ms.PNG, id=694, 340.27126pt x 88.07906pt>
+<Billeder/Speed25ms.PNG, id=283, 340.27126pt x 88.07906pt>
 File: Billeder/Speed25ms.PNG Graphic file (type png)
 
 <use Billeder/Speed25ms.PNG>
 Package pdftex.def Info: Billeder/Speed25ms.PNG used on input line 80.
 (pdftex.def)             Requested size: 272.21736pt x 70.46332pt.
 
-<Billeder/Speed50ms.PNG, id=695, 340.27126pt x 87.32625pt>
+<Billeder/Speed50ms.PNG, id=284, 340.27126pt x 87.32625pt>
 File: Billeder/Speed50ms.PNG Graphic file (type png)
 
 <use Billeder/Speed50ms.PNG>
@@ -1878,16 +2061,27 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[37 <./Billeder/Speed10ms.PNG> <./Billeder/Speed15ms.PNG> <./Billeder/Speed20ms
+
+LaTeX Warning: Reference `LastPage' on page 35 undefined on input line 94.
+
+[35 <./Billeder/Speed10ms.PNG> <./Billeder/Speed15ms.PNG> <./Billeder/Speed20ms
 .PNG> <./Billeder/Speed25ms.PNG>]
-<Billeder/Modulation.PNG, id=711, 421.575pt x 316.18124pt>
+
+LaTeX Warning: Reference `fig:modulation' on page 36 undefined on input line 96
+.
+
+<Billeder/Modulation.PNG, id=297, 421.575pt x 316.18124pt>
 File: Billeder/Modulation.PNG Graphic file (type png)
 
 <use Billeder/Modulation.PNG>
 Package pdftex.def Info: Billeder/Modulation.PNG used on input line 100.
 (pdftex.def)             Requested size: 252.94695pt x 189.7102pt.
 
-<Billeder/Snap.PNG, id=713, 421.575pt x 109.1578pt>
+
+LaTeX Warning: Reference `fig:modulation' on page 36 undefined on input line 10
+5.
+
+<Billeder/Snap.PNG, id=298, 421.575pt x 109.1578pt>
 File: Billeder/Snap.PNG Graphic file (type png)
  <use Billeder/Snap.PNG>
 Package pdftex.def Info: Billeder/Snap.PNG used on input line 109.
@@ -1896,7 +2090,7 @@ Package pdftex.def Info: Billeder/Snap.PNG used on input line 109.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Billeder/Triangle.PNG, id=714, 420.06938pt x 107.65219pt>
+<Billeder/Triangle.PNG, id=299, 420.06938pt x 107.65219pt>
 File: Billeder/Triangle.PNG Graphic file (type png)
 
 <use Billeder/Triangle.PNG>
@@ -1906,7 +2100,7 @@ Package pdftex.def Info: Billeder/Triangle.PNG used on input line 116.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Billeder/Steep10.PNG, id=715, 422.32782pt x 107.65219pt>
+<Billeder/Steep10.PNG, id=300, 422.32782pt x 107.65219pt>
 File: Billeder/Steep10.PNG Graphic file (type png)
 
 <use Billeder/Steep10.PNG>
@@ -1916,7 +2110,7 @@ Package pdftex.def Info: Billeder/Steep10.PNG used on input line 123.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Billeder/Smooth.PNG, id=716, 417.81094pt x 106.14656pt>
+<Billeder/Smooth.PNG, id=301, 417.81094pt x 106.14656pt>
 File: Billeder/Smooth.PNG Graphic file (type png)
 
 <use Billeder/Smooth.PNG>
@@ -1927,28 +2121,44 @@ Package pdftex.def Info: Billeder/Smooth.PNG used on input line 130.
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
+LaTeX Warning: Reference `fig:steep10' on page 36 undefined on input line 135.
+
+
+LaTeX Warning: Reference `fig:smooth' on page 36 undefined on input line 135.
+
+
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[38 <./Billeder/Speed50ms.PNG> <./Billeder/Modulation.PNG>]
+
+LaTeX Warning: Reference `LastPage' on page 36 undefined on input line 136.
+
+[36 <./Billeder/Speed50ms.PNG> <./Billeder/Modulation.PNG>]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[39 <./Billeder/Snap.PNG> <./Billeder/Triangle.PNG> <./Billeder/Steep10.PNG> <.
+
+LaTeX Warning: Reference `LastPage' on page 37 undefined on input line 139.
+
+[37 <./Billeder/Snap.PNG> <./Billeder/Triangle.PNG> <./Billeder/Steep10.PNG> <.
 /Billeder/Smooth.PNG>]
-<Billeder/Nyttevirkning25.jpg, id=742, 913.4125pt x 224.84pt>
+
+LaTeX Warning: Reference `eq:Nyttevirkning' on page 38 undefined on input line 
+145.
+
+<Billeder/Nyttevirkning25.jpg, id=325, 913.4125pt x 224.84pt>
 File: Billeder/Nyttevirkning25.jpg Graphic file (type jpg)
 
 <use Billeder/Nyttevirkning25.jpg>
 Package pdftex.def Info: Billeder/Nyttevirkning25.jpg used on input line 149.
 (pdftex.def)             Requested size: 456.70514pt x 112.41972pt.
 
-<Billeder/Nyttevirkning250.jpg, id=743, 905.3825pt x 223.83624pt>
+<Billeder/Nyttevirkning250.jpg, id=326, 905.3825pt x 223.83624pt>
 File: Billeder/Nyttevirkning250.jpg Graphic file (type jpg)
 
 <use Billeder/Nyttevirkning250.jpg>
@@ -1964,6 +2174,10 @@ Overfull \hbox (25.89879pt too wide) in paragraph at lines 149--151
  [] 
  []
 
+
+LaTeX Warning: Reference `fig:Nyttevirkningved25' on page 38 undefined on input
+ line 155.
+
 ) (Sections/ProjectManagement.tex
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1971,42 +2185,68 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[40 <./Billeder/Nyttevirkning25.jpg> <./Billeder/Nyttevirkning250.jpg>]
+
+LaTeX Warning: Reference `LastPage' on page 38 undefined on input line 1.
+
+[38 <./Billeder/Nyttevirkning25.jpg> <./Billeder/Nyttevirkning250.jpg>]
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
+
+
+LaTeX Warning: Reference `LastPage' on page 39 undefined on input line 1.
+
+[39]
+
+LaTeX Warning: Reference `itm:Modereferat1' on page 40 undefined on input line 
+25.
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+
+LaTeX Warning: Reference `LastPage' on page 40 undefined on input line 36.
+
+[40]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+
+LaTeX Warning: Reference `LastPage' on page 41 undefined on input line 58.
 
 [41]
 
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
+LaTeX Warning: Reference `itm:Tidsplan1' on page 42 undefined on input line 59.
 
-[42]
+
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[43]
+
+LaTeX Warning: Reference `LastPage' on page 42 undefined on input line 88.
+
+[42]) (Sections/Konklusion.tex)
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[44]) (Sections/Konklusion.tex)
 
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
+LaTeX Warning: Reference `LastPage' on page 43 undefined on input line 43.
 
-[45] (Sections/Kildeliste.tex
+[43] (Sections/Kildeliste.tex
 LaTeX Font Info:    Try loading font information for OT1+pcr on input line 6.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\ot1pcr.fd"
@@ -2018,7 +2258,10 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[46
+
+LaTeX Warning: Reference `LastPage' on page 44 undefined on input line 43.
+
+[44
 
 ] (Sections/Bilag.tex))
 
@@ -2027,27 +2270,47 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[47
 
-] 
+LaTeX Warning: Reference `LastPage' on page 45 undefined on input line 5.
+
+[45
+
+]
+
+Package lastpage Warning: Rerun to get the references right on input line 5.
+
+
 AED: lastpage setting LastPage
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 5.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 5.
 (Master.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 5.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 5.
-Package rerunfilecheck Info: File `Master.out' has not changed.
-(rerunfilecheck)             Checksum: 7569A808E1A23C7C36C6465657EE2793;5267.
+
+
+Package rerunfilecheck Warning: File `Master.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `Master.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  7569A808E1A23C7C36C6465657EE2793;5267.
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 5.
  ) 
 Here is how much of TeX's memory you used:
- 14430 strings out of 493673
- 228031 string characters out of 3141530
+ 14333 strings out of 493673
+ 226459 string characters out of 3141530
  338453 words of memory out of 3000000
- 17279 multiletter control sequences out of 15000+200000
+ 17192 multiletter control sequences out of 15000+200000
  28230 words of font info for 57 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
- 40i,13n,45p,1629b,523s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 40i,13n,45p,1626b,523s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Progra
 m Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program 
 Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Fil
@@ -2060,9 +2323,9 @@ onts/type1/urw/times/utmb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/
 urw/times/utmbi8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/
 utmr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb>
 <C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Master.pdf (47 pages, 19165573 bytes).
+Output written on Master.pdf (45 pages, 19107883 bytes).
 PDF statistics:
- 889 PDF objects out of 1000 (max. 8388607)
- 184 named destinations out of 1000 (max. 500000)
- 791 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 479 PDF objects out of 1000 (max. 8388607)
+ 182 named destinations out of 1000 (max. 500000)
+ 151 words of extra memory for PDF output out of 10000 (max. 10000000)
 
