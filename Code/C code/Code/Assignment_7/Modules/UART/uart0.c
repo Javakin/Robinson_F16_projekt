@@ -23,9 +23,9 @@
 #include "tm4c123gh6pm.h"
 #include <EMP/emp_type.h>
 #include <UART/uart0.h>
-#include <Tasking/tmodel.h>
-#include <Tasking/messages.h>
-#include <Queue/Queue.h>
+//#include <Tasking/tmodel.h>
+//#include <Tasking/messages.h>
+//#include <Queue/Queue.h>
 #include <RTCS/rtcs.h>
 #include "FreeRTOS.h"
 #include "queue.h"

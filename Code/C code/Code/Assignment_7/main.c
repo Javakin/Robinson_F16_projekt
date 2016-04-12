@@ -1,4 +1,3 @@
-
 /*****************************************************************************
 * University of Southern Denmark
 * Embedded C Programming (ECP)
@@ -66,42 +65,48 @@ static void setupHardware(void)
 
   // Warning: If you do not initialize the hardware clock, the timings will be inaccurate
   SysTick_init();
-
   GPIO_init();
   UART0_init( 19200, 8, 1, 0 );
-  GPIO_init();
 }
 
 int main(void)
 {
-  portBASE_TYPE return_value = pdTRUE;
-
-  setupHardware();
-
-  uart0_rx_queue = xQueueCreate(128,sizeof(char));
-  LCD_image_queue = xQueueCreate(3, sizeof(INT8U[36]));
-  LCD_char_queue = xQueueCreate(16, sizeof(INT8U));
-  GUI_queue = xQueueCreate(16, sizeof(INT8U));
-
-  // Start the tasks defined within this file/specific to this demo.
-  return_value &= xTaskCreate( status_led_task, ( signed portCHAR * ) "Status_led", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL );
-  return_value &= xTaskCreate( LCD_task, ( signed portCHAR * ) "LCD", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL );
-  return_value &= xTaskCreate( numpad_task, ( signed portCHAR * ) "Numpad", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL );
-  return_value &= xTaskCreate( gui_task, ( signed portCHAR * ) "GUI", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL );
-
-  // test if all tasks started sucessfully
-  if (return_value != pdTRUE)
-  {
-    GPIO_PORTD_DATA_R &= 0xBF;  // Turn on status LED.
-    while(1);  // cold not create one or more tasks.
-  }
+	// Perform all init functions
+	setupHardware();
 
 
- // Start the scheduler.
-  vTaskStartScheduler();
+	// Create all queues
+	uart0_rx_queue = 	xQueueCreate(128,sizeof(char));
+	LCD_image_queue = 	xQueueCreate(3, sizeof(INT8U[36]));
+	LCD_char_queue = 	xQueueCreate(16, sizeof(INT8U));
+	GUI_queue = 		xQueueCreate(16, sizeof(INT8U));
 
 
- // Will only get here if there was insufficient memory to create the idle task.
+	// Variable used to check if all tasks has been created correcty
+	portBASE_TYPE return_value = pdTRUE;
+
+
+	// Start the tasks defined within this file
+	return_value &= xTaskCreate( status_led_task, ( signed portCHAR * ) "Status_led", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL );
+	return_value &= xTaskCreate( LCD_task, ( signed portCHAR * ) "LCD", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL );
+	return_value &= xTaskCreate( numpad_task, ( signed portCHAR * ) "Numpad", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL );
+	return_value &= xTaskCreate( gui_task, ( signed portCHAR * ) "GUI", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL );
+
+
+	// Test if all tasks started sucessfully
+	if (return_value != pdTRUE)
+	{
+		// failed to start all tasks
+		GPIO_PORTD_DATA_R &= 0xBF;  // Turn on status LED.
+		while(1);  // cold not create one or more tasks.
+	}
+
+
+	// Start the scheduler.
+	vTaskStartScheduler();
+
+
+	// Will only get here if there was insufficient memory to create the idle task.
 
   return 1;
 }
