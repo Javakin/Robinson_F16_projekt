@@ -93,7 +93,7 @@ int main(void)
 	return_value &= xTaskCreate( gui_task, ( signed portCHAR * ) "GUI", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL );
 
 	// testing task
-
+	return_value &= xTaskCreate( ps2controller_task, ( signed portCHAR * ) "ps2controller_task", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL );
 
 	// Test if all tasks started sucessfully
 	if (return_value != pdTRUE)

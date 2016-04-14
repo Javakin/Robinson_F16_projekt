@@ -1,0 +1,56 @@
+/*****************************************************************************
+* University of Southern Denmark
+* Embedded C Programming (ECP)
+*
+* MODULENAME.: PS2Controller.h
+*
+* PROJECT....: semester project
+*
+* DESCRIPTION: suppots the plat station 2 controller
+*
+* Change Log:
+******************************************************************************
+* Date    Id    Change
+* YYMMDD
+* --------------------
+* 050128  KA    Module created
+*
+*****************************************************************************/
+
+#ifndef PS2CONTROLLER_H_
+#define PS2CONTROLLER_H_
+
+/***************************** Include files *******************************/
+#include "Modules/EMP/emp_type.h"
+
+/*****************************    Defines    *******************************/
+
+
+/*****************************   Constants   *******************************/
+
+
+/*****************************   Functions   *******************************/
+
+
+void LCD_Flash_Enable_Pin();
+/*****************************************************************************
+*   Input    : -
+*   Output   : -
+*   Function : Flashes the enable pin for the proper duration
+******************************************************************************/
+
+
+/****************************** End Of Module *******************************/
+#endif /* LCD_H_ */
+
+
+
+
+
+
+
+
+
+
+
+
