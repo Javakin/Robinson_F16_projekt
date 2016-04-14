@@ -37,6 +37,13 @@ extern xQueueHandle uart0_rx_queue;
 
 
 /*****************************   Functions   *******************************/
+void ps2controller_task()
+{
+	while(1)
+	{
+		uart0_putc('c');
+	}
+}
 
 
 /****************************** End Of Module *******************************/

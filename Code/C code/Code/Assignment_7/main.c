@@ -39,6 +39,7 @@
 #include "LCD/lcd.h"
 #include "GPIO/GPIO.h"
 #include "GUI/gui.h"
+#include "PS2Controller/ps2controller.h"
 
 /*****************************    Defines    *******************************/
 #define USERTASK_STACK_SIZE configMINIMAL_STACK_SIZE
