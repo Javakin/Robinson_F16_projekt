@@ -6,7 +6,7 @@
 *
 * PROJECT....: semester project
 *
-* DESCRIPTION: suppots the plat station 2 controller
+* DESCRIPTION: suppots the playstation 2 controller
 *
 * Change Log:
 ******************************************************************************
@@ -36,7 +36,7 @@ void ps2controller_task();
 /*****************************************************************************
 *   Input    : -
 *   Output   : -
-*   Function : Flashes the enable pin for the proper duration
+*   Function : read the input from a playstation 2 controller
 ******************************************************************************/
 
 

@@ -89,9 +89,9 @@ int main(void)
 
 	// Start the tasks defined within this file
 	return_value &= xTaskCreate( status_led_task, ( signed portCHAR * ) "Status_led", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL );
-	return_value &= xTaskCreate( LCD_task, ( signed portCHAR * ) "LCD", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL );
-	return_value &= xTaskCreate( numpad_task, ( signed portCHAR * ) "Numpad", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL );
-	return_value &= xTaskCreate( gui_task, ( signed portCHAR * ) "GUI", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL );
+	//return_value &= xTaskCreate( LCD_task, ( signed portCHAR * ) "LCD", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL );
+	//return_value &= xTaskCreate( numpad_task, ( signed portCHAR * ) "Numpad", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL );
+	//return_value &= xTaskCreate( gui_task, ( signed portCHAR * ) "GUI", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL );
 
 	// testing task
 	return_value &= xTaskCreate( ps2controller_task, ( signed portCHAR * ) "ps2controller_task", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL );

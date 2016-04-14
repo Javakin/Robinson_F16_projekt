@@ -42,6 +42,10 @@ void ps2controller_task()
 	while(1)
 	{
 		uart0_putc('c');
+		uart0_putc('\n');
+		uart0_putc('\r');
+		vTaskDelay(100);
+
 	}
 }
 
