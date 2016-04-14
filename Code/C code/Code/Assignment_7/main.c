@@ -92,6 +92,8 @@ int main(void)
 	return_value &= xTaskCreate( numpad_task, ( signed portCHAR * ) "Numpad", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL );
 	return_value &= xTaskCreate( gui_task, ( signed portCHAR * ) "GUI", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL );
 
+	// testing task
+
 
 	// Test if all tasks started sucessfully
 	if (return_value != pdTRUE)
