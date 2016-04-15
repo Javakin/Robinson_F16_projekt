@@ -22,7 +22,7 @@
 #include <stdint.h>
 #include "tm4c123gh6pm.h"
 #include <EMP/emp_type.h>
-#include <UART0/uart0_rx.h>
+#include "Modules/UART0/uart0_rx.h"
 #include <RTCS/rtcs.h>
 #include "FreeRTOS.h"
 #include "queue.h"
@@ -33,20 +33,18 @@
 /*****************************   Variables   *******************************/
 extern xQueueHandle uart0_rx_queue;
 
-//extern xQueueHandle LCD_image_queue;
-//extern xQueueHandle LCD_char_queue;
 
 /*****************************   Functions   *******************************/
 
 
-INT32U lcrh_databits( INT8U antal_databits )
+INT32U lcrh_databits_rx( INT8U antal_databits )
 {
   if(( antal_databits < 5 ) || ( antal_databits > 8 ))
 	antal_databits = 8;
   return(( (INT32U)antal_databits - 5 ) << 5 );  // Control bit 5-6, WLEN
 }
 
-INT32U lcrh_stopbits( INT8U antal_stopbits )
+INT32U lcrh_stopbits_rx( INT8U antal_stopbits )
 {
   if( antal_stopbits == 2 )
     return( 0x00000008 );  		// return bit 3 = 1
@@ -54,7 +52,7 @@ INT32U lcrh_stopbits( INT8U antal_stopbits )
 	return( 0x00000000 );		// return all zeros
 }
 
-INT32U lcrh_parity( INT8U parity )
+INT32U lcrh_parity_rx( INT8U parity )
 {
   INT32U result;
 
@@ -79,38 +77,30 @@ INT32U lcrh_parity( INT8U parity )
   return( result );
 }
 
-extern void uart0_interrupt_enable()
+void uart0_interrupt_enable_rx()
 {
+	// UART Receive Interrupt Mask - ½ fyldt resultere i interrupt
 	UART0_IM_R |= UART_IM_RXIM;
+
+	// UART Receive Time-Out Interrupt Mask
 	UART0_IM_R |= 0x40;
 
-	NVIC_EN0_R = 0x00000020;
+	// enable interrrupt for uart0
+	NVIC_EN0_R |= 0x00000020;
 }
 
-
-void uart0_fifos_enable()
+void uart0_fifos_enable_rx()
 {
   UART0_LCRH_R  |= 0x00000020;
 }
 
-void uart0_fifos_disable()
+void uart0_fifos_disable_rx()
 {
   UART0_LCRH_R  &= 0xFFFFFFEF;
 }
 
-BOOLEAN uart0_rx_rdy()
+void uart0_isr()
 {
-  return( UART0_FR_R & UART_FR_RXFF );
-}
-
-INT8U uart0_getc()
-{
-  return ( UART0_DR_R );
-}
-
-void uart0_rx_isr()
-{
-
 	while (RX_FIFO_NOT_EMPTY)
 	{
 		INT8U received = UART0_DR_R;
@@ -118,7 +108,7 @@ void uart0_rx_isr()
 	}
 }
 
-void uart0_init( INT32U baud_rate, INT8U databits, INT8U stopbits, INT8U parity )
+void uart0_init_rx( INT32U baud_rate, INT8U databits, INT8U stopbits, INT8U parity )
 {
   INT32U BRD;
 
@@ -136,12 +126,12 @@ void uart0_init( INT32U baud_rate, INT8U databits, INT8U stopbits, INT8U parity 
   UART0_IBRD_R = BRD / 64;
   UART0_FBRD_R = BRD & 0x0000003F;
 
-  UART0_LCRH_R  = lcrh_databits( databits );
-  UART0_LCRH_R += lcrh_stopbits( stopbits );
-  UART0_LCRH_R += lcrh_parity( parity );
+  UART0_LCRH_R  = lcrh_databits_rx( databits );
+  UART0_LCRH_R += lcrh_stopbits_rx( stopbits );
+  UART0_LCRH_R += lcrh_parity_rx( parity );
 
-  uart0_fifos_enable();
-  uart0_interrupt_enable();
+  uart0_fifos_enable_rx();
+  uart0_interrupt_enable_rx();
 
   UART0_CTL_R  |= (UART_CTL_UARTEN | UART_CTL_TXE | UART_CTL_RXE );  // Enable UART
 
@@ -149,7 +139,7 @@ void uart0_init( INT32U baud_rate, INT8U databits, INT8U stopbits, INT8U parity 
 
 void uart0_rx_task()
 {
-	uart0_init( 19200, 8, 1, 0 );
+	uart0_init_rx( 19200, 8, 1, 0 );
 
 	while(1)
 	{

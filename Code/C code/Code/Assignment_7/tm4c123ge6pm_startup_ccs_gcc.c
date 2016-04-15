@@ -65,7 +65,7 @@ void xPortPendSVHandler( void ) __attribute__ (( naked ));
 void xPortSysTickHandler( void );
 
 
-extern void UART0_rx_isr();
+extern void uart0_isr();
 
 //*****************************************************************************
 //
@@ -99,7 +99,7 @@ void (* const g_pfnVectors[])(void) =
     IntDefaultHandler,                      // GPIO Port C
     IntDefaultHandler,                      // GPIO Port D
     IntDefaultHandler,                      // GPIO Port E
-	UART0_rx_isr,                      // UART0 Rx and Tx
+	uart0_isr,                  		    // UART0 Rx and Tx
     IntDefaultHandler,                      // UART1 Rx and Tx
     IntDefaultHandler,                      // SSI0 Rx and Tx
     IntDefaultHandler,                      // I2C0 Master and Slave

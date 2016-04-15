@@ -2,11 +2,11 @@
 * University of Southern Denmark
 * Embedded Programming (EMP)
 *
-* MODULENAME.: uart0.h
+* MODULENAME.: uart0_rx.h
 *
 * PROJECT....: Assignment 4
 *
-* DESCRIPTION: Support UART comunicaiton
+* DESCRIPTION: Support uart0_rx comunicaiton
 *
 * Change Log:
 ******************************************************************************
@@ -15,6 +15,7 @@
 * --------------------
 * 150228  MoH   Module created.
 * 040316  DFH	Module opdaget
+* 150416  DFH 	Module splittet up in RX and TX
 *
 *****************************************************************************/
 
@@ -31,23 +32,25 @@
 /*****************************   Constants   *******************************/
 
 /*****************************   Functions   *******************************/
-
-extern BOOLEAN uart0_rx_rdy();
+void uart0_interrupt_enable_rx();
 //   Input    : -
 //   Output   : -
-//   Function : Character ready at uart0 RX
+//   Function : Enable interrupt for uart0
 
-extern INT8U uart0_getc();
+
+void uart0_isr_rx();
 //   Input    : -
 //   Output   : -
-//   Function : Get character from uart0 RX
+//   Function : put char in uart0_rx_queue
 
-extern void uart0_init( INT32U, INT8U, INT8U, INT8U );
+
+void uart0_rx_task();
 //   Input    : -
 //   Output   : -
-//   Function : Initialize uart 0
+//   Function : distribute chars to the corresponding task
 
-INT32U lcrh_databits( INT8U antal_databits );
+
+INT32U lcrh_databits_rx( INT8U antal_databits );
 //   Input    : number of bits used
 //   Output   : bit-values for bit 5 and 6 for LCRH register
 //   Function : sets bit 5 and 6 according to the wanted number of data bits.
@@ -58,7 +61,7 @@ INT32U lcrh_databits( INT8U antal_databits );
 //  		    all other bits are returned = 0
 
 
-INT32U lcrh_stopbits( INT8U antal_stopbits );
+INT32U lcrh_stopbits_rx( INT8U antal_stopbits );
 //   Input    : number of decired stop bits
 //   Output   : Bit set settings for LCRH register
 //   Function : sets bit 3 according to the wanted number of stop bits.
@@ -66,7 +69,8 @@ INT32U lcrh_stopbits( INT8U antal_stopbits );
 //   		    2 stopbits: bit3 = 1.
 //   		    all other bits are returned = 0
 
-INT32U lcrh_parity( INT8U parity );
+
+INT32U lcrh_parity_rx( INT8U parity );
 //   Input    :
 //   Output   :
 //   Function : sets bit 1, 2 and 7 to the wanted parity.
@@ -77,15 +81,24 @@ INT32U lcrh_parity( INT8U parity );
 //   		    'n':  00000000b.
 //   		     all other bits are returned = 0
 
-void uart0_rx_isr();
-//   Input    : -
-//   Output   : -
-//   Function : put char in uart0_rx_queue
 
-void uart0_rx_task();
+void uart0_fifos_disable_rx();
 //   Input    : -
 //   Output   : -
-//   Function : distribute chars to the corresponding task
+//   Function : disable fifo buffer
+
+
+void uart0_fifos_enable_rx();
+//   Input    : -
+//   Output   : -
+//   Function : enable fifo buffer
+
+
+void uart0_init_rx( INT32U, INT8U, INT8U, INT8U );
+//   Input    : -
+//   Output   : -
+//   Function : Initialize uart 0
+
 
 /****************************** End Of Module *******************************/
 #endif

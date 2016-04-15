@@ -35,20 +35,39 @@
 //extern struct Queue uart0_rx_queue;
 extern xQueueHandle uart0_tx_queue;
 
-//extern xQueueHandle LCD_image_queue;
-//extern xQueueHandle LCD_char_queue;
 
 /*****************************   Functions   *******************************/
 
+BOOLEAN uart0_tx_rdy()
+{
+  return( UART0_FR_R & UART_FR_TXFE );
+}
 
-INT32U lcrh_databits( INT8U antal_databits )
+void uart0_putc( INT8U ch )
+{
+  UART0_DR_R = ch;
+}
+
+void uart0_tx_task()
+{
+	uart0_init_tx( 19200, 8, 1, 0 );
+
+		while(1)
+		{
+			// todo: skriv tasks
+		}
+}
+
+
+INT32U lcrh_databits_tx( INT8U antal_databits )
 {
   if(( antal_databits < 5 ) || ( antal_databits > 8 ))
 	antal_databits = 8;
   return(( (INT32U)antal_databits - 5 ) << 5 );  // Control bit 5-6, WLEN
 }
 
-INT32U lcrh_stopbits( INT8U antal_stopbits )
+
+INT32U lcrh_stopbits_tx( INT8U antal_stopbits )
 {
   if( antal_stopbits == 2 )
     return( 0x00000008 );  		// return bit 3 = 1
@@ -56,7 +75,8 @@ INT32U lcrh_stopbits( INT8U antal_stopbits )
 	return( 0x00000000 );		// return all zeros
 }
 
-INT32U lcrh_parity( INT8U parity )
+
+INT32U lcrh_parity_tx( INT8U parity )
 {
   INT32U result;
 
@@ -81,60 +101,8 @@ INT32U lcrh_parity( INT8U parity )
   return( result );
 }
 
-void uart0_interrupt_enable()
-{
-	UART0_IM_R |= UART_IM_RXIM;
-	UART0_IM_R |= 0x40;
 
-	NVIC_EN0_R = 0x00000020;
-}
-
-void uart0_interrupt_disable()
-{
-
-}
-
-void uart0_fifos_enable()
-{
-  UART0_LCRH_R  |= 0x00000020;
-}
-
-void uart0_fifos_disable()
-{
-  UART0_LCRH_R  &= 0xFFFFFFEF;
-}
-
-BOOLEAN uart0_tx_rdy()
-{
-  return( UART0_FR_R & UART_FR_TXFE );
-}
-
-void uart0_putc( INT8U ch )
-{
-  UART0_DR_R = ch;
-}
-
-void UART0_tx_isr()
-{
-
-}
-
-void UART0_rx_isr()
-{
-	while (RX_FIFO_NOT_EMPTY)
-	{
-		INT8U received = UART0_DR_R;
-		xQueueSendFromISR(uart0_rx_queue, &received, NULL);
-	}
-
-	while (TX_FIFO_NOT_FULL)
-	{
-
-	}
-}
-
-
-void UART0_init( INT32U baud_rate, INT8U databits, INT8U stopbits, INT8U parity )
+void uart0_init_tx( INT32U baud_rate, INT8U databits, INT8U stopbits, INT8U parity )
 {
   INT32U BRD;
 
@@ -152,16 +120,31 @@ void UART0_init( INT32U baud_rate, INT8U databits, INT8U stopbits, INT8U parity 
   UART0_IBRD_R = BRD / 64;
   UART0_FBRD_R = BRD & 0x0000003F;
 
-  UART0_LCRH_R  = lcrh_databits( databits );
-  UART0_LCRH_R += lcrh_stopbits( stopbits );
-  UART0_LCRH_R += lcrh_parity( parity );
+  UART0_LCRH_R  = lcrh_databits_tx( databits );
+  UART0_LCRH_R += lcrh_stopbits_tx( stopbits );
+  UART0_LCRH_R += lcrh_parity_tx( parity );
 
-  uart0_fifos_enable();
-  uart0_interrupt_enable();
+  uart0_fifos_enable_tx();
+
 
   UART0_CTL_R  |= (UART_CTL_UARTEN | UART_CTL_TXE | UART_CTL_RXE );  // Enable UART
 
 }
+
+
+void uart0_fifos_enable_tx()
+{
+  UART0_LCRH_R  |= 0x00000020;
+}
+
+
+void uart0_fifos_disable_tx()
+{
+  UART0_LCRH_R  &= 0xFFFFFFEF;
+}
+
+
+
 
 /****************************** End Of Module *******************************/
 
