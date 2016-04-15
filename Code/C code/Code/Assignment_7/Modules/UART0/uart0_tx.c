@@ -27,23 +27,24 @@
 #include <RTCS/rtcs.h>
 #include "FreeRTOS.h"
 #include "queue.h"
+#include "task.h"
 /*****************************    Defines    *******************************/
 
 /*****************************   Constants   *******************************/
 
 /*****************************   Variables   *******************************/
-//extern struct Queue uart0_rx_queue;
+
 extern xQueueHandle uart0_tx_queue;
 
 
 /*****************************   Functions   *******************************/
 
-BOOLEAN uart0_tx_rdy()
+BOOLEAN uart0_rdy_tx()
 {
   return( UART0_FR_R & UART_FR_TXFE );
 }
 
-void uart0_putc( INT8U ch )
+void uart0_putc_tx( INT8U ch )
 {
   UART0_DR_R = ch;
 }
@@ -54,7 +55,15 @@ void uart0_tx_task()
 
 		while(1)
 		{
-			// todo: skriv tasks
+			// send some chars
+			uart0_putc_tx('c');
+			vTaskDelay(50);
+
+			uart0_putc_tx('\n');
+			vTaskDelay(50);
+
+			uart0_putc_tx('a');
+			vTaskDelay(50);
 		}
 }
 

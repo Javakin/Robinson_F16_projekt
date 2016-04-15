@@ -33,22 +33,20 @@
 
 
 void ps2controller_task();
-/*****************************************************************************
-*   Input    : -
-*   Output   : -
-*   Function : read the input from a playstation 2 controller
-******************************************************************************/
+//  Input    : -
+//  Output   : -
+//  Function : read the input from a playstation 2 controller
+
 
 void ps2controller_init();
-/*****************************************************************************
-*   Input    : -
-*   Output   : -
-*   Function : initialuse the gpio's and setup the controller
-******************************************************************************/
+//  Input    : -
+//  Output   : -
+//  Function : initialuse the gpio's and setup the controller
+
 
 
 /****************************** End Of Module *******************************/
-#endif /* LCD_H_ */
+#endif
 
 
 

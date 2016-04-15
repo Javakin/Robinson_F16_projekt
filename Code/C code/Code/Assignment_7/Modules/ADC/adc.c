@@ -5,6 +5,7 @@
 #include "tm4c123gh6pm.h"
 #include "EMP/emp_type.h"
 #include "ADC/adc.h"
+#include <UART0/uart0_tx.h>
 
 INT16U GetADC()
 {
@@ -62,6 +63,6 @@ void adc_task(INT8U my_id, INT8U my_state, INT8U event, INT8U data)
 	if(ud < 48)
 		ud = 33;
 
-	uart0_putc(ud);
+	uart0_putc_tx(ud);
 	}
 }

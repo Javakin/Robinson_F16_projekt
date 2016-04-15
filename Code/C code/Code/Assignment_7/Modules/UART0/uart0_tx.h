@@ -31,13 +31,13 @@
 /*****************************   Functions   *******************************/
 
 
-BOOLEAN uart0_tx_rdy();
+BOOLEAN uart0_rdy_tx();
 //   Input    : -
 //   Output   : -
 //   Function : uart0 TX buffer ready
 
 
-void uart0_putc( INT8U );
+void uart0_putc_tx( INT8U );
 //   Input    : -
 //   Output   : -
 //   Function : Put character to uart0 TX

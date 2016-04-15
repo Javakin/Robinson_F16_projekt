@@ -21,7 +21,7 @@
 #include <stdint.h>
 #include <EMP/emp_type.h>
 #include <tm4c123gh6pm.h>
-#include <UART/uart0.h>
+#include <UART0/uart0_tx.h>
 
 /*****************************    Defines    *******************************/
 #define DREHIMPULSGEBER_A		5
@@ -115,11 +115,11 @@ void dreh_task(INT8U my_id, INT8U my_state, INT8U event, INT8U data)
 		{
 			if (val == 1)
 			{
-				uart0_putc('R');
+				uart0_putc_tx('R');
 			}
 			else if (val == -1)
 			{
-				uart0_putc('L');
+				uart0_putc_tx('L');
 			}
 			countTwo = 0;
 		}

@@ -22,7 +22,8 @@
 #include <tm4c123gh6pm.h>
 #include "Modules/EMP/emp_type.h"
 #include <Numpad/Numpad.h>
-#include <UART/uart0.h>
+#include <UART0/uart0_tx.h>
+
 #include <Queue/Queue.h>
 #include <Tasking/tmodel.h>
 #include "RTCS/rtcs.h"
@@ -137,73 +138,73 @@ void numpad_task(void *pvParameters)
 						switch (i) {
 						case NUMPAD_ZERO:
 							btn = '0';
-							uart0_putc('0');
+							uart0_putc_tx('0');
 							//put_queue(Q_INPUT,'0',0);
 							//queue_put(&numpad_input_queue,'0');
 							break;
 						case NUMPAD_ONE:
 							btn = '1';
-							uart0_putc('1');
+							uart0_putc_tx('1');
 							//put_queue(Q_INPUT,'1',0);
 							//queue_put(&numpad_input_queue,'1');
 							break;
 						case NUMPAD_TWO:
 							btn = '2';
-							uart0_putc('2');
+							uart0_putc_tx('2');
 							//put_queue(Q_INPUT,'2',0);
 							//queue_put(&numpad_input_queue,'2');
 							break;
 						case NUMPAD_THREE:
 							btn = '3';
-							uart0_putc('3');
+							uart0_putc_tx('3');
 							//put_queue(Q_INPUT,'3',0);
 							//queue_put(&numpad_input_queue,'3');
 							break;
 						case NUMPAD_FOUR:
 							btn = '4';
-							uart0_putc('4');
+							uart0_putc_tx('4');
 							//put_queue(Q_INPUT,'4',0);
 							//queue_put(&numpad_input_queue,'4');
 							break;
 						case NUMPAD_FIVE:
 							btn = '5';
-							uart0_putc('5');
+							uart0_putc_tx('5');
 							//put_queue(Q_INPUT,'5',0);
 							//queue_put(&numpad_input_queue,'5');
 							break;
 						case NUMPAD_SIX:
 							btn = '6';
-							uart0_putc('6');
+							uart0_putc_tx('6');
 							//put_queue(Q_INPUT,'6',0);
 							//queue_put(&numpad_input_queue,'6');
 							break;
 						case NUMPAD_SEVEN:
 							btn = '7';
-							uart0_putc('7');
+							uart0_putc_tx('7');
 							//put_queue(Q_INPUT,'7',0);
 							//queue_put(&numpad_input_queue,'7');
 							break;
 						case NUMPAD_EIGHT:
 							btn = '8';
-							uart0_putc('8');
+							uart0_putc_tx('8');
 							//put_queue(Q_INPUT,'8',0);
 							//queue_put(&numpad_input_queue,'8');
 							break;
 						case NUMPAD_NINE:
 							btn = '9';
-							uart0_putc('9');
+							uart0_putc_tx('9');
 							//put_queue(Q_INPUT,'9',0);
 							//queue_put(&numpad_input_queue,'9');
 							break;
 						case NUMPAD_HASH:
 							btn = '#';
-							uart0_putc('#');
+							uart0_putc_tx('#');
 							//put_queue(Q_INPUT,'#',0);
 							//queue_put(&numpad_input_queue,'#');
 							break;
 						case NUMPAD_STAR:
 							btn = '*';
-							uart0_putc('*');
+							uart0_putc_tx('*');
 							//put_queue(Q_INPUT,'*',0);
 							//queue_put(&numpad_input_queue,'*');
 							break;
