@@ -45,6 +45,7 @@ static void IntDefaultHandler(void);
 //*****************************************************************************
 extern int main(void);
 
+
 //*****************************************************************************
 //
 // Reserve space for the system stack.
@@ -62,6 +63,9 @@ static uint32_t pui32Stack[128];
 void vPortSVCHandler( void ) __attribute__ (( naked ));
 void xPortPendSVHandler( void ) __attribute__ (( naked ));
 void xPortSysTickHandler( void );
+
+
+extern void UART0_rx_isr();
 
 //*****************************************************************************
 //
@@ -95,7 +99,7 @@ void (* const g_pfnVectors[])(void) =
     IntDefaultHandler,                      // GPIO Port C
     IntDefaultHandler,                      // GPIO Port D
     IntDefaultHandler,                      // GPIO Port E
-    IntDefaultHandler,                      // UART0 Rx and Tx
+	UART0_rx_isr,                      // UART0 Rx and Tx
     IntDefaultHandler,                      // UART1 Rx and Tx
     IntDefaultHandler,                      // SSI0 Rx and Tx
     IntDefaultHandler,                      // I2C0 Master and Slave

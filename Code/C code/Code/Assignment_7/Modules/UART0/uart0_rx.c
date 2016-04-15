@@ -22,10 +22,7 @@
 #include <stdint.h>
 #include "tm4c123gh6pm.h"
 #include <EMP/emp_type.h>
-#include <UART/uart0.h>
-//#include <Tasking/tmodel.h>
-//#include <Tasking/messages.h>
-//#include <Queue/Queue.h>
+#include <UART0/uart0_rx.h>
 #include <RTCS/rtcs.h>
 #include "FreeRTOS.h"
 #include "queue.h"
@@ -34,10 +31,10 @@
 /*****************************   Constants   *******************************/
 
 /*****************************   Variables   *******************************/
-//extern struct Queue uart0_rx_queue;
 extern xQueueHandle uart0_rx_queue;
-extern xQueueHandle LCD_image_queue;
-extern xQueueHandle LCD_char_queue;
+
+//extern xQueueHandle LCD_image_queue;
+//extern xQueueHandle LCD_char_queue;
 
 /*****************************   Functions   *******************************/
 
@@ -82,7 +79,7 @@ INT32U lcrh_parity( INT8U parity )
   return( result );
 }
 
-void uart0_interrupt_enable()
+extern void uart0_interrupt_enable()
 {
 	UART0_IM_R |= UART_IM_RXIM;
 	UART0_IM_R |= 0x40;
@@ -90,10 +87,6 @@ void uart0_interrupt_enable()
 	NVIC_EN0_R = 0x00000020;
 }
 
-void uart0_interrupt_disable()
-{
-
-}
 
 void uart0_fifos_enable()
 {
@@ -105,66 +98,33 @@ void uart0_fifos_disable()
   UART0_LCRH_R  &= 0xFFFFFFEF;
 }
 
-extern BOOLEAN uart0_rx_rdy()
+BOOLEAN uart0_rx_rdy()
 {
   return( UART0_FR_R & UART_FR_RXFF );
 }
 
-extern INT8U uart0_getc()
+INT8U uart0_getc()
 {
   return ( UART0_DR_R );
 }
 
-extern BOOLEAN uart0_tx_rdy()
-{
-  return( UART0_FR_R & UART_FR_TXFE );
-}
-
-extern void uart0_putc( INT8U ch )
-{
-  UART0_DR_R = ch;
-}
-
-void UART0_tx_isr()
+void uart0_rx_isr()
 {
 
-}
-
-void UART0_rx_isr()
-{
-	do
+	while (RX_FIFO_NOT_EMPTY)
 	{
-		//put_queue(Q_INPUT,received,0);
-		//queue_put(&uart0_rx_queue, UART0_DR_R);
-//		xQueueSendFromISR(LCD_image_queue, &image, NULL);
-//
 		INT8U received = UART0_DR_R;
-//		xQueueSendFromISR(LCD_char_queue, &received, NULL);
-	} while (RX_FIFO_NOT_EMPTY);
-}
-
-void UART0_task(INT8U my_id, INT8U my_state, INT8U my_event, INT8U my_data)
-{
-	UART0_init( 19200, 8, 1, 0 );
-	while(1)
-	{
-
+		xQueueSendFromISR(uart0_rx_queue, &received, NULL);
 	}
 }
 
-extern void UART0_init( INT32U baud_rate, INT8U databits, INT8U stopbits, INT8U parity )
+void uart0_init( INT32U baud_rate, INT8U databits, INT8U stopbits, INT8U parity )
 {
   INT32U BRD;
 
-  #ifndef E_PORTA
-  #define E_PORTA
   SYSCTL_RCGC2_R |= SYSCTL_RCGC2_GPIOA;					// Enable clock for Port A
-  #endif
 
-  #ifndef E_UART0
-  #define E_UART0
   SYSCTL_RCGC1_R |= SYSCTL_RCGC1_UART0;					// Enable clock for UART 0
-  #endif
 
   GPIO_PORTA_AFSEL_R |= 0x00000003;		// set PA0 og PA1 to alternativ function (uart0)
   GPIO_PORTA_DIR_R   |= 0x00000002;     // set PA1 (uart0 tx) to output
@@ -187,6 +147,15 @@ extern void UART0_init( INT32U baud_rate, INT8U databits, INT8U stopbits, INT8U 
 
 }
 
+void uart0_rx_task()
+{
+	uart0_init( 19200, 8, 1, 0 );
+
+	while(1)
+	{
+		// todo: skriv tasks
+	}
+}
 /****************************** End Of Module *******************************/
 
 

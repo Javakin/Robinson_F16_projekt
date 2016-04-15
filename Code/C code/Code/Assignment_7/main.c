@@ -35,10 +35,11 @@
 #include "Modules/LCD/lcd.h"
 #include "Modules/GPIO/GPIO.h"
 #include "Numpad/Numpad.h"
-#include "UART/uart0.h"
+#include "UART0/uart0_tx.h"
+#include "UART0/uart0_rx.h"
 #include "LCD/lcd.h"
-#include "GPIO/GPIO.h"
-#include "GUI/gui.h"
+//#include "GPIO/GPIO.h"
+//#include "GUI/gui.h"
 #include "PS2Controller/ps2controller.h"
 
 /*****************************    Defines    *******************************/
@@ -53,6 +54,8 @@
 /*****************************   Variables   *******************************/
 volatile INT16S ticks;
 xQueueHandle uart0_rx_queue;
+xQueueHandle uart0_tx_queue;
+
 xQueueHandle LCD_image_queue;
 xQueueHandle GUI_queue;
 xQueueHandle LCD_char_queue;
@@ -62,12 +65,9 @@ xQueueHandle LCD_char_queue;
 
 static void setupHardware(void)
 {
-  // TODO: Put hardware configuration and initialisation in here
-
-  // Warning: If you do not initialize the hardware clock, the timings will be inaccurate
+  // put init here
   SysTick_init();
-  GPIO_init();
-  UART0_init( 19200, 8, 1, 0 );
+  //GPIO_init();
 }
 
 int main(void)
@@ -77,7 +77,8 @@ int main(void)
 
 
 	// Create all queues
-	uart0_rx_queue = 	xQueueCreate(128,sizeof(char));
+	uart0_rx_queue = 	xQueueCreate(128,sizeof(INT8U));
+	uart0_tx_queue = 	xQueueCreate(128,sizeof(INT8U));
 	LCD_image_queue = 	xQueueCreate(3, sizeof(INT8U[36]));
 	LCD_char_queue = 	xQueueCreate(16, sizeof(INT8U));
 	GUI_queue = 		xQueueCreate(16, sizeof(INT8U));
@@ -89,11 +90,13 @@ int main(void)
 
 	// Start the tasks defined within this file
 	return_value &= xTaskCreate( status_led_task, ( signed portCHAR * ) "Status_led", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL );
-	//return_value &= xTaskCreate( LCD_task, ( signed portCHAR * ) "LCD", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL );
-	//return_value &= xTaskCreate( numpad_task, ( signed portCHAR * ) "Numpad", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL );
-	//return_value &= xTaskCreate( gui_task, ( signed portCHAR * ) "GUI", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL );
 
-	// testing task
+	// uart0 tasks
+
+	return_value &= xTaskCreate( uart0_rx_task, ( signed portCHAR *) "uart0_rx_task", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL);
+	return_value &= xTaskCreate( uart0_tx_task, ( signed portCHAR *) "uart0_tx_task", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL);
+
+	// ps2controller
 	return_value &= xTaskCreate( ps2controller_task, ( signed portCHAR * ) "ps2controller_task", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL );
 
 	// Test if all tasks started sucessfully
