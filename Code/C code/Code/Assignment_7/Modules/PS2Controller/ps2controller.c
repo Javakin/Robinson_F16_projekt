@@ -55,12 +55,12 @@ void ps2controller_task()
 	while(1)
 	{
 		// send char to uart0
-		xSemaphoreTake( uart0_tx_semaphore, 10 );
-			// critical section
-			for (i = 0; i<7; i++)
-				uart0_putc_tx( message[i] );
-
-		xSemaphoreGive( uart0_tx_semaphore );
+//		xSemaphoreTake( uart0_tx_semaphore, 10 );
+//			// critical section
+//			for (i = 0; i<7; i++)
+//				uart0_putc_tx( message[i] );
+//
+//		xSemaphoreGive( uart0_tx_semaphore );
 
 	}
 }

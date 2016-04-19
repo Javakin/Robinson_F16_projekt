@@ -26,13 +26,17 @@
 #include <RTCS/rtcs.h>
 #include "FreeRTOS.h"
 #include "queue.h"
+
 /*****************************    Defines    *******************************/
 
 /*****************************   Constants   *******************************/
 
 /*****************************   Variables   *******************************/
 extern xQueueHandle uart0_rx_queue;
+extern xQueueHandle ps2con_queue;
 
+// placeholder for the recieced byte
+INT8U received;
 
 /*****************************   Functions   *******************************/
 
@@ -91,7 +95,7 @@ void uart0_interrupt_enable_rx()
 
 void uart0_fifos_enable_rx()
 {
-  UART0_LCRH_R  |= 0x00000020;
+  UART0_LCRH_R  |= 0x00000010;
 }
 
 void uart0_fifos_disable_rx()
@@ -141,9 +145,17 @@ void uart0_rx_task()
 {
 	uart0_init_rx( 19200, 8, 1, 0 );
 
+
+
 	while(1)
 	{
-		// todo: skriv tasks
+		// take an element and place it in the corresponding queue
+		if (xQueueReceive(uart0_rx_queue, &( received ), 10))
+		{
+			xQueueSend(ps2con_queue, &( received ), 10);
+		}
+
+		// todo: make a statemashine to distribute between task-queuues
 	}
 }
 /****************************** End Of Module *******************************/

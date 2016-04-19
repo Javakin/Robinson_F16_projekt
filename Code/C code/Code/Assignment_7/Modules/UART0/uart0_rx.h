@@ -50,6 +50,7 @@ void uart0_rx_task();
 //   Function : distribute chars to the corresponding task
 
 
+
 INT32U lcrh_databits_rx( INT8U antal_databits );
 //   Input    : number of bits used
 //   Output   : bit-values for bit 5 and 6 for LCRH register

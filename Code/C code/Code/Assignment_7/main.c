@@ -62,6 +62,8 @@ xQueueHandle LCD_image_queue;
 xQueueHandle GUI_queue;
 xQueueHandle LCD_char_queue;
 
+xQueueHandle ps2con_queue;
+
 // semaphores
 xSemaphoreHandle uart0_tx_semaphore;
 
@@ -88,6 +90,8 @@ int main(void)
 	LCD_image_queue = 	xQueueCreate(3, sizeof(INT8U[36]));
 	LCD_char_queue = 	xQueueCreate(16, sizeof(INT8U));
 	GUI_queue = 		xQueueCreate(16, sizeof(INT8U));
+
+	ps2con_queue = 		xQueueCreate(16, sizeof(INT8U));
 
 	// create all semaphores
 	uart0_tx_semaphore = xSemaphoreCreateMutex();
