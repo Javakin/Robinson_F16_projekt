@@ -29,6 +29,7 @@
 #include "semphr.h"
 #include "systick.h"
 #include "status_led.h"
+#include "semphr.h"
 
 
 // ------------------------
@@ -53,6 +54,7 @@
 
 /*****************************   Variables   *******************************/
 volatile INT16S ticks;
+// Queues
 xQueueHandle uart0_rx_queue;
 xQueueHandle uart0_tx_queue;
 
@@ -60,14 +62,17 @@ xQueueHandle LCD_image_queue;
 xQueueHandle GUI_queue;
 xQueueHandle LCD_char_queue;
 
+// semaphores
+xSemaphoreHandle uart0_tx_semaphore;
+
 /*****************************   Functions   *******************************/
 
 
 static void setupHardware(void)
 {
-  // put init here
+  // put inits here
   SysTick_init();
-  //GPIO_init();
+
 }
 
 int main(void)
@@ -79,10 +84,13 @@ int main(void)
 	// Create all queues
 	uart0_rx_queue = 	xQueueCreate(128,sizeof(INT8U));
 	uart0_tx_queue = 	xQueueCreate(128,sizeof(INT8U));
+
 	LCD_image_queue = 	xQueueCreate(3, sizeof(INT8U[36]));
 	LCD_char_queue = 	xQueueCreate(16, sizeof(INT8U));
 	GUI_queue = 		xQueueCreate(16, sizeof(INT8U));
 
+	// create all semaphores
+	uart0_tx_semaphore = xSemaphoreCreateMutex();
 
 	// Variable used to check if all tasks has been created correcty
 	portBASE_TYPE return_value = pdTRUE;
@@ -91,13 +99,15 @@ int main(void)
 	// Start the tasks defined within this file
 	return_value &= xTaskCreate( status_led_task, ( signed portCHAR * ) "Status_led", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL );
 
-	// uart0 tasks
 
+	// uart0 tasks
 	return_value &= xTaskCreate( uart0_rx_task, ( signed portCHAR *) "uart0_rx_task", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL);
 	return_value &= xTaskCreate( uart0_tx_task, ( signed portCHAR *) "uart0_tx_task", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL);
 
+
 	// ps2controller
 	return_value &= xTaskCreate( ps2controller_task, ( signed portCHAR * ) "ps2controller_task", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL );
+
 
 	// Test if all tasks started sucessfully
 	if (return_value != pdTRUE)

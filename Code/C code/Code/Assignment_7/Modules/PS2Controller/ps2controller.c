@@ -26,6 +26,7 @@
 #include "FreeRTOS.h"
 #include "task.h"
 #include "queue.h"
+#include "semphr.h"
 
 /*****************************    Defines    *******************************/
 
@@ -33,8 +34,16 @@
 
 /*****************************   Variables   *******************************/
 
-extern xQueueHandle uart0_rx_queue;
+// Queues
+extern xQueueHandle uart0_tx_queue;
 
+// Semaphores
+// reserves uart0_tx_queue, in order to avoid interruptions
+extern xSemaphoreHandle uart0_tx_semaphore;
+
+
+INT8U message[7] = {'a', 'b', '1', 'd', 'e', 'f', '\n'};
+INT8U i = 0;
 
 /*****************************   Functions   *******************************/
 void ps2controller_task()
@@ -45,7 +54,13 @@ void ps2controller_task()
 	// run task
 	while(1)
 	{
-		// todo:
+		// send char to uart0
+		xSemaphoreTake( uart0_tx_semaphore, 10 );
+			// critical section
+			for (i = 0; i<7; i++)
+				uart0_putc_tx( message[i] );
+
+		xSemaphoreGive( uart0_tx_semaphore );
 
 	}
 }

@@ -37,13 +37,13 @@ BOOLEAN uart0_rdy_tx();
 //   Function : uart0 TX buffer ready
 
 
-void uart0_putc_tx( INT8U );
-//   Input    : -
-//   Output   : -
-//   Function : Put character to uart0 TX
+INT8U uart0_putc_tx( INT8U ch );
+//   Input    : the char to send
+//   Output   : 1 if suceded, 0 if failed (time oute)
+//   Function : Put character in the uart0_TX_queue
 
 
-void uart0_tx_task();
+void uart0_tx_task(void *pvParameters);
 //   Input    : -
 //   Output   : -
 //   Function : transmit the content in uart0_tx_queue

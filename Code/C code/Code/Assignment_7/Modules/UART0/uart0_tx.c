@@ -45,50 +45,36 @@ BOOLEAN uart0_rdy_tx()
 }
 
 
-void uart0_putc_tx( INT8U ch )
+INT8U uart0_putc_tx( INT8U ch )
 {
-  UART0_DR_R = ch;
+	INT8U status = 1;
+
+	if (xQueueSend(uart0_tx_queue, &( ch ), 10) != pdPASS)
+	{
+		status = 0;
+	}
+
+	return status;
 }
 
 
-void uart0_tx_task()
+void uart0_tx_task(void *pvParameters)
 {
 	uart0_init_tx( 19200, 8, 1, 0 );
 
-		while(1)
+	INT8U recieve;
+
+	while(1)
+	{
+		if (!(UART0_FR_R & UART_FR_TXFF))
 		{
-			// send some chars
-			if (!(UART0_FR_R & UART_FR_TXFF))
+			// The TX-fifo is not full add one more char from tx_queue
+			if( xQueueReceive( uart0_tx_queue, &( recieve ), 200 ) )
 			{
-				uart0_putc_tx('a');
+				UART0_DR_R = recieve;
 			}
-
-			if (!(UART0_FR_R & UART_FR_TXFF))
-			{
-				uart0_putc_tx('b');
-			}
-
-			if (!(UART0_FR_R & UART_FR_TXFF))
-			{
-				uart0_putc_tx('c');
-			}
-
-			if (!(UART0_FR_R & UART_FR_TXFF))
-			{
-				uart0_putc_tx('e');
-			}
-
-			if (!(UART0_FR_R & UART_FR_TXFF))
-			{
-				uart0_putc_tx('f');
-			}
-
-			if (!(UART0_FR_R & UART_FR_TXFF))
-			{
-				uart0_putc_tx('\n');
-			}
-
 		}
+	}
 }
 
 
