@@ -44,10 +44,12 @@ BOOLEAN uart0_rdy_tx()
   return( UART0_FR_R & UART_FR_TXFE );
 }
 
+
 void uart0_putc_tx( INT8U ch )
 {
   UART0_DR_R = ch;
 }
+
 
 void uart0_tx_task()
 {
@@ -56,14 +58,36 @@ void uart0_tx_task()
 		while(1)
 		{
 			// send some chars
-			uart0_putc_tx('c');
-			vTaskDelay(50);
+			if (!(UART0_FR_R & UART_FR_TXFF))
+			{
+				uart0_putc_tx('a');
+			}
 
-			uart0_putc_tx('\n');
-			vTaskDelay(50);
+			if (!(UART0_FR_R & UART_FR_TXFF))
+			{
+				uart0_putc_tx('b');
+			}
 
-			uart0_putc_tx('a');
-			vTaskDelay(50);
+			if (!(UART0_FR_R & UART_FR_TXFF))
+			{
+				uart0_putc_tx('c');
+			}
+
+			if (!(UART0_FR_R & UART_FR_TXFF))
+			{
+				uart0_putc_tx('e');
+			}
+
+			if (!(UART0_FR_R & UART_FR_TXFF))
+			{
+				uart0_putc_tx('f');
+			}
+
+			if (!(UART0_FR_R & UART_FR_TXFF))
+			{
+				uart0_putc_tx('\n');
+			}
+
 		}
 }
 
@@ -143,7 +167,7 @@ void uart0_init_tx( INT32U baud_rate, INT8U databits, INT8U stopbits, INT8U pari
 
 void uart0_fifos_enable_tx()
 {
-  UART0_LCRH_R  |= 0x00000020;
+  UART0_LCRH_R  |= 0x00000010;
 }
 
 
