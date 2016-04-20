@@ -28,6 +28,12 @@
 
 #define RX_FIFO_NOT_EMPTY !(UART0_FR_R & 0x10)
 
+// states
+#define SEND_STATE		0
+#define CONFIG_STATE	1
+
+// settings
+#define SET_PS2CON		'p'
 
 /*****************************   Constants   *******************************/
 
@@ -100,6 +106,15 @@ void uart0_init_rx( INT32U, INT8U, INT8U, INT8U );
 //   Output   : -
 //   Function : Initialize uart 0
 
+void send_state();
+//   Input    : -
+//   Output   : -
+//   Function : send char to the receiving queue
+
+void config_state();
+//   Input    : -
+//   Output   : -
+//   Function : change the recieving queue
 
 /****************************** End Of Module *******************************/
 #endif

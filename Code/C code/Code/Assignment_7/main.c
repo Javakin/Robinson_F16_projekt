@@ -57,12 +57,11 @@ volatile INT16S ticks;
 // Queues
 xQueueHandle uart0_rx_queue;
 xQueueHandle uart0_tx_queue;
-
 xQueueHandle LCD_image_queue;
 xQueueHandle GUI_queue;
 xQueueHandle LCD_char_queue;
-
 xQueueHandle ps2con_queue;
+xQueueHandle default_queue;
 
 // semaphores
 xSemaphoreHandle uart0_tx_semaphore;
@@ -86,12 +85,11 @@ int main(void)
 	// Create all queues
 	uart0_rx_queue = 	xQueueCreate(128,sizeof(INT8U));
 	uart0_tx_queue = 	xQueueCreate(128,sizeof(INT8U));
-
 	LCD_image_queue = 	xQueueCreate(3, sizeof(INT8U[36]));
 	LCD_char_queue = 	xQueueCreate(16, sizeof(INT8U));
 	GUI_queue = 		xQueueCreate(16, sizeof(INT8U));
-
 	ps2con_queue = 		xQueueCreate(16, sizeof(INT8U));
+	default_queue = 	xQueueCreate(16, sizeof(INT8U));
 
 	// create all semaphores
 	uart0_tx_semaphore = xSemaphoreCreateMutex();

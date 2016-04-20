@@ -32,11 +32,18 @@
 /*****************************   Constants   *******************************/
 
 /*****************************   Variables   *******************************/
+// Queues
 extern xQueueHandle uart0_rx_queue;
 extern xQueueHandle ps2con_queue;
+extern xQueueHandle default_queue;
+static xQueueHandle current_queue;
 
-// placeholder for the recieced byte
+// Placeholder for the recieced byte
 INT8U received;
+
+// holder of state
+static INT8U current_state = SEND_STATE;
+
 
 /*****************************   Functions   *******************************/
 
@@ -145,17 +152,53 @@ void uart0_rx_task()
 {
 	uart0_init_rx( 19200, 8, 1, 0 );
 
-
-
 	while(1)
 	{
-		// take an element and place it in the corresponding queue
-		if (xQueueReceive(uart0_rx_queue, &( received ), 10))
+		switch( current_state )
 		{
-			xQueueSend(ps2con_queue, &( received ), 10);
+		case SEND_STATE :
+			// send char to the receiving queue
+			send_state();
+			break;
+
+
+		case CONFIG_STATE :
+			// change recieving queue
+			config_state();
+			break;
+		}
+	}
+}
+
+void send_state()
+{
+	if( xQueueReceive( uart0_rx_queue, &( received ), 10 ) )
+	{
+		if ( received == '½')
+			current_state = CONFIG_STATE;
+		else
+			xQueueSend(current_queue,  &( received ), 10);
+	}
+}
+
+void config_state()
+{
+	if( xQueueReceive( uart0_rx_queue, &( received ), 10 ) )
+	{
+		// select the setting
+		switch( received )
+		{
+		case SET_PS2CON:
+			current_queue = ps2con_queue;
+			break;
+
+		default:
+			current_queue = default_queue;
+			/* no break here */
 		}
 
-		// todo: make a statemashine to distribute between task-queuues
+		// back to send state
+		current_state = SEND_STATE;
 	}
 }
 /****************************** End Of Module *******************************/
