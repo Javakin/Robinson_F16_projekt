@@ -38,6 +38,7 @@ extern xQueueHandle ps2con_queue;
 extern xQueueHandle default_queue;
 static xQueueHandle current_queue;
 
+
 // Placeholder for the recieced byte
 INT8U received;
 
@@ -146,6 +147,8 @@ void uart0_init_rx( INT32U baud_rate, INT8U databits, INT8U stopbits, INT8U pari
 
   UART0_CTL_R  |= (UART_CTL_UARTEN | UART_CTL_TXE | UART_CTL_RXE );  // Enable UART
 
+  // set the default target_queue for the task to fill the chars
+  current_queue = default_queue;
 }
 
 void uart0_rx_task()
@@ -174,7 +177,7 @@ void send_state()
 {
 	if( xQueueReceive( uart0_rx_queue, &( received ), 10 ) )
 	{
-		if ( received == '½')
+		if ( received == CONFIG_CHAR)
 			current_state = CONFIG_STATE;
 		else
 			xQueueSend(current_queue,  &( received ), 10);

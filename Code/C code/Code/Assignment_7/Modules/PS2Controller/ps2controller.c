@@ -36,6 +36,9 @@
 
 // Queues
 extern xQueueHandle uart0_tx_queue;
+extern xQueueHandle ps2con_queue;
+extern xQueueHandle default_queue;
+// testing of recieving queues
 
 // Semaphores
 // reserves uart0_tx_queue, in order to avoid interruptions
@@ -44,6 +47,9 @@ extern xSemaphoreHandle uart0_tx_semaphore;
 
 INT8U message[7] = {'a', 'b', '1', 'd', 'e', 'f', '\n'};
 INT8U i = 0;
+
+// receive variable
+INT8U receive;
 
 /*****************************   Functions   *******************************/
 void ps2controller_task()
@@ -54,13 +60,13 @@ void ps2controller_task()
 	// run task
 	while(1)
 	{
-		// send char to uart0
-//		xSemaphoreTake( uart0_tx_semaphore, 10 );
-//			// critical section
-//			for (i = 0; i<7; i++)
-//				uart0_putc_tx( message[i] );
-//
-//		xSemaphoreGive( uart0_tx_semaphore );
+		if (xQueueReceive(ps2con_queue, &( receive ), 10))
+			__asm("nop");
+
+		if (xQueueReceive(default_queue, &( receive ), 10))
+			__asm("nop");
+
+
 
 	}
 }
@@ -71,6 +77,14 @@ void ps2controller_init()
 
 }
 
+void send_data()
+{
+	xSemaphoreTake( uart0_tx_semaphore, 10 );
+		// critical section
+		for ( i = 0; i < 7; i++ )
+			uart0_putc_tx( message[i] );
 
+	xSemaphoreGive( uart0_tx_semaphore );
+}
 
 /****************************** End Of Module *******************************/

@@ -33,7 +33,9 @@
 #define CONFIG_STATE	1
 
 // settings
+#define CONFIG_CHAR		'<'
 #define SET_PS2CON		'p'
+
 
 /*****************************   Constants   *******************************/
 

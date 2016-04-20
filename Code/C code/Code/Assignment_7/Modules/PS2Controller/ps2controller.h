@@ -43,7 +43,10 @@ void ps2controller_init();
 //  Output   : -
 //  Function : initialuse the gpio's and setup the controller
 
-
+void send_data();
+//  Input    : -
+//  Output   : -
+//  Function : debugging tool to send data via uart0_tx
 
 /****************************** End Of Module *******************************/
 #endif
