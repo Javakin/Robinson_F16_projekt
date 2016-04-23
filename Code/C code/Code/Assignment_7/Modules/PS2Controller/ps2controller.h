@@ -25,6 +25,12 @@
 
 /*****************************    Defines    *******************************/
 
+#define CON_RX			6	// brown wire
+#define CON_TX			1	// orange wire
+#define CON_ATENTION    3   // yellow wire
+#define CON_CLOCK    	7   // blue wire
+#define CON_ACK    		5   // green wire
+
 
 /*****************************   Constants   *******************************/
 
@@ -44,6 +50,11 @@ void ps2controller_init();
 //  Function : initialuse the gpio's and setup the controller
 
 void send_data();
+//  Input    : -
+//  Output   : -
+//  Function : debugging tool to send data via uart0_tx
+
+void send_byte();
 //  Input    : -
 //  Output   : -
 //  Function : debugging tool to send data via uart0_tx
