@@ -100,14 +100,8 @@ int main(void)
 
 	// Start the tasks defined within this file
 	return_value &= xTaskCreate( status_led_task, ( signed portCHAR * ) "Status_led", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL );
-
-
-	// uart0 tasks
 	return_value &= xTaskCreate( uart0_rx_task, ( signed portCHAR *) "uart0_rx_task", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL);
 	return_value &= xTaskCreate( uart0_tx_task, ( signed portCHAR *) "uart0_tx_task", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL);
-
-
-	// ps2controller
 	return_value &= xTaskCreate( ps2controller_task, ( signed portCHAR * ) "ps2controller_task", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL );
 
 
