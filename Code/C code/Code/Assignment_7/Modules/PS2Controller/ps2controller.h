@@ -27,8 +27,8 @@
 
 #define CON_RX			6	// brown wire
 #define CON_TX			1	// orange wire
-#define CON_ATENTION    3   // yellow wire
-#define CON_CLOCK    	7   // blue wire
+#define CON_ATENTION  	3   // yellow wire
+#define CON_CLOCK   	7   // blue wire
 #define CON_ACK    		5   // green wire
 
 

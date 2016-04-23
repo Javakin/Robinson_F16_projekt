@@ -30,6 +30,7 @@
 
 /*****************************    Defines    *******************************/
 
+//#define CON_RX	1 && (CONTROLLER_RX & (1 << CON_RX))
 
 
 /*****************************   Constants   *******************************/
@@ -81,7 +82,8 @@ void ps2controller_task()
 			{
 				// send the transmitted bit
 				GPIO_PORTB_DATA_R &= !(1 << CON_TX);
-				GPIO_PORTB_DATA_R |= ( (1 && (poll_once[byte] & (1 << bit) ) ) << CON_TX);
+				test = ( (1 && (poll_once[byte] & (1 << bit) ) ) << CON_TX);
+				GPIO_PORTB_DATA_R |= test;
 
 				// read the recieved bit
 				receive = '0';
@@ -128,30 +130,7 @@ void ps2controller_init()
 	// set pull-up resistors
 	GPIO_PORTB_PUR_R |= (CON_ACK) | (CON_ATENTION);
 
-	// todo: run initialising sequence
 
-
-
-}
-
-void send_byte()
-{
-	// send the bit
-}
-
-void digital_setup()
-{
-	// todo: setup digital sequence
-}
-
-void send_data()
-{
-	xSemaphoreTake( uart0_tx_semaphore, 10 );
-		// critical section
-		for (INT8U i = 0; i < 7; i++ )
-			uart0_putc_tx( message[i] );
-
-	xSemaphoreGive( uart0_tx_semaphore );
 }
 
 /****************************** End Of Module *******************************/
