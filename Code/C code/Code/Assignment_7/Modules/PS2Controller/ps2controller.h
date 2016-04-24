@@ -36,11 +36,9 @@
 #define SEND_MESSAGE_STATE	1
 #define SET_ATEN_STATE		2
 #define CLR_ATEN_STATE		3
-
-// sub states
-#define SEND_BYTE_STATE		10
-#define ACK_WAIT_STATE		11
-#define ACK_RECEIVED_STATE	12
+#define SEND_BYTE_STATE		4
+#define ACK_WAIT_STATE		5
+#define ACK_RECEIVED_STATE	6
 
 /*****************************   Constants   *******************************/
 
