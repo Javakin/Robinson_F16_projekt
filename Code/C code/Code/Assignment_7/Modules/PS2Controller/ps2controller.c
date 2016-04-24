@@ -50,16 +50,16 @@ xQueueHandle command_queue;
 extern xSemaphoreHandle uart0_tx_semaphore;
 
 
-INT8U message[7] = {'a', 'b', '1', 'd', 'e', 'f', '\n'};
-INT8U test = 0;
-
-
-// receive variable
-INT8U receive;
-
 // digital pulling sequence
 INT8U poll_once[5] = {0x01, 0x42, 0x00, 0xFF, 0xFF};
-INT8U current_state = 0;
+INT8U state = IDLE_STATE;
+INT8U message_state = ACK_RECEIVED_STATE;
+
+INT8U ack_received = 0;
+
+// current bytes operated on
+INT8U current_byte_rx = 0;
+INT8U current_byte_tx = 0;
 
 /*****************************   Functions   *******************************/
 void ps2controller_task()
@@ -70,44 +70,45 @@ void ps2controller_task()
 	// run task
 	while(1)
 	{
-		// clear atention
-		GPIO_PORTB_DATA_R &= !(1 << CON_ATENTION);
-		vTaskDelay(1);
-
-		// send message
-		for(INT8U byte = 0; byte < 5; byte++)
+		switch (state)
 		{
-			// send current byte
-			for(INT8U bit = 0; bit < 8; bit++)
-			{
-				// send the transmitted bit
-				GPIO_PORTB_DATA_R &= !(1 << CON_TX);
-				test = ( (1 && (poll_once[byte] & (1 << bit) ) ) << CON_TX);
-				GPIO_PORTB_DATA_R |= test;
+		case IDLE_STATE:
+			// fill buffer with new pull
+			idle_func();
+			state = CLR_ATEN_STATE;
+			break;
 
-				// read the recieved bit
-				receive = '0';
-				test = GPIO_PORTB_DATA_R;
-				if (test & (1 << CON_RX))
-					receive = '1';
-				uart0_putc_tx( receive );
+		case SET_ATEN_STATE:
+			// set atention
+			GPIO_PORTB_DATA_R |= (1 << CON_ATENTION);
+			uart0_putc_tx( '\n' );
+			state = IDLE_STATE;
+			break;
 
+		case CLR_ATEN_STATE:
+			// clear atention
+			GPIO_PORTB_DATA_R &= !(1 << CON_ATENTION);
+			state = ACK_RECEIVED_STATE;
+			break;
 
-				// clock signal
-				GPIO_PORTB_DATA_R &= !(1 << CON_CLOCK);
-				vTaskDelay(1);
-				GPIO_PORTB_DATA_R |=  (1 << CON_CLOCK);
-				vTaskDelay(1);
-			}
+		case SEND_BYTE_STATE:
+			send_byte();
+			state = ACK_WAIT_STATE;
+			break;
 
-			// wait for acknowledge (delay for 5 µsec)
-			vTaskDelay(1);
+		case ACK_WAIT_STATE:
+			state = ack_wait();
+			break;
+
+		case ACK_RECEIVED_STATE:
+			if(xQueueReceive(command_queue, &( current_byte_tx ),10 ) == pdTRUE)
+				// new byte to sende
+				state = SEND_BYTE_STATE;
+			else
+				// queue enpty set aten_state
+				state = SET_ATEN_STATE;
+			break;
 		}
-
-		// set atention
-		GPIO_PORTB_DATA_R |= (1 << CON_ATENTION);
-		uart0_putc_tx( '\n' );
-		vTaskDelay(1);
 	}
 }
 
@@ -128,9 +129,105 @@ void ps2controller_init()
 	GPIO_PORTB_DIR_R &= !((1 << CON_RX) | (1 << CON_ACK));
 
 	// set pull-up resistors
-	GPIO_PORTB_PUR_R |= (CON_ACK) | (CON_ATENTION);
+	GPIO_PORTB_PUR_R |= (1 << CON_RX) | (1 << CON_ACK);
+
+	// setup af interrupt for prot A
+	NVIC_EN0_R |= 0x0000002;
+
+	// interrupt masking
+	GPIO_PORTB_IM_R |= (1 << CON_ACK);
+
+	// set interrupt event for DREHIMPULSGEBER_A to rising eadges
+	GPIO_PORTB_IEV_R |= (1 << CON_ACK);
 
 
+	// setup queues
+	command_queue = xQueueCreate(32, sizeof(INT8U));
+}
+
+
+void idle_func()
+{
+	// fyld buffer
+	for (INT8U i = 0; i < 5; i++)
+	{
+		xQueueSend(command_queue, &( poll_once[i] ), 10);
+	}
+}
+
+
+INT8U ack_wait()
+{
+	INT8U message = SEND_BYTE_STATE;
+	vTaskDelay(1);
+
+	// test if ack has arriveds
+	if (ack_received)
+	{
+		// send suceded
+		message = ACK_RECEIVED_STATE;
+		ack_received = 0;
+
+		// send byte to screeen
+		for (INT8U i = 0; i < 8; i++)
+			uart0_putc_tx( ((current_byte_rx & (1 << i)) && 1) + '0' );
+	}
+
+	return message;
+}
+
+void send_byte()
+{
+	INT8U test = 0;
+	current_byte_rx = 0;
+	// send byte
+	for(INT8U i = 0; i < 8; i++)
+	{
+		// clock low
+		// set bit to transmit
+		test = !(1 << CON_TX);
+		GPIO_PORTB_DATA_R &= test;
+		test = ( (1 && (poll_once[i] & (1 << i) ) ) << CON_TX);
+		GPIO_PORTB_DATA_R |= test;
+
+		GPIO_PORTB_DATA_R &= !(1 << CON_CLOCK);
+		for(INT8U delay = 0; delay < 16; delay++)
+			__asm("nop");
+
+		// clock high
+		// read data
+		test = 1 && (GPIO_PORTB_DATA_R & (1 << CON_RX));
+		current_byte_rx |= (test << i);
+
+
+		GPIO_PORTB_DATA_R |=  (1 << CON_CLOCK);
+
+		for(INT8U delay = 0; delay < 16; delay++)
+			__asm("nop");
+	}
+}
+
+void ps2_isr()
+{
+	// notify if ack is recieved
+	ack_received = 1;
+
+	// reset interrupt flag
+	GPIO_PORTB_ICR_R |= (1 << CON_ACK);
 }
 
 /****************************** End Of Module *******************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+

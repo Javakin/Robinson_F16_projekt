@@ -31,6 +31,16 @@
 #define CON_CLOCK   	7   // blue wire
 #define CON_ACK    		5   // green wire
 
+// super states
+#define IDLE_STATE			0
+#define SEND_MESSAGE_STATE	1
+#define SET_ATEN_STATE		2
+#define CLR_ATEN_STATE		3
+
+// sub states
+#define SEND_BYTE_STATE		10
+#define ACK_WAIT_STATE		11
+#define ACK_RECEIVED_STATE	12
 
 /*****************************   Constants   *******************************/
 
@@ -49,15 +59,31 @@ void ps2controller_init();
 //  Output   : -
 //  Function : initialuse the gpio's and setup the controller
 
-void send_data();
+INT8U send_message();
+//  Input    : -
+//  Output   : 1 if don sending bytes, 0 if not
+//  Function : send the message
+
+void idle_func();
 //  Input    : -
 //  Output   : -
-//  Function : debugging tool to send data via uart0_tx
+//  Function : fill the message buffer with new pull
+
+void ps2_isr();
+//  Input    : -
+//  Output   : -
+//  Function : set acknowledge when recieved
+
+INT8U ack_wait();
+//  Input    : -
+//  Output   : the new message_state
+//  Function : test if the ack has arrived afteer 5 ms
 
 void send_byte();
 //  Input    : -
-//  Output   : -
-//  Function : debugging tool to send data via uart0_tx
+//  Output   : the new byte_state
+//  Function : send the current_byte
+
 
 /****************************** End Of Module *******************************/
 #endif
