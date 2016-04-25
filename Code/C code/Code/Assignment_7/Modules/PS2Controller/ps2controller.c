@@ -51,11 +51,28 @@ extern xSemaphoreHandle uart0_tx_semaphore;
 
 
 // digital pulling sequence
-INT8U poll_once[5] = {0x01, 0x42, 0x00, 0xFF, 0xFF};
+// pull digital
+INT8U init1[5] = {0x01, 0x42, 0x00, 0xFF, 0xFF};
+// go to config mode
+INT8U init2[5] = {0x01, 0x43, 0x00, 0x01, 0x00};
+// Turn on analog mode
+INT8U init3[9] = {0x01, 0x44, 0x00, 0x01, 0x03, 0x00, 0x00, 0x00, 0x00};
+// setup motor command
+INT8U init4[9] = {0x01, 0x4D, 0x00, 0x00, 0x01, 0xFF, 0xFF, 0xFF, 0xFF};
+// Config controller to return all pressure values
+INT8U init5[9] = {0x01, 0x4F, 0x00, 0xFF, 0xFF, 0x03, 0x00, 0x00, 0x00};
+// exit config mode
+INT8U init6[9] = {0x01, 0x43, 0x00, 0x00, 0x5A, 0x5A, 0x5A, 0x5A, 0x5A};
+// pull analog
+INT8U init7[21] = {0x01, 0x42, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,0x00, 0x00, 0x00, 0x00};
+
+
 INT8U state = IDLE_STATE;
 INT8U message_state = ACK_RECEIVED_STATE;
 
 INT8U ack_received = 0;
+
+INT8U instruction = 0;
 
 // current bytes operated on
 INT8U current_byte_rx = 0;
@@ -101,7 +118,7 @@ void ps2controller_task()
 			break;
 
 		case ACK_RECEIVED_STATE:
-			if(xQueueReceive(command_queue, &( current_byte_tx ),10 ) == pdTRUE)
+			if(xQueueReceive(command_queue, &( current_byte_tx ), 2 ) == pdTRUE)
 				// new byte to sende
 				state = SEND_BYTE_STATE;
 			else
@@ -111,6 +128,7 @@ void ps2controller_task()
 		}
 	}
 }
+
 
 void ps2controller_init()
 {
@@ -148,17 +166,48 @@ void ps2controller_init()
 void idle_func()
 {
 	// fyld buffer
-	for (INT8U i = 0; i < 5; i++)
+
+	switch (instruction)
 	{
-		xQueueSend(command_queue, &( poll_once[i] ), 10);
+	case 0:
+		for (INT8U i = 0; i < 5; i++)
+		{
+			xQueueSend(command_queue, &( init2[i] ), 1);
+		}
+		instruction++;
+		break;
+
+	case 1:
+		for (INT8U i = 0; i < 9; i++)
+		{
+			xQueueSend(command_queue, &( init3[i] ), 1);
+		}
+		instruction++;
+		break;
+
+	case 2:
+		for (INT8U i = 0; i < 9; i++)
+		{
+			xQueueSend(command_queue, &( init6[i] ), 1);
+		}
+		instruction++;
+		break;
+
+	default:
+		for (INT8U i = 0; i < 9; i++)
+		{
+			xQueueSend(command_queue, &( init7[i] ), 1);
+		}
+		break;
 	}
+
 }
 
 
 INT8U ack_wait()
 {
 	INT8U message = SEND_BYTE_STATE;
-	vTaskDelay(1);
+	//vTaskDelay(1);
 
 	// test if ack has arriveds
 	if (ack_received)
@@ -174,6 +223,7 @@ INT8U ack_wait()
 
 	return message;
 }
+
 
 void send_byte()
 {
@@ -210,6 +260,7 @@ void send_byte()
 			__asm("nop");
 	}
 }
+
 
 void ps2_isr()
 {
