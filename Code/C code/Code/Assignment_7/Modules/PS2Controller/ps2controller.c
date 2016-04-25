@@ -184,12 +184,17 @@ void send_byte()
 	{
 		// clock low
 		// set bit to transmit
-		test = ~(1 << CON_TX);
-		GPIO_PORTB_DATA_R &= test;
-		test = ( (1 && (poll_once[i] & (1 << i) ) ) << CON_TX);
-		GPIO_PORTB_DATA_R |= test;
+		test = (GPIO_PORTB_DATA_R & ~(1 << CON_TX));
+		test |= ( (1 && (current_byte_tx & (1 << i) ) ) << CON_TX);
+		GPIO_PORTB_DATA_R = test;
 
-		GPIO_PORTB_DATA_R &= ~(1 << CON_CLOCK);
+		//test = ~(1 << CON_TX);
+		//GPIO_PORTB_DATA_R &= test;
+
+		//GPIO_PORTB_DATA_R |= test;
+		test = ~(1 << CON_CLOCK);
+		GPIO_PORTB_DATA_R &= test;
+
 		for(INT8U delay = 0; delay < 16; delay++)
 			__asm("nop");
 
@@ -198,8 +203,8 @@ void send_byte()
 		test = 1 && (GPIO_PORTB_DATA_R & (1 << CON_RX));
 		current_byte_rx |= (test << i);
 
-
-		GPIO_PORTB_DATA_R |=  (1 << CON_CLOCK);
+		test = (1 << CON_CLOCK);
+		GPIO_PORTB_DATA_R |=  test;
 
 		for(INT8U delay = 0; delay < 16; delay++)
 			__asm("nop");
