@@ -87,7 +87,7 @@ void ps2controller_task()
 
 		case CLR_ATEN_STATE:
 			// clear atention
-			GPIO_PORTB_DATA_R &= !(1 << CON_ATENTION);
+			GPIO_PORTB_DATA_R &= ~(1 << CON_ATENTION);
 			state = ACK_RECEIVED_STATE;
 			break;
 
@@ -126,7 +126,7 @@ void ps2controller_init()
 
 	// set direction
 	GPIO_PORTB_DIR_R |= (1 << CON_TX) | (1 << CON_ATENTION)	| (1 << CON_CLOCK);
-	GPIO_PORTB_DIR_R &= !((1 << CON_RX) | (1 << CON_ACK));
+	GPIO_PORTB_DIR_R &= ~((1 << CON_RX) | (1 << CON_ACK));
 
 	// set pull-up resistors
 	GPIO_PORTB_PUR_R |= (1 << CON_RX) | (1 << CON_ACK);
@@ -137,7 +137,7 @@ void ps2controller_init()
 	// interrupt masking
 	GPIO_PORTB_IM_R |= (1 << CON_ACK);
 
-	// set interrupt event for DREHIMPULSGEBER_A to rising eadges
+	// set interrupt event
 	GPIO_PORTB_IEV_R |= (1 << CON_ACK);
 
 	// setup queues
@@ -184,12 +184,12 @@ void send_byte()
 	{
 		// clock low
 		// set bit to transmit
-		test = !(1 << CON_TX);
+		test = ~(1 << CON_TX);
 		GPIO_PORTB_DATA_R &= test;
 		test = ( (1 && (poll_once[i] & (1 << i) ) ) << CON_TX);
 		GPIO_PORTB_DATA_R |= test;
 
-		GPIO_PORTB_DATA_R &= !(1 << CON_CLOCK);
+		GPIO_PORTB_DATA_R &= ~(1 << CON_CLOCK);
 		for(INT8U delay = 0; delay < 16; delay++)
 			__asm("nop");
 
