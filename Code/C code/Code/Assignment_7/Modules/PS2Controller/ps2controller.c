@@ -140,7 +140,6 @@ void ps2controller_init()
 	// set interrupt event for DREHIMPULSGEBER_A to rising eadges
 	GPIO_PORTB_IEV_R |= (1 << CON_ACK);
 
-
 	// setup queues
 	command_queue = xQueueCreate(32, sizeof(INT8U));
 }
