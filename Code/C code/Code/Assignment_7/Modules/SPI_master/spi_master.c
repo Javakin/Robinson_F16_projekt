@@ -187,15 +187,8 @@ void spi_send_byte()
 		test |= ( (1 && (spi_current_byte_tx & (1 << i) ) ) << CON_TX);
 		GPIO_PORTB_DATA_R = test;
 
-		//test = ~(1 << CON_TX);
-		//GPIO_PORTB_DATA_R &= test;
-
-		//GPIO_PORTB_DATA_R |= test;
 		test = ~(1 << CON_CLOCK);
 		GPIO_PORTB_DATA_R &= test;
-
-		//for(INT8U delay = 0; delay < 16; delay++)
-		//	__asm("nop");
 
 		// clock high
 		// read data
@@ -205,8 +198,6 @@ void spi_send_byte()
 		test = (1 << CON_CLOCK);
 		GPIO_PORTB_DATA_R |=  test;
 
-		//for(INT8U delay = 0; delay < 16; delay++)
-		//	__asm("nop");
 	}
 }
 
