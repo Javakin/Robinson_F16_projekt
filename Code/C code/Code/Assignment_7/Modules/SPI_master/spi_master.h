@@ -46,38 +46,33 @@
 /*****************************   Functions   *******************************/
 
 
-void ps2controller_task();
+void spi_master_task();
 //  Input    : -
 //  Output   : -
 //  Function : read the input from a playstation 2 controller
 
 
-void ps2controller_init();
+void spi_master_init();
 //  Input    : -
 //  Output   : -
 //  Function : initialuse the gpio's and setup the controller
 
-INT8U send_message();
+INT8U spi_send_message();
 //  Input    : -
 //  Output   : 1 if don sending bytes, 0 if not
 //  Function : send the message
 
-void idle_func();
+void spi_idle_func();
 //  Input    : -
 //  Output   : -
 //  Function : fill the message buffer with new pull
 
-void ps2_isr();
-//  Input    : -
-//  Output   : -
-//  Function : set acknowledge when recieved
-
-INT8U ack_wait();
+INT8U spi_ack_wait();
 //  Input    : -
 //  Output   : the new message_state
 //  Function : test if the ack has arrived afteer 5 ms
 
-void send_byte();
+void spi_send_byte();
 //  Input    : -
 //  Output   : the new byte_state
 //  Function : send the current_byte

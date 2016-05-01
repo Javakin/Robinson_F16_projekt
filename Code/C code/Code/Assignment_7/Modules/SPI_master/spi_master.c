@@ -55,14 +55,14 @@ INT8U ack_received = 0;
 
 
 // current bytes operated on
-INT16U current_byte_rx = 0;
-INT16U current_byte_tx = 0;
+INT16U spi_current_byte_rx = 0;
+INT16U spi_current_byte_tx = 0;
 
 /*****************************   Functions   *******************************/
-void ps2controller_task()
+void spi_master_task()
 {
 	// initialise used prots
-	ps2controller_init();
+	spi_master_init();
 
 	// run task
 	while(1)
@@ -71,7 +71,7 @@ void ps2controller_task()
 		{
 		case IDLE_STATE:
 			// fill buffer with new pull
-			idle_func();
+			spi_idle_func();
 			state = CLR_ATEN_STATE;
 			break;
 
@@ -89,16 +89,16 @@ void ps2controller_task()
 			break;
 
 		case SEND_BYTE_STATE:
-			send_byte();
+			spi_send_byte();
 			state = ACK_WAIT_STATE;
 			break;
 
 		case ACK_WAIT_STATE:
-			state = ack_wait();
+			state = spi_ack_wait();
 			break;
 
 		case ACK_RECEIVED_STATE:
-			if(xQueueReceive(command_queue, &( current_byte_tx ), 2 ) == pdTRUE)
+			if(xQueueReceive(command_queue, &( spi_current_byte_tx ), 2 ) == pdTRUE)
 				// new byte to sende
 				state = SEND_BYTE_STATE;
 			else
@@ -110,7 +110,7 @@ void ps2controller_task()
 }
 
 
-void ps2controller_init()
+void spi_master_init()
 {
 	// setup port B
 	SYSCTL_RCGC2_R |= SYSCTL_RCGC2_GPIOB;
@@ -143,17 +143,17 @@ void ps2controller_init()
 }
 
 
-void idle_func()
+void spi_idle_func()
 {
 	// fyld buffer
 	for (INT8U i = 0; i < 13; i++)
 	{
-		xQueueSend(command_queue, &( inst0[i] ), 1);
+		xQueueSend(command_queue, &( inst[i] ), 1);
 	}
 }
 
 
-INT8U ack_wait()
+INT8U spi_ack_wait()
 {
 	INT8U message = SEND_BYTE_STATE;
 	//vTaskDelay(1);
@@ -167,24 +167,24 @@ INT8U ack_wait()
 
 		// send byte to screeen
 		for (INT8U i = 0; i < 16; i++)
-			uart0_putc_tx( ((current_byte_rx & (1 << i)) && 1) + '0' );
+			uart0_putc_tx( ((spi_current_byte_rx & (1 << i)) && 1) + '0' );
 	//}
 
 	return message;
 }
 
 
-void send_byte()
+void spi_send_byte()
 {
 	INT8U test = 0;
-	current_byte_rx = 0;
+	spi_current_byte_rx = 0;
 	// send byte
 	for(INT8U i = 0; i < 13; i++)
 	{
 		// clock low
 		// set bit to transmit
 		test = (GPIO_PORTB_DATA_R & ~(1 << CON_TX));
-		test |= ( (1 && (current_byte_tx & (1 << i) ) ) << CON_TX);
+		test |= ( (1 && (spi_current_byte_tx & (1 << i) ) ) << CON_TX);
 		GPIO_PORTB_DATA_R = test;
 
 		//test = ~(1 << CON_TX);
@@ -200,7 +200,7 @@ void send_byte()
 		// clock high
 		// read data
 		test = 1 && (GPIO_PORTB_DATA_R & (1 << CON_RX));
-		current_byte_rx |= (test << i);
+		spi_current_byte_rx |= (test << i);
 
 		test = (1 << CON_CLOCK);
 		GPIO_PORTB_DATA_R |=  test;
@@ -210,15 +210,6 @@ void send_byte()
 	}
 }
 
-
-void ps2_isr()
-{
-	// notify if ack is recieved
-	ack_received = 1;
-
-	// reset interrupt flag
-	GPIO_PORTB_ICR_R |= (1 << CON_ACK);
-}
 
 /****************************** End Of Module *******************************/
 
