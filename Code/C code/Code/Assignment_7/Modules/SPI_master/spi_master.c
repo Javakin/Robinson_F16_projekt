@@ -41,7 +41,7 @@
 extern xQueueHandle uart0_tx_queue;
 
 // instructions
-INT16U inst[4] = {0x5A5A, 0x5A5A, 0x5A5A, 0x5A5A};
+INT16U inst[4] = {0b0000001100100000, 0x5A5A, 0x5A5A, 0x5A5A};
 
 // testing of recieving queues
 xQueueHandle command_queue;
@@ -97,7 +97,7 @@ void spi_master_task()
 			break;
 
 		case ACK_RECEIVED_STATE:
-			if(xQueueReceive(command_queue, &( spi_current_byte_tx ), 2 ) == pdTRUE)
+			if(xQueueReceive(command_queue, &( spi_current_byte_tx ), 1 ) == pdTRUE)
 				// new byte to sende
 				spi_state = SEND_BYTE_STATE;
 			else
@@ -145,7 +145,7 @@ void spi_master_init()
 void spi_idle_func()
 {
 	// fyld buffer
-	for (INT8U i = 0; i < 4; i++)
+	for (INT8U i = 0; i < 1; i++)
 	{
 		xQueueSend(command_queue, &( inst[i] ), 1);
 	}
