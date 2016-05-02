@@ -48,10 +48,9 @@ xQueueHandle command_queue;
 
 
 
-INT8U state = IDLE_STATE;
-INT8U message_state = ACK_RECEIVED_STATE;
+INT8U spi_state = IDLE_STATE;
+INT8U spi_message_state = ACK_RECEIVED_STATE;
 
-INT8U ack_received = 0;
 
 
 // current bytes operated on
@@ -67,43 +66,43 @@ void spi_master_task()
 	// run task
 	while(1)
 	{
-		switch (state)
+		switch (spi_state)
 		{
 		case IDLE_STATE:
 			// fill buffer with new pull
 			spi_idle_func();
-			state = CLR_ATEN_STATE;
+			spi_state = CLR_ATEN_STATE;
 			break;
 
 		case SET_ATEN_STATE:
 			// set atention
 			GPIO_PORTB_DATA_R |= (1 << CON_ATENTION);
 			uart0_putc_tx( '\n' );
-			state = IDLE_STATE;
+			spi_state = IDLE_STATE;
 			break;
 
 		case CLR_ATEN_STATE:
 			// clear atention
 			GPIO_PORTB_DATA_R &= ~(1 << CON_ATENTION);
-			state = ACK_RECEIVED_STATE;
+			spi_state = ACK_RECEIVED_STATE;
 			break;
 
 		case SEND_BYTE_STATE:
 			spi_send_byte();
-			state = ACK_WAIT_STATE;
+			spi_state = ACK_WAIT_STATE;
 			break;
 
 		case ACK_WAIT_STATE:
-			state = spi_ack_wait();
+			spi_state = spi_ack_wait();
 			break;
 
 		case ACK_RECEIVED_STATE:
 			if(xQueueReceive(command_queue, &( spi_current_byte_tx ), 2 ) == pdTRUE)
 				// new byte to sende
-				state = SEND_BYTE_STATE;
+				spi_state = SEND_BYTE_STATE;
 			else
 				// queue enpty set aten_state
-				state = SET_ATEN_STATE;
+				spi_state = SET_ATEN_STATE;
 			break;
 		}
 	}
@@ -146,7 +145,7 @@ void spi_master_init()
 void spi_idle_func()
 {
 	// fyld buffer
-	for (INT8U i = 0; i < 13; i++)
+	for (INT8U i = 0; i < 4; i++)
 	{
 		xQueueSend(command_queue, &( inst[i] ), 1);
 	}
