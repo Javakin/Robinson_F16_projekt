@@ -31,6 +31,7 @@
 #define CON_CLOCK   	4   // blue wire
 #define CON_ACK    		2   // green wire
 
+
 // super states
 #define IDLE_STATE			0
 #define SEND_MESSAGE_STATE	1
