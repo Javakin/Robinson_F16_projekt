@@ -41,6 +41,9 @@
 #define ACK_WAIT_STATE		5
 #define ACK_RECEIVED_STATE	6
 
+// bits send
+#define NUM_OF_BTIS				16
+
 /*****************************   Constants   *******************************/
 
 

@@ -41,7 +41,7 @@
 extern xQueueHandle uart0_tx_queue;
 
 // instructions
-INT16U inst[4] = {0b0000001100100000, 0x5A5A, 0x5A5A, 0x5A5A};
+INT16U inst[4] = {0x8000, 0x5A5A, 0x5A5A, 0x5A5A};
 
 // testing of recieving queues
 xQueueHandle command_queue;
@@ -165,7 +165,7 @@ INT8U spi_ack_wait()
 		//ack_received = 0;
 
 		// send byte to screeen
-		for (INT8U i = 0; i < 16; i++)
+		for (INT8U i = 0; i < NUM_OF_BTIS; i++)
 			uart0_putc_tx( ((spi_current_byte_rx & (1 << i)) && 1) + '0' );
 	//}
 
@@ -178,7 +178,7 @@ void spi_send_byte()
 	INT8U test = 0;
 	spi_current_byte_rx = 0;
 	// send byte
-	for(INT8U i = 0; i < 13; i++)
+	for(INT8U i = 0; i < NUM_OF_BTIS; i++)
 	{
 		// clock low
 		// set bit to transmit
