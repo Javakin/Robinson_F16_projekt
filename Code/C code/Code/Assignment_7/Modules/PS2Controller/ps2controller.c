@@ -118,9 +118,17 @@ void ps2controller_task()
 			break;
 
 		case ACK_RECEIVED_STATE:
+			// set atention
+			//GPIO_PORTB_DATA_R |= (1 << CON_ATENTION);
+
 			if(xQueueReceive(command_queue, &( current_byte_tx ), 2 ) == pdTRUE)
+			{
+				// clear atention
+				//GPIO_PORTB_DATA_R &= ~(1 << CON_ATENTION);
+
 				// new byte to sende
 				state = SEND_BYTE_STATE;
+			}
 			else
 				// queue enpty set aten_state
 				state = SET_ATEN_STATE;
@@ -238,8 +246,6 @@ void send_byte()
 		test |= ( (1 && (current_byte_tx & (1 << i) ) ) << CON_TX);
 		GPIO_PORTB_DATA_R = test;
 
-		//test = ~(1 << CON_TX);
-		//GPIO_PORTB_DATA_R &= test;
 
 		//GPIO_PORTB_DATA_R |= test;
 		test = ~(1 << CON_CLOCK);
@@ -249,12 +255,12 @@ void send_byte()
 			__asm("nop");
 
 		// clock high
+		test = (1 << CON_CLOCK);
+		GPIO_PORTB_DATA_R |=  test;
+
 		// read data
 		test = 1 && (GPIO_PORTB_DATA_R & (1 << CON_RX));
 		current_byte_rx |= (test << i);
-
-		test = (1 << CON_CLOCK);
-		GPIO_PORTB_DATA_R |=  test;
 
 		for(INT8U delay = 0; delay < 16; delay++)
 			__asm("nop");
