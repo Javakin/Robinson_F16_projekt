@@ -210,16 +210,16 @@ INT8U ack_wait()
 	//vTaskDelay(1);
 
 	// test if ack has arriveds
-	if (ack_received)
-	{
+	//if (ack_received)
+	//{
 		// send suceded
 		message = ACK_RECEIVED_STATE;
-		ack_received = 0;
+	//	ack_received = 0;
 
 		// send byte to screeen
 		for (INT8U i = 0; i < 8; i++)
 			uart0_putc_tx( ((current_byte_rx & (1 << i)) && 1) + '0' );
-	}
+	//}
 
 	return message;
 }
