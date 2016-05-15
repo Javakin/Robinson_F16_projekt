@@ -38,30 +38,24 @@
 /*****************************   Variables   *******************************/
 
 // Queues
-extern xQueueHandle spi_rx_queue;
-extern xQueueHandle spi_tx_queue;
-
-// debugging
 extern xQueueHandle uart0_tx_queue;
 
-
 // instructions
-//INT16U inst[4] = {0x8000, 0x5A5A, 0x5A5A, 0x5A5A};
+INT16U inst[4] = {0x8000, 0x5A5A, 0x5A5A, 0x5A5A};
 
 // testing of recieving queues
-//xQueueHandle command_queue;
+xQueueHandle command_queue;
 
 
 
 INT8U spi_state = IDLE_STATE;
-
-//INT8U spi_message_state = ACK_RECEIVED_STATE;
+INT8U spi_message_state = ACK_RECEIVED_STATE;
 
 
 
 // current bytes operated on
-INT16U spi_rx = 0;
-INT16U spi_tx = 0;
+INT16U spi_current_byte_rx = 0;
+INT16U spi_current_byte_tx = 0;
 
 /*****************************   Functions   *******************************/
 void spi_master_task()
@@ -75,26 +69,41 @@ void spi_master_task()
 		switch (spi_state)
 		{
 		case IDLE_STATE:
-			// get new message to send
-			if (xQueueReceive(spi_tx_queue, &( spi_tx ), portMAX_DELAY) == pdTRUE)
-			{
-				spi_state = SEND_BYTE_STATE;
-			}
+			// fill buffer with new pull
+			spi_idle_func();
+			spi_state = CLR_ATEN_STATE;
 			break;
 
-
-		case SEND_BYTE_STATE:
-			// send the byte
-			spi_rx = spi_send_message(spi_tx);
-
-			// show the output
-			for (INT8U i = 0; i < NUM_OF_BTIS; i++)
-				uart0_putc_tx( ((spi_rx & (1 << i)) && 1) + '0' );
+		case SET_ATEN_STATE:
+			// set atention
+			GPIO_PORTB_DATA_R |= (1 << CON_ATENTION);
 			uart0_putc_tx( '\n' );
-
 			spi_state = IDLE_STATE;
 			break;
 
+		case CLR_ATEN_STATE:
+			// clear atention
+			GPIO_PORTB_DATA_R &= ~(1 << CON_ATENTION);
+			spi_state = ACK_RECEIVED_STATE;
+			break;
+
+		case SEND_BYTE_STATE:
+			spi_send_byte();
+			spi_state = ACK_WAIT_STATE;
+			break;
+
+		case ACK_WAIT_STATE:
+			spi_state = spi_ack_wait();
+			break;
+
+		case ACK_RECEIVED_STATE:
+			if(xQueueReceive(command_queue, &( spi_current_byte_tx ), 0 ) == pdTRUE)
+				// new byte to sende
+				spi_state = SEND_BYTE_STATE;
+			else
+				// queue enpty set aten_state
+				spi_state = SET_ATEN_STATE;
+			break;
 		}
 	}
 }
@@ -110,54 +119,76 @@ void spi_master_init()
 
 	// Enable GPIO
 	GPIO_PORTB_DEN_R |= (1 << CON_TX) | (1 << CON_RX) | (1 << CON_ATENTION) |
-			(1 << CON_CLOCK);
+			(1 << CON_CLOCK) | (1 << CON_ACK);
 
 	// set direction
 	GPIO_PORTB_DIR_R |= (1 << CON_TX) | (1 << CON_ATENTION)	| (1 << CON_CLOCK);
-	GPIO_PORTB_DIR_R &= ~((1 << CON_RX) );
+	GPIO_PORTB_DIR_R &= ~((1 << CON_RX) | (1 << CON_ACK));
 
 	// set pull-up resistors
-	GPIO_PORTB_PUR_R |= (1 << CON_RX);
+	GPIO_PORTB_PUR_R |= (1 << CON_RX) | (1 << CON_ACK);
 
+	// setup queues
+	command_queue = xQueueCreate(32, sizeof(INT16U));
 }
 
 
-
-INT16U spi_send_message(INT16U message)
+void spi_idle_func()
 {
-	// define signals
-	INT8U temp_holder = 0;
-	INT16U recieved = 0;
+	// fyld buffer
+	for (INT8U i = 0; i < 1; i++)
+	{
+		xQueueSend(command_queue, &( inst[i] ), 1);
+	}
+}
 
-	// clear atention
-	GPIO_PORTB_DATA_R &= ~(1 << CON_ATENTION);
 
+INT8U spi_ack_wait()
+{
+	INT8U message = SEND_BYTE_STATE;
+	//vTaskDelay(1);
+
+	// test if ack has arriveds
+	//if (ack_received)
+	//{
+		// send suceded
+		message = ACK_RECEIVED_STATE;
+		//ack_received = 0;
+
+		// send byte to screeen
+		for (INT8U i = 0; i < NUM_OF_BTIS; i++)
+			uart0_putc_tx( ((spi_current_byte_rx & (1 << i)) && 1) + '0' );
+	//}
+
+	return message;
+}
+
+
+void spi_send_byte()
+{
+	INT8U test = 0;
+	spi_current_byte_rx = 0;
 	// send byte
 	for(INT8U i = 0; i < NUM_OF_BTIS; i++)
 	{
 		// clock low
 		// set bit to transmit
-		temp_holder = (GPIO_PORTB_DATA_R & ~(1 << CON_TX));
-		temp_holder |= ( (1 && (message & (1 << i) ) ) << CON_TX);
-		GPIO_PORTB_DATA_R = temp_holder;
+		test = (GPIO_PORTB_DATA_R & ~(1 << CON_TX));
+		test |= ( (1 && (spi_current_byte_tx & (1 << i) ) ) << CON_TX);
+		GPIO_PORTB_DATA_R = test;
 
-		temp_holder = ~(1 << CON_CLOCK);
-		GPIO_PORTB_DATA_R &= temp_holder;
+		test = ~(1 << CON_CLOCK);
+		GPIO_PORTB_DATA_R &= test;
 
 		// clock high
 		// read data
-		temp_holder = 1 && (GPIO_PORTB_DATA_R & (1 << CON_RX));
-		recieved |= (temp_holder << i);
+		test = 1 && (GPIO_PORTB_DATA_R & (1 << CON_RX));
+		spi_current_byte_rx |= (test << i);
 
-		temp_holder = (1 << CON_CLOCK);
-		GPIO_PORTB_DATA_R |=  temp_holder;
+		test = (1 << CON_CLOCK);
+		GPIO_PORTB_DATA_R |=  test;
 
 	}
-
-	// set atention
-	GPIO_PORTB_DATA_R |= (1 << CON_ATENTION);
-
-	return recieved;
 }
 
 

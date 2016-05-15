@@ -54,7 +54,10 @@ volatile INT16S ticks;
 // Queues
 xQueueHandle uart0_rx_queue;
 xQueueHandle uart0_tx_queue;
-//xQueueHandle ps2con_queue;
+
+xQueueHandle spi_tx_queue;
+xQueueHandle spi_rx_queue;
+
 xQueueHandle default_queue;
 
 // semaphores
@@ -78,8 +81,11 @@ int main(void)
 	// Create all queues
 	uart0_rx_queue = 	xQueueCreate(128,sizeof(INT8U));
 	uart0_tx_queue = 	xQueueCreate(128,sizeof(INT8U));
-	//ps2con_queue = 		xQueueCreate(16, sizeof(INT8U));
-	default_queue = 	xQueueCreate(16, sizeof(INT8U));
+
+	spi_tx_queue   = 	xQueueCreate(32, sizeof(INT16U));
+	spi_rx_queue   = 	xQueueCreate(32, sizeof(INT16U));
+
+	default_queue  = 	xQueueCreate(32, sizeof(INT8U));
 
 	// create all semaphores
 	uart0_tx_semaphore = xSemaphoreCreateMutex();
@@ -92,7 +98,7 @@ int main(void)
 	return_value &= xTaskCreate( status_led_task, ( signed portCHAR * ) "Status_led", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL );
 	return_value &= xTaskCreate( uart0_rx_task, ( signed portCHAR *) "uart0_rx_task", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL);
 	return_value &= xTaskCreate( uart0_tx_task, ( signed portCHAR *) "uart0_tx_task", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL);
-	//return_value &= xTaskCreate( ps2controller_task, ( signed portCHAR * ) "ps2controller_task", USERTASK_STACK_SIZE, NULL, HIGH_PRIO, NULL );
+
 	return_value &= xTaskCreate( spi_master_task, ( signed portCHAR * ) "spi_master_task", USERTASK_STACK_SIZE, NULL, HIGH_PRIO, NULL );
 
 

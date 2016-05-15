@@ -29,7 +29,7 @@
 #define CON_TX			0
 #define CON_ATENTION  	1
 #define CON_CLOCK   	4
-//#define CON_ACK    		2
+#define CON_ACK    		2
 
 
 // super states
@@ -61,25 +61,25 @@ void spi_master_init();
 //  Output   : -
 //  Function : initialuse the gpio's and setup the controller
 
-//INT8U spi_send_message();
+INT8U spi_send_message();
 //  Input    : -
 //  Output   : 1 if don sending bytes, 0 if not
 //  Function : send the message
 
-//void spi_idle_func();
+void spi_idle_func();
 //  Input    : -
 //  Output   : -
 //  Function : fill the message buffer with new pull
 
-//INT8U spi_ack_wait();
+INT8U spi_ack_wait();
 //  Input    : -
 //  Output   : the new message_state
 //  Function : test if the ack has arrived afteer 5 ms
 
-INT16U spi_send_message(INT16U message);
-//  Input    : message to send
-//  Output   : the recieved message
-//  Function : send the current message
+void spi_send_byte();
+//  Input    : -
+//  Output   : the new byte_state
+//  Function : send the current_byte
 
 
 /****************************** End Of Module *******************************/

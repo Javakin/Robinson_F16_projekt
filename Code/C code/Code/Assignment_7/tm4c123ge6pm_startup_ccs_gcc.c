@@ -66,7 +66,7 @@ void xPortSysTickHandler( void );
 
 
 extern void uart0_isr();
-extern void ps2_isr();
+//extern void ps2_isr();
 
 //*****************************************************************************
 //
@@ -96,7 +96,7 @@ void (* const g_pfnVectors[])(void) =
 	xPortPendSVHandler,                      // The PendSV handler
 	xPortSysTickHandler,                      // The SysTick handler
     IntDefaultHandler,                      // GPIO Port A
-	ps2_isr,                      // GPIO Port B
+	IntDefaultHandler,                      // GPIO Port B
     IntDefaultHandler,                      // GPIO Port C
     IntDefaultHandler,                      // GPIO Port D
     IntDefaultHandler,                      // GPIO Port E
