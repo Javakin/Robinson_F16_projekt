@@ -25,11 +25,11 @@
 
 /*****************************    Defines    *******************************/
 
-#define CON_RX			3	// brown wire
-#define CON_TX			7	// orange wire
-#define CON_ATENTION  	1   // yellow wire
-#define CON_CLOCK   	4   // blue wire
-#define CON_ACK    		2   // green wire
+#define CON_RX			5
+#define CON_TX			0
+#define CON_ATENTION  	1
+#define CON_CLOCK   	4
+#define CON_ACK    		2
 
 
 // super states

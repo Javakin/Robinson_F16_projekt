@@ -97,7 +97,7 @@ void spi_master_task()
 			break;
 
 		case ACK_RECEIVED_STATE:
-			if(xQueueReceive(command_queue, &( spi_current_byte_tx ), 1 ) == pdTRUE)
+			if(xQueueReceive(command_queue, &( spi_current_byte_tx ), 0 ) == pdTRUE)
 				// new byte to sende
 				spi_state = SEND_BYTE_STATE;
 			else
@@ -127,15 +127,6 @@ void spi_master_init()
 
 	// set pull-up resistors
 	GPIO_PORTB_PUR_R |= (1 << CON_RX) | (1 << CON_ACK);
-
-	// setup af interrupt for prot A
-	//NVIC_EN0_R |= 0x0000002;
-
-	// interrupt masking
-	//GPIO_PORTB_IM_R |= (1 << CON_ACK);
-
-	// set interrupt event
-	//GPIO_PORTB_IEV_R |= (1 << CON_ACK);
 
 	// setup queues
 	command_queue = xQueueCreate(32, sizeof(INT16U));

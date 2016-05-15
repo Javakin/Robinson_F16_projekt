@@ -24,7 +24,7 @@
 #include <EMP/emp_type.h>
 #include <UART0/uart0_tx.h>
 
-#include <RTCS/rtcs.h>
+//#include <RTCS/rtcs.h>
 #include "FreeRTOS.h"
 #include "queue.h"
 #include "task.h"

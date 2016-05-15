@@ -46,12 +46,11 @@ void status_led_init(void)
 *   Function : 	
 *****************************************************************************/
 {
-  INT8S dummy;
   // Enable the GPIO port that is used for the on-board LED.
   SYSCTL_RCGC2_R |= SYSCTL_RCGC2_GPIOD;
 
   // Do a dummy read to insert a few cycles after enabling the peripheral.
-  dummy = SYSCTL_RCGC2_R;
+  __asm("nop");
 
   GPIO_PORTD_DIR_R |= 0x40;
   GPIO_PORTD_DEN_R |= 0x40;
@@ -66,7 +65,7 @@ void status_led_task(void *pvParameters)
 	while(1)
 	{
 		// Toggle status led
-    GPIO_PORTD_DATA_R ^= 0x40;
+		GPIO_PORTD_DATA_R ^= 0x40;
 		vTaskDelay(500 / portTICK_RATE_MS); // wait 100 ms.
 	}
 }

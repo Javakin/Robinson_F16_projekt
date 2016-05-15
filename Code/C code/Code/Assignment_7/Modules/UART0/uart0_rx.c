@@ -23,7 +23,7 @@
 #include "tm4c123gh6pm.h"
 #include <EMP/emp_type.h>
 #include "Modules/UART0/uart0_rx.h"
-#include <RTCS/rtcs.h>
+//#include <RTCS/rtcs.h>
 #include "FreeRTOS.h"
 #include "queue.h"
 
@@ -34,7 +34,7 @@
 /*****************************   Variables   *******************************/
 // Queues
 extern xQueueHandle uart0_rx_queue;
-extern xQueueHandle ps2con_queue;
+//extern xQueueHandle ps2con_queue;
 extern xQueueHandle default_queue;
 static xQueueHandle current_queue;
 
@@ -191,9 +191,9 @@ void config_state()
 		// select the setting
 		switch( received )
 		{
-		case SET_PS2CON:
-			current_queue = ps2con_queue;
-			break;
+		//case SET_PS2CON:
+		//	current_queue = ps2con_queue;
+		//	break;
 
 		default:
 			current_queue = default_queue;

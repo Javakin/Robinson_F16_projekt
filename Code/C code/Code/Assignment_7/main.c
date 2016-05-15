@@ -33,15 +33,12 @@
 
 
 // ------------------------
-#include "Modules/LCD/lcd.h"
-#include "Modules/GPIO/GPIO.h"
-#include "Numpad/Numpad.h"
 #include "UART0/uart0_tx.h"
 #include "UART0/uart0_rx.h"
-#include "LCD/lcd.h"
 
-#include "PS2Controller/ps2controller.h"
-//#include "SPI_master/spi_master.h"
+
+//#include "PS2Controller/ps2controller.h"
+#include "SPI_master/spi_master.h"
 
 /*****************************    Defines    *******************************/
 #define USERTASK_STACK_SIZE configMINIMAL_STACK_SIZE
@@ -57,10 +54,7 @@ volatile INT16S ticks;
 // Queues
 xQueueHandle uart0_rx_queue;
 xQueueHandle uart0_tx_queue;
-xQueueHandle LCD_image_queue;
-xQueueHandle GUI_queue;
-xQueueHandle LCD_char_queue;
-xQueueHandle ps2con_queue;
+//xQueueHandle ps2con_queue;
 xQueueHandle default_queue;
 
 // semaphores
@@ -72,7 +66,6 @@ xSemaphoreHandle uart0_tx_semaphore;
 static void setupHardware(void)
 {
   // put inits here
-  SysTick_init();
 
 }
 
@@ -85,10 +78,7 @@ int main(void)
 	// Create all queues
 	uart0_rx_queue = 	xQueueCreate(128,sizeof(INT8U));
 	uart0_tx_queue = 	xQueueCreate(128,sizeof(INT8U));
-	LCD_image_queue = 	xQueueCreate(3, sizeof(INT8U[36]));
-	LCD_char_queue = 	xQueueCreate(16, sizeof(INT8U));
-	GUI_queue = 		xQueueCreate(16, sizeof(INT8U));
-	ps2con_queue = 		xQueueCreate(16, sizeof(INT8U));
+	//ps2con_queue = 		xQueueCreate(16, sizeof(INT8U));
 	default_queue = 	xQueueCreate(16, sizeof(INT8U));
 
 	// create all semaphores
@@ -102,8 +92,8 @@ int main(void)
 	return_value &= xTaskCreate( status_led_task, ( signed portCHAR * ) "Status_led", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL );
 	return_value &= xTaskCreate( uart0_rx_task, ( signed portCHAR *) "uart0_rx_task", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL);
 	return_value &= xTaskCreate( uart0_tx_task, ( signed portCHAR *) "uart0_tx_task", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL);
-	return_value &= xTaskCreate( ps2controller_task, ( signed portCHAR * ) "ps2controller_task", USERTASK_STACK_SIZE, NULL, HIGH_PRIO, NULL );
-	//return_value &= xTaskCreate( spi_master_task, ( signed portCHAR * ) "spi_master_task", USERTASK_STACK_SIZE, NULL, HIGH_PRIO, NULL );
+	//return_value &= xTaskCreate( ps2controller_task, ( signed portCHAR * ) "ps2controller_task", USERTASK_STACK_SIZE, NULL, HIGH_PRIO, NULL );
+	return_value &= xTaskCreate( spi_master_task, ( signed portCHAR * ) "spi_master_task", USERTASK_STACK_SIZE, NULL, HIGH_PRIO, NULL );
 
 
 	// Test if all tasks started sucessfully
