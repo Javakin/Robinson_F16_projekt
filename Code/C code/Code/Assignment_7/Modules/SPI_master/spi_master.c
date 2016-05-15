@@ -30,12 +30,16 @@
 
 /*****************************    Defines    *******************************/
 
-//#define CON_RX	1 && (CONTROLLER_RX & (1 << CON_RX))
-
-
 /*****************************   Constants   *******************************/
 
 /*****************************   Variables   *******************************/
+
+enum spi_master
+{
+	SPI_ST_IDLE,
+	SPI_ST_SEND,
+	SPI_ST_RECEIVE
+};
 
 // Queues
 extern xQueueHandle spi_rx_queue;
@@ -44,20 +48,8 @@ extern xQueueHandle spi_tx_queue;
 // debugging
 extern xQueueHandle uart0_tx_queue;
 
-
-// instructions
-//INT16U inst[4] = {0x8000, 0x5A5A, 0x5A5A, 0x5A5A};
-
-// testing of recieving queues
-//xQueueHandle command_queue;
-
-
-
-INT8U spi_state = IDLE_STATE;
-
-//INT8U spi_message_state = ACK_RECEIVED_STATE;
-
-
+// state_memory
+INT8U spi_state = SPI_ST_IDLE;
 
 // current bytes operated on
 INT16U spi_rx = 0;
@@ -74,16 +66,16 @@ void spi_master_task()
 	{
 		switch (spi_state)
 		{
-		case IDLE_STATE:
+		case SPI_ST_IDLE:
 			// get new message to send
 			if (xQueueReceive(spi_tx_queue, &( spi_tx ), portMAX_DELAY) == pdTRUE)
 			{
-				spi_state = SEND_BYTE_STATE;
+				spi_state = SPI_ST_SEND;
 			}
 			break;
 
 
-		case SEND_BYTE_STATE:
+		case SPI_ST_SEND:
 			// send the byte
 			spi_rx = spi_send_message(spi_tx);
 
@@ -92,7 +84,14 @@ void spi_master_task()
 				uart0_putc_tx( ((spi_rx & (1 << i)) && 1) + '0' );
 			uart0_putc_tx( '\n' );
 
-			spi_state = IDLE_STATE;
+			spi_state = SPI_ST_IDLE;
+			break;
+
+		case SPI_ST_RECEIVE:
+			if (xQueueSend(spi_rx_queue, &( spi_rx ), portMAX_DELAY) == pdTRUE)
+			{
+				spi_state = SPI_ST_IDLE;
+			}
 			break;
 
 		}

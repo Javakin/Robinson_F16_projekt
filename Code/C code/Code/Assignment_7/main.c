@@ -35,10 +35,11 @@
 // ------------------------
 #include "UART0/uart0_tx.h"
 #include "UART0/uart0_rx.h"
-
-
-//#include "PS2Controller/ps2controller.h"
 #include "SPI_master/spi_master.h"
+#include "Kernel/kernel.h"
+//#include "PS2Controller/ps2controller.h"
+
+
 
 /*****************************    Defines    *******************************/
 #define USERTASK_STACK_SIZE configMINIMAL_STACK_SIZE
@@ -54,11 +55,12 @@ volatile INT16S ticks;
 // Queues
 xQueueHandle uart0_rx_queue;
 xQueueHandle uart0_tx_queue;
+xQueueHandle default_queue;
 
 xQueueHandle spi_tx_queue;
 xQueueHandle spi_rx_queue;
 
-xQueueHandle default_queue;
+xQueueHandle kernel_queue;
 
 // semaphores
 xSemaphoreHandle uart0_tx_semaphore;
@@ -86,6 +88,7 @@ int main(void)
 	spi_tx_queue   = 	xQueueCreate(32, sizeof(INT16U));
 	spi_rx_queue   = 	xQueueCreate(32, sizeof(INT16U));
 
+	kernel_queue   = 	xQueueCreate(32, sizeof(INT8U));
 
 
 	// create all semaphores
@@ -99,7 +102,8 @@ int main(void)
 	return_value &= xTaskCreate( status_led_task, ( signed portCHAR * ) "Status_led", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL );
 	return_value &= xTaskCreate( uart0_rx_task, ( signed portCHAR *) "uart0_rx_task", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL);
 	return_value &= xTaskCreate( uart0_tx_task, ( signed portCHAR *) "uart0_tx_task", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL);
-	return_value &= xTaskCreate( spi_master_task, ( signed portCHAR * ) "spi_master_task", USERTASK_STACK_SIZE, NULL, HIGH_PRIO, NULL );
+	return_value &= xTaskCreate( spi_master_task, ( signed portCHAR * ) "spi_master_task", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL );
+	return_value &= xTaskCreate( kernel_task, ( signed portCHAR *) "kernel_task", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL);
 
 
 	// Test if all tasks started sucessfully
