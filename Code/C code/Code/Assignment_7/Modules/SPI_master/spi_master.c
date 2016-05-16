@@ -79,12 +79,7 @@ void spi_master_task()
 			// send the byte
 			spi_rx = spi_send_message(spi_tx);
 
-			// show the output
-			for (INT8U i = 0; i < NUM_OF_BTIS; i++)
-				uart0_putc_tx( ((spi_rx & (1 << i)) && 1) + '0' );
-			uart0_putc_tx( '\n' );
-
-			spi_state = SPI_ST_IDLE;
+			spi_state = SPI_ST_RECEIVE;
 			break;
 
 		case SPI_ST_RECEIVE:
@@ -121,7 +116,6 @@ void spi_master_init()
 }
 
 
-
 INT16U spi_send_message(INT16U message)
 {
 	// define signals
@@ -132,22 +126,24 @@ INT16U spi_send_message(INT16U message)
 	GPIO_PORTB_DATA_R &= ~(1 << CON_ATENTION);
 
 	// send byte
-	for(INT8U i = 0; i < NUM_OF_BTIS; i++)
+	for(INT8U i = NUM_OF_BITS - 1; i >= 0 && i < NUM_OF_BITS ; i--)
 	{
-		// clock low
+
 		// set bit to transmit
 		temp_holder = (GPIO_PORTB_DATA_R & ~(1 << CON_TX));
 		temp_holder |= ( (1 && (message & (1 << i) ) ) << CON_TX);
 		GPIO_PORTB_DATA_R = temp_holder;
 
+		// clock low
 		temp_holder = ~(1 << CON_CLOCK);
 		GPIO_PORTB_DATA_R &= temp_holder;
 
-		// clock high
+
 		// read data
 		temp_holder = 1 && (GPIO_PORTB_DATA_R & (1 << CON_RX));
 		recieved |= (temp_holder << i);
 
+		// clock high
 		temp_holder = (1 << CON_CLOCK);
 		GPIO_PORTB_DATA_R |=  temp_holder;
 

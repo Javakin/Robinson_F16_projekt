@@ -32,7 +32,7 @@
 
 
 // bits send
-#define NUM_OF_BTIS				16
+#define NUM_OF_BITS				16
 
 /*****************************   Constants   *******************************/
 

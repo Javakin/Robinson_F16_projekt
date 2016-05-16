@@ -48,7 +48,7 @@ extern xQueueHandle spi_tx_queue;
 INT8U kernel_state = KER_ST_IDLE;
 
 // for debugging
-INT16U ker_message = 0x5A5A;
+INT16U ker_message = 0x1001;
 
 /*****************************   Functions   *******************************/
 void kernel_task()
@@ -63,10 +63,12 @@ void kernel_task()
 		{
 		case KER_ST_IDLE:
 			// send message using spi_tx_queue directly
-			if (xQueueSend(spi_tx_queue, &( ker_message ), portMAX_DELAY) == pdTRUE)
-			{
-				// send suceeded
-				__asm("nop");
+			for (INT8U i = 0; i < 10; i++){
+				if (xQueueSend(spi_tx_queue, &( ker_message ), portMAX_DELAY) == pdTRUE)
+				{
+					// send suceeded
+					__asm("nop");
+				}
 			}
 			break;
 		}
