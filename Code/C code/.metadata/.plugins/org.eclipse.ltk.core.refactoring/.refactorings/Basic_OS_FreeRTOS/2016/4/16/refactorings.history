@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;Basic_OS_FreeRTOS/Modules/PS2Controller/lcd.h&apos; to &apos;ps2controller.h&apos;" description="Rename resource &apos;lcd.h&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Modules/PS2Controller/lcd.h" name="ps2controller.h" stamp="1460665907447" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;Basic_OS_FreeRTOS/Modules/PS2Controller/lcd.c&apos; to &apos;ps2controller.c&apos;" description="Rename resource &apos;lcd.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Modules/PS2Controller/lcd.c" name="ps2controller.c" stamp="1460665918270" updateReferences="true"/>
+</session>

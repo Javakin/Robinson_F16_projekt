@@ -1,0 +1,110 @@
+/*****************************************************************************
+* University of Southern Denmark
+* Embedded Programming (EMP)
+*
+* MODULENAME.: kernal.c
+*
+* PROJECT....: semester project 4
+*
+* DESCRIPTION: manage .
+*
+* Change Log:
+******************************************************************************
+* Date    Id    Change
+* YYMMDD
+* --------------------
+* 090222  MoH   Module created.
+*
+*****************************************************************************/
+
+/***************************** Include files *******************************/
+#include <stdint.h>
+#include <tm4c123gh6pm.h>
+#include "Modules/EMP/emp_type.h"
+#include "Modules/UART0/uart0_tx.h"
+#include "Modules/SPI_master/spi_master.h"
+#include "FreeRTOS.h"
+#include "task.h"
+#include "queue.h"
+
+
+/*****************************    Defines    *******************************/
+
+
+/*****************************   Constants   *******************************/
+
+/*****************************   Variables   *******************************/
+
+enum kernel_states
+{
+	KER_ST_IDLE
+};
+
+// Queues
+extern xQueueHandle kernel_queue;
+extern xQueueHandle spi_tx_queue;
+
+
+INT8U kernel_state = KER_ST_IDLE;
+
+/*****************************   Functions   *******************************/
+void kernal_task()
+{
+	// initialise used prots
+	kernal_init();
+
+	// run task
+	while(1)
+	{
+		switch (kernel_state)
+		{
+		case KER_ST_IDLE:
+			// fill buffer with new pull
+
+			break;
+		}
+	}
+}
+
+
+void kernal_init()
+{
+	// setup port B
+	SYSCTL_RCGC2_R |= SYSCTL_RCGC2_GPIOB;
+
+	// Do a dummy read to insert a few cycles after enabling the peripheral.
+	__asm("nop");
+
+	// Enable GPIO
+	GPIO_PORTB_DEN_R |= (1 << CON_TX) | (1 << CON_RX) | (1 << CON_ATENTION) |
+			(1 << CON_CLOCK) | (1 << CON_ACK);
+
+	// set direction
+	GPIO_PORTB_DIR_R |= (1 << CON_TX) | (1 << CON_ATENTION)	| (1 << CON_CLOCK);
+	GPIO_PORTB_DIR_R &= ~((1 << CON_RX) | (1 << CON_ACK));
+
+	// set pull-up resistors
+	GPIO_PORTB_PUR_R |= (1 << CON_RX) | (1 << CON_ACK);
+
+	// setup queues
+	command_queue = xQueueCreate(32, sizeof(INT16U));
+}
+
+
+
+
+/****************************** End Of Module *******************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
