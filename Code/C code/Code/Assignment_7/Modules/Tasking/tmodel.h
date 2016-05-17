@@ -20,56 +20,38 @@
 #ifndef _TMODEL_H_
 #define _TMODEL_H_
 
-#include "RTCS/rtcs.h"
+// position parameters
+#define SSM_CURRENT_PAN		0
+#define SSM_CURRENT_TILT	1
+#define SSM_TARGET_PAN		2
+#define SSM_TARGET_TILT		3
 
-// Tasks.
-// ------
-#define TASK_ADC				10
-#define TASK_SW_TIMERS 			11
-#define TASK_MAIN 				12
-#define TASK_BUTTON 			13
-#define TASK_DREH		 		14
-#define TASK_DISPLAY			15
-#define TASK_LCD 				16
-#define TASK_RTC				17
-#define TASK_UART0				18
-#define TASK_UI					19
-#define TASK_NUMPAD				20
+//scene dimentions
+#define SSM_HEIGHT			10
+#define SSM_WIDTH			11
+#define SSM_LENGTH			12
 
-// Interrupt Service Routines.
-// ---------------------------
-#define ISR_TIMER 21
+// instructions
+#define SSM_OPCODE			20
+#define SSM_PARAM_1			21
+#define SSM_PARAM_2			22
 
-// Shared State Memory.
-// --------------------
-#define SSM_RTC_SEC				31
-#define SSM_RTC_MIN				32
-#define SSM_RTC_HOUR			33
+// movement constraints
+#define SSM_MIN_VEL			30
+#define SSM_MAX_VEL			31
+#define SSM_MIN_ACC			32
+#define SSM_MAX_ACC			33
 
-// Shared Event Buffer.
-// --------------------
-#define SEB_UART_RX				40
-#define SEB_PRINT				41
-
-// Semaphores.
-// -----------
-#define SEM_LCD          		USER_SEM
-#define SEM_RTC_UPDATED  		USER_SEM+1
-#define SEM_TIME_ACCESS			USER_SEM+2
-
-// Display to LCD task Shared Event Buffer
-// ---------------------------------------
-#define SEB_CMD_LCD			50 //
-#define SEB_DATA_LCD		51
-#define SEB_TO_LCD			52
-#define SEB_DIGIT_UPDATE	53
-
-// RTC Event Buffer
-// ----------------
-#define SEB_TO_RTC			54
+// system enables
+#define SSM_FPGA_ENABLE		40
+#define SSM_LIGHT_ENABLE	41
+#define SSM_JOYSTICK_ENABLE 42
 
 
-#define Q_INPUT				USER_QUEUE
-#define Q_LCD				USER_QUEUE+1
+// lightshow
+#define SSM_LIGHTSHOW		50
+
+
+
 
 #endif /* _TMODEL_H_ */

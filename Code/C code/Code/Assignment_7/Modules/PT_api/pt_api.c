@@ -42,7 +42,7 @@ extern xQueueHandle spi_tx_queue;
 INT8U pt_send_message( INT8U adress, INT16U message)
 {
 	// 2 adress bit and 14 message bits
-	// a a m m m m m m  m m m m m m m m
+	// a a a m m m m m  m m m m m m m m
 
 	INT16U placeholder = message & 0x3FFF;
 	placeholder |= ( adress << 14 );
@@ -50,9 +50,20 @@ INT8U pt_send_message( INT8U adress, INT16U message)
 	return xQueueSend(spi_tx_queue, &( placeholder ), portMAX_DELAY);
 }
 
+INT8U pt_get_adress(INT16U message)
+{
+	return message >> 14;
+}
+
+INT16U pt_get_data(INT16U message)
+{
+	return message & 0x1FFF;
+}
 
 INT16U pt_recieve_message()
 {
+
+
 	return 0;
 }
 
