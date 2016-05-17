@@ -42,8 +42,7 @@ extern xQueueHandle spi_tx_queue;
 INT8U pt_send_message( INT8U adress, INT16U message)
 {
 	// 2 adress bit and 14 message bits
-	// a a a m m m m m  m m m m m m m m
-
+	// a a a d d d d d  d d d d d d d d
 	INT16U placeholder = message & 0x3FFF;
 	placeholder |= ( adress << 14 );
 

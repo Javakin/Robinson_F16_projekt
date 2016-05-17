@@ -25,6 +25,15 @@
 
 /*****************************    Defines    *******************************/
 
+// sub adresses
+#define SUB_ADR_PAN		0
+#define SUB_ADR_TILT	1
+
+// adresses
+#define ADR_TARGET_POS	0
+#define ADR_MAX_SPEED	1
+#define ADR_MIN_SPEED	2
+#define ADR_EN_MOTOR	3
 
 /*****************************   Constants   *******************************/
 
