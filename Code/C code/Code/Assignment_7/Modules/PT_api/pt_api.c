@@ -68,11 +68,9 @@ INT16U pt_get_pt(INT16U message)
 	return message & 0x0800;
 }
 
-INT8U pt_recieve_message()
+void pt_recieve_message()
 {
-
 	INT16U pt_message;
-	INT8U status = pdTRUE;
 
 	// wait for the recieved message
 	if (xQueueReceive(spi_rx_queue, &( pt_message ), portMAX_DELAY) == pdTRUE)
@@ -94,7 +92,6 @@ INT8U pt_recieve_message()
 			break;
 		}
 	}
-	return status;
 }
 
 

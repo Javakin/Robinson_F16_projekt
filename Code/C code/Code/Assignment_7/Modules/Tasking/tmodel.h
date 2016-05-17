@@ -37,10 +37,11 @@
 #define SSM_PARAM_2			22
 
 // movement constraints
-#define SSM_MIN_VEL			30
-#define SSM_MAX_VEL			31
-#define SSM_MIN_ACC			32
-#define SSM_MAX_ACC			33
+#define SSM_MIN_PAN_VEL		30
+#define SSM_MAX_PAN_VEL		31
+#define SSM_MIN_TILT_VEL	32
+#define SSM_MAX_TILT_VEL	33
+
 
 // system enables
 #define SSM_FPGA_ENABLE		40
