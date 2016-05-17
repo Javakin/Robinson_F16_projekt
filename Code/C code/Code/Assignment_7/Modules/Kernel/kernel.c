@@ -73,53 +73,11 @@ void kernel_task()
 			// pull from kernel queue to get opcode
 			if (xQueueReceive(kernel_queue, &( ker_message ), portMAX_DELAY) == pdTRUE)
 			{
-				//shared state memory 1 saves here
+				//shared state memory opcode saves here
 				put_msg_state(SSM_OPCODE, ker_message);
 				
-				switch(ker_message)
-				{
-				//////////////////////// all 2 parameter instructions   //////////////////////////////
-				case GOTO_COORD_EVENT:
-					//get parameter 1
-					kernel_state = KER_ST_2PAR1;
-					break;
-
-
-				//////////////////////// all 1 parameter instructions   //////////////////////////////
-				case EN_LIGHT_EVENT:
-					/*no break*/
-				case SET_HEIGHT_EVENT:
-					/*no break*/
-				case SET_WIDTH_EVENT:
-					/*no break*/
-				case SET_LENGTH_EVENT:
-					/*no break*/
-				case SET_MAX_VEL_PAN_EVENT:
-					/*no break*/
-				case SET_MIN_VEL_PAN_EVENT:
-					/*no break*/
-				case SET_MAX_VEL_TILT_EVENT:
-					/*no break*/
-				case SET_MIN_VEL_TILT_EVENT:
-					/*no break*/
-
-				case SET_SCENE_EVENT:
-					//get parameter 1
-					kernel_state = KER_ST_1PAR1;
-					break;
-
-				//////////////////////// all 0 parameter instructions   //////////////////////////////
-				case CON_CHEK_EVENT:
-					/*no break*/
-				case STOP_SHOW_EVENT:
-					//execute instruction
-					kernel_state = KER_ST_EXECUTE;
-					
-				default:
-					// you done goofed
-					while (1);
-					break;
-				}
+				// decide witch state to moce to
+				ker_idle_func(ker_message);
 			}
 			break;
 		
@@ -158,150 +116,205 @@ void kernel_task()
 			break;
 			
 		case KER_ST_EXECUTE:
-				
-				switch(get_msg_state(SSM_OPCODE))
-				{
-				//////////////////////// all 2 parameter instructions   //////////////////////////////
-				case GOTO_COORD_EVENT:
-					//send pan coordinate
-					pt_send_message(ADR_TARGET_POS, SUB_ADR_PAN, get_msg_state(SSM_PARAM_1));
-					//save pan coordinate to SSM
-					put_msg_state( SSM_TARGET_PAN, get_msg_state(SSM_PARAM_1));
-
-					//send tilt coordinate
-					pt_send_message(ADR_TARGET_POS, SUB_ADR_TILT, get_msg_state(SSM_PARAM_2));
-					//save tilt coordinate to SSM
-					put_msg_state( SSM_TARGET_TILT, get_msg_state(SSM_PARAM_2));
-					
-					kernel_state = KER_ST_IDLE;
-					break;
-
-				//////////////////////// all 1 parameter instructions   //////////////////////////////
-				case EN_FPGA_EVENT:
-					//enables or disables FPGA
-					put_msg_state(SSM_FPGA_ENABLE, get_msg_state(SSM_PARAM_1));
-									
-					kernel_state = KER_ST_IDLE;
-					break;
-				
-				
-				case EN_LIGHT_EVENT:
-					//send lightshow value to SSM
-					put_msg_state(SSM_LIGHTSHOW, get_msg_state(SSM_PARAM_1));
-
-					//enable lightshow
-					put_msg_state(SSM_LIGHT_ENABLE, 1);
-					
-					kernel_state = KER_ST_IDLE;
-					break;
-
-				case SET_HEIGHT_EVENT:
-					//set height constraint in SSM
-					put_msg_state(SSM_HEIGHT, get_msg_state(SSM_PARAM_1));
-
-					kernel_state = KER_ST_IDLE;
-					break;
-
-				case SET_WIDTH_EVENT:
-					//set width constraint in SSM
-					put_msg_state(SSM_WIDTH, get_msg_state(SSM_PARAM_1));
-									
-					kernel_state = KER_ST_IDLE;
-					break;
-
-				case SET_LENGTH_EVENT:
-					//set length constraint in SSM
-					put_msg_state(SSM_LENGTH, get_msg_state(SSM_PARAM_1));
-					kernel_state = KER_ST_IDLE;
-					break;
-
-				case SET_MAX_VEL_PAN_EVENT:
-					//set max speed for pan in SSM
-					put_msg_state(SSM_MAX_PAN_VEL, get_msg_state(SSM_PARAM_1));
-					
-					kernel_state = KER_ST_IDLE;
-					break;
-					
-				case SET_MIN_VEL_PAN_EVENT:
-					//set min speed for pan in SSM
-					put_msg_state(SSM_MIN_PAN_VEL, get_msg_state(SSM_PARAM_1));
-					
-					kernel_state = KER_ST_IDLE;
-					break;
-					
-				case SET_MAX_VEL_TILT_EVENT:
-					//set max speed for tilt in SSM
-					put_msg_state(SSM_MAX_TILT_VEL, get_msg_state(SSM_PARAM_1));
-														
-					kernel_state = KER_ST_IDLE;
-					break;
-					
-				case SET_MIN_VEL_TILT_EVENT:
-					//set min speed for tilt in SSM
-					put_msg_state(SSM_MIN_TILT_VEL, get_msg_state(SSM_PARAM_1));
-														
-					kernel_state = KER_ST_IDLE;
-					break;	
-					
-				case SET_SCENE_EVENT:
-					//updates scene constraints to predefined scene or default (5,5,5)
-					
-					switch(get_msg_state(SSM_PARAM_1))
-					{
-						case SCENE1:
-							put_msg_state(SSM_HEIGHT, 5);
-							put_msg_state(SSM_WIDTH, 7);
-							put_msg_state(SSM_LENGTH, 7);
-							break;
-							
-						case SCENE2:
-							put_msg_state(SSM_HEIGHT, 6);
-							put_msg_state(SSM_WIDTH, 14);
-							put_msg_state(SSM_LENGTH, 7);
-							break;
-							
-						case SCENE3:
-							put_msg_state(SSM_HEIGHT, 7);
-							put_msg_state(SSM_WIDTH, 14);
-							put_msg_state(SSM_LENGTH, 10);
-							break;
-							
-						default:
-							put_msg_state(SSM_HEIGHT, 5);
-							put_msg_state(SSM_WIDTH, 5);
-							put_msg_state(SSM_LENGTH, 5);
-							break;
-					}
-					
-					kernel_state = KER_ST_IDLE;
-					break;
-					
-
-				//////////////////////// all 0 parameter instructions   //////////////////////////////
-				case CON_CHEK_EVENT:
-					//ping microcontroller for connection
-
-					//ping FPGA for connection
-					
-					//TODO
-					kernel_state = KER_ST_IDLE;
-					break;
-										
-				case STOP_SHOW_EVENT:
-					put_msg_state(SSM_LIGHT_ENABLE, 0);
-				
-					kernel_state = KER_ST_IDLE;
-					break;
-					
-				default:
-					// you done goofed
-					while (1);
-					break;
-				}
+			// execute the operand
+			ker_execute_func();
+			kernel_state = KER_ST_IDLE;
+			break;
 		}
 	}
 }
 
+void ker_idle_func(INT8U opcode)
+{
+	switch(ker_message)
+	{
+	//////////////////////// all 2 parameter instructions   //////////////////////////////
+	case GOTO_COORD_EVENT:
+		//get parameter 1
+		kernel_state = KER_ST_2PAR1;
+		break;
+
+
+	//////////////////////// all 1 parameter instructions   //////////////////////////////
+	case EN_LIGHT_EVENT:
+		/*no break*/
+	case SET_HEIGHT_EVENT:
+		/*no break*/
+	case SET_WIDTH_EVENT:
+		/*no break*/
+	case SET_LENGTH_EVENT:
+		/*no break*/
+	case SET_MAX_VEL_PAN_EVENT:
+		/*no break*/
+	case SET_MIN_VEL_PAN_EVENT:
+		/*no break*/
+	case SET_MAX_VEL_TILT_EVENT:
+		/*no break*/
+	case SET_MIN_VEL_TILT_EVENT:
+		/*no break*/
+
+	case SET_SCENE_EVENT:
+		//get parameter 1
+		kernel_state = KER_ST_1PAR1;
+		break;
+
+	//////////////////////// all 0 parameter instructions   //////////////////////////////
+	case CON_CHEK_EVENT:
+		/*no break*/
+	case STOP_SHOW_EVENT:
+		//execute instruction
+		kernel_state = KER_ST_EXECUTE;
+
+	default:
+		// you done goofed
+		while (1);
+		break;
+	}
+}
+
+void ker_execute_func()
+{
+	switch(get_msg_state(SSM_OPCODE))
+	{
+	//////////////////////// all 2 parameter instructions   //////////////////////////////
+	case GOTO_COORD_EVENT:
+		//send pan coordinate
+		pt_send_message(ADR_TARGET_POS, SUB_ADR_PAN, get_msg_state(SSM_PARAM_1));
+
+		//save pan coordinate to SSM
+		put_msg_state( SSM_TARGET_PAN, get_msg_state(SSM_PARAM_1));
+
+		//send tilt coordinate
+		pt_send_message(ADR_TARGET_POS, SUB_ADR_TILT, get_msg_state(SSM_PARAM_2));
+
+		//save tilt coordinate to SSM
+		put_msg_state( SSM_TARGET_TILT, get_msg_state(SSM_PARAM_2));
+
+		break;
+
+	//////////////////////// all 1 parameter instructions   //////////////////////////////
+	case EN_FPGA_EVENT:
+		//enables or disables FPGA
+		put_msg_state(SSM_FPGA_ENABLE, get_msg_state(SSM_PARAM_1));
+
+		kernel_state = KER_ST_IDLE;
+		break;
+
+
+	case EN_LIGHT_EVENT:
+		//send lightshow value to SSM
+		put_msg_state(SSM_LIGHTSHOW, get_msg_state(SSM_PARAM_1));
+
+		//enable lightshow
+		put_msg_state(SSM_LIGHT_ENABLE, 1);
+
+		kernel_state = KER_ST_IDLE;
+		break;
+
+	case SET_HEIGHT_EVENT:
+		//set height constraint in SSM
+		put_msg_state(SSM_HEIGHT, get_msg_state(SSM_PARAM_1));
+
+		kernel_state = KER_ST_IDLE;
+		break;
+
+	case SET_WIDTH_EVENT:
+		//set width constraint in SSM
+		put_msg_state(SSM_WIDTH, get_msg_state(SSM_PARAM_1));
+
+		kernel_state = KER_ST_IDLE;
+		break;
+
+	case SET_LENGTH_EVENT:
+		//set length constraint in SSM
+		put_msg_state(SSM_LENGTH, get_msg_state(SSM_PARAM_1));
+		kernel_state = KER_ST_IDLE;
+		break;
+
+	case SET_MAX_VEL_PAN_EVENT:
+		//set max speed for pan in SSM
+		put_msg_state(SSM_MAX_PAN_VEL, get_msg_state(SSM_PARAM_1));
+
+		kernel_state = KER_ST_IDLE;
+		break;
+
+	case SET_MIN_VEL_PAN_EVENT:
+		//set min speed for pan in SSM
+		put_msg_state(SSM_MIN_PAN_VEL, get_msg_state(SSM_PARAM_1));
+
+		kernel_state = KER_ST_IDLE;
+		break;
+
+	case SET_MAX_VEL_TILT_EVENT:
+		//set max speed for tilt in SSM
+		put_msg_state(SSM_MAX_TILT_VEL, get_msg_state(SSM_PARAM_1));
+
+		kernel_state = KER_ST_IDLE;
+		break;
+
+	case SET_MIN_VEL_TILT_EVENT:
+		//set min speed for tilt in SSM
+		put_msg_state(SSM_MIN_TILT_VEL, get_msg_state(SSM_PARAM_1));
+
+		kernel_state = KER_ST_IDLE;
+		break;
+
+	case SET_SCENE_EVENT:
+		//updates scene constraints to predefined scene or default (5,5,5)
+
+		switch(get_msg_state(SSM_PARAM_1))
+		{
+			case SCENE1:
+				put_msg_state(SSM_HEIGHT, 5);
+				put_msg_state(SSM_WIDTH, 7);
+				put_msg_state(SSM_LENGTH, 7);
+				break;
+
+			case SCENE2:
+				put_msg_state(SSM_HEIGHT, 6);
+				put_msg_state(SSM_WIDTH, 14);
+				put_msg_state(SSM_LENGTH, 7);
+				break;
+
+			case SCENE3:
+				put_msg_state(SSM_HEIGHT, 7);
+				put_msg_state(SSM_WIDTH, 14);
+				put_msg_state(SSM_LENGTH, 10);
+				break;
+
+			default:
+				put_msg_state(SSM_HEIGHT, 5);
+				put_msg_state(SSM_WIDTH, 5);
+				put_msg_state(SSM_LENGTH, 5);
+				break;
+		}
+
+		kernel_state = KER_ST_IDLE;
+		break;
+
+
+	//////////////////////// all 0 parameter instructions   //////////////////////////////
+	case CON_CHEK_EVENT:
+		//ping microcontroller for connection
+
+		//ping FPGA for connection
+
+		//TODO
+		kernel_state = KER_ST_IDLE;
+		break;
+
+	case STOP_SHOW_EVENT:
+		put_msg_state(SSM_LIGHT_ENABLE, 0);
+
+		kernel_state = KER_ST_IDLE;
+		break;
+
+	default:
+		// you done goofed
+		while (1);
+		break;
+	}
+}
 
 void kernel_init()
 {

@@ -77,7 +77,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="Modules/User_input|Modules/PS2Controller|Modules/SWTimers|Modules/GPIO|FRT_Library/RTOS_layer|Modules/Button/button.c|startup_frt.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="Modules/PS2Controller|Modules/SWTimers|Modules/GPIO|FRT_Library/RTOS_layer|Modules/Button/button.c|startup_frt.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>

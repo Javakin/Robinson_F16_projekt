@@ -2,37 +2,30 @@
 * University of Southern Denmark
 * Embedded C Programming (ECP)
 *
-* MODULENAME.: spi_master.h
+* MODULENAME.: user_inut.h
 *
 * PROJECT....: semester project
 *
-* DESCRIPTION: suppots the playstation 2 controller
+* DESCRIPTION: handles the inputs from the user
 *
 * Change Log:
 ******************************************************************************
 * Date    Id    Change
 * YYMMDD
 * --------------------
-* 050128  KA    Module created
+* 170516  DFH    Module created
 *
 *****************************************************************************/
 
-#ifndef SPIMASTER_H_
-#define SPIMASTER_H_
+#ifndef USER_INPUT_H_
+#define USET_INPUT_H_
 
 /***************************** Include files *******************************/
 #include "Modules/EMP/emp_type.h"
 
 /*****************************    Defines    *******************************/
 
-#define CON_RX			5
-#define CON_TX			0
-#define CON_ATENTION  	1
-#define CON_CLOCK   	4
 
-
-// bits send
-#define NUM_OF_BITS				14
 
 /*****************************   Constants   *******************************/
 
@@ -40,22 +33,16 @@
 /*****************************   Functions   *******************************/
 
 
-void spi_master_task();
+void user_input_task();
 //  Input    : -
 //  Output   : -
-//  Function : read the input from a playstation 2 controller
+//  Function : runs the main task
 
 
-void spi_master_init();
+void user_input_init();
 //  Input    : -
 //  Output   : -
 //  Function : initialuse the gpio's and setup the controller
-
-
-INT16U spi_send_message(INT16U message);
-//  Input    : message to send
-//  Output   : the recieved message
-//  Function : send the current message
 
 
 /****************************** End Of Module *******************************/

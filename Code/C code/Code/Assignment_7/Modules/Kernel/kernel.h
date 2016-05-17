@@ -45,7 +45,15 @@ void kernel_init();
 //  Output   : -
 //  Function : initialuse the gpio's and setup the controller
 
+void ker_idle_func(INT8U opcode);
+//  Input    : -
+//  Output   : -
+//  Function : this function select states depending on the parameter
 
+void ker_execute_func();
+//  Input    : -
+//  Output   : -
+//  Function : this function is executed under the execute state
 
 
 /****************************** End Of Module *******************************/

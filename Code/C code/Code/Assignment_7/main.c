@@ -37,6 +37,7 @@
 #include "UART0/uart0_rx.h"
 #include "SPI_master/spi_master.h"
 #include "Kernel/kernel.h"
+#include "User_input/user_input.h"
 //#include "PS2Controller/ps2controller.h"
 
 
@@ -61,6 +62,8 @@ xQueueHandle spi_tx_queue;
 xQueueHandle spi_rx_queue;
 
 xQueueHandle kernel_queue;
+
+xQueueHandle user_input_queue;
 
 // semaphores
 xSemaphoreHandle uart0_tx_semaphore;
@@ -91,6 +94,7 @@ int main(void)
 
 	kernel_queue   = 	xQueueCreate(32, sizeof(INT8U));
 
+	user_input_queue = 	xQueueCreate(32, sizeof(INT8U));
 
 	// create all semaphores
 	uart0_tx_semaphore = xSemaphoreCreateMutex();
@@ -105,7 +109,8 @@ int main(void)
 	return_value &= xTaskCreate( uart0_rx_task, ( signed portCHAR *) "uart0_rx_task", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL);
 	return_value &= xTaskCreate( uart0_tx_task, ( signed portCHAR *) "uart0_tx_task", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL);
 	return_value &= xTaskCreate( spi_master_task, ( signed portCHAR * ) "spi_master_task", USERTASK_STACK_SIZE, NULL, HIGH_PRIO, NULL );
-	return_value &= xTaskCreate( kernel_task, ( signed portCHAR *) "kernel_task", USERTASK_STACK_SIZE, NULL, HIGH_PRIO, NULL);
+	return_value &= xTaskCreate( kernel_task, ( signed portCHAR *) "kernel_task", USERTASK_STACK_SIZE, NULL, MED_PRIO, NULL);
+	return_value &= xTaskCreate( user_input_task, ( signed portCHAR *) "user_input_task", USERTASK_STACK_SIZE, NULL, MED_PRIO, NULL);
 
 
 	// Test if all tasks started sucessfully
