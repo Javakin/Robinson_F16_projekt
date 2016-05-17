@@ -47,7 +47,7 @@ INT8U pt_send_message( INT8U adress, INT8U PT, INT16U message);
 //  Output   : -
 //  Function : puts the formatted message in the spi_tx_queue
 
-INT16U pt_recieve_message();
+INT8U pt_recieve_message();
 //  Input    : -
 //  Output   : the message from the spi_rx_queue
 //  Function : retreves the messages from P&T and updates state memory
