@@ -28,23 +28,23 @@
 /*****************************   Constants   *******************************/
 
 /*****************************   Functions   *******************************/
-INT8U get_msg_event( INT8U no );
+INT8U get_msg_event( INT8U address );
 //   Input    : Index for a specific message
 //   Output   : Returns the message while erasing it from buffer
 //   Function : get a message at a serden place
 
-void put_msg_event( INT8U no, INT8U event );
+void put_msg_event( INT8U address, INT8U event );
 //   Input    : Index for a specific message
 //   Input    : Specify the event by a number
 //   Output   : -
 //   Function : Set a message event
 
-INT32U get_msg_state( INT8U no );
+INT32U get_msg_state( INT8U address );
 //   Input    : Index for a specific state
 //   Output   : Returns the state withute erasing
 //   Function : Get a message state
 
-void put_msg_state( INT8U no, INT32U state );
+INT8U put_msg_state( INT8U address , INT32U state );
 //   Input    : Index for putting a specific state
 //   Input    : Specify the state by a number
 //   Output   : -
