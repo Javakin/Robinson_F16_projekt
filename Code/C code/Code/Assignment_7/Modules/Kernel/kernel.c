@@ -23,8 +23,11 @@
 #include <tm4c123gh6pm.h>
 #include "Modules/EMP/emp_type.h"
 #include "Tasking/events.h"
-#include "Modules/UART0/uart0_tx.h"
-#include "Modules/Kernel/kernel.h"
+#include "UART0/uart0_tx.h"
+#include "Kernel/kernel.h"
+#include "Tasking/messages.h"
+#include "Tasking/tmodel.h"
+#include "PT_api/pt_api.h"
 #include "FreeRTOS.h"
 #include "task.h"
 #include "queue.h"
@@ -44,7 +47,6 @@ enum kernel_states
 	KER_ST_2PAR1,
 	KER_ST_2PAR2,
 	KER_ST_EXECUTE
-
 };
 
 // Queues
@@ -92,10 +94,15 @@ void kernel_task()
 					/*no break*/
 				case SET_LENGTH_EVENT:
 					/*no break*/
-				case SET_ACC_EVENT:
+				case SET_MAX_VEL_PAN_EVENT:
 					/*no break*/
-				case SET_VEL_EVENT:
+				case SET_MIN_VEL_PAN_EVENT:
 					/*no break*/
+				case SET_MAX_VEL_TILT_EVENT:
+					/*no break*/
+				case SET_MIN_VEL_TILT_EVENT:
+					/*no break*/
+
 				case SET_SCENE_EVENT:
 					//get parameter 1
 					kernel_state = KER_ST_1PAR1;
@@ -103,10 +110,6 @@ void kernel_task()
 
 				//////////////////////// all 0 parameter instructions   //////////////////////////////
 				case CON_CHEK_EVENT:
-					/*no break*/
-				case CAL_INIT_EVENT:
-					/*no break*/
-				case CAL_ACK_EVENT:
 					/*no break*/
 				case STOP_SHOW_EVENT:
 					//execute instruction
@@ -125,7 +128,7 @@ void kernel_task()
 			if (xQueueReceive(kernel_queue, &( ker_message ), portMAX_DELAY) == pdTRUE)
 			{
 				//shared state memory 2 saves here
-				put_msg_state(SSM_PARAM1, ker_message);
+				put_msg_state(SSM_PARAM_1, ker_message);
 				//execute instruction
 				kernel_state = KER_ST_EXECUTE;
 			}
@@ -137,7 +140,7 @@ void kernel_task()
 			if (xQueueReceive(kernel_queue, &( ker_message ), portMAX_DELAY) == pdTRUE)
 			{
 				//shared state memory 2 saves here
-				put_msg_state(SSM_PARAM1, ker_message);
+				put_msg_state(SSM_PARAM_1, ker_message);
 				//get parameter 2
 				kernel_state = KER_ST_2PAR2;
 			}
@@ -149,7 +152,7 @@ void kernel_task()
 			if (xQueueReceive(kernel_queue, &( ker_message ), portMAX_DELAY) == pdTRUE)
 			{
 				//shared state memory 2 saves here
-				put_msg_state(SSM_PARAM2, ker_message);
+				put_msg_state(SSM_PARAM_2, ker_message);
 				//execute instruction
 				kernel_state = KER_ST_EXECUTE;
 			}
@@ -157,19 +160,19 @@ void kernel_task()
 			
 		case KER_ST_EXECUTE:
 				
-				switch(shared_state_variable_1)
+				switch(get_msg_state(SSM_OPCODE))
 				{
 				//////////////////////// all 2 parameter instructions   //////////////////////////////
 				case GOTO_COORD_EVENT:
 					//send pan coordinate
-					pt_send_message(ADR_TARGET_POS, SUB_ADR_PAN, get_msg_state(SSM_PARAM1));
+					pt_send_message(ADR_TARGET_POS, SUB_ADR_PAN, get_msg_state(SSM_PARAM_1));
 					//save pan coordinate to SSM
-					put_msg_state( SSM_TARGET_PAN, get_msg_state(SSM_PARAM1));
+					put_msg_state( SSM_TARGET_PAN, get_msg_state(SSM_PARAM_1));
 
 					//send tilt coordinate
-					pt_send_message(ADR_TARGET_POS, SUB_ADR_TILT, get_msg_state(SSM_PARAM2));
+					pt_send_message(ADR_TARGET_POS, SUB_ADR_TILT, get_msg_state(SSM_PARAM_2));
 					//save tilt coordinate to SSM
-					put_msg_state( SSM_TARGET_TILT, get_msg_state(SSM_PARAM2));
+					put_msg_state( SSM_TARGET_TILT, get_msg_state(SSM_PARAM_2));
 					
 					kernel_state = KER_ST_IDLE;
 					break;
@@ -177,7 +180,7 @@ void kernel_task()
 				//////////////////////// all 1 parameter instructions   //////////////////////////////
 				case EN_FPGA_EVENT:
 					//enables or disables FPGA
-					put_msg_state(SSM_FPGA_ENABLE, get_msg_state(SSM_PARAM1));
+					put_msg_state(SSM_FPGA_ENABLE, get_msg_state(SSM_PARAM_1));
 									
 					kernel_state = KER_ST_IDLE;
 					break;
@@ -185,7 +188,7 @@ void kernel_task()
 				
 				case EN_LIGHT_EVENT:
 					//send lightshow value to SSM
-					put_msg_state(SSM_LIGHTSHOW, get_msg_state(SSM_PARAM1));
+					put_msg_state(SSM_LIGHTSHOW, get_msg_state(SSM_PARAM_1));
 
 					//enable lightshow
 					put_msg_state(SSM_LIGHT_ENABLE, 1);
@@ -195,48 +198,48 @@ void kernel_task()
 
 				case SET_HEIGHT_EVENT:
 					//set height constraint in SSM
-					put_msg_state(SSM_HEIGHT, get_msg_state(SSM_PARAM1));
+					put_msg_state(SSM_HEIGHT, get_msg_state(SSM_PARAM_1));
 
 					kernel_state = KER_ST_IDLE;
 					break;
 
 				case SET_WIDTH_EVENT:
 					//set width constraint in SSM
-					put_msg_state(SSM_WIDTH, get_msg_state(SSM_PARAM1));
+					put_msg_state(SSM_WIDTH, get_msg_state(SSM_PARAM_1));
 									
 					kernel_state = KER_ST_IDLE;
 					break;
 
 				case SET_LENGTH_EVENT:
 					//set length constraint in SSM
-					put_msg_state(SSM_LENGTH, get_msg_state(SSM_PARAM1));
+					put_msg_state(SSM_LENGTH, get_msg_state(SSM_PARAM_1));
 					kernel_state = KER_ST_IDLE;
 					break;
 
 				case SET_MAX_VEL_PAN_EVENT:
 					//set max speed for pan in SSM
-					put_msg_state(SSM_MAX_VEL_PAN, get_msg_state(SSM_PARAM1));
+					put_msg_state(SSM_MAX_PAN_VEL, get_msg_state(SSM_PARAM_1));
 					
 					kernel_state = KER_ST_IDLE;
 					break;
 					
 				case SET_MIN_VEL_PAN_EVENT:
 					//set min speed for pan in SSM
-					put_msg_state(SSM_MIN_VEL_PAN, get_msg_state(SSM_PARAM1));
+					put_msg_state(SSM_MIN_PAN_VEL, get_msg_state(SSM_PARAM_1));
 					
 					kernel_state = KER_ST_IDLE;
 					break;
 					
 				case SET_MAX_VEL_TILT_EVENT:
 					//set max speed for tilt in SSM
-					put_msg_state(SSM_MAX_VEL_TILT, get_msg_state(SSM_PARAM1));
+					put_msg_state(SSM_MAX_TILT_VEL, get_msg_state(SSM_PARAM_1));
 														
 					kernel_state = KER_ST_IDLE;
 					break;
 					
 				case SET_MIN_VEL_TILT_EVENT:
 					//set min speed for tilt in SSM
-					put_msg_state(SSM_MIN_VEL_TILT, get_msg_state(SSM_PARAM1));
+					put_msg_state(SSM_MIN_TILT_VEL, get_msg_state(SSM_PARAM_1));
 														
 					kernel_state = KER_ST_IDLE;
 					break;	
@@ -244,7 +247,7 @@ void kernel_task()
 				case SET_SCENE_EVENT:
 					//updates scene constraints to predefined scene or default (5,5,5)
 					
-					switch(get_msg_state(SSM_PARAM1))
+					switch(get_msg_state(SSM_PARAM_1))
 					{
 						case SCENE1:
 							put_msg_state(SSM_HEIGHT, 5);
