@@ -24,8 +24,10 @@
 #include "Modules/EMP/emp_type.h"
 
 /*****************************    Defines    *******************************/
-
-
+//scene defines
+#define SCENE1			1
+#define SCENE2			2
+#define SCENE3			3
 /*****************************   Constants   *******************************/
 
 
