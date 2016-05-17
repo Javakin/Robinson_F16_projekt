@@ -21,6 +21,7 @@
 #include <stdint.h>
 #include <tm4c123gh6pm.h>
 #include "Modules/EMP/emp_type.h"
+#include "Tasking/events.h"
 #include "Modules/UART0/uart0_tx.h"
 #include "Modules/Kernel/kernel.h"
 #include "FreeRTOS.h"
@@ -37,7 +38,10 @@
 
 enum kernel_states
 {
-	KER_ST_IDLE
+	KER_ST_IDLE,
+	KER_ST_PAR1,
+	KER_ST_PAR2
+
 };
 
 // Queues
@@ -62,15 +66,61 @@ void kernel_task()
 		switch (kernel_state)
 		{
 		case KER_ST_IDLE:
-			// send message using spi_tx_queue directly
-			for (INT8U i = 0; i < 10; i++){
-				if (xQueueSend(spi_tx_queue, &( ker_message ), portMAX_DELAY) == pdTRUE)
+			// pull from kernel queue
+			if (xQueueReceive(kernel_queue, &( ker_message ), portMAX_DELAY) == pdTRUE)
+			{
+				switch(ker_message)
 				{
-					// send suceeded
-					__asm("nop");
+				//////////////////////// all 2 parameter instructions   //////////////////////////////
+				case GOTO_COORD_EVENT:
+					kernel_state = KER_ST_PAR2;
+					break;
+
+
+				//////////////////////// all 1 parameter instructions   //////////////////////////////
+				case EN_LIGHT_EVENT:
+					/*no break*/
+				case SET_HEIGHT_EVENT:
+					/*no break*/
+				case SET_WIDTH_EVENT:
+					/*no break*/
+				case SET_LENGTH_EVENT:
+					/*no break*/
+				case SET_ACC_EVENT:
+					/*no break*/
+				case SET_VEL_EVENT:
+					/*no break*/
+				case SET_SCENE_EVENT:
+					kernel_state = KER_ST_PAR1;
+					break;
+
+				//////////////////////// all 0 parameter instructions   //////////////////////////////
+				case CON_CHEK_EVENT:
+
+					break;
+
+				case CAL_INIT_EVENT:
+
+					break;
+
+				case CAL_ACK_EVENT:
+
+					break;
+
+				case STOP_SHOW_EVENT:
+
+					break;
+
+				default:
+					// yot done gooft
+					while (1);
+					break;
 				}
+
 			}
 			break;
+
+
 		}
 	}
 }

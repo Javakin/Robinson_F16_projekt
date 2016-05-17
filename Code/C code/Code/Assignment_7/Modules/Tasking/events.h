@@ -27,15 +27,26 @@
 // Events.
 // -------
 
+#define CON_CHEK_EVENT		0
+#define CAL_INIT_EVENT		1
+#define CAL_ACK_EVENT		2
+#define EN_LIGHT_EVENT		3
+#define SET_HEIGHT_EVENT	4
+#define SET_WIDTH_EVENT		5
+#define SET_LENGTH_EVENT	6
+#define SET_ACC_EVENT		7
+#define SET_VEL_EVENT		8
+#define SET_SCENE_EVENT		9
+#define GOTO_COORD_EVENT	10
+#define RUN_SHOW_EVENT		11
+#define STOP_SHOW_EVENT		12
+
+
+
 // General Events
 // --------------
 #define GE_NO_EVENT     	0
 
-// Button Events
-// -------------
-#define BE_SINGLE_PUSH   	1
-#define BE_DOUBLE_PUSH 	 	2
-#define BE_LONG_PUSH     	3
 
 // Timer Events
 // ------------
