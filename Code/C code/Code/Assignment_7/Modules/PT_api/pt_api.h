@@ -41,7 +41,7 @@
 /*****************************   Functions   *******************************/
 
 
-INT8U pt_send_message( INT8U adress, INT16U message);
+INT8U pt_send_message( INT8U adress, INT8U PT, INT16U message);
 //  Input    : adress used for the message
 //			   the message to send
 //  Output   : -
