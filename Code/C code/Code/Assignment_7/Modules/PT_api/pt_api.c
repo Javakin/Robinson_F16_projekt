@@ -68,29 +68,23 @@ INT16U pt_get_pt(INT16U message)
 	return message & 0x0800;
 }
 
-void pt_recieve_message()
+void pt_recieve_message(INT16U message)
 {
-	INT16U pt_message;
-
-	// wait for the recieved message
-	if (xQueueReceive(spi_rx_queue, &( pt_message ), portMAX_DELAY) == pdTRUE)
-	{
 	// deal with the recieved message
-		switch(pt_get_adress(pt_message))
+	switch(pt_get_adress(message))
+	{
+	case ADR_TARGET_POS:
+		switch(pt_get_pt(message))
 		{
-		case ADR_TARGET_POS:
-			switch(pt_get_pt(pt_message))
-			{
-			case SUB_ADR_PAN:
-				put_msg_state(SSM_CURRENT_PAN, pt_get_data(pt_message));
-				break;
+		case SUB_ADR_PAN:
+			put_msg_state(SSM_CURRENT_PAN, pt_get_data(message));
+			break;
 
-			case SUB_ADR_TILT:
-				put_msg_state(SSM_CURRENT_TILT, pt_get_data(pt_message));
-				break;
-			}
+		case SUB_ADR_TILT:
+			put_msg_state(SSM_CURRENT_TILT, pt_get_data(message));
 			break;
 		}
+		break;
 	}
 }
 

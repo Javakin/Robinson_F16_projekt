@@ -83,10 +83,7 @@ void spi_master_task()
 			break;
 
 		case SPI_ST_RECEIVE:
-			if (xQueueSend(spi_rx_queue, &( spi_rx ), portMAX_DELAY) == pdTRUE)
-			{
-				spi_state = SPI_ST_IDLE;
-			}
+			pt_recieve_message(spi_rx);
 			break;
 
 		}
@@ -134,18 +131,20 @@ INT16U spi_send_message(INT16U message)
 		temp_holder |= ( (1 && (message & (1 << i) ) ) << CON_TX);
 		GPIO_PORTB_DATA_R = temp_holder;
 
-		// clock low
-		temp_holder = ~(1 << CON_CLOCK);
-		GPIO_PORTB_DATA_R &= temp_holder;
+		// clock high
+		temp_holder = (1 << CON_CLOCK);
+		GPIO_PORTB_DATA_R |=  temp_holder;
 
 
 		// read data
 		temp_holder = 1 && (GPIO_PORTB_DATA_R & (1 << CON_RX));
 		recieved |= (temp_holder << i);
 
-		// clock high
-		temp_holder = (1 << CON_CLOCK);
-		GPIO_PORTB_DATA_R |=  temp_holder;
+		// clock low
+		temp_holder = ~(1 << CON_CLOCK);
+		GPIO_PORTB_DATA_R &= temp_holder;
+
+
 
 	}
 
