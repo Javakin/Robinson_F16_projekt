@@ -1,0 +1,56 @@
+\newpage
+
+\section{Problem formulation}
+When performing on a stage, light in the right places is important. An easy way to get that, is via controllable spotlights. They have to be able to rotate horizontally and vertically, thereby targeting specific points on the stage and do so autonomously.\\
+The Pan \& Tilt System (P \& T System) can be made to meet those requirements.
+ 
+
+\subsection{Definition of goals}
+The main goals of the product is, to be able to point the cone of light from the spotlight, at a specific point on a predefined surface or follow a human walking around on a surface. The user should have the option, to specify the limits of the spotlight’s working space. The positions or paths should be set by the user and the movement should be pleasant to watch.
+
+
+\subsection{Requirements specification}
+Some requirements have a higher priority than others. Because of that, they will be divided into primary and secondary requirements, so as to identify the most important objectives.
+
+
+\subsubsection{Primary requirements}
+
+\textit{Product requirements}
+
+\begin{itemize}
+
+\item The controller has to be implemented on the FPGA(Field-programmable gate array).
+
+\item The communication between the microprocessor and the FPGA has to be done with SPI(Serial Peripheral Interface Bus).
+
+\item The FPGA has to control the PWM(Pulse-width modulation) signal for the motors.
+\end{itemize}
+
+\textit{Application requirements}
+
+\begin{itemize}
+\item The spotlight needs to be able to point its light towards a specific position on the stage, with a error margin of 10cm, no matter the position.
+
+\item The spotlight needs to be able to follow a walking person i.e. moving at around $2.5 m/s^{1}$.
+
+\item The system cannot have an overshoot of more than 10\%.
+
+\item The system has to have a settling time of 0.5 sec at a threshold of $\pm$2\%.
+
+\item The spotlight is placed at a height of 5 meters.
+
+\item The max stage size is 14x10 meters.
+\end{itemize}
+
+
+\subsubsection{Secondary requirements}
+
+\begin{itemize}
+\item The movement between to points has to be smooth.
+
+\item The pan- and tilt system has to be able to be calibrated.
+
+\item The spotlight has to be able to be controlled by an application.
+
+\item The spotlight has to be able to be controlled by a joystick.
+\end{itemize}
