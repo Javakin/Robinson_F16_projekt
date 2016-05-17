@@ -32,7 +32,7 @@
 INT8U   msg_event[MAX_MSG];
 INT32U  msg_state[MAX_MSG];
 
-extern xSemaphoreHandle ssm_semaphor;
+extern xSemaphoreHandle ssm_semaphore;
 /*****************************   Functions   *******************************/
 
 INT8U get_msg_event( INT8U address )

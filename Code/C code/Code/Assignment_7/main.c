@@ -64,7 +64,7 @@ xQueueHandle kernel_queue;
 
 // semaphores
 xSemaphoreHandle uart0_tx_semaphore;
-xSemaphoreHandle ssm_semaphor;
+xSemaphoreHandle ssm_semaphore;
 
 /*****************************   Functions   *******************************/
 
@@ -94,7 +94,7 @@ int main(void)
 
 	// create all semaphores
 	uart0_tx_semaphore = xSemaphoreCreateMutex();
-	ssm_semaphore = xSemaphoreCreateMutex();
+	ssm_semaphore 	   = xSemaphoreCreateMutex();
 
 	// Variable used to check if all tasks has been created correcty
 	portBASE_TYPE return_value = pdTRUE;
