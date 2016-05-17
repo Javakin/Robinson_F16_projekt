@@ -123,8 +123,9 @@ void kernel_task()
 			}
 			break;
 		
-		//case is a 1 parameter instruction, pull from kernel queue to get parameter 1
+
 		case KER_ST_1PAR1:
+			//case is a 1 parameter instruction, pull from kernel queue to get parameter 1
 			if (xQueueReceive(kernel_queue, &( ker_message ), portMAX_DELAY) == pdTRUE)
 			{
 				//shared state memory 2 saves here
@@ -134,9 +135,8 @@ void kernel_task()
 			}
 			break;
 		
-		
-		//case is a 2 parameter instruction, pull from kernel queue to get parameter 1
 		case KER_ST_2PAR1:
+			//case is a 2 parameter instruction, pull from kernel queue to get parameter 1
 			if (xQueueReceive(kernel_queue, &( ker_message ), portMAX_DELAY) == pdTRUE)
 			{
 				//shared state memory 2 saves here
@@ -145,10 +145,9 @@ void kernel_task()
 				kernel_state = KER_ST_2PAR2;
 			}
 			break;
-		}
-		
-		//case is a 2 parameter instruction, pull from kernel queue to get parameter 2
+
 		case KER_ST_2PAR2:
+			//case is a 2 parameter instruction, pull from kernel queue to get parameter 2
 			if (xQueueReceive(kernel_queue, &( ker_message ), portMAX_DELAY) == pdTRUE)
 			{
 				//shared state memory 2 saves here
@@ -299,6 +298,7 @@ void kernel_task()
 					while (1);
 					break;
 				}
+		}
 	}
 }
 
