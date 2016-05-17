@@ -39,14 +39,20 @@
 enum kernel_states
 {
 	KER_ST_IDLE,
-	KER_ST_PAR1,
-	KER_ST_PAR2
+	KER_ST_1PAR1,
+	KER_ST_2PAR1,
+	KER_ST_2PAR2,
+	KER_ST_EXECUTE
 
 };
 
 // Queues
 extern xQueueHandle kernel_queue;
 extern xQueueHandle spi_tx_queue;
+
+INT8U shared_state_variable_1;  //opcode
+INT8U shared_state_variable_2;	//parameter 1
+INT8U shared_state_variable_3;	//parameter 2
 
 
 INT8U kernel_state = KER_ST_IDLE;
@@ -57,7 +63,7 @@ INT16U ker_message = 0x1001;
 /*****************************   Functions   *******************************/
 void kernel_task()
 {
-	// initialise used prots
+	// initialise used ports
 	kernel_init();
 
 	// run task
@@ -66,14 +72,17 @@ void kernel_task()
 		switch (kernel_state)
 		{
 		case KER_ST_IDLE:
-			// pull from kernel queue
+			// pull from kernel queue to get opcode
 			if (xQueueReceive(kernel_queue, &( ker_message ), portMAX_DELAY) == pdTRUE)
 			{
+				//shared state memory 1 saves here
+				shared_state_variable_1 = ker_message;
+				
 				switch(ker_message)
 				{
 				//////////////////////// all 2 parameter instructions   //////////////////////////////
 				case GOTO_COORD_EVENT:
-					kernel_state = KER_ST_PAR2;
+					kernel_state = KER_ST_2PAR1;
 					break;
 
 
@@ -91,12 +100,12 @@ void kernel_task()
 				case SET_VEL_EVENT:
 					/*no break*/
 				case SET_SCENE_EVENT:
-					kernel_state = KER_ST_PAR1;
+					kernel_state = KER_ST_1PAR1;
 					break;
 
 				//////////////////////// all 0 parameter instructions   //////////////////////////////
 				case CON_CHEK_EVENT:
-
+				
 					break;
 
 				case CAL_INIT_EVENT:
@@ -112,16 +121,54 @@ void kernel_task()
 					break;
 
 				default:
-					// yot done gooft
+					// you done goofed
 					while (1);
 					break;
 				}
 
 			}
 			break;
+		
+		//case is a 1 parameter instruction, pull from kernel to get parameter 1
+		case KER_ST_1PAR1:
+			if (xQueueReceive(kernel_queue, &( ker_message ), portMAX_DELAY) == pdTRUE)
+			{
+				//shared state memory 2 saves here
+				shared_state_variable_2 = ker_message;
+				//kernel_state = KER_ST_IDLE;
+				//Run instruction
+				
+			}
 
+			break;
+		
+		
+		//case is a 2 parameter instruction, pull from kernel to get parameter 1
+		case KER_ST_2PAR1:
+			if (xQueueReceive(kernel_queue, &( ker_message ), portMAX_DELAY) == pdTRUE)
+			{
+				//shared state memory 2 saves here
+				shared_state_variable_2 = ker_message;
+				kernel_state = KER_ST_2PAR2;
 
+				
+			}
+			break;
 		}
+		
+		//case is a 2 parameter instruction, pull from kernel to get parameter 2
+		case KER_ST_2PAR2:
+			if (xQueueReceive(kernel_queue, &( ker_message ), portMAX_DELAY) == pdTRUE)
+			{
+				//shared state memory 2 saves here
+				shared_state_variable_2 = ker_message;
+				//kernel_state = KER_ST_PAR1;
+				//set state to run instruction
+			}
+			break;
+			
+		case KER_ST_EXECUTE:
+			
 	}
 }
 
