@@ -23,6 +23,7 @@
 #include "EMP/emp_type.h"
 #include "PT_api/pt_api.h"
 #include "Tasking/messages.h"
+#include "Tasking/tmodel.h"
 #include "FreeRTOS.h"
 #include "task.h"
 #include "queue.h"
@@ -62,19 +63,38 @@ INT16U pt_get_data(INT16U message)
 	return message & 0x07FF;
 }
 
-INT16U pt_get_pt_bool(INT16U message)
+INT16U pt_get_pt(INT16U message)
 {
 	return message & 0x0800;
 }
 
-INT16U pt_recieve_message()
+INT8U pt_recieve_message()
 {
-	INT16U pt_message;
-	if (xQueueReceive() == pdTRUE)
-	// deal with the recieved message
-	switch(pt)
 
-	return 0;
+	INT16U pt_message;
+	INT8U status = pdTRUE;
+
+	// wait for the recieved message
+	if (xQueueReceive(spi_rx_queue, &( pt_message ), portMAX_DELAY) == pdTRUE)
+	{
+	// deal with the recieved message
+		switch(pt_get_adress(pt_message))
+		{
+		case ADR_TARGET_POS:
+			switch(pt_get_pt(pt_message))
+			{
+			case SUB_ADR_PAN:
+				put_msg_state(SSM_CURRENT_PAN, pt_get_data(pt_message));
+				break;
+
+			case SUB_ADR_TILT:
+				put_msg_state(SSM_CURRENT_TILT, pt_get_data(pt_message));
+				break;
+			}
+			break;
+		}
+	}
+	return status;
 }
 
 

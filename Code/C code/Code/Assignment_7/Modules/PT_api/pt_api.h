@@ -52,6 +52,21 @@ INT16U pt_recieve_message();
 //  Output   : the message from the spi_rx_queue
 //  Function : retreves the messages from P&T and updates state memory
 
+INT8U pt_get_adress(INT16U message);
+//  Input    : the recieved message
+//  Output   : the adress from the message
+//  Function : retreves the messages adress
+
+INT16U pt_get_data(INT16U message);
+//  Input    : the recieved message
+//  Output   : the data from the message
+//  Function : retreves the messages data
+
+INT16U pt_get_pt(INT16U message);
+//  Input    : the recieved message
+//  Output   : the p/t bit from the message
+//  Function : retreves the messages p/t bit
+
 
 /****************************** End Of Module *******************************/
 #endif
