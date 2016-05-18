@@ -46,7 +46,7 @@ INT8U pt_api_send_message( INT8U adress, INT8U PT, INT16U message)
 	// 2 adress bit 1 p/t bit and 11 message bits
 	// 0 0 a a pt d d d d d  d d d d d d
 	INT16U placeholder = message & 0x07FF;
-	placeholder |= (PT & 0x0001 << 11);
+	placeholder |= ((PT & 0x0001) << 11);
 	placeholder |= ( adress << 12 );
 
 	// send the message via spi_master
