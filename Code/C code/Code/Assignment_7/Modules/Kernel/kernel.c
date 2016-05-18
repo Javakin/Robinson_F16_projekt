@@ -27,7 +27,7 @@
 #include "Kernel/kernel.h"
 #include "Tasking/messages.h"
 #include "Tasking/tmodel.h"
-#include "PT_api/pt_api.h"
+#include "SPI_api/spi_api.h"
 #include "FreeRTOS.h"
 #include "task.h"
 #include "queue.h"
@@ -179,13 +179,13 @@ void ker_execute_func()
 	//////////////////////// all 2 parameter instructions   //////////////////////////////
 	case GOTO_COORD_EVENT:
 		//send pan coordinate
-		pt_send_message(ADR_TARGET_POS, SUB_ADR_PAN, get_msg_state(SSM_PARAM_1));
+		spi_api_send_message(ADR_TARGET_POS, SUB_ADR_PAN, get_msg_state(SSM_PARAM_1));
 
 		//save pan coordinate to SSM
 		put_msg_state( SSM_TARGET_PAN, get_msg_state(SSM_PARAM_1));
 
 		//send tilt coordinate
-		pt_send_message(ADR_TARGET_POS, SUB_ADR_TILT, get_msg_state(SSM_PARAM_2));
+		spi_api_send_message(ADR_TARGET_POS, SUB_ADR_TILT, get_msg_state(SSM_PARAM_2));
 
 		//save tilt coordinate to SSM
 		put_msg_state( SSM_TARGET_TILT, get_msg_state(SSM_PARAM_2));
