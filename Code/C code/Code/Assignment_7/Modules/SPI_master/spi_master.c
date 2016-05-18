@@ -84,7 +84,7 @@ void spi_master_task()
 			break;
 
 		case SPI_ST_RECEIVE:
-			pt_api_recieve_message(spi_rx);
+			pt_api_receive_message(spi_rx);
 			break;
 
 		}

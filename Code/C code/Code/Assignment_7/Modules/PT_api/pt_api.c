@@ -68,7 +68,7 @@ INT16U pt_api_get_pt(INT16U message)
 	return message & 0x0800;
 }
 
-void pt_api_recieve_message(INT16U message)
+void pt_api_receive_message(INT16U message)
 {
 	// deal with the recieved message
 	switch(pt_api_get_adress(message))

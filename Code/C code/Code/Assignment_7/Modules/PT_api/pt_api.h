@@ -2,7 +2,7 @@
 * University of Southern Denmark
 * Embedded C Programming (ECP)
 *
-* MODULENAME.: spi_api.h
+* MODULENAME.: pt_api.h
 *
 * PROJECT....: semester project
 *
@@ -17,8 +17,8 @@
 *
 *****************************************************************************/
 
-#ifndef SPI_API_H_
-#define SPI_API_H_
+#ifndef PT_API_H_
+#define PT_API_H_
 
 /***************************** Include files *******************************/
 #include "Modules/EMP/emp_type.h"
@@ -47,7 +47,7 @@ INT8U pt_api_send_message( INT8U adress, INT8U PT, INT16U message);
 //  Output   : -
 //  Function : puts the formatted message in the spi_tx_queue
 
-void pt_api_recieve_message(INT16U message);
+void pt_api_receive_message(INT16U message);
 //  Input    : the message to update the ssm
 //  Output   : -
 //  Function : retreves the messages from P&T and updates state memory
