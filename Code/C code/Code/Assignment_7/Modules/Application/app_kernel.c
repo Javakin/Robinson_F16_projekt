@@ -91,7 +91,7 @@ void kernel_task()
 				{
 				case USER_VAL_EVENT:
 					//shared state memory saves here
-					put_msg_state(SSM_PARAM_1, ker_message);
+					put_msg_state(SSM_PARAM_1, get_msg_state(SSM_USER_VALUE));
 
 					// reset memory
 					put_msg_state(SSM_USER_VALUE, 0);
@@ -111,7 +111,7 @@ void kernel_task()
 				{
 				case USER_VAL_EVENT:
 					//shared state memory saves here
-					put_msg_state(SSM_PARAM_1, ker_message);
+					put_msg_state(SSM_PARAM_1, get_msg_state(SSM_USER_VALUE));
 
 					// reset memory
 					put_msg_state(SSM_USER_VALUE, 0);
@@ -131,7 +131,7 @@ void kernel_task()
 				{
 				case USER_VAL_EVENT:
 					//shared state memory 2 saves here
-					put_msg_state(SSM_PARAM_2, ker_message);
+					put_msg_state(SSM_PARAM_2, get_msg_state(SSM_USER_VALUE));
 
 					// reset memory
 					put_msg_state(SSM_USER_VALUE, 0);
