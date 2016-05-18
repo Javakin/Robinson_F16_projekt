@@ -34,8 +34,8 @@
 #define STOP_SHOW_EVENT		4
 #define EN_FPGA_EVENT		5
 
-// read value events
 
+// read value events
 #define SET_HEIGHT_EVENT		10
 #define SET_WIDTH_EVENT			11
 #define SET_DEPTH_EVENT			12
@@ -46,8 +46,12 @@
 #define SET_MAX_VEL_TILT_EVENT	22
 #define SET_MIN_VEL_TILT_EVENT	23
 
+// uart_api events
 #define USER_VAL_EVENT			30
 
+// pt_api_events
+#define CON_CHECK_TRUE_EVENT	40
+#define CON_CHECK_FALSE_EVENT	41
 
 
 // General Events

@@ -322,12 +322,31 @@ void ker_execute_func()
 
 	//////////////////////// all 0 parameter instructions   //////////////////////////////
 	case CON_CHEK_EVENT:
-		//ping microcontroller for connection
 
-		//ping FPGA for connection
+		// ping FPGA for connection
+		pt_api_send_message(ADR_MAX_SPEED, SUB_ADR_PAN, get_msg_state(SSM_MAX_PAN_VEL));
 
-		//TODO
-		kernel_state = KER_ST_IDLE;
+		//
+		if (xQueueReceive(application_queue, &( ker_message ), portMAX_DELAY) == pdTRUE)
+		{
+			switch(ker_message)
+			{
+			case CON_CHECK_TRUE_EVENT:
+				uart0_putc_tx('\n');
+				uart0_putc_tx('y');
+				uart0_putc_tx('e');
+				uart0_putc_tx('s');
+				break;
+
+			case CON_CHECK_FALSE_EVENT:
+				uart0_putc_tx('\n');
+				uart0_putc_tx('n');
+				uart0_putc_tx('o');
+				break;
+			}
+			kernel_state = KER_ST_IDLE;
+		}
+
 		break;
 
 	case STOP_SHOW_EVENT:
