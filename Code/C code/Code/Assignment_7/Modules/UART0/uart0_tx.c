@@ -47,14 +47,7 @@ BOOLEAN uart0_rdy_tx()
 
 INT8U uart0_putc_tx( INT8U ch )
 {
-	INT8U status = 1;
-
-	if (xQueueSend(uart0_tx_queue, &( ch ), 10) != pdPASS)
-	{
-		status = 0;
-	}
-
-	return status;
+	return xQueueSend(uart0_tx_queue, &( ch ), portMAX_DELAY);
 }
 
 

@@ -52,6 +52,8 @@
 // lightshow
 #define SSM_LIGHTSHOW		50
 
+// uart0_api
+#define SSM_USER_VALUE		55
 
 
 

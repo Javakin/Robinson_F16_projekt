@@ -23,6 +23,7 @@
 #include "tm4c123gh6pm.h"
 #include <EMP/emp_type.h>
 #include "UART0/uart0_rx.h"
+#include "UART0_api/uart0_api.h"
 #include "FreeRTOS.h"
 #include "queue.h"
 
@@ -187,9 +188,8 @@ void send_state()
 		if ( uart0_rx_received == CONFIG_CHAR)
 			uart0_rx_state = CONFIG_STATE;
 		else
-			// todo: api call
-			xQueueSend(current_queue,  &( uart0_rx_received ), 10);
-		__asm("nop");
+			uart0_api_receive_message(uart0_rx_received);
+
 	}
 }
 

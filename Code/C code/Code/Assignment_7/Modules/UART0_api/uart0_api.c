@@ -22,6 +22,7 @@
 #include <tm4c123gh6pm.h>
 #include "EMP/emp_type.h"
 #include "UART0_api/uart0_api.h"
+#include "UART0/uart0_tx.h"
 #include "Tasking/messages.h"
 #include "Tasking/events.h"
 #include "Tasking/tmodel.h"
@@ -41,10 +42,13 @@ extern xQueueHandle application_queue;
 extern xQueueHandle uart0_tx_queue;
 
 
+
 /*****************************   Functions   *******************************/
 
 void uart0_api_receive_message(INT16U message)
 {
+	uart0_api_send_message(message);
+
 	switch(message)
 	{
 	case 'g':
@@ -114,7 +118,19 @@ void uart0_api_receive_message(INT16U message)
 
 
 	default:
-		// todo: cheak for number input
+		// cheak for number input
+		if ( (message >= '0') && (message <= '9') &&  get_msg_state(SSM_USER_VALUE) < 1000000)
+		{
+			// a number has been pressed
+			INT32U number = get_msg_state(SSM_USER_VALUE);
+			number *= 10;
+			number += message - '0';
+
+			// update SSM if no owerflow has occoerd
+			put_msg_state(SSM_USER_VALUE, number);
+
+		}
+
 		break;
 	}
 }
@@ -125,6 +141,11 @@ void uart0_api_put_queue(INT8U event)
 	xQueueSend(application_queue, &( event ), portMAX_DELAY);
 }
 
+void uart0_api_send_message(INT8U message)
+{
+	// send the entire message via the uart0_tx_queue
+	uart0_putc_tx(message);
+}
 /****************************** End Of Module *******************************/
 
 
