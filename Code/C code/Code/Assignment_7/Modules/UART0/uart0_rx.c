@@ -186,10 +186,13 @@ void send_state()
 	if( xQueueReceive( uart0_rx_queue, &( uart0_rx_received ), portMAX_DELAY ) )
 	{
 		if ( uart0_rx_received == CONFIG_CHAR)
+		{
 			uart0_rx_state = CONFIG_STATE;
+		}
 		else
+		{
 			uart0_api_receive_message(uart0_rx_received);
-
+		}
 	}
 }
 
@@ -205,7 +208,7 @@ void config_state()
 			break;
 
 		default:
-			current_queue = default_queue;
+			current_queue = application_queue;
 			break;
 		}
 

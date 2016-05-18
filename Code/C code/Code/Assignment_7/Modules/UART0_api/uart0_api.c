@@ -45,12 +45,17 @@ extern xQueueHandle uart0_tx_queue;
 
 /*****************************   Functions   *******************************/
 
-void uart0_api_receive_message(INT16U message)
+void uart0_api_receive_message(INT8U message)
 {
 	uart0_api_send_message(message);
 
 	switch(message)
 	{
+	case 13:
+		// enter has been pressed
+		uart0_api_put_queue(USER_VAL_EVENT);
+		break;
+
 	case 'g':
 		// goto coordinat
 		uart0_api_put_queue(GOTO_COORD_EVENT);
@@ -115,7 +120,6 @@ void uart0_api_receive_message(INT16U message)
 		// connection check
 		uart0_api_put_queue(CON_CHEK_EVENT);
 		break;
-
 
 	default:
 		// cheak for number input

@@ -35,6 +35,7 @@
 #define EN_FPGA_EVENT		5
 
 // read value events
+
 #define SET_HEIGHT_EVENT		10
 #define SET_WIDTH_EVENT			11
 #define SET_DEPTH_EVENT			12
@@ -45,7 +46,7 @@
 #define SET_MAX_VEL_TILT_EVENT	22
 #define SET_MIN_VEL_TILT_EVENT	23
 
-#define UPDATE_POS_EVENT		30
+#define USER_VAL_EVENT			30
 
 
 

@@ -57,7 +57,7 @@ extern xQueueHandle spi_tx_queue;
 INT8U kernel_state = KER_ST_IDLE;
 
 // for debugging
-INT16U ker_message = 0x1001;
+INT8U ker_message;
 
 /*****************************   Functions   *******************************/
 void kernel_task()
@@ -98,10 +98,19 @@ void kernel_task()
 			//case is a 2 parameter instruction, pull from kernel queue to get parameter 1
 			if (xQueueReceive(application_queue, &( ker_message ), portMAX_DELAY) == pdTRUE)
 			{
-				//shared state memory 2 saves here
-				put_msg_state(SSM_PARAM_1, ker_message);
-				//get parameter 2
-				kernel_state = KER_ST_2PAR2;
+				switch(ker_message)
+				{
+				case USER_VAL_EVENT:
+					//shared state memory saves here
+					put_msg_state(SSM_PARAM_1, ker_message);
+
+					// reset memory
+					put_msg_state(SSM_USER_VALUE, 0);
+
+					//get parameter 2
+					kernel_state = KER_ST_2PAR2;
+					break;
+				}
 			}
 			break;
 
@@ -109,10 +118,21 @@ void kernel_task()
 			//case is a 2 parameter instruction, pull from kernel queue to get parameter 2
 			if (xQueueReceive(application_queue, &( ker_message ), portMAX_DELAY) == pdTRUE)
 			{
-				//shared state memory 2 saves here
-				put_msg_state(SSM_PARAM_2, ker_message);
-				//execute instruction
-				kernel_state = KER_ST_EXECUTE;
+				switch(ker_message)
+				{
+				case USER_VAL_EVENT:
+					//shared state memory 2 saves here
+					put_msg_state(SSM_PARAM_2, ker_message);
+
+					// reset memory
+					put_msg_state(SSM_USER_VALUE, 0);
+
+					//execute instruction
+					kernel_state = KER_ST_EXECUTE;
+
+					break;
+				}
+
 			}
 			break;
 			
@@ -168,6 +188,7 @@ void ker_idle_func(INT8U opcode)
 	default:
 		// you done goofed
 		//while (1);
+		__asm("nop");
 		break;
 	}
 }

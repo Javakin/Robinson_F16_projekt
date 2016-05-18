@@ -31,7 +31,7 @@
 
 /*****************************   Functions   *******************************/
 
-void uart0_api_receive_message(INT16U message);
+void uart0_api_receive_message(INT8U message);
 //  Input    : the message received from user
 //  Output   : -
 //  Function : hanles the input from user
