@@ -37,7 +37,6 @@
 #include "UART0/uart0_rx.h"
 #include "SPI_master/spi_master.h"
 #include "Kernel/kernel.h"
-#include "User_input/user_input.h"
 //#include "PS2Controller/ps2controller.h"
 
 
@@ -110,7 +109,7 @@ int main(void)
 	return_value &= xTaskCreate( uart0_tx_task, ( signed portCHAR *) "uart0_tx_task", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL);
 	return_value &= xTaskCreate( spi_master_task, ( signed portCHAR * ) "spi_master_task", USERTASK_STACK_SIZE, NULL, HIGH_PRIO, NULL );
 	return_value &= xTaskCreate( kernel_task, ( signed portCHAR *) "kernel_task", USERTASK_STACK_SIZE, NULL, MED_PRIO, NULL);
-	return_value &= xTaskCreate( user_input_task, ( signed portCHAR *) "user_input_task", USERTASK_STACK_SIZE, NULL, MED_PRIO, NULL);
+
 
 
 	// Test if all tasks started sucessfully

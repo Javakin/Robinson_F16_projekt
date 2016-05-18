@@ -71,17 +71,17 @@ INT16U spi_api_get_pt(INT16U message)
 void spi_api_recieve_message(INT16U message)
 {
 	// deal with the recieved message
-	switch(api_api_get_adress(message))
+	switch(spi_api_get_adress(message))
 	{
 	case ADR_TARGET_POS:
 		switch(spi_api_get_pt(message))
 		{
 		case SUB_ADR_PAN:
-			put_msg_state(SSM_CURRENT_PAN, pt_get_data(message));
+			put_msg_state(SSM_CURRENT_PAN, spi_api_get_data(message));
 			break;
 
 		case SUB_ADR_TILT:
-			put_msg_state(SSM_CURRENT_TILT, pt_get_data(message));
+			put_msg_state(SSM_CURRENT_TILT, spi_api_get_data(message));
 			break;
 		}
 		break;
