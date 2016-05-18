@@ -25,17 +25,6 @@
 
 /*****************************    Defines    *******************************/
 
-#define CHAR_a   'a'
-#define CHAR_b   'b'
-#define CHAR_c   'c'
-#define CHAR_d   'd'
-#define CHAR_e   'e'
-#define CHAR_f   'f'
-#define CHAR_g   'g'
-#define CHAR_h   'h'
-#define CHAR_i   'i'
-
-
 
 /*****************************   Constants   *******************************/
 

@@ -45,16 +45,73 @@ void uart0_api_receive_message(INT16U message)
 {
 	switch(message)
 	{
-	case CHAR_a:
+	case 'g':
+		// goto coordinat
+
 		break;
 
-	case CHAR_b:
+	case 'f':
+		// enable FPGA event
 		break;
 
-	case CHAR_c:
+	case 'l':
+		// enable lightshow
+
 		break;
 
-	case CHAR_e:
+	case 'h':
+		// set hight
+
+		break;
+
+	case 'w':
+		// set width
+
+		break;
+
+	case 'd':
+		// set depth
+
+		break;
+
+	case 'p':
+		// set min velocity pan
+
+		break;
+
+	case 'P':
+		// set max velocity pan
+
+		break;
+
+	case 't':
+		// set min velocity tilt
+
+		break;
+
+	case 'T':
+		// set max velocity tilt
+
+		break;
+
+	case 's':
+		// set scene
+
+		break;
+
+	case 'c':
+		// stop lightshow
+
+		break;
+
+	case 'o':
+		// connection check
+
+		break;
+
+
+	default:
+		// todo: cheak for number input
 		break;
 	}
 }
