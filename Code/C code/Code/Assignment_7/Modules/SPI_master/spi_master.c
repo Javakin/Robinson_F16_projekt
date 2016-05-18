@@ -75,7 +75,6 @@ void spi_master_task()
 			}
 			break;
 
-
 		case SPI_ST_SEND:
 			// send the byte
 			spi_rx = spi_send_message(spi_tx);

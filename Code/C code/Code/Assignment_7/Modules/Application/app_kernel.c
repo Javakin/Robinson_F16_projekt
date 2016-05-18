@@ -87,10 +87,19 @@ void kernel_task()
 			//case is a 1 parameter instruction, pull from kernel queue to get parameter 1
 			if (xQueueReceive(application_queue, &( ker_message ), portMAX_DELAY) == pdTRUE)
 			{
-				//shared state memory 2 saves here
-				put_msg_state(SSM_PARAM_1, ker_message);
-				//execute instruction
-				kernel_state = KER_ST_EXECUTE;
+				switch(ker_message)
+				{
+				case USER_VAL_EVENT:
+					//shared state memory saves here
+					put_msg_state(SSM_PARAM_1, ker_message);
+
+					// reset memory
+					put_msg_state(SSM_USER_VALUE, 0);
+
+					//execute instruction
+					kernel_state = KER_ST_EXECUTE;
+					break;
+				}
 			}
 			break;
 		
