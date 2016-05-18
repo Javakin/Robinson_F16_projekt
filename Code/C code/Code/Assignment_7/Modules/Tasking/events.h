@@ -29,7 +29,6 @@
 
 // pure events
 #define CON_CHEK_EVENT		0
-#define EN_LIGHT_EVENT		1
 #define GOTO_COORD_EVENT	2
 #define RUN_SHOW_EVENT		3
 #define STOP_SHOW_EVENT		4
@@ -38,7 +37,7 @@
 // read value events
 #define SET_HEIGHT_EVENT		10
 #define SET_WIDTH_EVENT			11
-#define SET_LENGTH_EVENT		12
+#define SET_DEPTH_EVENT			12
 #define SET_SCENE_EVENT			13
 
 #define SET_MAX_VEL_PAN_EVENT	20

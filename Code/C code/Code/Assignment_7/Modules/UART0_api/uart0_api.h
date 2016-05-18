@@ -41,6 +41,11 @@ void uart0_api_transmit(INT8U message);
 //  Output   : -
 //  Function : hanles the output from user
 
+void uart0_api_put_queue(INT8U event);
+//  Input    : the event to send
+//  Output   : -
+//  Function : sends events to the application queue
+
 /****************************** End Of Module *******************************/
 #endif
 

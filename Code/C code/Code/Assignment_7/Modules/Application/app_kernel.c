@@ -137,13 +137,12 @@ void ker_idle_func(INT8U opcode)
 
 
 	//////////////////////// all 1 parameter instructions   //////////////////////////////
-	case EN_LIGHT_EVENT:
-		/*no break*/
+
 	case SET_HEIGHT_EVENT:
 		/*no break*/
 	case SET_WIDTH_EVENT:
 		/*no break*/
-	case SET_LENGTH_EVENT:
+	case SET_DEPTH_EVENT:
 		/*no break*/
 	case SET_MAX_VEL_PAN_EVENT:
 		/*no break*/
@@ -202,12 +201,9 @@ void ker_execute_func()
 		break;
 
 
-	case EN_LIGHT_EVENT:
+	case RUN_SHOW_EVENT:
 		//send lightshow value to SSM
 		put_msg_state(SSM_LIGHTSHOW, get_msg_state(SSM_PARAM_1));
-
-		//enable lightshow
-		put_msg_state(SSM_LIGHT_ENABLE, 1);
 
 		kernel_state = KER_ST_IDLE;
 		break;
@@ -226,9 +222,9 @@ void ker_execute_func()
 		kernel_state = KER_ST_IDLE;
 		break;
 
-	case SET_LENGTH_EVENT:
+	case SET_DEPTH_EVENT:
 		//set length constraint in SSM
-		put_msg_state(SSM_LENGTH, get_msg_state(SSM_PARAM_1));
+		put_msg_state(SSM_DEPTH, get_msg_state(SSM_PARAM_1));
 		kernel_state = KER_ST_IDLE;
 		break;
 
@@ -268,25 +264,25 @@ void ker_execute_func()
 			case SCENE1:
 				put_msg_state(SSM_HEIGHT, 5);
 				put_msg_state(SSM_WIDTH, 7);
-				put_msg_state(SSM_LENGTH, 7);
+				put_msg_state(SSM_DEPTH, 7);
 				break;
 
 			case SCENE2:
 				put_msg_state(SSM_HEIGHT, 6);
 				put_msg_state(SSM_WIDTH, 14);
-				put_msg_state(SSM_LENGTH, 7);
+				put_msg_state(SSM_DEPTH, 7);
 				break;
 
 			case SCENE3:
 				put_msg_state(SSM_HEIGHT, 7);
 				put_msg_state(SSM_WIDTH, 14);
-				put_msg_state(SSM_LENGTH, 10);
+				put_msg_state(SSM_DEPTH, 10);
 				break;
 
 			default:
 				put_msg_state(SSM_HEIGHT, 5);
 				put_msg_state(SSM_WIDTH, 5);
-				put_msg_state(SSM_LENGTH, 5);
+				put_msg_state(SSM_DEPTH, 5);
 				break;
 		}
 
@@ -324,10 +320,9 @@ void kernel_init()
 	//set SSM constraints for default scene
 	put_msg_state(SSM_HEIGHT, 5);
 	put_msg_state(SSM_WIDTH, 5);
-	put_msg_state(SSM_LENGTH, 5);
+	put_msg_state(SSM_DEPTH, 5);
 	
-	//reset target position
-	put_msg_state(SSM_LENGTH, 5);	
+	//todo: reset target position
 }
 
 

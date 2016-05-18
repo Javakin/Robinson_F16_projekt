@@ -29,7 +29,7 @@
 //scene dimentions
 #define SSM_HEIGHT			10
 #define SSM_WIDTH			11
-#define SSM_LENGTH			12
+#define SSM_DEPTH			12
 
 // instructions
 #define SSM_OPCODE			20
