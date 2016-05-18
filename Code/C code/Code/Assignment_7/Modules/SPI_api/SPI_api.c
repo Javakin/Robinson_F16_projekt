@@ -2,11 +2,11 @@
 * University of Southern Denmark
 * Embedded Programming (EMP)
 *
-* MODULENAME.: pt_api.c
+* MODULENAME.: spi_api.c
 *
 * PROJECT....: semester project 4
 *
-* DESCRIPTION: supports an interface betwean the pan & tilt driver and the application
+* DESCRIPTION: supports an interface for using the message_queues
 *
 * Change Log:
 ******************************************************************************
@@ -21,7 +21,7 @@
 #include <stdint.h>
 #include <tm4c123gh6pm.h>
 #include "EMP/emp_type.h"
-#include "PT_api/pt_api.h"
+#include "SPI_api/SPI_api.h"
 #include "Tasking/messages.h"
 #include "Tasking/tmodel.h"
 #include "FreeRTOS.h"
@@ -41,7 +41,7 @@ extern xQueueHandle spi_rx_queue;
 
 /*****************************   Functions   *******************************/
 
-INT8U pt_send_message( INT8U adress, INT8U PT, INT16U message)
+INT8U spi_api_send_message( INT8U adress, INT8U PT, INT16U message)
 {
 	// 2 adress bit 1 p/t bit and 11 message bits
 	// 0 0 a a pt d d d d d  d d d d d d
@@ -53,28 +53,28 @@ INT8U pt_send_message( INT8U adress, INT8U PT, INT16U message)
 	return xQueueSend(spi_tx_queue, &( placeholder ), portMAX_DELAY);
 }
 
-INT8U pt_get_adress(INT16U message)
+INT8U spi_api_get_adress(INT16U message)
 {
 	return message >> 12;
 }
 
-INT16U pt_get_data(INT16U message)
+INT16U spi_api_get_data(INT16U message)
 {
 	return message & 0x07FF;
 }
 
-INT16U pt_get_pt(INT16U message)
+INT16U spi_api_get_pt(INT16U message)
 {
 	return message & 0x0800;
 }
 
-void pt_recieve_message(INT16U message)
+void spi_api_recieve_message(INT16U message)
 {
 	// deal with the recieved message
-	switch(pt_get_adress(message))
+	switch(api_api_get_adress(message))
 	{
 	case ADR_TARGET_POS:
-		switch(pt_get_pt(message))
+		switch(spi_api_get_pt(message))
 		{
 		case SUB_ADR_PAN:
 			put_msg_state(SSM_CURRENT_PAN, pt_get_data(message));

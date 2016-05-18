@@ -2,11 +2,11 @@
 * University of Southern Denmark
 * Embedded C Programming (ECP)
 *
-* MODULENAME.: pt_api.h
+* MODULENAME.: spi_api.h
 *
 * PROJECT....: semester project
 *
-* DESCRIPTION: mannage commadns
+* DESCRIPTION: supports an interface for using the message_queues
 *
 * Change Log:
 ******************************************************************************
@@ -17,8 +17,8 @@
 *
 *****************************************************************************/
 
-#ifndef PT_API_H_
-#define PT_API_H_
+#ifndef SPI_API_H_
+#define SPI_API_H_
 
 /***************************** Include files *******************************/
 #include "Modules/EMP/emp_type.h"
@@ -41,28 +41,28 @@
 /*****************************   Functions   *******************************/
 
 
-INT8U pt_send_message( INT8U adress, INT8U PT, INT16U message);
+INT8U spi_api_send_message( INT8U adress, INT8U PT, INT16U message);
 //  Input    : adress used for the message
 //			   the message to send
 //  Output   : -
 //  Function : puts the formatted message in the spi_tx_queue
 
-void pt_recieve_message(INT16U message);
+void spi_api_recieve_message(INT16U message);
 //  Input    : the message to update the ssm
 //  Output   : -
 //  Function : retreves the messages from P&T and updates state memory
 
-INT8U pt_get_adress(INT16U message);
+INT8U spi_api_get_adress(INT16U message);
 //  Input    : the recieved message
 //  Output   : the adress from the message
 //  Function : retreves the messages adress
 
-INT16U pt_get_data(INT16U message);
+INT16U spi_api_get_data(INT16U message);
 //  Input    : the recieved message
 //  Output   : the data from the message
 //  Function : retreves the messages data
 
-INT16U pt_get_pt(INT16U message);
+INT16U spi_api_get_pt(INT16U message);
 //  Input    : the recieved message
 //  Output   : the p/t bit from the message
 //  Function : retreves the messages p/t bit
