@@ -22,8 +22,7 @@
 #include <stdint.h>
 #include "tm4c123gh6pm.h"
 #include <EMP/emp_type.h>
-#include "Modules/UART0/uart0_rx.h"
-//#include <RTCS/rtcs.h>
+#include "UART0/uart0_rx.h"
 #include "FreeRTOS.h"
 #include "queue.h"
 
@@ -34,16 +33,24 @@
 /*****************************   Variables   *******************************/
 // Queues
 extern xQueueHandle uart0_rx_queue;
-//extern xQueueHandle ps2con_queue;
 extern xQueueHandle default_queue;
+extern xQueueHandle application_queue;
+
 static xQueueHandle current_queue;
+
+// states
+enum uart_rx_states
+{
+	SEND_STATE,
+	CONFIG_STATE
+};
 
 
 // Placeholder for the recieced byte
-INT8U received;
+INT8U uart0_rx_received;
 
 // holder of state
-static INT8U current_state = SEND_STATE;
+INT8U uart0_rx_state = SEND_STATE;
 
 
 /*****************************   Functions   *******************************/
@@ -157,7 +164,7 @@ void uart0_rx_task()
 
 	while(1)
 	{
-		switch( current_state )
+		switch( uart0_rx_state )
 		{
 		case SEND_STATE :
 			// send char to the receiving queue
@@ -175,33 +182,35 @@ void uart0_rx_task()
 
 void send_state()
 {
-	if( xQueueReceive( uart0_rx_queue, &( received ), 10 ) )
+	if( xQueueReceive( uart0_rx_queue, &( uart0_rx_received ), portMAX_DELAY ) )
 	{
-		if ( received == CONFIG_CHAR)
-			current_state = CONFIG_STATE;
+		if ( uart0_rx_received == CONFIG_CHAR)
+			uart0_rx_state = CONFIG_STATE;
 		else
-			xQueueSend(current_queue,  &( received ), 10);
+			// todo: api call
+			xQueueSend(current_queue,  &( uart0_rx_received ), 10);
+		__asm("nop");
 	}
 }
 
 void config_state()
 {
-	if( xQueueReceive( uart0_rx_queue, &( received ), 10 ) )
+	if( xQueueReceive( uart0_rx_queue, &( uart0_rx_received ), portMAX_DELAY ) )
 	{
 		// select the setting
-		switch( received )
+		switch( uart0_rx_received )
 		{
-		//case SET_PS2CON:
-		//	current_queue = ps2con_queue;
-		//	break;
+		case SET_APPLICATION:
+			current_queue = application_queue;
+			break;
 
 		default:
 			current_queue = default_queue;
-			/* no break here */
+			break;
 		}
 
 		// back to send state
-		current_state = SEND_STATE;
+		uart0_rx_state = SEND_STATE;
 	}
 }
 /****************************** End Of Module *******************************/

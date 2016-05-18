@@ -2,11 +2,11 @@
 * University of Southern Denmark
 * Embedded Programming (EMP)
 *
-* MODULENAME.: kernel.c
+* MODULENAME.: app_kernel.c
 *
 * PROJECT....: semester project 4
 *
-* DESCRIPTION: Gets instructions from the console, and executes said instructions
+* DESCRIPTION: Gets instructions from the user, and executes them
 *
 * Change Log:
 ******************************************************************************
@@ -15,6 +15,7 @@
 * --------------------
 * 150516  DFH    Module created
 * 170516  RTH	 Instructions and states implemented
+* 180516  DFH	 Rename project
 *
 *****************************************************************************/
 
@@ -24,7 +25,7 @@
 #include "Modules/EMP/emp_type.h"
 #include "Tasking/events.h"
 #include "UART0/uart0_tx.h"
-#include "App_kernel/app_kernel.h"
+#include "Application/app_kernel.h"
 #include "Tasking/messages.h"
 #include "Tasking/tmodel.h"
 #include "PT_api/pt_api.h"
@@ -50,7 +51,7 @@ enum kernel_states
 };
 
 // Queues
-extern xQueueHandle kernel_queue;
+extern xQueueHandle application_queue;
 extern xQueueHandle spi_tx_queue;
 
 INT8U kernel_state = KER_ST_IDLE;
@@ -71,7 +72,7 @@ void kernel_task()
 		{
 		case KER_ST_IDLE:
 			// pull from kernel queue to get opcode
-			if (xQueueReceive(kernel_queue, &( ker_message ), portMAX_DELAY) == pdTRUE)
+			if (xQueueReceive(application_queue, &( ker_message ), portMAX_DELAY) == pdTRUE)
 			{
 				//shared state memory opcode saves here
 				put_msg_state(SSM_OPCODE, ker_message);
@@ -84,7 +85,7 @@ void kernel_task()
 
 		case KER_ST_1PAR1:
 			//case is a 1 parameter instruction, pull from kernel queue to get parameter 1
-			if (xQueueReceive(kernel_queue, &( ker_message ), portMAX_DELAY) == pdTRUE)
+			if (xQueueReceive(application_queue, &( ker_message ), portMAX_DELAY) == pdTRUE)
 			{
 				//shared state memory 2 saves here
 				put_msg_state(SSM_PARAM_1, ker_message);
@@ -95,7 +96,7 @@ void kernel_task()
 		
 		case KER_ST_2PAR1:
 			//case is a 2 parameter instruction, pull from kernel queue to get parameter 1
-			if (xQueueReceive(kernel_queue, &( ker_message ), portMAX_DELAY) == pdTRUE)
+			if (xQueueReceive(application_queue, &( ker_message ), portMAX_DELAY) == pdTRUE)
 			{
 				//shared state memory 2 saves here
 				put_msg_state(SSM_PARAM_1, ker_message);
@@ -106,7 +107,7 @@ void kernel_task()
 
 		case KER_ST_2PAR2:
 			//case is a 2 parameter instruction, pull from kernel queue to get parameter 2
-			if (xQueueReceive(kernel_queue, &( ker_message ), portMAX_DELAY) == pdTRUE)
+			if (xQueueReceive(application_queue, &( ker_message ), portMAX_DELAY) == pdTRUE)
 			{
 				//shared state memory 2 saves here
 				put_msg_state(SSM_PARAM_2, ker_message);
@@ -167,7 +168,7 @@ void ker_idle_func(INT8U opcode)
 
 	default:
 		// you done goofed
-		while (1);
+		//while (1);
 		break;
 	}
 }

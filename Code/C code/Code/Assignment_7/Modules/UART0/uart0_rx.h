@@ -28,12 +28,10 @@
 
 #define RX_FIFO_NOT_EMPTY !(UART0_FR_R & 0x10)
 
-// states
-#define SEND_STATE		0
-#define CONFIG_STATE	1
 
 // settings
 #define CONFIG_CHAR		'<'
+#define SET_APPLICATION	'a'
 #define SET_PS2CON		'p'
 
 

@@ -36,7 +36,7 @@
 #include "UART0/uart0_tx.h"
 #include "UART0/uart0_rx.h"
 #include "SPI_master/spi_master.h"
-#include "Kernel/kernel.h"
+#include "Application/app_kernel.h"
 //#include "PS2Controller/ps2controller.h"
 
 
@@ -60,7 +60,7 @@ xQueueHandle default_queue;
 xQueueHandle spi_tx_queue;
 xQueueHandle spi_rx_queue;
 
-xQueueHandle kernel_queue;
+xQueueHandle application_queue;
 
 xQueueHandle user_input_queue;
 
@@ -91,7 +91,7 @@ int main(void)
 	spi_tx_queue   = 	xQueueCreate(32, sizeof(INT16U));
 	spi_rx_queue   = 	xQueueCreate(32, sizeof(INT16U));
 
-	kernel_queue   = 	xQueueCreate(32, sizeof(INT8U));
+	application_queue   = 	xQueueCreate(32, sizeof(INT8U));
 
 	user_input_queue = 	xQueueCreate(32, sizeof(INT8U));
 
