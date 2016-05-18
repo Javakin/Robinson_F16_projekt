@@ -23,7 +23,7 @@
 #include "EMP/emp_type.h"
 #include "UART0/uart0_tx.h"
 #include "SPI_master/spi_master.h"
-#include "SPI_api/spi_api.h"
+#include "PT_api/pt_api.h"
 #include "FreeRTOS.h"
 #include "task.h"
 #include "queue.h"
@@ -84,7 +84,7 @@ void spi_master_task()
 			break;
 
 		case SPI_ST_RECEIVE:
-			spi_api_recieve_message(spi_rx);
+			pt_api_recieve_message(spi_rx);
 			break;
 
 		}
