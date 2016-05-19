@@ -215,10 +215,10 @@ void ker_execute_func()
 		put_msg_state( SSM_TARGET_TILT, get_msg_state(SSM_PARAM_2));		
 	
 		//send pan coordinate
-		pt_api_send_message(ADR_TARGET_POS, SUB_ADR_PAN, get_msg_state(SSM_TARGET_PAN));
+		pt_api_send_message(ADR_TARGET_POS, SUB_ADR_PAN, SSM_TARGET_PAN);
 
 		//send tilt coordinate
-		pt_api_send_message(ADR_TARGET_POS, SUB_ADR_TILT, get_msg_state(SSM_TARGET_TILT));
+		pt_api_send_message(ADR_TARGET_POS, SUB_ADR_TILT, SSM_TARGET_TILT);
 
 		kernel_state = KER_ST_IDLE;
 		break;
@@ -229,8 +229,8 @@ void ker_execute_func()
 		put_msg_state(SSM_FPGA_ENABLE, get_msg_state(SSM_PARAM_1));
 
 		//send package to FPGA with enable value, currently does same action on both motors
-		pt_api_send_message(ADR_EN_MOTOR, SUB_ADR_TILT, get_msg_state(SSM_FPGA_ENABLE));
-		pt_api_send_message(ADR_EN_MOTOR, SUB_ADR_PAN, get_msg_state(SSM_FPGA_ENABLE));
+		pt_api_send_message(ADR_EN_MOTOR, SUB_ADR_TILT, SSM_FPGA_ENABLE);
+		pt_api_send_message(ADR_EN_MOTOR, SUB_ADR_PAN, SSM_FPGA_ENABLE);
 		
 		kernel_state = KER_ST_IDLE;
 		break;
@@ -274,7 +274,7 @@ void ker_execute_func()
 		put_msg_state(SSM_MAX_PAN_VEL, get_msg_state(SSM_PARAM_1));
 
 		//send FPGA package, 3 unused bits
-		pt_api_send_message(ADR_MAX_SPEED, SUB_ADR_PAN, get_msg_state(SSM_MAX_PAN_VEL));
+		pt_api_send_message(ADR_MAX_SPEED, SUB_ADR_PAN, SSM_MAX_PAN_VEL);
 
 		kernel_state = KER_ST_IDLE;
 		break;
@@ -284,7 +284,7 @@ void ker_execute_func()
 		put_msg_state(SSM_MIN_PAN_VEL, get_msg_state(SSM_PARAM_1));
 
 		//send FPGA package, 3 unused bits
-		pt_api_send_message(ADR_MIN_SPEED, SUB_ADR_PAN, get_msg_state(SSM_MIN_PAN_VEL));
+		pt_api_send_message(ADR_MIN_SPEED, SUB_ADR_PAN, SSM_MIN_PAN_VEL);
 		
 		kernel_state = KER_ST_IDLE;
 		break;
@@ -294,7 +294,7 @@ void ker_execute_func()
 		put_msg_state(SSM_MAX_TILT_VEL, get_msg_state(SSM_PARAM_1));
 
 		//send FPGA package, 3 unused bits
-		pt_api_send_message(ADR_MAX_SPEED, SUB_ADR_TILT, get_msg_state(SSM_MAX_TILT_VEL));
+		pt_api_send_message(ADR_MAX_SPEED, SUB_ADR_TILT, SSM_MAX_TILT_VEL);
 		
 		kernel_state = KER_ST_IDLE;
 		break;
@@ -304,7 +304,7 @@ void ker_execute_func()
 		put_msg_state(SSM_MIN_TILT_VEL, get_msg_state(SSM_PARAM_1));
 
 		//send FPGA package, 3 unused bits
-		pt_api_send_message(ADR_MIN_SPEED, SUB_ADR_TILT, get_msg_state(SSM_MIN_TILT_VEL));
+		pt_api_send_message(ADR_MIN_SPEED, SUB_ADR_TILT, SSM_MIN_TILT_VEL);
 		
 		kernel_state = KER_ST_IDLE;
 		break;

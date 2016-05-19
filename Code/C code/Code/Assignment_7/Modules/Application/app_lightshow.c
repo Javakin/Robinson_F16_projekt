@@ -42,7 +42,8 @@
 enum lightshow_states
 {
 	LIG_ST_IDLE,
-	LIG_ST_WAIT,
+	LIG_ST_WAIT_PAN,
+	LIG_ST_WAIT_TILT,
 	LIG_ST_NEW_TARGET
 };
 
@@ -54,6 +55,13 @@ INT8U lightshow_state = LIG_ST_IDLE;
 
 // for debugging
 INT8U lig_message;
+INT8U n = 0;
+
+INT16S	target_pos;
+INT16S	current_pos;
+
+//0 - 10 000
+INT16U show1[4][2] = { { 1000, 1000 }, { 1000, 9000}, { 9000, 9000}, { 9000, 1000}};
 
 /*****************************   Functions   *******************************/
 void lightshow_task()
@@ -79,9 +87,69 @@ void lightshow_task()
 			break;
 
 		case LIG_ST_NEW_TARGET:
-			// send a new target
+			if(xQueueReceive(app_lightshow_queue, &( lig_message ), 1) == pdTRUE)
+			{
+				// message recieved
+				if (lig_message ==  STOP_SHOW_EVENT)
+					lightshow_state = LIG_ST_IDLE;
+			}
+			else
+			{
+				// send a new pan target
+				put_msg_state(SSM_TARGET_PAN, show1[n][0]);
+				pt_api_send_message(ADR_TARGET_POS, SUB_ADR_PAN, SSM_TARGET_PAN);
+
+				// send a new tilt target
+				put_msg_state(SSM_TARGET_TILT, show1[n][1]);
+				pt_api_send_message(ADR_TARGET_POS, SUB_ADR_TILT, SSM_TARGET_TILT);
+
+				n = (n + 1) % 4;
+
+				lightshow_state = LIG_ST_WAIT_PAN;
+			}
 
 			break;
+
+		case LIG_ST_WAIT_PAN:
+			if(xQueueReceive(app_lightshow_queue, &( lig_message ), 1) == pdTRUE)
+			{
+				// message recieved
+				if (lig_message ==  STOP_SHOW_EVENT)
+					lightshow_state = LIG_ST_IDLE;
+			}
+			else
+			{
+				// wait for system to reach system
+				target_pos = get_msg_state(SSM_TARGET_PAN);
+				current_pos = get_msg_state(SSM_CURRENT_PAN);
+
+				if (((target_pos - current_pos) < MIN_DISTANCE) && ((target_pos - current_pos) > - MIN_DISTANCE))
+				{
+					lightshow_state = LIG_ST_WAIT_TILT;
+				}
+			}
+			break;
+
+		case LIG_ST_WAIT_TILT:
+			if(xQueueReceive(app_lightshow_queue, &( lig_message ), 1) == pdTRUE)
+			{
+				// message recieved
+				if (lig_message ==  STOP_SHOW_EVENT)
+					lightshow_state = LIG_ST_IDLE;
+			}
+			else
+			{
+				// wait for system to reach system
+				target_pos = get_msg_state(SSM_TARGET_TILT);
+				current_pos = get_msg_state(SSM_CURRENT_TILT);
+
+				if (((target_pos - current_pos) < MIN_DISTANCE) && ((target_pos - current_pos) > - MIN_DISTANCE))
+				{
+					lightshow_state = LIG_ST_NEW_TARGET;
+				}
+			}
+			break;
+
 		}
 	}
 }
