@@ -4,7 +4,7 @@
 *
 * MODULENAME.: messages.h
 *
-* PROJECT....: Assignment 4
+* PROJECT....: semester project
 *
 * DESCRIPTION: Support message passing
 *

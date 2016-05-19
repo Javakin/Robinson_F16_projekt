@@ -16,6 +16,7 @@
 * 150516  DFH    Module created
 * 170516  RTH	 Instructions and states implemented
 * 180516  DFH	 Rename project
+* 190516  RTH	 FPGA packages implemented
 *
 *****************************************************************************/
 
@@ -208,17 +209,18 @@ void ker_execute_func()
 	{
 	//////////////////////// all 2 parameter instructions   //////////////////////////////
 	case GOTO_COORD_EVENT:
-		//send pan coordinate
-		pt_api_send_message(ADR_TARGET_POS, SUB_ADR_PAN, get_msg_state(SSM_PARAM_1));
-
+	
 		//save pan coordinate to SSM
 		put_msg_state( SSM_TARGET_PAN, get_msg_state(SSM_PARAM_1));
 
-		//send tilt coordinate
-		pt_api_send_message(ADR_TARGET_POS, SUB_ADR_TILT, get_msg_state(SSM_PARAM_2));
-
 		//save tilt coordinate to SSM
-		put_msg_state( SSM_TARGET_TILT, get_msg_state(SSM_PARAM_2));
+		put_msg_state( SSM_TARGET_TILT, get_msg_state(SSM_PARAM_2));		
+	
+		//send pan coordinate
+		pt_api_send_message(ADR_TARGET_POS, SUB_ADR_PAN, get_msg_state(SSM_TARGET_PAN));
+
+		//send tilt coordinate
+		pt_api_send_message(ADR_TARGET_POS, SUB_ADR_TILT, get_msg_state(SSM_TARGET_TILT));
 
 		break;
 
@@ -227,6 +229,21 @@ void ker_execute_func()
 		//enables or disables FPGA
 		put_msg_state(SSM_FPGA_ENABLE, get_msg_state(SSM_PARAM_1));
 
+		//10 unused bits for the FPGA enable package
+		//send package to FPGA with enable value, currently does same action on both motors
+		pt_api_send_message(ADR_EN_MOTOR, SUB_ADR_TILT, ("0000000000" + get_msg_state(SSM_FPGA_ENABLE)));
+		pt_api_send_message(ADR_EN_MOTOR, SUB_ADR_PAN, ("0000000000" + get_msg_state(SSM_FPGA_ENABLE)));
+		
+		//todo: test om denne implementation virker, eller der skal appendes istedet
+		
+		//anden ide:
+		//int32u temp;
+		//temp = "0000000000"
+		
+		//Kræver at string.h includes?
+		//strcat(temp, get_msg_state(SSM_FPGA_ENABLE))		
+		//pt_api_send_message(ADR_EN_MOTOR, SUB_ADR_PAN, temp));
+		
 		kernel_state = KER_ST_IDLE;
 		break;
 
@@ -262,6 +279,9 @@ void ker_execute_func()
 		//set max speed for pan in SSM
 		put_msg_state(SSM_MAX_PAN_VEL, get_msg_state(SSM_PARAM_1));
 
+		//send FPGA package, 3 unused bits
+		pt_api_send_message(ADR_MAX_SPEED, SUB_ADR_PAN, ("000" + get_msg_state(SSM_MAX_PAN_VEL)));
+
 		kernel_state = KER_ST_IDLE;
 		break;
 
@@ -269,6 +289,9 @@ void ker_execute_func()
 		//set min speed for pan in SSM
 		put_msg_state(SSM_MIN_PAN_VEL, get_msg_state(SSM_PARAM_1));
 
+		//send FPGA package, 3 unused bits
+		pt_api_send_message(ADR_MIN_SPEED, SUB_ADR_PAN, ("000" + get_msg_state(SSM_MIN_PAN_VEL)));
+		
 		kernel_state = KER_ST_IDLE;
 		break;
 
@@ -276,6 +299,9 @@ void ker_execute_func()
 		//set max speed for tilt in SSM
 		put_msg_state(SSM_MAX_TILT_VEL, get_msg_state(SSM_PARAM_1));
 
+		//send FPGA package, 3 unused bits
+		pt_api_send_message(ADR_MAX_SPEED, SUB_ADR_TILT, ("000" + get_msg_state(SSM_MAX_TILT_VEL)));
+		
 		kernel_state = KER_ST_IDLE;
 		break;
 
@@ -283,6 +309,9 @@ void ker_execute_func()
 		//set min speed for tilt in SSM
 		put_msg_state(SSM_MIN_TILT_VEL, get_msg_state(SSM_PARAM_1));
 
+		//send FPGA package, 3 unused bits
+		pt_api_send_message(ADR_MIN_SPEED, SUB_ADR_TILT, ("000" + get_msg_state(SSM_MIN_TILT_VEL)));
+		
 		kernel_state = KER_ST_IDLE;
 		break;
 

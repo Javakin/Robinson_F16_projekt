@@ -14,8 +14,8 @@
 * YYMMDD
 * --------------------
 * 150228  MoH   Module created.
-* 040316  DFH	Module opdaget
-* 150416  DFH 	Module splittet up in RX and TX
+* 040316  DFH	Module updated
+* 150416  DFH 	Module splitted into RX and TX
 *
 *****************************************************************************/
 

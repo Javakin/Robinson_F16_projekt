@@ -43,13 +43,13 @@
 void spi_master_task();
 //  Input    : -
 //  Output   : -
-//  Function : read the input from a playstation 2 controller
+//  Function : spi super task
 
 
 void spi_master_init();
 //  Input    : -
 //  Output   : -
-//  Function : initialuse the gpio's and setup the controller
+//  Function : initialize spi
 
 
 INT16U spi_send_message(INT16U message);

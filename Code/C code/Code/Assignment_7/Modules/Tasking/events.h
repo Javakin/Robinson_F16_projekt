@@ -4,9 +4,9 @@
 *
 * MODULENAME.: events.h
 *
-* PROJECT....: Assignent 4
+* PROJECT....: semester project
 *
-* DESCRIPTION: Defining all the events used in Assignment 4
+* DESCRIPTION: defines events used through the project
 *
 * Change Log:
 ******************************************************************************

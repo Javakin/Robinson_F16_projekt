@@ -6,7 +6,7 @@
 *
 * PROJECT....: semester project 4
 *
-* DESCRIPTION: supports an interface for using the message_queues
+* DESCRIPTION: supports an interface to use the message_queues
 *
 * Change Log:
 ******************************************************************************

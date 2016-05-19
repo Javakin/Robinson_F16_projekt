@@ -4,9 +4,9 @@
 *
 * MODULENAME.: uart0.c
 *
-* PROJECT....: Assignment 4
+* PROJECT....: semester project
 *
-* DESCRIPTION: Support UART comunicaiton
+* DESCRIPTION: Support UART communication
 *
 * Change Log:
 *****************************************************************************
@@ -24,7 +24,6 @@
 #include <EMP/emp_type.h>
 #include <UART0/uart0_tx.h>
 
-//#include <RTCS/rtcs.h>
 #include "FreeRTOS.h"
 #include "queue.h"
 #include "task.h"
