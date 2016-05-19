@@ -28,7 +28,7 @@
 #include "FreeRTOS.h"
 #include "task.h"
 #include "queue.h"
-
+#include "semphr.h"
 #include <math.h>		//required for conversion to tach
 
 
@@ -41,6 +41,8 @@
 
 extern xQueueHandle spi_tx_queue;
 extern xQueueHandle spi_rx_queue;
+
+extern xSemaphoreHandle pt_semaphore;
 
 /*****************************   Functions   *******************************/
 
@@ -59,26 +61,30 @@ INT8U pt_api_send_message_no_conv( INT8U adress, INT8U PT, INT8U ssm_address)
 	return xQueueSend(spi_tx_queue, &( placeholder ), portMAX_DELAY);
 }
 
-
 INT8U pt_api_send_message( INT8U address, INT8U PT, INT8U ssm_address)
 {
-	INT16U data_holder = get_msg_state(ssm_address);
-	
-	//this function handles all tach conversion
-	// if (address = ADR_TARGET_POS)
-	// {
-		// data_holder = pt_api_convert_to_tach(data_holder);
-	// }
-	
-	
-	// 2 adress bit 1 p/t bit and 11 message bits
-	// 0 0 a a pt d d d d d  d d d d d d
-	INT16U placeholder = data_holder & 0x07FF;
-	placeholder |= ((PT & 0x0001) << 11);
-	placeholder |= ( address << 12 );
+	// define variables
+	INT16U placeholder;
+	INT8U return_val = 0;
+	INT16U data_holder;
 
-	// send the message via spi_master
-	return xQueueSend(spi_tx_queue, &( placeholder ), portMAX_DELAY);
+	if (xSemaphoreTake(pt_semaphore, portMAX_DELAY) == pdTRUE)
+	{
+		data_holder = get_msg_state(ssm_address);
+
+		// 2 adress bit 1 p/t bit and 11 message bits
+		// 0 0 a a pt d d d d d  d d d d d d
+		placeholder = data_holder & 0x07FF;
+		placeholder |= ((PT & 0x0001) << 11);
+		placeholder |= ( address << 12 );
+	
+		// send the message via spi_master
+		return_val = xQueueSend(spi_tx_queue, &( placeholder ), portMAX_DELAY);
+	
+		xSemaphoreGive(pt_semaphore);
+	}
+
+	return return_val;
 }
 
 INT8U pt_api_get_adress(INT16U message)
@@ -150,7 +156,7 @@ INT16U pt_api_convert_to_tach(INT16U message)
 	
 	
 	
-	
+	return 0;
 	
 }
 

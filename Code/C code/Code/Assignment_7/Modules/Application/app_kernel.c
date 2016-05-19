@@ -369,18 +369,30 @@ void kernel_init()
 	
 	//reset target position
 	put_msg_state(SSM_TARGET_PAN, CENTER_PAN);	
+	pt_api_send_message(ADR_TARGET_POS, SUB_ADR_PAN, SSM_TARGET_PAN);
+
 	put_msg_state(SSM_TARGET_TILT, CENTER_TILT);	
+	pt_api_send_message(ADR_TARGET_POS, SUB_ADR_TILT, SSM_TARGET_TILT);
 
 	//reset speed parameters
 	//FPGA initializes to the same values as here
 	put_msg_state(SSM_MIN_PAN_VEL, 	30);
+	pt_api_send_message(ADR_MIN_SPEED, SUB_ADR_PAN, SSM_MIN_PAN_VEL);
+
 	put_msg_state(SSM_MAX_PAN_VEL, 	100);
+	pt_api_send_message(ADR_MAX_SPEED, SUB_ADR_PAN, SSM_MAX_PAN_VEL);
+
 	put_msg_state(SSM_MIN_TILT_VEL, 30);
+	pt_api_send_message(ADR_MIN_SPEED, SUB_ADR_TILT, SSM_MIN_TILT_VEL);
+
+
 	put_msg_state(SSM_MAX_TILT_VEL, 100);
+	pt_api_send_message(ADR_MAX_SPEED, SUB_ADR_TILT, SSM_MAX_TILT_VEL);
 	
 	//save FPGA enable state
 	//FPGA is enabled when the system is started
 	put_msg_state(SSM_FPGA_ENABLE, 1);
+
 
 }
 

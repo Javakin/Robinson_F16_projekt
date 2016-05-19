@@ -63,7 +63,8 @@ void update_task()
 
 void update_current_init()
 {
-	// setup
+	// setup wait for one second
+	vTaskDelay(200);
 }
 
 

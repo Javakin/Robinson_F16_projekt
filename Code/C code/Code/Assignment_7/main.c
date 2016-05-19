@@ -38,6 +38,7 @@
 #include "SPI_master/spi_master.h"
 #include "Application/app_kernel.h"
 #include "Application/app_lightshow.h"
+#include "Application/app_update_current.h"
 //#include "PS2Controller/ps2controller.h"
 
 
@@ -69,6 +70,7 @@ xQueueHandle user_input_queue;
 // semaphores
 xSemaphoreHandle uart0_tx_semaphore;
 xSemaphoreHandle ssm_semaphore;
+xSemaphoreHandle pt_semaphore;
 
 /*****************************   Functions   *******************************/
 
@@ -101,6 +103,7 @@ int main(void)
 	// create all semaphores
 	uart0_tx_semaphore = xSemaphoreCreateMutex();
 	ssm_semaphore 	   = xSemaphoreCreateMutex();
+	pt_semaphore	   = xSemaphoreCreateMutex();
 
 	// Variable used to check if all tasks has been created correcty
 	portBASE_TYPE return_value = pdTRUE;
@@ -113,6 +116,7 @@ int main(void)
 	return_value &= xTaskCreate( spi_master_task, ( signed portCHAR * ) "spi_master_task", USERTASK_STACK_SIZE, NULL, HIGH_PRIO, NULL );
 	return_value &= xTaskCreate( kernel_task, ( signed portCHAR *) "kernel_task", USERTASK_STACK_SIZE, NULL, MED_PRIO, NULL);
 	return_value &= xTaskCreate( lightshow_task, ( signed portCHAR *) "lightshow_task", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL);
+	return_value &= xTaskCreate( update_task, ( signed portCHAR *) "update_task", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL);
 
 
 
