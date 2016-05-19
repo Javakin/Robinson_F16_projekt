@@ -363,7 +363,21 @@ void kernel_init()
 	put_msg_state(SSM_WIDTH, 5);
 	put_msg_state(SSM_DEPTH, 5);
 	
-	//todo: reset target position
+	//reset target position
+	put_msg_state(SSM_TARGET_PAN, CENTER_PAN);	
+	put_msg_state(SSM_TARGET_TILT, CENTER_TILT);	
+
+	//reset speed parameters
+	//FPGA initializes to the same values as here
+	put_msg_state(SSM_MIN_PAN_VEL, 	30);
+	put_msg_state(SSM_MAX_PAN_VEL, 	100);
+	put_msg_state(SSM_MIN_TILT_VEL, 30);
+	put_msg_state(SSM_MAX_TILT_VEL, 100);
+	
+	//save FPGA enable state
+	//FPGA is enabled when the system is started
+	put_msg_state(SSM_FPGA_ENABLE, 1);
+
 }
 
 

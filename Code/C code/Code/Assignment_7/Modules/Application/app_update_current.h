@@ -2,36 +2,29 @@
 * University of Southern Denmark
 * Embedded C Programming (ECP)
 *
-* MODULENAME.: kernel.h
+* MODULENAME.: app_update_current.h
 *
 * PROJECT....: semester project
 *
-* DESCRIPTION: mannage commadns
+* DESCRIPTION: Updates current position by sending the same target package to the FPGA
 *
 * Change Log:
 ******************************************************************************
 * Date    Id    Change
 * YYMMDD
 * --------------------
-* 150516  DFH    Module created
-* 190516  RTH	 Corrected comments
+* 190516  RTH    Module created
 *
 *****************************************************************************/
 
-#ifndef KERNEL_H_
-#define KERNEL_H_
+#ifndef APP_UPDATE_CURRENT_H_
+#define APP_UPDATE_CURRENT_H_
 
 /***************************** Include files *******************************/
-#include "Modules/EMP/emp_type.h"
+
 
 /*****************************    Defines    *******************************/
-//scene defines
-#define SCENE1			1
-#define SCENE2			2
-#define SCENE3			3
 
-#define CENTER_PAN		540
-#define CENTER_TILT		540
 
 /*****************************   Constants   *******************************/
 
@@ -39,26 +32,16 @@
 /*****************************   Functions   *******************************/
 
 
-void kernel_task();
+void update_task();
 //  Input    : -
 //  Output   : -
-//  Function : super task for the kernel, runs 5 states
+//  Function : super task for update
 
 
-void kernel_init();
+void update_current_init();
 //  Input    : -
 //  Output   : -
-//  Function : initializes the kernel
-
-void ker_idle_func(INT8U opcode);
-//  Input    : -
-//  Output   : -
-//  Function : function to find amount of parameters an instruction takes
-
-void ker_execute_func();
-//  Input    : -
-//  Output   : -
-//  Function : function to run instruction when all parameters are found
+//  Function : init for update
 
 
 /****************************** End Of Module *******************************/
