@@ -25,10 +25,10 @@
 
 /*****************************    Defines    *******************************/
 
-#define CON_RX			5
-#define CON_TX			0
-#define CON_ATENTION  	1
-#define CON_CLOCK   	4
+#define CON_RX			5	//MISO 	, L15
+#define CON_TX			0	//MOSI 	, K12
+#define CON_ATENTION  	1	//SS	, L17
+#define CON_CLOCK   	4	//CLK	, M15
 
 
 // bits send
