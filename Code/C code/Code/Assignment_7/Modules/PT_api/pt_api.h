@@ -41,7 +41,7 @@
 /*****************************   Functions   *******************************/
 
 
-INT8U pt_api_send_message( INT8U adress, INT8U PT, INT16U message);
+INT8U pt_api_send_message( INT8U adress, INT8U PT, INT8U ssm_address);
 //  Input    : adress used for the message
 //			   the message to send
 //  Output   : -

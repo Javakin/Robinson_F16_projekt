@@ -59,6 +59,7 @@ INT8U pt_api_send_message_no_conv( INT8U adress, INT8U PT, INT8U ssm_address)
 	return xQueueSend(spi_tx_queue, &( placeholder ), portMAX_DELAY);
 }
 
+
 INT8U pt_api_send_message( INT8U address, INT8U PT, INT8U ssm_address)
 {
 	INT16U data_holder = get_msg_state(ssm_address);

@@ -22,8 +22,7 @@
 #include <tm4c123gh6pm.h>
 #include "Modules/EMP/emp_type.h"
 #include "Tasking/events.h"
-#include "UART0/uart0_tx.h"
-#include "Application/app_kernel.h"
+#include "Application/app_update_current.h"
 #include "Tasking/messages.h"
 #include "Tasking/tmodel.h"
 #include "PT_api/pt_api.h"
@@ -52,10 +51,10 @@ void update_task()
 	while(1)
 	{
 		//send target pan coordinate
-		pt_api_send_message(ADR_TARGET_POS, SUB_ADR_PAN, get_msg_state(SSM_TARGET_PAN));
+		pt_api_send_message(ADR_TARGET_POS, SUB_ADR_PAN, SSM_TARGET_PAN);
 
 		//send target tilt coordinate
-		pt_api_send_message(ADR_TARGET_POS, SUB_ADR_TILT, get_msg_state(SSM_TARGET_TILT));
+		pt_api_send_message(ADR_TARGET_POS, SUB_ADR_TILT, SSM_TARGET_TILT);
 		
 		//delay task for 5 msec
 		vTaskDelay(1);
