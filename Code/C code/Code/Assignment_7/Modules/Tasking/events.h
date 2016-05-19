@@ -28,7 +28,6 @@
 // -------
 
 // pure events
-#define CON_CHEK_EVENT		0
 #define GOTO_COORD_EVENT	2
 #define RUN_SHOW_EVENT		3
 #define STOP_SHOW_EVENT		4
@@ -49,9 +48,7 @@
 // uart_api events
 #define USER_VAL_EVENT			30
 
-// pt_api_events
-#define CON_CHECK_TRUE_EVENT	40
-#define CON_CHECK_FALSE_EVENT	41
+
 
 
 // General Events
