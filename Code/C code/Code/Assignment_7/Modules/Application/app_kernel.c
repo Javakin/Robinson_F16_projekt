@@ -228,8 +228,8 @@ void ker_execute_func()
 		put_msg_state(SSM_FPGA_ENABLE, get_msg_state(SSM_PARAM_1));
 
 		//send package to FPGA with enable value, currently does same action on both motors
-		pt_api_send_message(ADR_EN_MOTOR, SUB_ADR_TILT, get_msg_state(SSM_FPGA_ENABLE)));
-		pt_api_send_message(ADR_EN_MOTOR, SUB_ADR_PAN, get_msg_state(SSM_FPGA_ENABLE)));
+		pt_api_send_message(ADR_EN_MOTOR, SUB_ADR_TILT, get_msg_state(SSM_FPGA_ENABLE));
+		pt_api_send_message(ADR_EN_MOTOR, SUB_ADR_PAN, get_msg_state(SSM_FPGA_ENABLE));
 		
 		kernel_state = KER_ST_IDLE;
 		break;

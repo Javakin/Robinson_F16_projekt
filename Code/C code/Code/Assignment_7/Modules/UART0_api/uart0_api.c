@@ -51,7 +51,7 @@ void uart0_api_receive_message(INT8U message)
 
 	switch(message)
 	{
-	case 13:
+	case '/':
 		// enter has been pressed
 		uart0_api_put_queue(USER_VAL_EVENT);
 		break;
