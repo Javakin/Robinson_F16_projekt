@@ -29,6 +29,8 @@
 #include "task.h"
 #include "queue.h"
 
+#include <math.h>		//required for conversion to tach
+
 
 /*****************************    Defines    *******************************/
 
@@ -42,13 +44,37 @@ extern xQueueHandle spi_rx_queue;
 
 /*****************************   Functions   *******************************/
 
-INT8U pt_api_send_message( INT8U adress, INT8U PT, INT16U message)
+INT8U pt_api_send_message_no_conv( INT8U adress, INT8U PT, INT8U ssm_address)
 {
+	INT16U data_holder = get_msg_state(ssm_address);
+	//this api send will ignore conversion, made for the goto_tach instruction
+	
 	// 2 adress bit 1 p/t bit and 11 message bits
 	// 0 0 a a pt d d d d d  d d d d d d
-	INT16U placeholder = message & 0x07FF;
+	INT16U placeholder = data_holder & 0x07FF;
 	placeholder |= ((PT & 0x0001) << 11);
 	placeholder |= ( adress << 12 );
+
+	// send the message via spi_master
+	return xQueueSend(spi_tx_queue, &( placeholder ), portMAX_DELAY);
+}
+
+INT8U pt_api_send_message( INT8U address, INT8U PT, INT8U ssm_address)
+{
+	INT16U data_holder = get_msg_state(ssm_address);
+	
+	//this function handles all tach conversion
+	// if (address = ADR_TARGET_POS)
+	// {
+		// data_holder = pt_api_convert_to_tach(data_holder);
+	// }
+	
+	
+	// 2 adress bit 1 p/t bit and 11 message bits
+	// 0 0 a a pt d d d d d  d d d d d d
+	INT16U placeholder = data_holder & 0x07FF;
+	placeholder |= ((PT & 0x0001) << 11);
+	placeholder |= ( address << 12 );
 
 	// send the message via spi_master
 	return xQueueSend(spi_tx_queue, &( placeholder ), portMAX_DELAY);
@@ -89,7 +115,43 @@ void pt_api_receive_message(INT16U message)
 	}
 }
 
+INT16U pt_api_convert_to_tach(INT16U message)
+{
+	//here we recieve a number from 1 to 10000
+	//this must be converted to a tach value depending on constraints
+/* 	
+	INT16U Height = get_msg_state(SSM_LENGTH);
+	INT16U Width = get_msg_state(SSM_WIDTH);
+	INT16U Depth = get_msg_state(SSM_DEPTH);
 
+	//restraints in meter for pan and tilt
+	INT16U Tac_P_max = atan(Width/Height)*57.3*3*2;
+	INT16U Tac_T_max = atan(Depth/Height)*57.3*3*2;
+
+
+	INT16U Pos_P_surface = Input_P*Width/100;
+	INT16U Pos_T_surface = Input_T*Width/100;
+
+	INT16U Pos_P_tac = atan(Pos_P_surface/Height)*57.3*3;
+	INT16U Pos_T_tac = atan(Pos_T_surface/Height)*57.3*3;
+
+
+	 */
+
+	//input = 5000
+	//5000 * 7 / 10000  =3,5
+	
+	
+	//atan(3,5/5)*57,3*3
+	
+	
+	
+	
+	
+	
+	
+	
+}
 
 /****************************** End Of Module *******************************/
 
