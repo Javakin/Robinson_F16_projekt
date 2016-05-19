@@ -37,6 +37,7 @@
 #include "UART0/uart0_rx.h"
 #include "SPI_master/spi_master.h"
 #include "Application/app_kernel.h"
+#include "Application/app_lightshow.h"
 //#include "PS2Controller/ps2controller.h"
 
 
@@ -61,6 +62,7 @@ xQueueHandle spi_tx_queue;
 xQueueHandle spi_rx_queue;
 
 xQueueHandle application_queue;
+xQueueHandle app_lightshow_queue;
 
 xQueueHandle user_input_queue;
 
@@ -92,6 +94,7 @@ int main(void)
 	spi_rx_queue   = 	xQueueCreate(32, sizeof(INT16U));
 
 	application_queue   = 	xQueueCreate(32, sizeof(INT8U));
+	app_lightshow_queue =	xQueueCreate(32, sizeof(INT8U));
 
 	user_input_queue = 	xQueueCreate(32, sizeof(INT8U));
 
@@ -109,6 +112,7 @@ int main(void)
 	return_value &= xTaskCreate( uart0_tx_task, ( signed portCHAR *) "uart0_tx_task", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL);
 	return_value &= xTaskCreate( spi_master_task, ( signed portCHAR * ) "spi_master_task", USERTASK_STACK_SIZE, NULL, HIGH_PRIO, NULL );
 	return_value &= xTaskCreate( kernel_task, ( signed portCHAR *) "kernel_task", USERTASK_STACK_SIZE, NULL, MED_PRIO, NULL);
+	return_value &= xTaskCreate( lightshow_task, ( signed portCHAR *) "lightshow_task", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL);
 
 
 

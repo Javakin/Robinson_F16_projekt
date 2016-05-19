@@ -53,6 +53,7 @@ enum kernel_states
 
 // Queues
 extern xQueueHandle application_queue;
+extern xQueueHandle app_lightshow_queue;
 extern xQueueHandle spi_tx_queue;
 
 INT8U kernel_state = KER_ST_IDLE;
@@ -149,7 +150,6 @@ void kernel_task()
 		case KER_ST_EXECUTE:
 			// execute the operand
 			ker_execute_func();
-			kernel_state = KER_ST_IDLE;
 			break;
 		}
 	}
@@ -220,6 +220,7 @@ void ker_execute_func()
 		//send tilt coordinate
 		pt_api_send_message(ADR_TARGET_POS, SUB_ADR_TILT, get_msg_state(SSM_TARGET_TILT));
 
+		kernel_state = KER_ST_IDLE;
 		break;
 
 	//////////////////////// all 1 parameter instructions   //////////////////////////////
@@ -239,9 +240,12 @@ void ker_execute_func()
 		//send lightshow value to SSM
 		put_msg_state(SSM_LIGHTSHOW, get_msg_state(SSM_PARAM_1));
 
-		//todo: Pass lightshow event 
-		
-		kernel_state = KER_ST_IDLE;
+		//Pass lightshow event
+		ker_message = RUN_SHOW_EVENT;
+		if (xQueueSend(app_lightshow_queue, &(ker_message), portMAX_DELAY) == pdTRUE)
+		{
+			kernel_state = KER_ST_IDLE;
+		}
 		break;
 
 	case SET_HEIGHT_EVENT:
