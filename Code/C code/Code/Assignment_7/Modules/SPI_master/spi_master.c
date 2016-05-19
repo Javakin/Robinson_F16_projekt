@@ -59,7 +59,7 @@ INT16U spi_tx = 0;
 /*****************************   Functions   *******************************/
 void spi_master_task()
 {
-	// initialise used prots
+	// initialise used ports
 	spi_master_init();
 
 	// run task

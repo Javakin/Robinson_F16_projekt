@@ -4,9 +4,9 @@
 *
 * MODULENAME.: uart0.c
 *
-* PROJECT....: Assignment 4
+* PROJECT....: semester project
 *
-* DESCRIPTION: Support UART comunicaiton
+* DESCRIPTION: Support UART communication
 *
 * Change Log:
 *****************************************************************************
@@ -47,10 +47,10 @@ enum uart_rx_states
 };
 
 
-// Placeholder for the recieced byte
+// placeholder for the received byte
 INT8U uart0_rx_received;
 
-// holder of state
+// state holder
 INT8U uart0_rx_state = SEND_STATE;
 
 

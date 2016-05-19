@@ -73,7 +73,7 @@ INT16U pt_api_get_pt(INT16U message)
 
 void pt_api_receive_message(INT16U message)
 {
-	// deal with the recieved message
+	// deal with the received message
 	switch(pt_api_get_adress(message))
 	{
 	case ADR_TARGET_POS:

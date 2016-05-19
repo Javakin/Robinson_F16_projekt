@@ -4,7 +4,7 @@
 *
 * MODULENAME.: uart0_tx.h
 *
-* PROJECT....: Assignment 4
+* PROJECT....: semester project
 *
 * DESCRIPTION: Support uart0_tx comunicaiton
 *
@@ -14,8 +14,8 @@
 * YYMMDD
 * --------------------
 * 150228  MoH   Module created.
-* 040316  DFH	Module opdaget
-* 150416  DFH	Module splittet up in Rx and Tx
+* 040316  DFH	Module updated
+* 150416  DFH	Module splitted into Rx and Tx
 *
 *****************************************************************************/
 

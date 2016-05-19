@@ -4,9 +4,9 @@
 *
 * MODULENAME.: tmodel.h
 *
-* PROJECT....: ECP
+* PROJECT....: semester project
 *
-* DESCRIPTION: Defines the elemtn of the task model..
+* DESCRIPTION: Defines the element of the task model.
 *
 * Change Log:
 ******************************************************************************

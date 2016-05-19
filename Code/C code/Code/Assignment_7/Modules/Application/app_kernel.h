@@ -14,6 +14,7 @@
 * YYMMDD
 * --------------------
 * 150516  DFH    Module created
+* 190516  RTH	 Corrected comments
 *
 *****************************************************************************/
 
@@ -37,23 +38,23 @@
 void kernel_task();
 //  Input    : -
 //  Output   : -
-//  Function : read the input from a playstation 2 controller
+//  Function : super task for the kernel, runs 5 states
 
 
 void kernel_init();
 //  Input    : -
 //  Output   : -
-//  Function : initialuse the gpio's and setup the controller
+//  Function : initializes the kernel
 
 void ker_idle_func(INT8U opcode);
 //  Input    : -
 //  Output   : -
-//  Function : this function select states depending on the parameter
+//  Function : function to find amount of parameters an instruction takes
 
 void ker_execute_func();
 //  Input    : -
 //  Output   : -
-//  Function : this function is executed under the execute state
+//  Function : function to run instruction when all parameters are found
 
 
 /****************************** End Of Module *******************************/
