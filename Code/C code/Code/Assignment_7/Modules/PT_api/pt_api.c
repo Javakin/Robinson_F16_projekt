@@ -39,8 +39,6 @@
 
 extern xQueueHandle spi_tx_queue;
 extern xQueueHandle spi_rx_queue;
-extern xQueueHandle application_queue;
-
 
 /*****************************   Functions   *******************************/
 
@@ -88,19 +86,6 @@ void pt_api_receive_message(INT16U message)
 			break;
 		}
 		break;
-
-		case ADR_MAX_SPEED:
-			// check for connection for the connection check command
-			message = CON_CHECK_TRUE_EVENT;
-			xQueueSend(application_queue, &(message), portMAX_DELAY);
-			break;
-
-		case ADR_EN_MOTOR:
-			// check for connection for the connection chech command
-			message = CON_CHECK_FALSE_EVENT;
-			xQueueSend(application_queue, &(message), portMAX_DELAY);
-			break;
-
 	}
 }
 

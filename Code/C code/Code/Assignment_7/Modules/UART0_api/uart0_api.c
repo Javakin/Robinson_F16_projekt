@@ -116,10 +116,6 @@ void uart0_api_receive_message(INT8U message)
 		uart0_api_put_queue(STOP_SHOW_EVENT);
 		break;
 
-	case 'o':
-		// connection check
-		uart0_api_put_queue(CON_CHEK_EVENT);
-		break;
 
 	default:
 		// cheak for number input

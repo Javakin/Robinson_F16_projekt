@@ -189,8 +189,6 @@ void ker_idle_func(INT8U opcode)
 		break;
 
 	//////////////////////// all 0 parameter instructions   //////////////////////////////
-	case CON_CHEK_EVENT:
-		/*no break*/
 	case STOP_SHOW_EVENT:
 		//execute instruction
 		kernel_state = KER_ST_EXECUTE;
@@ -229,20 +227,9 @@ void ker_execute_func()
 		//enables or disables FPGA
 		put_msg_state(SSM_FPGA_ENABLE, get_msg_state(SSM_PARAM_1));
 
-		//10 unused bits for the FPGA enable package
 		//send package to FPGA with enable value, currently does same action on both motors
-		pt_api_send_message(ADR_EN_MOTOR, SUB_ADR_TILT, ("0000000000" + get_msg_state(SSM_FPGA_ENABLE)));
-		pt_api_send_message(ADR_EN_MOTOR, SUB_ADR_PAN, ("0000000000" + get_msg_state(SSM_FPGA_ENABLE)));
-		
-		//todo: test om denne implementation virker, eller der skal appendes istedet
-		
-		//anden ide:
-		//int32u temp;
-		//temp = "0000000000"
-		
-		//Kræver at string.h includes?
-		//strcat(temp, get_msg_state(SSM_FPGA_ENABLE))		
-		//pt_api_send_message(ADR_EN_MOTOR, SUB_ADR_PAN, temp));
+		pt_api_send_message(ADR_EN_MOTOR, SUB_ADR_TILT, get_msg_state(SSM_FPGA_ENABLE)));
+		pt_api_send_message(ADR_EN_MOTOR, SUB_ADR_PAN, get_msg_state(SSM_FPGA_ENABLE)));
 		
 		kernel_state = KER_ST_IDLE;
 		break;
@@ -252,6 +239,8 @@ void ker_execute_func()
 		//send lightshow value to SSM
 		put_msg_state(SSM_LIGHTSHOW, get_msg_state(SSM_PARAM_1));
 
+		//todo: Pass lightshow event 
+		
 		kernel_state = KER_ST_IDLE;
 		break;
 
@@ -272,6 +261,7 @@ void ker_execute_func()
 	case SET_DEPTH_EVENT:
 		//set length constraint in SSM
 		put_msg_state(SSM_DEPTH, get_msg_state(SSM_PARAM_1));
+		
 		kernel_state = KER_ST_IDLE;
 		break;
 
@@ -280,7 +270,7 @@ void ker_execute_func()
 		put_msg_state(SSM_MAX_PAN_VEL, get_msg_state(SSM_PARAM_1));
 
 		//send FPGA package, 3 unused bits
-		pt_api_send_message(ADR_MAX_SPEED, SUB_ADR_PAN, ("000" + get_msg_state(SSM_MAX_PAN_VEL)));
+		pt_api_send_message(ADR_MAX_SPEED, SUB_ADR_PAN, get_msg_state(SSM_MAX_PAN_VEL));
 
 		kernel_state = KER_ST_IDLE;
 		break;
@@ -290,7 +280,7 @@ void ker_execute_func()
 		put_msg_state(SSM_MIN_PAN_VEL, get_msg_state(SSM_PARAM_1));
 
 		//send FPGA package, 3 unused bits
-		pt_api_send_message(ADR_MIN_SPEED, SUB_ADR_PAN, ("000" + get_msg_state(SSM_MIN_PAN_VEL)));
+		pt_api_send_message(ADR_MIN_SPEED, SUB_ADR_PAN, get_msg_state(SSM_MIN_PAN_VEL));
 		
 		kernel_state = KER_ST_IDLE;
 		break;
@@ -300,7 +290,7 @@ void ker_execute_func()
 		put_msg_state(SSM_MAX_TILT_VEL, get_msg_state(SSM_PARAM_1));
 
 		//send FPGA package, 3 unused bits
-		pt_api_send_message(ADR_MAX_SPEED, SUB_ADR_TILT, ("000" + get_msg_state(SSM_MAX_TILT_VEL)));
+		pt_api_send_message(ADR_MAX_SPEED, SUB_ADR_TILT, get_msg_state(SSM_MAX_TILT_VEL));
 		
 		kernel_state = KER_ST_IDLE;
 		break;
@@ -310,7 +300,7 @@ void ker_execute_func()
 		put_msg_state(SSM_MIN_TILT_VEL, get_msg_state(SSM_PARAM_1));
 
 		//send FPGA package, 3 unused bits
-		pt_api_send_message(ADR_MIN_SPEED, SUB_ADR_TILT, ("000" + get_msg_state(SSM_MIN_TILT_VEL)));
+		pt_api_send_message(ADR_MIN_SPEED, SUB_ADR_TILT, get_msg_state(SSM_MIN_TILT_VEL));
 		
 		kernel_state = KER_ST_IDLE;
 		break;
@@ -350,34 +340,6 @@ void ker_execute_func()
 
 
 	//////////////////////// all 0 parameter instructions   //////////////////////////////
-	case CON_CHEK_EVENT:
-
-		// ping FPGA for connection
-		pt_api_send_message(ADR_MAX_SPEED, SUB_ADR_PAN, get_msg_state(SSM_MAX_PAN_VEL));
-
-		//
-		if (xQueueReceive(application_queue, &( ker_message ), portMAX_DELAY) == pdTRUE)
-		{
-			switch(ker_message)
-			{
-			case CON_CHECK_TRUE_EVENT:
-				uart0_putc_tx('\n');
-				uart0_putc_tx('y');
-				uart0_putc_tx('e');
-				uart0_putc_tx('s');
-				break;
-
-			case CON_CHECK_FALSE_EVENT:
-				uart0_putc_tx('\n');
-				uart0_putc_tx('n');
-				uart0_putc_tx('o');
-				break;
-			}
-			kernel_state = KER_ST_IDLE;
-		}
-
-		break;
-
 	case STOP_SHOW_EVENT:
 		put_msg_state(SSM_LIGHT_ENABLE, 0);
 
@@ -386,7 +348,8 @@ void ker_execute_func()
 
 	default:
 		// you done goofed
-		while (1);
+		// while (1);
+		__asm("nop");
 		break;
 	}
 }
