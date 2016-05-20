@@ -39,6 +39,8 @@
 #include "Application/app_kernel.h"
 #include "Application/app_lightshow.h"
 #include "Application/app_update_current.h"
+#include "UART0_api/uart0_api.h"
+#include "PT_api/pt_api.h"
 //#include "PS2Controller/ps2controller.h"
 
 
@@ -114,9 +116,9 @@ int main(void)
 	return_value &= xTaskCreate( uart0_rx_task, ( signed portCHAR *) "uart0_rx_task", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL);
 	return_value &= xTaskCreate( uart0_tx_task, ( signed portCHAR *) "uart0_tx_task", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL);
 	return_value &= xTaskCreate( spi_master_task, ( signed portCHAR * ) "spi_master_task", USERTASK_STACK_SIZE, NULL, HIGH_PRIO, NULL );
-	return_value &= xTaskCreate( kernel_task, ( signed portCHAR *) "kernel_task", USERTASK_STACK_SIZE, NULL, MED_PRIO, NULL);
-	//return_value &= xTaskCreate( lightshow_task, ( signed portCHAR *) "lightshow_task", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL);
-	//return_value &= xTaskCreate( update_task, ( signed portCHAR *) "update_task", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL);
+	return_value &= xTaskCreate( kernel_task, ( signed portCHAR *) "kernel_task", USERTASK_STACK_SIZE, NULL, HIGH_PRIO, NULL);
+	return_value &= xTaskCreate( lightshow_task, ( signed portCHAR *) "lightshow_task", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL);
+	return_value &= xTaskCreate( update_task, ( signed portCHAR *) "update_task", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL);
 
 
 

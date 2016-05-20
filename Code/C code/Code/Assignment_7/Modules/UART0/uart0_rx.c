@@ -105,6 +105,7 @@ void uart0_interrupt_enable_rx()
 	// UART Receive Time-Out Interrupt Mask
 	UART0_IM_R |= 0x40;
 
+	NVIC_PRI1_R |= 0x0000DF00;
 	// enable interrrupt for uart0
 	NVIC_EN0_R |= 0x00000020;
 }
@@ -140,7 +141,7 @@ void uart0_init_rx( INT32U baud_rate, INT8U databits, INT8U stopbits, INT8U pari
   GPIO_PORTA_DIR_R   |= 0x00000002;     // set PA1 (uart0 tx) to output
   GPIO_PORTA_DIR_R   &= 0xFFFFFFFE;     // set PA0 (uart0 rx) to input
   GPIO_PORTA_DEN_R   |= 0x00000003;		// enable digital operation of PA0 and PA1
-  //GPIO_PORTA_PUR_R   |= 0x00000002;
+
 
   BRD = 64000000 / baud_rate;   	// X-sys*64/(16*baudrate) = 16M*4/baudrate
   UART0_IBRD_R = BRD / 64;
