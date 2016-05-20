@@ -25,11 +25,12 @@
 #include <tm4c123gh6pm.h>
 #include "Modules/EMP/emp_type.h"
 #include "Tasking/events.h"
-#include "UART0/uart0_tx.h"
+//#include "UART0/uart0_tx.h"
 #include "Application/app_kernel.h"
 #include "Tasking/messages.h"
 #include "Tasking/tmodel.h"
 #include "PT_api/pt_api.h"
+#include "UART0_api/uart0_api.h"
 #include "FreeRTOS.h"
 #include "task.h"
 #include "queue.h"
@@ -150,6 +151,7 @@ void kernel_task()
 		case KER_ST_EXECUTE:
 			// execute the operand
 			ker_execute_func();
+			uart0_api_send_message('\n');
 			break;
 		}
 	}
