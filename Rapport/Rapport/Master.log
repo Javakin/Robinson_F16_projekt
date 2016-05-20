@@ -1,10 +1,12 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.12.17)  20 MAY 2016 11:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.5.17)  20 MAY 2016 12:00
 entering extended mode
-**Master.tex
+**./Master.tex
 (Master.tex
-LaTeX2e <2015/01/01> patch level 2
-Babel <3.9m> and hyphenation patterns for 69 languages loaded.
+LaTeX2e <2015/10/01> patch level 2
+Babel <3.9n> and hyphenation patterns for 69 languages loaded.
 \@input{Setup/Packages.aux}
+\openout2 = `Setup/Packages.aux'.
+
 (Setup/Packages.tex
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\article.cls"
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
@@ -29,17 +31,19 @@ Package: inputenc 2015/03/17 v1.2c Input encoding file
 \inpenc@posthook=\toks15
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\utf8.def"
-File: utf8.def 2015/06/27 v1.1n UTF-8 support for inputenc
+File: utf8.def 2015/09/07 v1.1p UTF-8 support for inputenc
 Now handling font encoding OML ...
 ... no UTF-8 mapping file for font encoding OML
 Now handling font encoding T1 ...
 ... processing UTF-8 mapping file for font encoding T1
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\t1enc.dfu"
-File: t1enc.dfu 2015/06/27 v1.1n UTF-8 support for inputenc
+File: t1enc.dfu 2015/09/07 v1.1p UTF-8 support for inputenc
+   defining Unicode char U+00A0 (decimal 160)
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
    defining Unicode char U+00AB (decimal 171)
+   defining Unicode char U+00AD (decimal 173)
    defining Unicode char U+00BB (decimal 187)
    defining Unicode char U+00BF (decimal 191)
    defining Unicode char U+00C0 (decimal 192)
@@ -160,6 +164,10 @@ File: t1enc.dfu 2015/06/27 v1.1n UTF-8 support for inputenc
    defining Unicode char U+016F (decimal 367)
    defining Unicode char U+0170 (decimal 368)
    defining Unicode char U+0171 (decimal 369)
+   defining Unicode char U+0174 (decimal 372)
+   defining Unicode char U+0175 (decimal 373)
+   defining Unicode char U+0176 (decimal 374)
+   defining Unicode char U+0177 (decimal 375)
    defining Unicode char U+0178 (decimal 376)
    defining Unicode char U+0179 (decimal 377)
    defining Unicode char U+017A (decimal 378)
@@ -167,6 +175,10 @@ File: t1enc.dfu 2015/06/27 v1.1n UTF-8 support for inputenc
    defining Unicode char U+017C (decimal 380)
    defining Unicode char U+017D (decimal 381)
    defining Unicode char U+017E (decimal 382)
+   defining Unicode char U+0218 (decimal 536)
+   defining Unicode char U+0219 (decimal 537)
+   defining Unicode char U+021A (decimal 538)
+   defining Unicode char U+021B (decimal 539)
    defining Unicode char U+200C (decimal 8204)
    defining Unicode char U+2013 (decimal 8211)
    defining Unicode char U+2014 (decimal 8212)
@@ -186,9 +198,11 @@ Now handling font encoding OT1 ...
 ... processing UTF-8 mapping file for font encoding OT1
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ot1enc.dfu"
-File: ot1enc.dfu 2015/06/27 v1.1n UTF-8 support for inputenc
+File: ot1enc.dfu 2015/09/07 v1.1p UTF-8 support for inputenc
+   defining Unicode char U+00A0 (decimal 160)
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
+   defining Unicode char U+00AD (decimal 173)
    defining Unicode char U+00B8 (decimal 184)
    defining Unicode char U+00BF (decimal 191)
    defining Unicode char U+00C5 (decimal 197)
@@ -206,6 +220,14 @@ File: ot1enc.dfu 2015/06/27 v1.1n UTF-8 support for inputenc
    defining Unicode char U+0142 (decimal 322)
    defining Unicode char U+0152 (decimal 338)
    defining Unicode char U+0153 (decimal 339)
+   defining Unicode char U+0174 (decimal 372)
+   defining Unicode char U+0175 (decimal 373)
+   defining Unicode char U+0176 (decimal 374)
+   defining Unicode char U+0177 (decimal 375)
+   defining Unicode char U+0218 (decimal 536)
+   defining Unicode char U+0219 (decimal 537)
+   defining Unicode char U+021A (decimal 538)
+   defining Unicode char U+021B (decimal 539)
    defining Unicode char U+2013 (decimal 8211)
    defining Unicode char U+2014 (decimal 8212)
    defining Unicode char U+2018 (decimal 8216)
@@ -217,7 +239,7 @@ Now handling font encoding OMS ...
 ... processing UTF-8 mapping file for font encoding OMS
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omsenc.dfu"
-File: omsenc.dfu 2015/06/27 v1.1n UTF-8 support for inputenc
+File: omsenc.dfu 2015/09/07 v1.1p UTF-8 support for inputenc
    defining Unicode char U+00A7 (decimal 167)
    defining Unicode char U+00B6 (decimal 182)
    defining Unicode char U+00B7 (decimal 183)
@@ -991,7 +1013,7 @@ Now handling font encoding TS1 ...
 ... processing UTF-8 mapping file for font encoding TS1
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ts1enc.dfu"
-File: ts1enc.dfu 2015/06/27 v1.1n UTF-8 support for inputenc
+File: ts1enc.dfu 2015/09/07 v1.1p UTF-8 support for inputenc
    defining Unicode char U+00A2 (decimal 162)
    defining Unicode char U+00A3 (decimal 163)
    defining Unicode char U+00A4 (decimal 164)
@@ -1164,7 +1186,7 @@ Package: titlesec 2016/03/21 v2.10.2 Sectioning titles
 Package: watermark 2004/12/09 v1.1 Watermarks (NCC)
 )
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\multicol.sty"
-Package: multicol 2015/03/31 v1.8m multicolumn formatting (FMi)
+Package: multicol 2015/08/19 v1.8n multicolumn formatting (FMi)
 \c@tracingmulticols=\count129
 \mult@box=\box35
 \multicol@leftmargin=\dimen145
@@ -1262,6 +1284,8 @@ LaTeX Info: Redefining \labelcpageref on input line 2230.
 Package cleveref Info: `listings' support loaded on input line 2950.
 ))
 (Master.aux)
+\openout1 = `Master.aux'.
+
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 2.
 LaTeX Font Info:    ... okay on input line 2.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 2.
@@ -1360,6 +1384,8 @@ LaTeX Info: Redefining \nameref on input line 2.
 
 (Master.out) (Master.out)
 \@outlinefile=\write3
+\openout3 = `Master.out'.
+
 \c@lstlisting=\count149
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: wrapfig package is loaded.
@@ -1383,7 +1409,7 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <17.28> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 21.
 )
-<Billeder/SDU-logo.png, id=75, 855.195pt x 846.16125pt>
+<Billeder/SDU-logo.png, id=87, 855.195pt x 846.16125pt>
 File: Billeder/SDU-logo.png Graphic file (type png)
 
 <use Billeder/SDU-logo.png>
@@ -1428,8 +1454,8 @@ Package pdftex.def Info: Billeder/SDU-logo.png used on input line 2.
 
 
 
-{C:/Users/anders/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <./Billeder
-/SDU-logo.png>] (sections/preface.tex)
+{C:/Users/Bente p/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <./Billede
+r/SDU-logo.png>] (sections/preface.tex)
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
@@ -1441,6 +1467,8 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 
 ] (Master.toc)
 \tf@toc=\write4
+\openout4 = `Master.toc'.
+
  [3
 
 ] (Sections/Indledning.tex) (sections/Problemformulation.tex
@@ -1521,50 +1549,30 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 5.
 (Master.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 5.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 5.
-
-
-Package rerunfilecheck Warning: File `Master.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `Master.out':
-(rerunfilecheck)             Before: F5833587FE6F48E854BDEDEFC65B6D37;1062
-(rerunfilecheck)             After:  CAD2DCBBB23B77231949DB13C9453592;1286.
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
+Package rerunfilecheck Info: File `Master.out' has not changed.
+(rerunfilecheck)             Checksum: 976141AC9DE3A610A6D41511C5098CCB;1285.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 5.
  ) 
 Here is how much of TeX's memory you used:
- 13987 strings out of 493673
- 219543 string characters out of 3141526
- 335712 words of memory out of 3000000
- 17023 multiletter control sequences out of 15000+200000
+ 14003 strings out of 493634
+ 219694 string characters out of 3141306
+ 336164 words of memory out of 3000000
+ 17079 multiletter control sequences out of 15000+200000
  23021 words of font info for 49 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
- 40i,13n,45p,790b,461s stack positions out of 5000i,500n,10000p,200000b,50000s
-pdfTeX warning (dest): name{subsubsection.3.2.2} has been referenced but does
- not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsubsection.3.2.1} has been referenced but does n
-ot exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.3.2} has been referenced but does not ex
-ist, replaced by a fixed one
-
-{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program 
-Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Fi
-les (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files
- (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x8
-6)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)
-/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb><C:/Program Files (x86)/MiKTeX 2
-.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/ty
-pe1/urw/times/utmbi8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/ti
-mes/utmr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.
-pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Master.pdf (11 pages, 212802 bytes).
+ 40i,13n,45p,792b,461s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Progra
+m Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program 
+Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Fil
+es (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (
+x86)/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb><C:/Program Files (x86)/MiKT
+eX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/font
+s/type1/urw/times/utmbi8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/ur
+w/times/utmr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utm
+r8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
+Output written on Master.pdf (11 pages, 206273 bytes).
 PDF statistics:
- 235 PDF objects out of 1000 (max. 8388607)
- 53 named destinations out of 1000 (max. 500000)
- 150 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 240 PDF objects out of 1000 (max. 8388607)
+ 50 named destinations out of 1000 (max. 500000)
+ 174 words of extra memory for PDF output out of 10000 (max. 10000000)
 
