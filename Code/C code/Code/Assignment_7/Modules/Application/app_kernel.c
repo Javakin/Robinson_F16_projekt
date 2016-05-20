@@ -171,6 +171,8 @@ void ker_idle_func(INT8U opcode)
 
 	case RUN_SHOW_EVENT:
 		/*no break*/
+	case EN_FPGA_EVENT:
+		/*no break*/
 	case SET_HEIGHT_EVENT:
 		/*no break*/
 	case SET_WIDTH_EVENT:
@@ -210,106 +212,128 @@ void ker_execute_func()
 	{
 	//////////////////////// all 2 parameter instructions   //////////////////////////////
 	case GOTO_COORD_EVENT:
-	
-		//save pan coordinate to SSM
-		put_msg_state( SSM_TARGET_PAN, get_msg_state(SSM_PARAM_1));
+		if (
+				//save pan coordinate to SSM
+				put_msg_state( SSM_TARGET_PAN, get_msg_state(SSM_PARAM_1)) &&
 
-		//save tilt coordinate to SSM
-		put_msg_state( SSM_TARGET_TILT, get_msg_state(SSM_PARAM_2));		
-	
-		//send pan coordinate
-		pt_api_send_message(ADR_TARGET_POS, SUB_ADR_PAN, SSM_TARGET_PAN);
+				//save tilt coordinate to SSM
+				put_msg_state( SSM_TARGET_TILT, get_msg_state(SSM_PARAM_2)) &&
 
-		//send tilt coordinate
-		pt_api_send_message(ADR_TARGET_POS, SUB_ADR_TILT, SSM_TARGET_TILT);
+				//send pan coordinate
+				pt_api_send_message(ADR_TARGET_POS, SUB_ADR_PAN, SSM_TARGET_PAN) &&
 
-		kernel_state = KER_ST_IDLE;
+				//send tilt coordinate
+				pt_api_send_message(ADR_TARGET_POS, SUB_ADR_TILT, SSM_TARGET_TILT)
+			)
+		{
+			// all commands has suceded
+			kernel_state = KER_ST_IDLE;
+		}
 		break;
 
 	//////////////////////// all 1 parameter instructions   //////////////////////////////
 	case EN_FPGA_EVENT:
-		//enables or disables FPGA
-		put_msg_state(SSM_FPGA_ENABLE, get_msg_state(SSM_PARAM_1));
+		if(
+				//enables or disables FPGA
+				put_msg_state(SSM_FPGA_ENABLE, get_msg_state(SSM_PARAM_1)) &&
 
-		//send package to FPGA with enable value, currently does same action on both motors
-		pt_api_send_message(ADR_EN_MOTOR, SUB_ADR_TILT, SSM_FPGA_ENABLE);
-		pt_api_send_message(ADR_EN_MOTOR, SUB_ADR_PAN, SSM_FPGA_ENABLE);
-		
-		kernel_state = KER_ST_IDLE;
+				//send package to FPGA with enable value, currently does same action on both motors
+				pt_api_send_message(ADR_EN_MOTOR, SUB_ADR_TILT, SSM_FPGA_ENABLE) &&
+				pt_api_send_message(ADR_EN_MOTOR, SUB_ADR_PAN, SSM_FPGA_ENABLE)
+			)
+		{
+			// all commands has suceded
+			kernel_state = KER_ST_IDLE;
+		}
 		break;
 
 
 	case RUN_SHOW_EVENT:
-		//send lightshow value to SSM
-		put_msg_state(SSM_LIGHTSHOW, get_msg_state(SSM_PARAM_1));
-
-		//Pass lightshow event
 		ker_message = RUN_SHOW_EVENT;
-		if (xQueueSend(app_lightshow_queue, &(ker_message), portMAX_DELAY) == pdTRUE)
+		if (
+				//Pass lightshow event
+				xQueueSend(app_lightshow_queue, &(ker_message), portMAX_DELAY) &&
+				//send lightshow value to SSM
+				put_msg_state(SSM_LIGHTSHOW, get_msg_state(SSM_PARAM_1))
+			)
 		{
+			// all commands has suceded
 			kernel_state = KER_ST_IDLE;
 		}
 		break;
 
 	case SET_HEIGHT_EVENT:
 		//set height constraint in SSM
-		put_msg_state(SSM_HEIGHT, get_msg_state(SSM_PARAM_1));
-
-		kernel_state = KER_ST_IDLE;
+		if (put_msg_state(SSM_HEIGHT, get_msg_state(SSM_PARAM_1)))
+			kernel_state = KER_ST_IDLE;
 		break;
 
 	case SET_WIDTH_EVENT:
 		//set width constraint in SSM
-		put_msg_state(SSM_WIDTH, get_msg_state(SSM_PARAM_1));
-
-		kernel_state = KER_ST_IDLE;
+		if(put_msg_state(SSM_WIDTH, get_msg_state(SSM_PARAM_1)))
+			kernel_state = KER_ST_IDLE;
 		break;
 
 	case SET_DEPTH_EVENT:
 		//set length constraint in SSM
-		put_msg_state(SSM_DEPTH, get_msg_state(SSM_PARAM_1));
-		
-		kernel_state = KER_ST_IDLE;
+		if(put_msg_state(SSM_DEPTH, get_msg_state(SSM_PARAM_1)))
+			kernel_state = KER_ST_IDLE;
 		break;
 
 	case SET_MAX_VEL_PAN_EVENT:
-		//set max speed for pan in SSM
-		put_msg_state(SSM_MAX_PAN_VEL, get_msg_state(SSM_PARAM_1));
+		if (
+				//set max speed for pan in SSM
+				put_msg_state(SSM_MAX_PAN_VEL, get_msg_state(SSM_PARAM_1)) &&
 
-		//send FPGA package, 3 unused bits
-		pt_api_send_message(ADR_MAX_SPEED, SUB_ADR_PAN, SSM_MAX_PAN_VEL);
-
-		kernel_state = KER_ST_IDLE;
+				//send FPGA package, 3 unused bits
+				pt_api_send_message(ADR_MAX_SPEED, SUB_ADR_PAN, SSM_MAX_PAN_VEL)
+			)
+		{
+			// all commans suceeded
+			kernel_state = KER_ST_IDLE;
+		}
 		break;
 
 	case SET_MIN_VEL_PAN_EVENT:
-		//set min speed for pan in SSM
-		put_msg_state(SSM_MIN_PAN_VEL, get_msg_state(SSM_PARAM_1));
-
-		//send FPGA package, 3 unused bits
-		pt_api_send_message(ADR_MIN_SPEED, SUB_ADR_PAN, SSM_MIN_PAN_VEL);
+		if(
+				//set min speed for pan in SSM
+				put_msg_state(SSM_MIN_PAN_VEL, get_msg_state(SSM_PARAM_1)) &&
 		
-		kernel_state = KER_ST_IDLE;
+				//send FPGA package, 3 unused bits
+				pt_api_send_message(ADR_MIN_SPEED, SUB_ADR_PAN, SSM_MIN_PAN_VEL)
+			)
+		{
+			// all commans suceeded
+			kernel_state = KER_ST_IDLE;
+		}
 		break;
 
 	case SET_MAX_VEL_TILT_EVENT:
-		//set max speed for tilt in SSM
-		put_msg_state(SSM_MAX_TILT_VEL, get_msg_state(SSM_PARAM_1));
+		if(
+				//set max speed for tilt in SSM
+				put_msg_state(SSM_MAX_TILT_VEL, get_msg_state(SSM_PARAM_1)) &&
 
-		//send FPGA package, 3 unused bits
-		pt_api_send_message(ADR_MAX_SPEED, SUB_ADR_TILT, SSM_MAX_TILT_VEL);
-		
-		kernel_state = KER_ST_IDLE;
+				//send FPGA package, 3 unused bits
+				pt_api_send_message(ADR_MAX_SPEED, SUB_ADR_TILT, SSM_MAX_TILT_VEL)
+			)
+		{
+			// all commans suceeded
+			kernel_state = KER_ST_IDLE;
+		}
 		break;
 
 	case SET_MIN_VEL_TILT_EVENT:
-		//set min speed for tilt in SSM
-		put_msg_state(SSM_MIN_TILT_VEL, get_msg_state(SSM_PARAM_1));
-
-		//send FPGA package, 3 unused bits
-		pt_api_send_message(ADR_MIN_SPEED, SUB_ADR_TILT, SSM_MIN_TILT_VEL);
+		if (
+				//set min speed for tilt in SSM
+				put_msg_state(SSM_MIN_TILT_VEL, get_msg_state(SSM_PARAM_1)) &&
 		
-		kernel_state = KER_ST_IDLE;
+				//send FPGA package, 3 unused bits
+				pt_api_send_message(ADR_MIN_SPEED, SUB_ADR_TILT, SSM_MIN_TILT_VEL)
+			)
+		{
+			// all commans suceeded
+			kernel_state = KER_ST_IDLE;
+		}
 		break;
 
 	case SET_SCENE_EVENT:
@@ -348,15 +372,18 @@ void ker_execute_func()
 
 	//////////////////////// all 0 parameter instructions   //////////////////////////////
 	case STOP_SHOW_EVENT:
-		put_msg_state(SSM_LIGHT_ENABLE, 0);
+		put_msg_state(SSM_LIGHTSHOW, 0);
 
-		kernel_state = KER_ST_IDLE;
+		//Pass lightshow event
+		ker_message = STOP_SHOW_EVENT;
+		if (xQueueSend(app_lightshow_queue, &(ker_message), portMAX_DELAY) == pdTRUE)
+		{
+			kernel_state = KER_ST_IDLE;
+		}
 		break;
 
 	default:
-		// you done goofed
-		// while (1);
-		__asm("nop");
+		// do nothing
 		break;
 	}
 }

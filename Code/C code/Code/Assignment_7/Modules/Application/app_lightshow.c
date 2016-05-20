@@ -33,6 +33,9 @@
 
 
 /*****************************    Defines    *******************************/
+#define SHOW_POINT1		4
+#define SHOW_POINT2		2
+#define SHOW_POINT3		2
 
 
 /*****************************   Constants   *******************************/
@@ -62,7 +65,10 @@ INT16S	current_pos;
 
 //0 - 10 000
 //INT16U show1[4][2] = { { 1000, 1000 }, { 1000, 9000}, { 9000, 9000}, { 9000, 1000}};
-INT16U show1[4][2] = { { 400, 400 }, { 400, 680}, { 680, 680}, { 680, 400}};
+//
+INT16U show1[SHOW_POINT1][2] = { { 400, 400 }, { 400, 680}, { 680, 680}, { 680, 400}};
+INT16U show2[SHOW_POINT2][2] = { { 400, 400 }, { 680, 680}};
+INT16U show3[SHOW_POINT3][2] = { { 400, 680 }, { 680, 400}};
 
 /*****************************   Functions   *******************************/
 void lightshow_task()
@@ -88,27 +94,28 @@ void lightshow_task()
 			break;
 
 		case LIG_ST_NEW_TARGET:
-			if(xQueueReceive(app_lightshow_queue, &( lig_message ), 1) == pdTRUE)
+			switch (get_msg_state(SSM_LIGHTSHOW))
 			{
-				// message recieved
-				if (lig_message ==  STOP_SHOW_EVENT)
-					lightshow_state = LIG_ST_IDLE;
+				case 1:
+					// show 1
+					set_coord(show1[n][0], show1[n][1]);
+					n = (n + 1) % SHOW_POINT1;
+					break;
+
+				case 2:
+					// show 2
+					set_coord(show2[n][0], show2[n][1]);
+					n = (n + 1) % SHOW_POINT2;
+					break;
+
+				case 3:
+					// show 3
+					set_coord(show3[n][0], show3[n][1]);
+					n = (n + 1) % SHOW_POINT3;
+					break;
 			}
-			else
-			{
-				// send a new pan target
-				put_msg_state(SSM_TARGET_PAN, show1[n][0]);
-				pt_api_send_message(ADR_TARGET_POS, SUB_ADR_PAN, SSM_TARGET_PAN);
 
-				// send a new tilt target
-				put_msg_state(SSM_TARGET_TILT, show1[n][1]);
-				pt_api_send_message(ADR_TARGET_POS, SUB_ADR_TILT, SSM_TARGET_TILT);
-
-				n = (n + 1) % 4;
-
-				lightshow_state = LIG_ST_WAIT_PAN;
-			}
-
+			lightshow_state = LIG_ST_WAIT_PAN;
 			break;
 
 		case LIG_ST_WAIT_PAN:
@@ -116,7 +123,10 @@ void lightshow_task()
 			{
 				// message recieved
 				if (lig_message ==  STOP_SHOW_EVENT)
+				{
+					set_coord(CENTER_PAN, CENTER_TILT);
 					lightshow_state = LIG_ST_IDLE;
+				}
 			}
 			else
 			{
@@ -136,7 +146,10 @@ void lightshow_task()
 			{
 				// message recieved
 				if (lig_message ==  STOP_SHOW_EVENT)
+				{
+					set_coord(CENTER_PAN, CENTER_TILT);
 					lightshow_state = LIG_ST_IDLE;
+				}
 			}
 			else
 			{
@@ -161,6 +174,16 @@ void lightshow_init()
 
 }
 
+void set_coord(INT16U pan, INT16U tilt)
+{
+	// send a new pan target
+	put_msg_state(SSM_TARGET_PAN, pan);
+	pt_api_send_message(ADR_TARGET_POS, SUB_ADR_PAN, SSM_TARGET_PAN);
+
+	// send a new tilt target
+	put_msg_state(SSM_TARGET_TILT, tilt);
+	pt_api_send_message(ADR_TARGET_POS, SUB_ADR_TILT, SSM_TARGET_TILT);
+}
 /****************************** End Of Module *******************************/
 
 

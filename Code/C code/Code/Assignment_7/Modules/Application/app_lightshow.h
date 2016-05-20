@@ -24,8 +24,9 @@
 #include "Modules/EMP/emp_type.h"
 
 /*****************************    Defines    *******************************/
-#define MIN_DISTANCE	2
-
+#define MIN_DISTANCE	20
+#define CENTER_PAN		540
+#define CENTER_TILT		540
 
 /*****************************   Constants   *******************************/
 
@@ -44,7 +45,10 @@ void lightshow_init();
 //  Output   : -
 //  Function : initializes the lightshow
 
-
+void set_coord(INT16U pan, INT16U tilt);
+//  Input    : -
+//  Output   : -
+//  Function : send the coordinat to the pt_api
 
 /****************************** End Of Module *******************************/
 #endif
