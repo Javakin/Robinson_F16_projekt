@@ -1,0 +1,29 @@
+Command line:
+   SPI_slave_isim_beh.exe
+     -simmode  gui
+     -simrunnum  0
+     -socket  59082
+
+Fri May 20 12:30:36 2016
+
+
+ Elaboration Time: 0.046875 sec
+
+ Current Memory Usage: 839.729 Meg
+
+ Total Signals          : 31
+ Total Nets             : 192
+ Total Signal Drivers   : 25
+ Total Blocks           : 4
+ Total Primitive Blocks : 4
+ Total Processes        : 14
+ Total Traceable Variables  : 12
+ Total Scalar Nets and Variables : 572
+Total Line Count : 37
+
+ Total Simulation Time: 0.078125 sec
+
+ Current Memory Usage: 839.729 Meg
+
+Fri May 20 12:30:46 2016
+

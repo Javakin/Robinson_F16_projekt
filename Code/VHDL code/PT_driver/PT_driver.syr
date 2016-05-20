@@ -1,0 +1,971 @@
+Release 14.7 - xst P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.10 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.11 secs
+ 
+--> Reading design: PT_driver.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Compilation
+  3) Design Hierarchy Analysis
+  4) HDL Analysis
+  5) HDL Synthesis
+     5.1) HDL Synthesis Report
+  6) Advanced HDL Synthesis
+     6.1) Advanced HDL Synthesis Report
+  7) Low Level Synthesis
+  8) Partition Report
+  9) Final Report
+	9.1) Device utilization summary
+	9.2) Partition Resource Summary
+	9.3) TIMING REPORT
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "PT_driver.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "PT_driver"
+Output Format                      : NGC
+Target Device                      : xc3s500e-5-fg320
+
+---- Source Options
+Top Module Name                    : PT_driver
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Mux Style                          : Auto
+Decoder Extraction                 : YES
+Priority Encoder Extraction        : Yes
+Shift Register Extraction          : YES
+Logical Shifter Extraction         : YES
+XOR Collapsing                     : YES
+ROM Style                          : Auto
+Mux Extraction                     : Yes
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Multiplier Style                   : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 24
+Register Duplication               : YES
+Slice Packing                      : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Yes
+Use Synchronous Set                : Yes
+Use Synchronous Reset              : Yes
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+Verilog 2001                       : YES
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PWM.vhd" in Library work.
+Architecture behavioral of Entity pwm is up to date.
+Compiling vhdl file "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/SPI_slave.vhd" in Library work.
+Architecture behavioral of Entity spi_slave is up to date.
+Compiling vhdl file "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/Motor_driver.vhd" in Library work.
+Architecture behavioral of Entity motor_driver is up to date.
+Compiling vhdl file "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/HallCounter.vhd" in Library work.
+Architecture behavioral of Entity hall_counter is up to date.
+Compiling vhdl file "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PID_controller.vhd" in Library work.
+Architecture behavioral of Entity pid_controller is up to date.
+Compiling vhdl file "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/Simple_comparator.vhd" in Library work.
+Architecture behavioral of Entity simple_comparator is up to date.
+Compiling vhdl file "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/Mux_Display.vhd" in Library work.
+Architecture behavioral of Entity mux_display is up to date.
+Compiling vhdl file "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PT_driver.vhd" in Library work.
+Entity <pt_driver> compiled.
+Entity <pt_driver> (Architecture <behavioral>) compiled.
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for entity <PT_driver> in library <work> (architecture <behavioral>) with generics.
+	Ki_pan = 2
+	Ki_tilt = 2
+	Kp_pan = 2
+	Kp_tilt = 6
+
+Analyzing hierarchy for entity <SPI_slave> in library <work> (architecture <behavioral>) with generics.
+	address_width = 3
+	data_width = 11
+
+Analyzing hierarchy for entity <Motor_driver> in library <work> (architecture <behavioral>).
+
+Analyzing hierarchy for entity <Hall_Counter> in library <work> (architecture <behavioral>) with generics.
+	max_val = 1080
+	start_val = 540
+
+Analyzing hierarchy for entity <PID_controller> in library <work> (architecture <behavioral>) with generics.
+	dead_band = 0
+
+Analyzing hierarchy for entity <Simple_comparator> in library <work> (architecture <behavioral>) with generics.
+	constrain_max = 710
+	constrain_min = 361
+	max_val = 1080
+
+Analyzing hierarchy for entity <Mux_Display> in library <work> (architecture <behavioral>).
+
+Analyzing hierarchy for entity <PWM> in library <work> (architecture <behavioral>) with generics.
+	pwm_period = 2560
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing generic Entity <PT_driver> in library <work> (Architecture <behavioral>).
+	Ki_pan = 2
+	Ki_tilt = 2
+	Kp_pan = 2
+	Kp_tilt = 6
+WARNING:Xst:753 - "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PT_driver.vhd" line 149: Unconnected output port 'DILLER_REG' of component 'SPI_slave'.
+WARNING:Xst:753 - "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PT_driver.vhd" line 149: Unconnected output port 'EV' of component 'SPI_slave'.
+WARNING:Xst:753 - "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PT_driver.vhd" line 149: Unconnected output port 'COUNTER' of component 'SPI_slave'.
+Entity <PT_driver> analyzed. Unit <PT_driver> generated.
+
+Analyzing generic Entity <SPI_slave> in library <work> (Architecture <behavioral>).
+	address_width = 3
+	data_width = 11
+INFO:Xst:1561 - "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/SPI_slave.vhd" line 130: Mux is complete : default of case is discarded
+Entity <SPI_slave> analyzed. Unit <SPI_slave> generated.
+
+Analyzing Entity <Motor_driver> in library <work> (Architecture <behavioral>).
+Entity <Motor_driver> analyzed. Unit <Motor_driver> generated.
+
+Analyzing generic Entity <PWM> in library <work> (Architecture <behavioral>).
+	pwm_period = 2560
+Entity <PWM> analyzed. Unit <PWM> generated.
+
+Analyzing generic Entity <Hall_Counter> in library <work> (Architecture <behavioral>).
+	max_val = 1080
+	start_val = 540
+Entity <Hall_Counter> analyzed. Unit <Hall_Counter> generated.
+
+Analyzing generic Entity <PID_controller> in library <work> (Architecture <behavioral>).
+	dead_band = 0
+Entity <PID_controller> analyzed. Unit <PID_controller> generated.
+
+Analyzing generic Entity <Simple_comparator> in library <work> (Architecture <behavioral>).
+	constrain_max = 710
+	constrain_min = 361
+	max_val = 1080
+WARNING:Xst:819 - "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/Simple_comparator.vhd" line 52: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
+   <INPUT>, <FEEDBACK>
+Entity <Simple_comparator> analyzed. Unit <Simple_comparator> generated.
+
+Analyzing Entity <Mux_Display> in library <work> (Architecture <behavioral>).
+Entity <Mux_Display> analyzed. Unit <Mux_Display> generated.
+
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+
+Synthesizing Unit <SPI_slave>.
+    Related source file is "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/SPI_slave.vhd".
+    Found 14-bit register for signal <input_shift_register>.
+    Found 8-bit register for signal <MAX_SPEED_PAN_temp>.
+    Found 8-bit register for signal <MAX_SPEED_TILT_temp>.
+    Found 8-bit register for signal <MIN_SPEED_PAN_temp>.
+    Found 8-bit register for signal <MIN_SPEED_TILT_temp>.
+    Found 5-bit comparator less for signal <MISO$cmp_lt0000> created at line 82.
+    Found 1-bit register for signal <MOTOR_ENABLE_PAN_temp>.
+    Found 1-bit register for signal <MOTOR_ENABLE_TILT_temp>.
+    Found 14-bit register for signal <output_buffer>.
+    Found 5-bit register for signal <S_CLK_counter>.
+    Found 5-bit subtractor for signal <S_CLK_counter$addsub0000> created at line 155.
+    Found 2-bit register for signal <S_CLK_event>.
+    Found 2-bit register for signal <SS_event>.
+    Found 11-bit register for signal <TARGET_POS_PAN_temp>.
+    Found 11-bit register for signal <TARGET_POS_TILT_temp>.
+    Summary:
+	inferred  93 D-type flip-flop(s).
+	inferred   1 Adder/Subtractor(s).
+	inferred   1 Comparator(s).
+Unit <SPI_slave> synthesized.
+
+
+Synthesizing Unit <Hall_Counter>.
+    Related source file is "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/HallCounter.vhd".
+    Found 11-bit register for signal <POSITION>.
+    Found 2-bit register for signal <debounce_hall1>.
+    Found 2-bit register for signal <debounce_hall2>.
+    Found 12-bit register for signal <pos>.
+    Found 11-bit adder for signal <pos$add0000> created at line 85.
+    Found 12-bit 4-to-1 multiplexer for signal <pos$mux0004> created at line 62.
+    Found 12-bit 4-to-1 multiplexer for signal <pos$mux0007> created at line 73.
+    Found 12-bit subtractor for signal <pos$sub0000> created at line 66.
+    Summary:
+	inferred  27 D-type flip-flop(s).
+	inferred   2 Adder/Subtractor(s).
+	inferred  24 Multiplexer(s).
+Unit <Hall_Counter> synthesized.
+
+
+Synthesizing Unit <PID_controller>.
+    Related source file is "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PID_controller.vhd".
+    Found 8-bit register for signal <OUTPUT>.
+    Found 1-bit register for signal <clk_downscaled>.
+    Found 9-bit comparator less for signal <clk_downscaled$cmp_lt0000> created at line 64.
+    Found 11-bit register for signal <ERROR_temp>.
+    Found 25x6-bit multiplier for signal <I$mult0000> created at line 76.
+    Found 9-bit up counter for signal <i0>.
+    Found 25-bit up accumulator for signal <integrator>.
+    Found 16-bit comparator greatequal for signal <integrator$cmp_ge0000> created at line 85.
+    Found 11-bit comparator greater for signal <integrator$cmp_gt0000> created at line 83.
+    Found 32-bit adder for signal <out_temp$add0000>.
+    Found 32-bit adder for signal <out_temp$add0001>.
+    Found 32-bit adder for signal <out_temp$add0002> created at line 107.
+    Found 32-bit adder for signal <out_temp$addsub0000>.
+    Found 32-bit adder for signal <out_temp$addsub0001>.
+    Found 32-bit comparator greater for signal <out_temp$cmp_gt0000> created at line 110.
+    Found 32-bit comparator less for signal <out_temp$cmp_lt0000> created at line 109.
+    Found 32-bit 4-to-1 multiplexer for signal <out_temp$mux0003> created at line 109.
+    Found 11x6-bit multiplier for signal <P$mult0000> created at line 75.
+    Found 11-bit register for signal <prev_ERROR>.
+    Found 1-bit register for signal <saturation>.
+    Found 32-bit comparator lessequal for signal <saturation$cmp_le0000> created at line 110.
+    Summary:
+	inferred   1 Counter(s).
+	inferred   1 Accumulator(s).
+	inferred  32 D-type flip-flop(s).
+	inferred   5 Adder/Subtractor(s).
+	inferred   2 Multiplier(s).
+	inferred   6 Comparator(s).
+	inferred  32 Multiplexer(s).
+Unit <PID_controller> synthesized.
+
+
+Synthesizing Unit <Simple_comparator>.
+    Related source file is "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/Simple_comparator.vhd".
+    Found 11-bit subtractor for signal <compare_val>.
+    Found 11-bit adder for signal <complement_val>.
+    Found 11-bit comparator less for signal <DIR$cmp_gt0000> created at line 64.
+    Found 11-bit comparator greater for signal <DIR$cmp_gt0001> created at line 69.
+    Found 11-bit comparator less for signal <DIR$cmp_gt0002> created at line 72.
+    Found 11-bit comparator less for signal <DIR$cmp_lt0000> created at line 55.
+    Found 11-bit comparator less for signal <DIR$cmp_lt0001> created at line 63.
+    Found 11-bit comparator greater for signal <direction$cmp_gt0000> created at line 50.
+    Found 11-bit subtractor for signal <OUTPUT$addsub0000> created at line 68.
+    Found 11-bit subtractor for signal <OUTPUT$addsub0001> created at line 76.
+    Found 11-bit adder for signal <OUTPUT$share0000> created at line 63.
+    Summary:
+	inferred   5 Adder/Subtractor(s).
+	inferred   6 Comparator(s).
+Unit <Simple_comparator> synthesized.
+
+
+Synthesizing Unit <Mux_Display>.
+    Related source file is "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/Mux_Display.vhd".
+WARNING:Xst:1780 - Signal <decimal_point> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+    Found 4-bit register for signal <an>.
+    Found 2-bit adder for signal <an$add0000> created at line 64.
+    Found 1-of-4 decoder for signal <an$mux0001> created at line 65.
+    Found 1-bit register for signal <clk_1kHz_holder>.
+    Found 16-bit comparator less for signal <clk_1kHz_holder$cmp_lt0000> created at line 48.
+    Found 4-bit register for signal <current_bcd>.
+    Found 4-bit 4-to-1 multiplexer for signal <current_bcd$mux0001> created at line 65.
+    Found 16-bit up counter for signal <i>.
+    Found 2-bit up counter for signal <k>.
+    Summary:
+	inferred   2 Counter(s).
+	inferred   9 D-type flip-flop(s).
+	inferred   1 Adder/Subtractor(s).
+	inferred   1 Comparator(s).
+	inferred   4 Multiplexer(s).
+	inferred   1 Decoder(s).
+Unit <Mux_Display> synthesized.
+
+
+Synthesizing Unit <PWM>.
+    Related source file is "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PWM.vhd".
+    Found 12-bit up counter for signal <counter>.
+    Found 12-bit comparator lessequal for signal <PWM_OUT$cmp_le0000> created at line 43.
+    Found 8x4-bit multiplier for signal <PWM_OUT$mult0000> created at line 43.
+    Summary:
+	inferred   1 Counter(s).
+	inferred   1 Multiplier(s).
+	inferred   1 Comparator(s).
+Unit <PWM> synthesized.
+
+
+Synthesizing Unit <Motor_driver>.
+    Related source file is "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/Motor_driver.vhd".
+Unit <Motor_driver> synthesized.
+
+
+Synthesizing Unit <PT_driver>.
+    Related source file is "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PT_driver.vhd".
+WARNING:Xst:646 - Signal <CLOCK_1K_wire> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+Unit <PT_driver> synthesized.
+
+INFO:Xst:1767 - HDL ADVISOR - Resource sharing has identified that some arithmetic operations in this design can share the same physical resources for reduced device utilization. For improved clock frequency you may try to disable resource sharing.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# Multipliers                                          : 6
+ 11x6-bit multiplier                                   : 2
+ 25x6-bit multiplier                                   : 2
+ 8x4-bit multiplier                                    : 2
+# Adders/Subtractors                                   : 26
+ 11-bit adder                                          : 6
+ 11-bit subtractor                                     : 6
+ 12-bit subtractor                                     : 2
+ 2-bit adder                                           : 1
+ 32-bit adder                                          : 10
+ 5-bit subtractor                                      : 1
+# Counters                                             : 6
+ 12-bit up counter                                     : 2
+ 16-bit up counter                                     : 1
+ 2-bit up counter                                      : 1
+ 9-bit up counter                                      : 2
+# Accumulators                                         : 2
+ 25-bit up accumulator                                 : 2
+# Registers                                            : 47
+ 1-bit register                                        : 21
+ 11-bit register                                       : 8
+ 12-bit register                                       : 2
+ 14-bit register                                       : 1
+ 2-bit register                                        : 6
+ 4-bit register                                        : 2
+ 5-bit register                                        : 1
+ 8-bit register                                        : 6
+# Comparators                                          : 28
+ 11-bit comparator greater                             : 6
+ 11-bit comparator less                                : 8
+ 12-bit comparator lessequal                           : 2
+ 16-bit comparator greatequal                          : 2
+ 16-bit comparator less                                : 1
+ 32-bit comparator greater                             : 2
+ 32-bit comparator less                                : 2
+ 32-bit comparator lessequal                           : 2
+ 5-bit comparator less                                 : 1
+ 9-bit comparator less                                 : 2
+# Multiplexers                                         : 7
+ 12-bit 4-to-1 multiplexer                             : 4
+ 32-bit 4-to-1 multiplexer                             : 2
+ 4-bit 4-to-1 multiplexer                              : 1
+# Decoders                                             : 1
+ 1-of-4 decoder                                        : 1
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+INFO:Xst:2261 - The FF/Latch <pos_5> in Unit <HALLCOUNTER_TILT> is equivalent to the following FF/Latch, which will be removed : <POSITION_5> 
+INFO:Xst:2261 - The FF/Latch <pos_6> in Unit <HALLCOUNTER_TILT> is equivalent to the following FF/Latch, which will be removed : <POSITION_6> 
+INFO:Xst:2261 - The FF/Latch <pos_7> in Unit <HALLCOUNTER_TILT> is equivalent to the following FF/Latch, which will be removed : <POSITION_7> 
+INFO:Xst:2261 - The FF/Latch <pos_8> in Unit <HALLCOUNTER_TILT> is equivalent to the following FF/Latch, which will be removed : <POSITION_8> 
+INFO:Xst:2261 - The FF/Latch <pos_9> in Unit <HALLCOUNTER_TILT> is equivalent to the following FF/Latch, which will be removed : <POSITION_9> 
+INFO:Xst:2261 - The FF/Latch <pos_10> in Unit <HALLCOUNTER_TILT> is equivalent to the following FF/Latch, which will be removed : <POSITION_10> 
+INFO:Xst:2261 - The FF/Latch <pos_0> in Unit <HALLCOUNTER_TILT> is equivalent to the following FF/Latch, which will be removed : <POSITION_0> 
+INFO:Xst:2261 - The FF/Latch <pos_1> in Unit <HALLCOUNTER_TILT> is equivalent to the following FF/Latch, which will be removed : <POSITION_1> 
+INFO:Xst:2261 - The FF/Latch <pos_2> in Unit <HALLCOUNTER_TILT> is equivalent to the following FF/Latch, which will be removed : <POSITION_2> 
+INFO:Xst:2261 - The FF/Latch <pos_3> in Unit <HALLCOUNTER_TILT> is equivalent to the following FF/Latch, which will be removed : <POSITION_3> 
+INFO:Xst:2261 - The FF/Latch <pos_4> in Unit <HALLCOUNTER_TILT> is equivalent to the following FF/Latch, which will be removed : <POSITION_4> 
+INFO:Xst:2261 - The FF/Latch <pos_5> in Unit <HALLCOUNTER_PAN> is equivalent to the following FF/Latch, which will be removed : <POSITION_5> 
+INFO:Xst:2261 - The FF/Latch <pos_6> in Unit <HALLCOUNTER_PAN> is equivalent to the following FF/Latch, which will be removed : <POSITION_6> 
+INFO:Xst:2261 - The FF/Latch <pos_7> in Unit <HALLCOUNTER_PAN> is equivalent to the following FF/Latch, which will be removed : <POSITION_7> 
+INFO:Xst:2261 - The FF/Latch <pos_8> in Unit <HALLCOUNTER_PAN> is equivalent to the following FF/Latch, which will be removed : <POSITION_8> 
+INFO:Xst:2261 - The FF/Latch <pos_9> in Unit <HALLCOUNTER_PAN> is equivalent to the following FF/Latch, which will be removed : <POSITION_9> 
+INFO:Xst:2261 - The FF/Latch <pos_10> in Unit <HALLCOUNTER_PAN> is equivalent to the following FF/Latch, which will be removed : <POSITION_10> 
+INFO:Xst:2261 - The FF/Latch <pos_0> in Unit <HALLCOUNTER_PAN> is equivalent to the following FF/Latch, which will be removed : <POSITION_0> 
+INFO:Xst:2261 - The FF/Latch <pos_1> in Unit <HALLCOUNTER_PAN> is equivalent to the following FF/Latch, which will be removed : <POSITION_1> 
+INFO:Xst:2261 - The FF/Latch <pos_2> in Unit <HALLCOUNTER_PAN> is equivalent to the following FF/Latch, which will be removed : <POSITION_2> 
+INFO:Xst:2261 - The FF/Latch <pos_3> in Unit <HALLCOUNTER_PAN> is equivalent to the following FF/Latch, which will be removed : <POSITION_3> 
+INFO:Xst:2261 - The FF/Latch <pos_4> in Unit <HALLCOUNTER_PAN> is equivalent to the following FF/Latch, which will be removed : <POSITION_4> 
+WARNING:Xst:2677 - Node <output_buffer_11> of sequential type is unconnected in block <SPI_UI>.
+WARNING:Xst:2677 - Node <output_buffer_12> of sequential type is unconnected in block <SPI_UI>.
+WARNING:Xst:2677 - Node <output_buffer_13> of sequential type is unconnected in block <SPI_UI>.
+
+Synthesizing (advanced) Unit <PT_driver>.
+	Found pipelined multiplier on signal <MOTOR_DRIVER_PAN/PWM_GENERATOR/PWM_OUT_mult0000>:
+		- 1 pipeline level(s) found in a register on signal <DUTY_CYCLE_PAN_wire>.
+		Pushing register(s) into the multiplier macro.
+	Found pipelined multiplier on signal <MOTOR_DRIVER_TILT/PWM_GENERATOR/PWM_OUT_mult0000>:
+		- 1 pipeline level(s) found in a register on signal <DUTY_CYCLE_TILT_wire>.
+		Pushing register(s) into the multiplier macro.
+INFO:Xst:2385 - HDL ADVISOR - You can improve the performance of the multiplier MOTOR_DRIVER_PAN/PWM_GENERATOR/Mmult_PWM_OUT_mult0000 by adding 1 register level(s).
+INFO:Xst:2385 - HDL ADVISOR - You can improve the performance of the multiplier MOTOR_DRIVER_TILT/PWM_GENERATOR/Mmult_PWM_OUT_mult0000 by adding 1 register level(s).
+Unit <PT_driver> synthesized (advanced).
+WARNING:Xst:2677 - Node <output_buffer_11> of sequential type is unconnected in block <SPI_slave>.
+WARNING:Xst:2677 - Node <output_buffer_12> of sequential type is unconnected in block <SPI_slave>.
+WARNING:Xst:2677 - Node <output_buffer_13> of sequential type is unconnected in block <SPI_slave>.
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# Multipliers                                          : 6
+ 11x6-bit multiplier                                   : 2
+ 19x6-bit multiplier                                   : 2
+ 8x4-bit registered multiplier                         : 2
+# Adders/Subtractors                                   : 18
+ 11-bit adder                                          : 6
+ 11-bit subtractor                                     : 6
+ 12-bit subtractor                                     : 2
+ 2-bit adder                                           : 1
+ 32-bit adder                                          : 2
+ 5-bit subtractor                                      : 1
+# Counters                                             : 6
+ 12-bit up counter                                     : 2
+ 16-bit up counter                                     : 1
+ 2-bit up counter                                      : 1
+ 9-bit up counter                                      : 2
+# Accumulators                                         : 2
+ 25-bit up accumulator                                 : 2
+# Registers                                            : 201
+ Flip-Flops                                            : 201
+# Comparators                                          : 28
+ 11-bit comparator greater                             : 6
+ 11-bit comparator less                                : 8
+ 12-bit comparator lessequal                           : 2
+ 16-bit comparator greatequal                          : 2
+ 16-bit comparator less                                : 1
+ 32-bit comparator greater                             : 2
+ 32-bit comparator less                                : 2
+ 32-bit comparator lessequal                           : 2
+ 5-bit comparator less                                 : 1
+ 9-bit comparator less                                 : 2
+# Multiplexers                                         : 7
+ 12-bit 4-to-1 multiplexer                             : 4
+ 32-bit 4-to-1 multiplexer                             : 2
+ 4-bit 4-to-1 multiplexer                              : 1
+# Decoders                                             : 1
+ 1-of-4 decoder                                        : 1
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+INFO:Xst:2261 - The FF/Latch <pos_5> in Unit <Hall_Counter> is equivalent to the following FF/Latch, which will be removed : <POSITION_5> 
+INFO:Xst:2261 - The FF/Latch <pos_6> in Unit <Hall_Counter> is equivalent to the following FF/Latch, which will be removed : <POSITION_6> 
+INFO:Xst:2261 - The FF/Latch <pos_7> in Unit <Hall_Counter> is equivalent to the following FF/Latch, which will be removed : <POSITION_7> 
+INFO:Xst:2261 - The FF/Latch <pos_8> in Unit <Hall_Counter> is equivalent to the following FF/Latch, which will be removed : <POSITION_8> 
+INFO:Xst:2261 - The FF/Latch <pos_9> in Unit <Hall_Counter> is equivalent to the following FF/Latch, which will be removed : <POSITION_9> 
+INFO:Xst:2261 - The FF/Latch <pos_10> in Unit <Hall_Counter> is equivalent to the following FF/Latch, which will be removed : <POSITION_10> 
+INFO:Xst:2261 - The FF/Latch <pos_0> in Unit <Hall_Counter> is equivalent to the following FF/Latch, which will be removed : <POSITION_0> 
+INFO:Xst:2261 - The FF/Latch <pos_1> in Unit <Hall_Counter> is equivalent to the following FF/Latch, which will be removed : <POSITION_1> 
+INFO:Xst:2261 - The FF/Latch <pos_2> in Unit <Hall_Counter> is equivalent to the following FF/Latch, which will be removed : <POSITION_2> 
+INFO:Xst:2261 - The FF/Latch <pos_3> in Unit <Hall_Counter> is equivalent to the following FF/Latch, which will be removed : <POSITION_3> 
+INFO:Xst:2261 - The FF/Latch <pos_4> in Unit <Hall_Counter> is equivalent to the following FF/Latch, which will be removed : <POSITION_4> 
+
+Optimizing unit <PT_driver> ...
+
+Optimizing unit <SPI_slave> ...
+
+Optimizing unit <Hall_Counter> ...
+
+Optimizing unit <Simple_comparator> ...
+
+Optimizing unit <Mux_Display> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block PT_driver, actual ratio is 9.
+
+Final Macro Processing ...
+
+Processing Unit <PT_driver> :
+	Found 2-bit shift register for signal <PID_CONTROLLER_PAN/prev_ERROR_0>.
+	Found 2-bit shift register for signal <PID_CONTROLLER_PAN/prev_ERROR_1>.
+	Found 2-bit shift register for signal <PID_CONTROLLER_PAN/prev_ERROR_2>.
+	Found 2-bit shift register for signal <PID_CONTROLLER_PAN/prev_ERROR_3>.
+	Found 2-bit shift register for signal <PID_CONTROLLER_PAN/prev_ERROR_4>.
+	Found 2-bit shift register for signal <PID_CONTROLLER_PAN/prev_ERROR_5>.
+	Found 2-bit shift register for signal <PID_CONTROLLER_PAN/prev_ERROR_6>.
+	Found 2-bit shift register for signal <PID_CONTROLLER_PAN/prev_ERROR_7>.
+	Found 2-bit shift register for signal <PID_CONTROLLER_PAN/prev_ERROR_8>.
+	Found 2-bit shift register for signal <PID_CONTROLLER_PAN/prev_ERROR_9>.
+	Found 2-bit shift register for signal <PID_CONTROLLER_PAN/prev_ERROR_10>.
+	Found 2-bit shift register for signal <PID_CONTROLLER_TILT/prev_ERROR_0>.
+	Found 2-bit shift register for signal <PID_CONTROLLER_TILT/prev_ERROR_1>.
+	Found 2-bit shift register for signal <PID_CONTROLLER_TILT/prev_ERROR_2>.
+	Found 2-bit shift register for signal <PID_CONTROLLER_TILT/prev_ERROR_3>.
+	Found 2-bit shift register for signal <PID_CONTROLLER_TILT/prev_ERROR_4>.
+	Found 2-bit shift register for signal <PID_CONTROLLER_TILT/prev_ERROR_5>.
+	Found 2-bit shift register for signal <PID_CONTROLLER_TILT/prev_ERROR_6>.
+	Found 2-bit shift register for signal <PID_CONTROLLER_TILT/prev_ERROR_7>.
+	Found 2-bit shift register for signal <PID_CONTROLLER_TILT/prev_ERROR_8>.
+	Found 2-bit shift register for signal <PID_CONTROLLER_TILT/prev_ERROR_9>.
+	Found 2-bit shift register for signal <PID_CONTROLLER_TILT/prev_ERROR_10>.
+Unit <PT_driver> processed.
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 245
+ Flip-Flops                                            : 245
+# Shift Registers                                      : 22
+ 2-bit shift register                                  : 22
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : PT_driver.ngr
+Top Level Output File Name         : PT_driver
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : No
+
+Design Statistics
+# IOs                              : 27
+
+Cell Usage :
+# BELS                             : 1411
+#      GND                         : 1
+#      INV                         : 74
+#      LUT1                        : 146
+#      LUT2                        : 228
+#      LUT2_D                      : 2
+#      LUT3                        : 83
+#      LUT4                        : 169
+#      LUT4_D                      : 2
+#      LUT4_L                      : 14
+#      MUXCY                       : 409
+#      MUXF5                       : 11
+#      VCC                         : 1
+#      XORCY                       : 271
+# FlipFlops/Latches                : 267
+#      FD                          : 39
+#      FD_1                        : 6
+#      FDE_1                       : 86
+#      FDR                         : 60
+#      FDR_1                       : 14
+#      FDRE                        : 50
+#      FDRS_1                      : 6
+#      FDS                         : 6
+# Shift Registers                  : 22
+#      SRL16                       : 22
+# Clock Buffers                    : 3
+#      BUFG                        : 2
+#      BUFGP                       : 1
+# IO Buffers                       : 26
+#      IBUF                        : 7
+#      OBUF                        : 19
+# MULTs                            : 8
+#      MULT18X18SIO                : 8
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 3s500efg320-5 
+
+ Number of Slices:                      396  out of   4656     8%  
+ Number of Slice Flip Flops:            267  out of   9312     2%  
+ Number of 4 input LUTs:                740  out of   9312     7%  
+    Number used as logic:               718
+    Number used as Shift registers:      22
+ Number of IOs:                          27
+ Number of bonded IOBs:                  27  out of    232    11%  
+ Number of MULT18X18SIOs:                 8  out of     20    40%  
+ Number of GCLKs:                         3  out of     24    12%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+CLK                                | BUFGP                  | 183   |
+PID_CONTROLLER_PAN/clk_downscaled1 | BUFG                   | 49    |
+PID_CONTROLLER_TILT/clk_downscaled1| BUFG                   | 49    |
+MUX_DISPLAY_1/clk_1kHz_holder      | NONE(MUX_DISPLAY_1/k_1)| 10    |
+-----------------------------------+------------------------+-------+
+INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -5
+
+   Minimum period: 28.529ns (Maximum Frequency: 35.051MHz)
+   Minimum input arrival time before clock: 9.058ns
+   Maximum output required time after clock: 16.612ns
+   Maximum combinational path delay: 8.231ns
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'CLK'
+  Clock period: 18.888ns (frequency: 52.945MHz)
+  Total number of paths / destination ports: 5939 / 331
+-------------------------------------------------------------------------
+Delay:               9.444ns (Levels of Logic = 8)
+  Source:            HALLCOUNTER_PAN/debounce_hall1_0 (FF)
+  Destination:       HALLCOUNTER_PAN/pos_3 (FF)
+  Source Clock:      CLK rising
+  Destination Clock: CLK falling
+
+  Data Path: HALLCOUNTER_PAN/debounce_hall1_0 to HALLCOUNTER_PAN/pos_3
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               5   0.514   0.690  HALLCOUNTER_PAN/debounce_hall1_0 (HALLCOUNTER_PAN/debounce_hall1_0)
+     LUT2_D:I0->LO         1   0.612   0.130  HALLCOUNTER_PAN/pos_cmp_eq000011 (N91)
+     LUT4:I2->O            1   0.612   0.360  HALLCOUNTER_PAN/pos_cmp_eq00002_SW0 (N42)
+     LUT4_D:I3->O         12   0.612   0.969  HALLCOUNTER_PAN/pos_cmp_eq00002 (HALLCOUNTER_PAN/N11)
+     LUT4_L:I0->LO         1   0.612   0.252  HALLCOUNTER_PAN/Mmux_pos_mux000430_SW0 (N36)
+     LUT3:I0->O            2   0.612   0.449  HALLCOUNTER_PAN/Mmux_pos_mux000430 (HALLCOUNTER_PAN/pos_mux0004<7>)
+     LUT4:I1->O            1   0.612   0.387  HALLCOUNTER_PAN/pos_cmp_eq000057 (HALLCOUNTER_PAN/pos_cmp_eq000057)
+     LUT3:I2->O            4   0.612   0.529  HALLCOUNTER_PAN/pos_cmp_eq000059 (HALLCOUNTER_PAN/pos_cmp_eq0000)
+     LUT4:I2->O            1   0.612   0.000  HALLCOUNTER_PAN/pos_mux0006<3>241 (HALLCOUNTER_PAN/pos_mux0006<3>24)
+     FDR_1:D                   0.268          HALLCOUNTER_PAN/pos_3
+    ----------------------------------------
+    Total                      9.444ns (5.678ns logic, 3.766ns route)
+                                       (60.1% logic, 39.9% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'PID_CONTROLLER_PAN/clk_downscaled1'
+  Clock period: 28.529ns (frequency: 35.051MHz)
+  Total number of paths / destination ports: 63734 / 70
+-------------------------------------------------------------------------
+Delay:               14.265ns (Levels of Logic = 13)
+  Source:            PID_CONTROLLER_PAN/integrator_23 (FF)
+  Destination:       PID_CONTROLLER_PAN/saturation (FF)
+  Source Clock:      PID_CONTROLLER_PAN/clk_downscaled1 rising
+  Destination Clock: PID_CONTROLLER_PAN/clk_downscaled1 falling
+
+  Data Path: PID_CONTROLLER_PAN/integrator_23 to PID_CONTROLLER_PAN/saturation
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDRE:C->Q             3   0.514   0.451  PID_CONTROLLER_PAN/integrator_23 (PID_CONTROLLER_PAN/integrator_23)
+     MULT18X18SIO:A16->P17    1   4.331   0.426  PID_CONTROLLER_PAN/Mmult_I_mult0000 (PID_CONTROLLER_PAN/Mmult_I_mult0000_P_to_Adder_A_17)
+     LUT2:I1->O            1   0.612   0.000  PID_CONTROLLER_PAN/Mmult_I_mult00000_Madd_lut<17> (PID_CONTROLLER_PAN/Mmult_I_mult00000_Madd_lut<17>)
+     MUXCY:S->O            1   0.404   0.000  PID_CONTROLLER_PAN/Mmult_I_mult00000_Madd_cy<17> (PID_CONTROLLER_PAN/Mmult_I_mult00000_Madd_cy<17>)
+     MUXCY:CI->O           1   0.051   0.000  PID_CONTROLLER_PAN/Mmult_I_mult00000_Madd_cy<18> (PID_CONTROLLER_PAN/Mmult_I_mult00000_Madd_cy<18>)
+     MUXCY:CI->O           1   0.051   0.000  PID_CONTROLLER_PAN/Mmult_I_mult00000_Madd_cy<19> (PID_CONTROLLER_PAN/Mmult_I_mult00000_Madd_cy<19>)
+     MUXCY:CI->O           0   0.051   0.000  PID_CONTROLLER_PAN/Mmult_I_mult00000_Madd_cy<20> (PID_CONTROLLER_PAN/Mmult_I_mult00000_Madd_cy<20>)
+     XORCY:CI->O           2   0.699   0.532  PID_CONTROLLER_PAN/Mmult_I_mult00000_Madd_xor<21> (PID_CONTROLLER_PAN/I<21>)
+     LUT1:I0->O            1   0.612   0.000  PID_CONTROLLER_PAN/Madd_out_temp_add0002_cy<19>_rt (PID_CONTROLLER_PAN/Madd_out_temp_add0002_cy<19>_rt)
+     MUXCY:S->O            1   0.404   0.000  PID_CONTROLLER_PAN/Madd_out_temp_add0002_cy<19> (PID_CONTROLLER_PAN/Madd_out_temp_add0002_cy<19>)
+     XORCY:CI->O           2   0.699   0.449  PID_CONTROLLER_PAN/Madd_out_temp_add0002_xor<20> (PID_CONTROLLER_PAN/out_temp_add0002<20>)
+     LUT2:I1->O            1   0.612   0.000  PID_CONTROLLER_PAN/Mcompar_out_temp_cmp_lt0000_lut<11> (PID_CONTROLLER_PAN/Mcompar_out_temp_cmp_lt0000_lut<11>)
+     MUXCY:S->O            9   0.752   0.849  PID_CONTROLLER_PAN/Mcompar_out_temp_cmp_lt0000_cy<11> (PID_CONTROLLER_PAN/Mcompar_out_temp_cmp_lt0000_cy<11>)
+     LUT2:I0->O            1   0.612   0.357  PID_CONTROLLER_PAN/saturation_or00001 (PID_CONTROLLER_PAN/saturation_or0000)
+     FDR_1:R                   0.795          PID_CONTROLLER_PAN/saturation
+    ----------------------------------------
+    Total                     14.265ns (11.201ns logic, 3.064ns route)
+                                       (78.5% logic, 21.5% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'PID_CONTROLLER_TILT/clk_downscaled1'
+  Clock period: 28.529ns (frequency: 35.051MHz)
+  Total number of paths / destination ports: 63734 / 70
+-------------------------------------------------------------------------
+Delay:               14.265ns (Levels of Logic = 13)
+  Source:            PID_CONTROLLER_TILT/integrator_21 (FF)
+  Destination:       PID_CONTROLLER_TILT/saturation (FF)
+  Source Clock:      PID_CONTROLLER_TILT/clk_downscaled1 rising
+  Destination Clock: PID_CONTROLLER_TILT/clk_downscaled1 falling
+
+  Data Path: PID_CONTROLLER_TILT/integrator_21 to PID_CONTROLLER_TILT/saturation
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDRE:C->Q             3   0.514   0.451  PID_CONTROLLER_TILT/integrator_21 (PID_CONTROLLER_TILT/integrator_21)
+     MULT18X18SIO:A14->P17    1   4.331   0.426  PID_CONTROLLER_TILT/Mmult_I_mult0000 (PID_CONTROLLER_TILT/Mmult_I_mult0000_P_to_Adder_A_17)
+     LUT2:I1->O            1   0.612   0.000  PID_CONTROLLER_TILT/Mmult_I_mult00000_Madd_lut<17> (PID_CONTROLLER_TILT/Mmult_I_mult00000_Madd_lut<17>)
+     MUXCY:S->O            1   0.404   0.000  PID_CONTROLLER_TILT/Mmult_I_mult00000_Madd_cy<17> (PID_CONTROLLER_TILT/Mmult_I_mult00000_Madd_cy<17>)
+     MUXCY:CI->O           1   0.051   0.000  PID_CONTROLLER_TILT/Mmult_I_mult00000_Madd_cy<18> (PID_CONTROLLER_TILT/Mmult_I_mult00000_Madd_cy<18>)
+     MUXCY:CI->O           1   0.051   0.000  PID_CONTROLLER_TILT/Mmult_I_mult00000_Madd_cy<19> (PID_CONTROLLER_TILT/Mmult_I_mult00000_Madd_cy<19>)
+     MUXCY:CI->O           0   0.051   0.000  PID_CONTROLLER_TILT/Mmult_I_mult00000_Madd_cy<20> (PID_CONTROLLER_TILT/Mmult_I_mult00000_Madd_cy<20>)
+     XORCY:CI->O           2   0.699   0.532  PID_CONTROLLER_TILT/Mmult_I_mult00000_Madd_xor<21> (PID_CONTROLLER_TILT/I<21>)
+     LUT1:I0->O            1   0.612   0.000  PID_CONTROLLER_TILT/Madd_out_temp_add0002_cy<19>_rt (PID_CONTROLLER_TILT/Madd_out_temp_add0002_cy<19>_rt)
+     MUXCY:S->O            1   0.404   0.000  PID_CONTROLLER_TILT/Madd_out_temp_add0002_cy<19> (PID_CONTROLLER_TILT/Madd_out_temp_add0002_cy<19>)
+     XORCY:CI->O           2   0.699   0.449  PID_CONTROLLER_TILT/Madd_out_temp_add0002_xor<20> (PID_CONTROLLER_TILT/out_temp_add0002<20>)
+     LUT2:I1->O            1   0.612   0.000  PID_CONTROLLER_TILT/Mcompar_out_temp_cmp_lt0000_lut<11> (PID_CONTROLLER_TILT/Mcompar_out_temp_cmp_lt0000_lut<11>)
+     MUXCY:S->O            9   0.752   0.849  PID_CONTROLLER_TILT/Mcompar_out_temp_cmp_lt0000_cy<11> (PID_CONTROLLER_TILT/Mcompar_out_temp_cmp_lt0000_cy<11>)
+     LUT2:I0->O            1   0.612   0.357  PID_CONTROLLER_TILT/saturation_or00001 (PID_CONTROLLER_TILT/saturation_or0000)
+     FDR_1:R                   0.795          PID_CONTROLLER_TILT/saturation
+    ----------------------------------------
+    Total                     14.265ns (11.201ns logic, 3.064ns route)
+                                       (78.5% logic, 21.5% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'MUX_DISPLAY_1/clk_1kHz_holder'
+  Clock period: 3.206ns (frequency: 311.964MHz)
+  Total number of paths / destination ports: 23 / 14
+-------------------------------------------------------------------------
+Delay:               3.206ns (Levels of Logic = 1)
+  Source:            MUX_DISPLAY_1/k_0 (FF)
+  Destination:       MUX_DISPLAY_1/current_bcd_3 (FF)
+  Source Clock:      MUX_DISPLAY_1/clk_1kHz_holder rising
+  Destination Clock: MUX_DISPLAY_1/clk_1kHz_holder rising
+
+  Data Path: MUX_DISPLAY_1/k_0 to MUX_DISPLAY_1/current_bcd_3
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDR:C->Q             13   0.514   0.905  MUX_DISPLAY_1/k_0 (MUX_DISPLAY_1/k_0)
+     LUT2:I1->O            2   0.612   0.380  MUX_DISPLAY_1/Result<1>11 (MUX_DISPLAY_1/Result<1>1)
+     FDR:R                     0.795          MUX_DISPLAY_1/current_bcd_3
+    ----------------------------------------
+    Total                      3.206ns (1.921ns logic, 1.284ns route)
+                                       (59.9% logic, 40.1% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'CLK'
+  Total number of paths / destination ports: 408 / 68
+-------------------------------------------------------------------------
+Offset:              9.058ns (Levels of Logic = 8)
+  Source:            HALL_SENSOR_PAN_1 (PAD)
+  Destination:       HALLCOUNTER_PAN/pos_3 (FF)
+  Destination Clock: CLK falling
+
+  Data Path: HALL_SENSOR_PAN_1 to HALLCOUNTER_PAN/pos_3
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             3   1.106   0.454  HALL_SENSOR_PAN_1_IBUF (HALL_SENSOR_PAN_1_IBUF)
+     LUT4:I3->O            1   0.612   0.360  HALLCOUNTER_PAN/pos_cmp_eq00002_SW0 (N42)
+     LUT4_D:I3->O         12   0.612   0.969  HALLCOUNTER_PAN/pos_cmp_eq00002 (HALLCOUNTER_PAN/N11)
+     LUT4_L:I0->LO         1   0.612   0.252  HALLCOUNTER_PAN/Mmux_pos_mux000430_SW0 (N36)
+     LUT3:I0->O            2   0.612   0.449  HALLCOUNTER_PAN/Mmux_pos_mux000430 (HALLCOUNTER_PAN/pos_mux0004<7>)
+     LUT4:I1->O            1   0.612   0.387  HALLCOUNTER_PAN/pos_cmp_eq000057 (HALLCOUNTER_PAN/pos_cmp_eq000057)
+     LUT3:I2->O            4   0.612   0.529  HALLCOUNTER_PAN/pos_cmp_eq000059 (HALLCOUNTER_PAN/pos_cmp_eq0000)
+     LUT4:I2->O            1   0.612   0.000  HALLCOUNTER_PAN/pos_mux0006<3>241 (HALLCOUNTER_PAN/pos_mux0006<3>24)
+     FDR_1:D                   0.268          HALLCOUNTER_PAN/pos_3
+    ----------------------------------------
+    Total                      9.058ns (5.658ns logic, 3.400ns route)
+                                       (62.5% logic, 37.5% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'CLK'
+  Total number of paths / destination ports: 37137 / 7
+-------------------------------------------------------------------------
+Offset:              16.612ns (Levels of Logic = 31)
+  Source:            HALLCOUNTER_TILT/pos_0 (FF)
+  Destination:       MOTOR_CONTROL_TILT_1 (PAD)
+  Source Clock:      CLK falling
+
+  Data Path: HALLCOUNTER_TILT/pos_0 to MOTOR_CONTROL_TILT_1
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD_1:C->Q             9   0.514   0.849  HALLCOUNTER_TILT/pos_0 (HALLCOUNTER_TILT/pos_0)
+     LUT2:I0->O            1   0.612   0.000  SIMPLE_COMPARATOR_TILT/Mcompar_direction_cmp_gt0000_lut<0> (SIMPLE_COMPARATOR_TILT/Mcompar_direction_cmp_gt0000_lut<0>)
+     MUXCY:S->O            1   0.404   0.000  SIMPLE_COMPARATOR_TILT/Mcompar_direction_cmp_gt0000_cy<0> (SIMPLE_COMPARATOR_TILT/Mcompar_direction_cmp_gt0000_cy<0>)
+     MUXCY:CI->O           1   0.052   0.000  SIMPLE_COMPARATOR_TILT/Mcompar_direction_cmp_gt0000_cy<1> (SIMPLE_COMPARATOR_TILT/Mcompar_direction_cmp_gt0000_cy<1>)
+     MUXCY:CI->O           1   0.052   0.000  SIMPLE_COMPARATOR_TILT/Mcompar_direction_cmp_gt0000_cy<2> (SIMPLE_COMPARATOR_TILT/Mcompar_direction_cmp_gt0000_cy<2>)
+     MUXCY:CI->O           1   0.052   0.000  SIMPLE_COMPARATOR_TILT/Mcompar_direction_cmp_gt0000_cy<3> (SIMPLE_COMPARATOR_TILT/Mcompar_direction_cmp_gt0000_cy<3>)
+     MUXCY:CI->O           1   0.052   0.000  SIMPLE_COMPARATOR_TILT/Mcompar_direction_cmp_gt0000_cy<4> (SIMPLE_COMPARATOR_TILT/Mcompar_direction_cmp_gt0000_cy<4>)
+     MUXCY:CI->O           1   0.052   0.000  SIMPLE_COMPARATOR_TILT/Mcompar_direction_cmp_gt0000_cy<5> (SIMPLE_COMPARATOR_TILT/Mcompar_direction_cmp_gt0000_cy<5>)
+     MUXCY:CI->O           1   0.052   0.000  SIMPLE_COMPARATOR_TILT/Mcompar_direction_cmp_gt0000_cy<6> (SIMPLE_COMPARATOR_TILT/Mcompar_direction_cmp_gt0000_cy<6>)
+     MUXCY:CI->O           1   0.052   0.000  SIMPLE_COMPARATOR_TILT/Mcompar_direction_cmp_gt0000_cy<7> (SIMPLE_COMPARATOR_TILT/Mcompar_direction_cmp_gt0000_cy<7>)
+     MUXCY:CI->O           1   0.052   0.000  SIMPLE_COMPARATOR_TILT/Mcompar_direction_cmp_gt0000_cy<8> (SIMPLE_COMPARATOR_TILT/Mcompar_direction_cmp_gt0000_cy<8>)
+     MUXCY:CI->O           1   0.052   0.000  SIMPLE_COMPARATOR_TILT/Mcompar_direction_cmp_gt0000_cy<9> (SIMPLE_COMPARATOR_TILT/Mcompar_direction_cmp_gt0000_cy<9>)
+     MUXCY:CI->O          13   0.399   0.988  SIMPLE_COMPARATOR_TILT/Mcompar_direction_cmp_gt0000_cy<10> (SIMPLE_COMPARATOR_TILT/Mcompar_direction_cmp_gt0000_cy<10>)
+     LUT3:I0->O            1   0.612   0.387  SIMPLE_COMPARATOR_TILT/compare_val_mux0000<0>1 (SIMPLE_COMPARATOR_TILT/compare_val_mux0000<0>)
+     LUT4:I2->O            1   0.612   0.000  SIMPLE_COMPARATOR_TILT/Msub_compare_val_lut<0> (SIMPLE_COMPARATOR_TILT/Msub_compare_val_lut<0>)
+     MUXCY:S->O            1   0.404   0.000  SIMPLE_COMPARATOR_TILT/Msub_compare_val_cy<0> (SIMPLE_COMPARATOR_TILT/Msub_compare_val_cy<0>)
+     MUXCY:CI->O           1   0.052   0.000  SIMPLE_COMPARATOR_TILT/Msub_compare_val_cy<1> (SIMPLE_COMPARATOR_TILT/Msub_compare_val_cy<1>)
+     MUXCY:CI->O           1   0.052   0.000  SIMPLE_COMPARATOR_TILT/Msub_compare_val_cy<2> (SIMPLE_COMPARATOR_TILT/Msub_compare_val_cy<2>)
+     MUXCY:CI->O           1   0.052   0.000  SIMPLE_COMPARATOR_TILT/Msub_compare_val_cy<3> (SIMPLE_COMPARATOR_TILT/Msub_compare_val_cy<3>)
+     MUXCY:CI->O           1   0.052   0.000  SIMPLE_COMPARATOR_TILT/Msub_compare_val_cy<4> (SIMPLE_COMPARATOR_TILT/Msub_compare_val_cy<4>)
+     XORCY:CI->O           3   0.699   0.603  SIMPLE_COMPARATOR_TILT/Msub_compare_val_xor<5> (SIMPLE_COMPARATOR_TILT/compare_val<5>)
+     LUT1:I0->O            1   0.612   0.000  SIMPLE_COMPARATOR_TILT/Madd_complement_val_cy<5>_rt (SIMPLE_COMPARATOR_TILT/Madd_complement_val_cy<5>_rt)
+     MUXCY:S->O            1   0.404   0.000  SIMPLE_COMPARATOR_TILT/Madd_complement_val_cy<5> (SIMPLE_COMPARATOR_TILT/Madd_complement_val_cy<5>)
+     MUXCY:CI->O           1   0.051   0.000  SIMPLE_COMPARATOR_TILT/Madd_complement_val_cy<6> (SIMPLE_COMPARATOR_TILT/Madd_complement_val_cy<6>)
+     MUXCY:CI->O           1   0.051   0.000  SIMPLE_COMPARATOR_TILT/Madd_complement_val_cy<7> (SIMPLE_COMPARATOR_TILT/Madd_complement_val_cy<7>)
+     MUXCY:CI->O           1   0.051   0.000  SIMPLE_COMPARATOR_TILT/Madd_complement_val_cy<8> (SIMPLE_COMPARATOR_TILT/Madd_complement_val_cy<8>)
+     MUXCY:CI->O           0   0.051   0.000  SIMPLE_COMPARATOR_TILT/Madd_complement_val_cy<9> (SIMPLE_COMPARATOR_TILT/Madd_complement_val_cy<9>)
+     XORCY:CI->O           2   0.699   0.449  SIMPLE_COMPARATOR_TILT/Madd_complement_val_xor<10> (SIMPLE_COMPARATOR_TILT/complement_val<10>)
+     LUT2:I1->O            1   0.612   0.000  SIMPLE_COMPARATOR_TILT/Mcompar_DIR_cmp_lt0000_lut<10> (SIMPLE_COMPARATOR_TILT/Mcompar_DIR_cmp_lt0000_lut<10>)
+     MUXCY:S->O           13   0.752   0.988  SIMPLE_COMPARATOR_TILT/Mcompar_DIR_cmp_lt0000_cy<10> (SIMPLE_COMPARATOR_TILT/Mcompar_DIR_cmp_lt0000_cy<10>)
+     LUT4:I0->O            1   0.612   0.357  MOTOR_DRIVER_TILT/MOTOR_CONTROL_11 (MOTOR_CONTROL_TILT_1_OBUF)
+     OBUF:I->O                 3.169          MOTOR_CONTROL_TILT_1_OBUF (MOTOR_CONTROL_TILT_1)
+    ----------------------------------------
+    Total                     16.612ns (11.992ns logic, 4.620ns route)
+                                       (72.2% logic, 27.8% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'PID_CONTROLLER_PAN/clk_downscaled1'
+  Total number of paths / destination ports: 48 / 2
+-------------------------------------------------------------------------
+Offset:              10.764ns (Levels of Logic = 5)
+  Source:            MOTOR_DRIVER_PAN/PWM_GENERATOR/Mmult_PWM_OUT_mult0000 (MULT)
+  Destination:       MOTOR_CONTROL_PAN_2 (PAD)
+  Source Clock:      PID_CONTROLLER_PAN/clk_downscaled1 falling
+
+  Data Path: MOTOR_DRIVER_PAN/PWM_GENERATOR/Mmult_PWM_OUT_mult0000 to MOTOR_CONTROL_PAN_2
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     MULT18X18SIO:CLK->P10    1   4.170   0.509  MOTOR_DRIVER_PAN/PWM_GENERATOR/Mmult_PWM_OUT_mult0000 (MOTOR_DRIVER_PAN/PWM_GENERATOR/PWM_OUT_mult0000<10>)
+     LUT2:I0->O            1   0.612   0.000  MOTOR_DRIVER_PAN/PWM_GENERATOR/Mcompar_PWM_OUT_cmp_le0000_lut<10> (MOTOR_DRIVER_PAN/PWM_GENERATOR/Mcompar_PWM_OUT_cmp_le0000_lut<10>)
+     MUXCY:S->O            1   0.404   0.000  MOTOR_DRIVER_PAN/PWM_GENERATOR/Mcompar_PWM_OUT_cmp_le0000_cy<10> (MOTOR_DRIVER_PAN/PWM_GENERATOR/Mcompar_PWM_OUT_cmp_le0000_cy<10>)
+     MUXCY:CI->O           2   0.399   0.532  MOTOR_DRIVER_PAN/PWM_GENERATOR/Mcompar_PWM_OUT_cmp_le0000_cy<11> (MOTOR_DRIVER_PAN/PWM_GENERATOR/PWM_OUT_cmp_le0000)
+     LUT3:I0->O            1   0.612   0.357  MOTOR_DRIVER_PAN/MOTOR_CONTROL_21 (MOTOR_CONTROL_PAN_2_OBUF)
+     OBUF:I->O                 3.169          MOTOR_CONTROL_PAN_2_OBUF (MOTOR_CONTROL_PAN_2)
+    ----------------------------------------
+    Total                     10.764ns (9.366ns logic, 1.398ns route)
+                                       (87.0% logic, 13.0% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'PID_CONTROLLER_TILT/clk_downscaled1'
+  Total number of paths / destination ports: 48 / 2
+-------------------------------------------------------------------------
+Offset:              10.764ns (Levels of Logic = 5)
+  Source:            MOTOR_DRIVER_TILT/PWM_GENERATOR/Mmult_PWM_OUT_mult0000 (MULT)
+  Destination:       MOTOR_CONTROL_TILT_2 (PAD)
+  Source Clock:      PID_CONTROLLER_TILT/clk_downscaled1 falling
+
+  Data Path: MOTOR_DRIVER_TILT/PWM_GENERATOR/Mmult_PWM_OUT_mult0000 to MOTOR_CONTROL_TILT_2
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     MULT18X18SIO:CLK->P10    1   4.170   0.509  MOTOR_DRIVER_TILT/PWM_GENERATOR/Mmult_PWM_OUT_mult0000 (MOTOR_DRIVER_TILT/PWM_GENERATOR/PWM_OUT_mult0000<10>)
+     LUT2:I0->O            1   0.612   0.000  MOTOR_DRIVER_TILT/PWM_GENERATOR/Mcompar_PWM_OUT_cmp_le0000_lut<10> (MOTOR_DRIVER_TILT/PWM_GENERATOR/Mcompar_PWM_OUT_cmp_le0000_lut<10>)
+     MUXCY:S->O            1   0.404   0.000  MOTOR_DRIVER_TILT/PWM_GENERATOR/Mcompar_PWM_OUT_cmp_le0000_cy<10> (MOTOR_DRIVER_TILT/PWM_GENERATOR/Mcompar_PWM_OUT_cmp_le0000_cy<10>)
+     MUXCY:CI->O           2   0.399   0.532  MOTOR_DRIVER_TILT/PWM_GENERATOR/Mcompar_PWM_OUT_cmp_le0000_cy<11> (MOTOR_DRIVER_TILT/PWM_GENERATOR/PWM_OUT_cmp_le0000)
+     LUT4:I0->O            1   0.612   0.357  MOTOR_DRIVER_TILT/MOTOR_CONTROL_21 (MOTOR_CONTROL_TILT_2_OBUF)
+     OBUF:I->O                 3.169          MOTOR_CONTROL_TILT_2_OBUF (MOTOR_CONTROL_TILT_2)
+    ----------------------------------------
+    Total                     10.764ns (9.366ns logic, 1.398ns route)
+                                       (87.0% logic, 13.0% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'MUX_DISPLAY_1/clk_1kHz_holder'
+  Total number of paths / destination ports: 32 / 11
+-------------------------------------------------------------------------
+Offset:              5.406ns (Levels of Logic = 2)
+  Source:            MUX_DISPLAY_1/current_bcd_1 (FF)
+  Destination:       SEGMENTS<1> (PAD)
+  Source Clock:      MUX_DISPLAY_1/clk_1kHz_holder rising
+
+  Data Path: MUX_DISPLAY_1/current_bcd_1 to SEGMENTS<1>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               7   0.514   0.754  MUX_DISPLAY_1/current_bcd_1 (MUX_DISPLAY_1/current_bcd_1)
+     LUT4:I0->O            1   0.612   0.357  MUX_DISPLAY_1/result1_or00001 (SEGMENTS_3_OBUF)
+     OBUF:I->O                 3.169          SEGMENTS_3_OBUF (SEGMENTS<3>)
+    ----------------------------------------
+    Total                      5.406ns (4.295ns logic, 1.111ns route)
+                                       (79.5% logic, 20.5% route)
+
+=========================================================================
+Timing constraint: Default path analysis
+  Total number of paths / destination ports: 1 / 1
+-------------------------------------------------------------------------
+Delay:               8.231ns (Levels of Logic = 5)
+  Source:            MOSI (PAD)
+  Destination:       MISO (PAD)
+
+  Data Path: MOSI to MISO
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O            15   1.106   1.016  MOSI_IBUF (MOSI_IBUF)
+     LUT3:I0->O            1   0.612   0.387  SPI_UI/MISO5 (SPI_UI/MISO5)
+     LUT4:I2->O            1   0.612   0.360  SPI_UI/MISO223_SW0 (N78)
+     LUT4:I3->O            1   0.612   0.357  SPI_UI/MISO223 (MISO_OBUF)
+     OBUF:I->O                 3.169          MISO_OBUF (MISO)
+    ----------------------------------------
+    Total                      8.231ns (6.111ns logic, 2.120ns route)
+                                       (74.2% logic, 25.8% route)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 12.00 secs
+Total CPU time to Xst completion: 11.53 secs
+ 
+--> 
+
+Total memory usage is 326288 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :   12 (   0 filtered)
+Number of infos    :   38 (   0 filtered)
+

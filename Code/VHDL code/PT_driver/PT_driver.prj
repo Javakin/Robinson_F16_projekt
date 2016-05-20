@@ -1,0 +1,8 @@
+vhdl work "PWM.vhd"
+vhdl work "SPI_slave.vhd"
+vhdl work "Simple_comparator.vhd"
+vhdl work "PID_controller.vhd"
+vhdl work "Mux_Display.vhd"
+vhdl work "Motor_driver.vhd"
+vhdl work "HallCounter.vhd"
+vhdl work "PT_driver.vhd"

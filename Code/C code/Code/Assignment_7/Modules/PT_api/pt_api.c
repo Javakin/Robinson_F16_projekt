@@ -146,6 +146,21 @@ INT16U pt_api_convert_to_tach(INT16U message)
 	
 }
 
+INT8U pt_api_set_coord(INT16U pan, INT16U tilt)
+{
+	INT8U ret_val = pdTRUE;
+
+	// send a new pan target
+	ret_val &= put_msg_state(SSM_TARGET_PAN, pan);
+	ret_val &= pt_api_send_message(ADR_TARGET_POS, SUB_ADR_PAN, SSM_TARGET_PAN);
+
+	// send a new tilt target
+	ret_val &= put_msg_state(SSM_TARGET_TILT, tilt);
+	ret_val &= pt_api_send_message(ADR_TARGET_POS, SUB_ADR_TILT, SSM_TARGET_TILT);
+
+	return ret_val;
+}
+
 /****************************** End Of Module *******************************/
 
 

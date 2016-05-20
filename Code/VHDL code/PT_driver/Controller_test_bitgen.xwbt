@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=C:\Users\black_000\Dropbox\Programmering\VHDL\Project Robinson\PT_driver\Controller_test.ncd
+OUTFILE=C:\Users\black_000\Dropbox\Programmering\VHDL\Project Robinson\PT_driver\Controller_test.bit
+FAMILY=Spartan3E
+PART=xc3s500e-5fg320
+WORKINGDIR=C:\Users\black_000\Dropbox\Programmering\VHDL\Project Robinson\PT_driver
+LICENSE=WebPack
+USER_INFO=211148784_0_0_811

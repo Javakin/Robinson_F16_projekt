@@ -45,10 +45,7 @@ void lightshow_init();
 //  Output   : -
 //  Function : initializes the lightshow
 
-void set_coord(INT16U pan, INT16U tilt);
-//  Input    : -
-//  Output   : -
-//  Function : send the coordinat to the pt_api
+
 
 /****************************** End Of Module *******************************/
 #endif

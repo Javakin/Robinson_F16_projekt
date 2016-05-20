@@ -409,14 +409,14 @@ void kernel_init()
 	put_msg_state(SSM_MIN_PAN_VEL, 	30);
 	pt_api_send_message(ADR_MIN_SPEED, SUB_ADR_PAN, SSM_MIN_PAN_VEL);
 
-	put_msg_state(SSM_MAX_PAN_VEL, 	100);
+	put_msg_state(SSM_MAX_PAN_VEL, 	120);
 	pt_api_send_message(ADR_MAX_SPEED, SUB_ADR_PAN, SSM_MAX_PAN_VEL);
 
 	put_msg_state(SSM_MIN_TILT_VEL, 30);
 	pt_api_send_message(ADR_MIN_SPEED, SUB_ADR_TILT, SSM_MIN_TILT_VEL);
 
 
-	put_msg_state(SSM_MAX_TILT_VEL, 100);
+	put_msg_state(SSM_MAX_TILT_VEL, 250);
 	pt_api_send_message(ADR_MAX_SPEED, SUB_ADR_TILT, SSM_MAX_TILT_VEL);
 	
 	//save FPGA enable state

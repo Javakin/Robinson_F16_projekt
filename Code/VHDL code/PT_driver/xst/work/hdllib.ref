@@ -1,0 +1,16 @@
+AR motor_driver behavioral "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/Motor_driver.vhd" sub00/vhpl05 1463751730
+EN pwm NULL "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PWM.vhd" sub00/vhpl00 1463751725
+AR pt_driver behavioral "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PT_driver.vhd" sub00/vhpl15 1463751740
+EN motor_driver NULL "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/Motor_driver.vhd" sub00/vhpl04 1463751729
+EN simple_comparator NULL "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/Simple_comparator.vhd" sub00/vhpl10 1463751735
+AR simple_comparator behavioral "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/Simple_comparator.vhd" sub00/vhpl11 1463751736
+AR pwm behavioral "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PWM.vhd" sub00/vhpl01 1463751726
+AR spi_slave behavioral "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/SPI_slave.vhd" sub00/vhpl03 1463751728
+AR mux_display behavioral "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/Mux_Display.vhd" sub00/vhpl13 1463751738
+AR hall_counter behavioral "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/HallCounter.vhd" sub00/vhpl07 1463751732
+EN pt_driver NULL "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PT_driver.vhd" sub00/vhpl14 1463751739
+AR pid_controller behavioral "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PID_controller.vhd" sub00/vhpl09 1463751734
+EN pid_controller NULL "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PID_controller.vhd" sub00/vhpl08 1463751733
+EN hall_counter NULL "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/HallCounter.vhd" sub00/vhpl06 1463751731
+EN mux_display NULL "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/Mux_Display.vhd" sub00/vhpl12 1463751737
+EN spi_slave NULL "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/SPI_slave.vhd" sub00/vhpl02 1463751727

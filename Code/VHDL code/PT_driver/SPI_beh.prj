@@ -1,0 +1,2 @@
+vhdl work "SPI_slave.vhd"
+vhdl work "SPI.vhd"

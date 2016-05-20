@@ -1,0 +1,128 @@
+xst -intstyle ise -ifn "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PT_driver.xst" -ofn "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PT_driver.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc PT_driver.ucf -p xc3s500e-fg320-5 "PT_driver.ngc" PT_driver.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o PT_driver_map.ncd PT_driver.ngd PT_driver.pcf 
+par -w -intstyle ise -ol high -t 1 PT_driver_map.ncd PT_driver.ncd PT_driver.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml PT_driver.twx PT_driver.ncd -o PT_driver.twr PT_driver.pcf -ucf PT_driver.ucf 
+bitgen -intstyle ise -f PT_driver.ut PT_driver.ncd 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc PT_driver.ucf -p xc3s500e-fg320-5 "PT_driver.ngc" PT_driver.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o PT_driver_map.ncd PT_driver.ngd PT_driver.pcf 
+par -w -intstyle ise -ol high -t 1 PT_driver_map.ncd PT_driver.ncd PT_driver.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml PT_driver.twx PT_driver.ncd -o PT_driver.twr PT_driver.pcf -ucf PT_driver.ucf 
+bitgen -intstyle ise -f PT_driver.ut PT_driver.ncd 
+xst -intstyle ise -ifn "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PT_driver.xst" -ofn "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PT_driver.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc PT_driver.ucf -p xc3s500e-fg320-5 "PT_driver.ngc" PT_driver.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o PT_driver_map.ncd PT_driver.ngd PT_driver.pcf 
+xst -intstyle ise -ifn "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PT_driver.xst" -ofn "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PT_driver.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc PT_driver.ucf -p xc3s500e-fg320-5 "PT_driver.ngc" PT_driver.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o PT_driver_map.ncd PT_driver.ngd PT_driver.pcf 
+par -w -intstyle ise -ol high -t 1 PT_driver_map.ncd PT_driver.ncd PT_driver.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml PT_driver.twx PT_driver.ncd -o PT_driver.twr PT_driver.pcf -ucf PT_driver.ucf 
+bitgen -intstyle ise -f PT_driver.ut PT_driver.ncd 
+xst -intstyle ise -ifn "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PT_driver.xst" -ofn "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PT_driver.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc PT_driver.ucf -p xc3s500e-fg320-5 "PT_driver.ngc" PT_driver.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o PT_driver_map.ncd PT_driver.ngd PT_driver.pcf 
+par -w -intstyle ise -ol high -t 1 PT_driver_map.ncd PT_driver.ncd PT_driver.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml PT_driver.twx PT_driver.ncd -o PT_driver.twr PT_driver.pcf -ucf PT_driver.ucf 
+bitgen -intstyle ise -f PT_driver.ut PT_driver.ncd 
+xst -intstyle ise -ifn "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PT_driver.xst" -ofn "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PT_driver.syr" 
+xst -intstyle ise -ifn "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PT_driver.xst" -ofn "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PT_driver.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc PT_driver.ucf -p xc3s500e-fg320-5 "PT_driver.ngc" PT_driver.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o PT_driver_map.ncd PT_driver.ngd PT_driver.pcf 
+par -w -intstyle ise -ol high -t 1 PT_driver_map.ncd PT_driver.ncd PT_driver.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml PT_driver.twx PT_driver.ncd -o PT_driver.twr PT_driver.pcf -ucf PT_driver.ucf 
+bitgen -intstyle ise -f PT_driver.ut PT_driver.ncd 
+xst -intstyle ise -ifn "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PT_driver.xst" -ofn "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PT_driver.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc PT_driver.ucf -p xc3s500e-fg320-5 "PT_driver.ngc" PT_driver.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o PT_driver_map.ncd PT_driver.ngd PT_driver.pcf 
+par -w -intstyle ise -ol high -t 1 PT_driver_map.ncd PT_driver.ncd PT_driver.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml PT_driver.twx PT_driver.ncd -o PT_driver.twr PT_driver.pcf -ucf PT_driver.ucf 
+bitgen -intstyle ise -f PT_driver.ut PT_driver.ncd 
+xst -intstyle ise -ifn "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PT_driver.xst" -ofn "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PT_driver.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc PT_driver.ucf -p xc3s500e-fg320-5 "PT_driver.ngc" PT_driver.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o PT_driver_map.ncd PT_driver.ngd PT_driver.pcf 
+par -w -intstyle ise -ol high -t 1 PT_driver_map.ncd PT_driver.ncd PT_driver.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml PT_driver.twx PT_driver.ncd -o PT_driver.twr PT_driver.pcf -ucf PT_driver.ucf 
+bitgen -intstyle ise -f PT_driver.ut PT_driver.ncd 
+xst -intstyle ise -ifn "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PT_driver.xst" -ofn "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PT_driver.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc PT_driver.ucf -p xc3s500e-fg320-5 "PT_driver.ngc" PT_driver.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o PT_driver_map.ncd PT_driver.ngd PT_driver.pcf 
+par -w -intstyle ise -ol high -t 1 PT_driver_map.ncd PT_driver.ncd PT_driver.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml PT_driver.twx PT_driver.ncd -o PT_driver.twr PT_driver.pcf -ucf PT_driver.ucf 
+bitgen -intstyle ise -f PT_driver.ut PT_driver.ncd 
+bitgen -intstyle ise -f PT_driver.ut PT_driver.ncd 
+xst -intstyle ise -ifn "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PT_driver.xst" -ofn "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PT_driver.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc PT_driver.ucf -p xc3s500e-fg320-5 "PT_driver.ngc" PT_driver.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o PT_driver_map.ncd PT_driver.ngd PT_driver.pcf 
+par -w -intstyle ise -ol high -t 1 PT_driver_map.ncd PT_driver.ncd PT_driver.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml PT_driver.twx PT_driver.ncd -o PT_driver.twr PT_driver.pcf -ucf PT_driver.ucf 
+bitgen -intstyle ise -f PT_driver.ut PT_driver.ncd 
+xst -intstyle ise -ifn "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PT_driver.xst" -ofn "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PT_driver.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc PT_driver.ucf -p xc3s500e-fg320-5 "PT_driver.ngc" PT_driver.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o PT_driver_map.ncd PT_driver.ngd PT_driver.pcf 
+par -w -intstyle ise -ol high -t 1 PT_driver_map.ncd PT_driver.ncd PT_driver.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml PT_driver.twx PT_driver.ncd -o PT_driver.twr PT_driver.pcf -ucf PT_driver.ucf 
+bitgen -intstyle ise -f PT_driver.ut PT_driver.ncd 
+xst -intstyle ise -ifn "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PT_driver.xst" -ofn "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PT_driver.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc PT_driver.ucf -p xc3s500e-fg320-5 "PT_driver.ngc" PT_driver.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o PT_driver_map.ncd PT_driver.ngd PT_driver.pcf 
+xst -intstyle ise -ifn "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PT_driver.xst" -ofn "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PT_driver.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc PT_driver.ucf -p xc3s500e-fg320-5 "PT_driver.ngc" PT_driver.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o PT_driver_map.ncd PT_driver.ngd PT_driver.pcf 
+par -w -intstyle ise -ol high -t 1 PT_driver_map.ncd PT_driver.ncd PT_driver.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml PT_driver.twx PT_driver.ncd -o PT_driver.twr PT_driver.pcf -ucf PT_driver.ucf 
+bitgen -intstyle ise -f PT_driver.ut PT_driver.ncd 
+xst -intstyle ise -ifn "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PT_driver.xst" -ofn "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PT_driver.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc PT_driver.ucf -p xc3s500e-fg320-5 "PT_driver.ngc" PT_driver.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o PT_driver_map.ncd PT_driver.ngd PT_driver.pcf 
+par -w -intstyle ise -ol high -t 1 PT_driver_map.ncd PT_driver.ncd PT_driver.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml PT_driver.twx PT_driver.ncd -o PT_driver.twr PT_driver.pcf -ucf PT_driver.ucf 
+bitgen -intstyle ise -f PT_driver.ut PT_driver.ncd 
+xst -intstyle ise -ifn "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PT_driver.xst" -ofn "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PT_driver.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc PT_driver.ucf -p xc3s500e-fg320-5 "PT_driver.ngc" PT_driver.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o PT_driver_map.ncd PT_driver.ngd PT_driver.pcf 
+par -w -intstyle ise -ol high -t 1 PT_driver_map.ncd PT_driver.ncd PT_driver.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml PT_driver.twx PT_driver.ncd -o PT_driver.twr PT_driver.pcf -ucf PT_driver.ucf 
+bitgen -intstyle ise -f PT_driver.ut PT_driver.ncd 
+xst -intstyle ise -ifn "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PT_driver.xst" -ofn "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PT_driver.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc PT_driver.ucf -p xc3s500e-fg320-5 "PT_driver.ngc" PT_driver.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o PT_driver_map.ncd PT_driver.ngd PT_driver.pcf 
+par -w -intstyle ise -ol high -t 1 PT_driver_map.ncd PT_driver.ncd PT_driver.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml PT_driver.twx PT_driver.ncd -o PT_driver.twr PT_driver.pcf -ucf PT_driver.ucf 
+bitgen -intstyle ise -f PT_driver.ut PT_driver.ncd 
+xst -intstyle ise -ifn "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PT_driver.xst" -ofn "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PT_driver.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc PT_driver.ucf -p xc3s500e-fg320-5 "PT_driver.ngc" PT_driver.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o PT_driver_map.ncd PT_driver.ngd PT_driver.pcf 
+xst -intstyle ise -ifn "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PT_driver.xst" -ofn "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PT_driver.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc PT_driver.ucf -p xc3s500e-fg320-5 "PT_driver.ngc" PT_driver.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o PT_driver_map.ncd PT_driver.ngd PT_driver.pcf 
+par -w -intstyle ise -ol high -t 1 PT_driver_map.ncd PT_driver.ncd PT_driver.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml PT_driver.twx PT_driver.ncd -o PT_driver.twr PT_driver.pcf -ucf PT_driver.ucf 
+bitgen -intstyle ise -f PT_driver.ut PT_driver.ncd 
+xst -intstyle ise -ifn "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PT_driver.xst" -ofn "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PT_driver.syr" 
+xst -intstyle ise -ifn "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PT_driver.xst" -ofn "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PT_driver.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc PT_driver.ucf -p xc3s500e-fg320-5 "PT_driver.ngc" PT_driver.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o PT_driver_map.ncd PT_driver.ngd PT_driver.pcf 
+par -w -intstyle ise -ol high -t 1 PT_driver_map.ncd PT_driver.ncd PT_driver.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml PT_driver.twx PT_driver.ncd -o PT_driver.twr PT_driver.pcf -ucf PT_driver.ucf 
+bitgen -intstyle ise -f PT_driver.ut PT_driver.ncd 
+xst -intstyle ise -ifn "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PT_driver.xst" -ofn "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PT_driver.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc PT_driver.ucf -p xc3s500e-fg320-5 "PT_driver.ngc" PT_driver.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o PT_driver_map.ncd PT_driver.ngd PT_driver.pcf 
+xst -intstyle ise -ifn "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PT_driver.xst" -ofn "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PT_driver.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc PT_driver.ucf -p xc3s500e-fg320-5 "PT_driver.ngc" PT_driver.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o PT_driver_map.ncd PT_driver.ngd PT_driver.pcf 
+par -w -intstyle ise -ol high -t 1 PT_driver_map.ncd PT_driver.ncd PT_driver.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml PT_driver.twx PT_driver.ncd -o PT_driver.twr PT_driver.pcf -ucf PT_driver.ucf 
+bitgen -intstyle ise -f PT_driver.ut PT_driver.ncd 
+xst -intstyle ise -ifn "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PT_driver.xst" -ofn "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PT_driver.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc PT_driver.ucf -p xc3s500e-fg320-5 "PT_driver.ngc" PT_driver.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o PT_driver_map.ncd PT_driver.ngd PT_driver.pcf 
+par -w -intstyle ise -ol high -t 1 PT_driver_map.ncd PT_driver.ncd PT_driver.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml PT_driver.twx PT_driver.ncd -o PT_driver.twr PT_driver.pcf -ucf PT_driver.ucf 
+bitgen -intstyle ise -f PT_driver.ut PT_driver.ncd 
+xst -intstyle ise -ifn "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PT_driver.xst" -ofn "C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/PT_driver.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc PT_driver.ucf -p xc3s500e-fg320-5 "PT_driver.ngc" PT_driver.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o PT_driver_map.ncd PT_driver.ngd PT_driver.pcf 
+par -w -intstyle ise -ol high -t 1 PT_driver_map.ncd PT_driver.ncd PT_driver.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml PT_driver.twx PT_driver.ncd -o PT_driver.twr PT_driver.pcf -ucf PT_driver.ucf 
+bitgen -intstyle ise -f PT_driver.ut PT_driver.ncd 

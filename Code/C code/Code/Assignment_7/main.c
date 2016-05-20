@@ -121,7 +121,6 @@ int main(void)
 	return_value &= xTaskCreate( update_task, ( signed portCHAR *) "update_task", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL);
 
 
-
 	// Test if all tasks started sucessfully
 	if (return_value != pdTRUE)
 	{

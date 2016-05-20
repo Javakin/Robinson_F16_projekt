@@ -68,7 +68,14 @@ INT16U pt_api_get_pt(INT16U message);
 //  Function : retreves the messages p/t bit
 
 INT16U pt_api_convert_to_tach(INT16U message);
+//  Input    : the proportional position on scene
+//  Output   : the tacs for pt-system
+//  Function : converts the number to tacks
 
+INT8U pt_api_set_coord(INT16U pan, INT16U tilt);
+//  Input    : -
+//  Output   : -
+//  Function : send the coordinat to the pt_system
 
 /****************************** End Of Module *******************************/
 #endif
