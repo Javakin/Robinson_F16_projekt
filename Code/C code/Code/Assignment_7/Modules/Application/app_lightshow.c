@@ -61,7 +61,8 @@ INT16S	target_pos;
 INT16S	current_pos;
 
 //0 - 10 000
-INT16U show1[4][2] = { { 1000, 1000 }, { 1000, 9000}, { 9000, 9000}, { 9000, 1000}};
+//INT16U show1[4][2] = { { 1000, 1000 }, { 1000, 9000}, { 9000, 9000}, { 9000, 1000}};
+INT16U show1[4][2] = { { 400, 400 }, { 400, 680}, { 680, 680}, { 680, 400}};
 
 /*****************************   Functions   *******************************/
 void lightshow_task()
@@ -76,7 +77,7 @@ void lightshow_task()
 		{
 		case LIG_ST_IDLE:
 			// pull from lightshow queue to get enable signal
-			if (xQueueReceive(app_lightshow_queue, &( lig_message ) ,portMAX_DELAY) == pdTRUE)
+			if (xQueueReceive(app_lightshow_queue, &( lig_message ), portMAX_DELAY) == pdTRUE)
 			{
 				// recieved message
 				if(lig_message == RUN_SHOW_EVENT)

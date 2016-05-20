@@ -169,6 +169,8 @@ void ker_idle_func(INT8U opcode)
 
 	//////////////////////// all 1 parameter instructions   //////////////////////////////
 
+	case RUN_SHOW_EVENT:
+		/*no break*/
 	case SET_HEIGHT_EVENT:
 		/*no break*/
 	case SET_WIDTH_EVENT:

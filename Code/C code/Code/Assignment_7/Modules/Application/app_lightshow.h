@@ -24,7 +24,7 @@
 #include "Modules/EMP/emp_type.h"
 
 /*****************************    Defines    *******************************/
-#define MIN_DISTANCE	200
+#define MIN_DISTANCE	2
 
 
 /*****************************   Constants   *******************************/
