@@ -67,7 +67,7 @@ INT16U pt_api_get_pt(INT16U message);
 //  Output   : the p/t bit from the message
 //  Function : retreves the messages p/t bit
 
-INT16U pt_api_convert_to_tach(INT16U message);
+INT16U pt_api_convert_to_tach(INT8U PT, INT16U message);
 //  Input    : the proportional position on scene
 //  Output   : the tacs for pt-system
 //  Function : converts the number to tacks

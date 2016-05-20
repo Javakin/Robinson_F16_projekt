@@ -29,7 +29,10 @@
 #include "task.h"
 #include "queue.h"
 #include "semphr.h"
-#include <math.h>		//required for conversion to tach
+
+#include <stdio.h>
+#include <math.h>
+
 
 
 /*****************************    Defines    *******************************/
@@ -57,6 +60,12 @@ INT8U pt_api_send_message( INT8U address, INT8U PT, INT8U ssm_address)
 	if (xSemaphoreTake(pt_semaphore, portMAX_DELAY) == pdTRUE)
 	{
 		data_holder = get_msg_state(ssm_address);
+
+		// convert the relative number to tacks
+		if (address == ADR_TARGET_POS)
+			//message = pt_api_convert_to_tach(PT, 5000);
+			pt_api_convert_to_tach(PT, 5000);
+
 
 		// 2 adress bit 1 p/t bit and 11 message bits
 		// 0 0 a a pt d d d d d  d d d d d d
@@ -108,41 +117,30 @@ void pt_api_receive_message(INT16U message)
 	}
 }
 
-INT16U pt_api_convert_to_tach(INT16U message)
+INT16U pt_api_convert_to_tach(INT8U PT, INT16U message)
 {
-	//here we recieve a number from 1 to 10000
-	//this must be converted to a tach value depending on constraints
-/* 	
-	INT16U Height = get_msg_state(SSM_LENGTH);
-	INT16U Width = get_msg_state(SSM_WIDTH);
-	INT16U Depth = get_msg_state(SSM_DEPTH);
-
-	//restraints in meter for pan and tilt
-	INT16U Tac_P_max = atan(Width/Height)*57.3*3*2;
-	INT16U Tac_T_max = atan(Depth/Height)*57.3*3*2;
+	// define variables
+	FP64 target = message - 5000;
+	FP64 span;
+	FP64 hight = get_msg_state(SSM_HEIGHT)*1000;
+	INT16U ret_val = 0;
 
 
-	INT16U Pos_P_surface = Input_P*Width/100;
-	INT16U Pos_T_surface = Input_T*Width/100;
+	// get the value for plant
+	if (PT == SUB_ADR_PAN)
+		span = get_msg_state(SSM_WIDTH)*1000;
+	if (PT == SUB_ADR_TILT)
+		span = get_msg_state(SSM_DEPTH)*1000;
 
-	INT16U Pos_P_tac = atan(Pos_P_surface/Height)*57.3*3;
-	INT16U Pos_T_tac = atan(Pos_T_surface/Height)*57.3*3;
+	// perform calculation
+	FP64 temp = 0;
 
+	temp = atan ((target * (span/2))/height);
+	temp *= 3;
 
-	 */
-
-	//input = 5000
-	//5000 * 7 / 10000  =3,5
+	ret_val = temp;
 	
-	
-	//atan(3,5/5)*57,3*3
-	
-	
-	
-	
-	
-	
-	return 0;
+	return ret_val;
 	
 }
 
