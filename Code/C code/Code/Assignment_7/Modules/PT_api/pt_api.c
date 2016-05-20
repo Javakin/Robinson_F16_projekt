@@ -46,20 +46,20 @@ extern xSemaphoreHandle pt_semaphore;
 
 /*****************************   Functions   *******************************/
 
-INT8U pt_api_send_message_no_conv( INT8U adress, INT8U PT, INT8U ssm_address)
-{
-	INT16U data_holder = get_msg_state(ssm_address);
-	//this api send will ignore conversion, made for the goto_tach instruction
-	
-	// 2 adress bit 1 p/t bit and 11 message bits
-	// 0 0 a a pt d d d d d  d d d d d d
-	INT16U placeholder = data_holder & 0x07FF;
-	placeholder |= ((PT & 0x0001) << 11);
-	placeholder |= ( adress << 12 );
-
-	// send the message via spi_master
-	return xQueueSend(spi_tx_queue, &( placeholder ), portMAX_DELAY);
-}
+//INT8U pt_api_send_message_no_conv( INT8U adress, INT8U PT, INT8U ssm_address)
+//{
+//	INT16U data_holder = get_msg_state(ssm_address);
+//	//this api send will ignore conversion, made for the goto_tach instruction
+//
+//	// 2 adress bit 1 p/t bit and 11 message bits
+//	// 0 0 a a pt d d d d d  d d d d d d
+//	INT16U placeholder = data_holder & 0x07FF;
+//	placeholder |= ((PT & 0x0001) << 11);
+//	placeholder |= ( adress << 12 );
+//
+//	// send the message via spi_master
+//	return xQueueSend(spi_tx_queue, &( placeholder ), portMAX_DELAY);
+//}
 
 INT8U pt_api_send_message( INT8U address, INT8U PT, INT8U ssm_address)
 {

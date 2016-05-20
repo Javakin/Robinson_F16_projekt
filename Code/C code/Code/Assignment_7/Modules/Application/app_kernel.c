@@ -59,7 +59,6 @@ extern xQueueHandle spi_tx_queue;
 
 INT8U kernel_state = KER_ST_IDLE;
 
-// for debugging
 INT8U ker_message;
 
 /*****************************   Functions   *******************************/
@@ -394,8 +393,8 @@ void kernel_init()
 	//save FPGA enable state
 	//FPGA is enabled when the system is started
 	put_msg_state(SSM_FPGA_ENABLE, 1);
-
-
+	pt_api_send_message(ADR_EN_MOTOR, SUB_ADR_PAN, SSM_FPGA_ENABLE);
+	pt_api_send_message(ADR_EN_MOTOR, SUB_ADR_TILT, SSM_FPGA_ENABLE);
 }
 
 

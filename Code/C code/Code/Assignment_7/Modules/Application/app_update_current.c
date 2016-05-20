@@ -57,14 +57,14 @@ void update_task()
 		pt_api_send_message(ADR_TARGET_POS, SUB_ADR_TILT, SSM_TARGET_TILT);
 		
 		//delay task for 5 msec
-		vTaskDelay(1);
+		//vTaskDelay(protMAX_DELAY);
 	}		
 }
 
 void update_current_init()
 {
 	// setup wait for one second
-	vTaskDelay(200);
+	vTaskDelay(20);
 }
 
 

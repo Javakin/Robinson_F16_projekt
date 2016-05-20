@@ -45,11 +45,11 @@ extern xQueueHandle uart0_tx_queue;
 
 /*****************************   Functions   *******************************/
 
-void uart0_api_receive_message(INT8U message)
+void uart0_api_receive_message(INT8U a_message)
 {
-	uart0_api_send_message(message);
+	uart0_api_send_message(a_message);
 
-	switch(message)
+	switch(a_message)
 	{
 	case '\n':
 		/*no break*/
@@ -121,16 +121,15 @@ void uart0_api_receive_message(INT8U message)
 
 	default:
 		// cheak for number input
-		if ( (message >= '0') && (message <= '9') &&  get_msg_state(SSM_USER_VALUE) < 1000000)
+		if ( (a_message >= '0') && (a_message <= '9') &&  get_msg_state(SSM_USER_VALUE) < 1000000)
 		{
 			// a number has been pressed
 			INT32U number = get_msg_state(SSM_USER_VALUE);
 			number *= 10;
-			number += message - '0';
+			number += a_message - '0';
 
 			// update SSM if no owerflow has occoerd
 			put_msg_state(SSM_USER_VALUE, number);
-
 		}
 
 		break;

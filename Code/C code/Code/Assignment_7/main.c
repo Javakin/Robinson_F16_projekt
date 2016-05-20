@@ -110,13 +110,13 @@ int main(void)
 
 
 	// Start the tasks defined within this file
-	return_value &= xTaskCreate( status_led_task, ( signed portCHAR * ) "Status_led", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL );
+	//return_value &= xTaskCreate( status_led_task, ( signed portCHAR * ) "Status_led", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL );
 	return_value &= xTaskCreate( uart0_rx_task, ( signed portCHAR *) "uart0_rx_task", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL);
 	return_value &= xTaskCreate( uart0_tx_task, ( signed portCHAR *) "uart0_tx_task", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL);
 	return_value &= xTaskCreate( spi_master_task, ( signed portCHAR * ) "spi_master_task", USERTASK_STACK_SIZE, NULL, HIGH_PRIO, NULL );
 	return_value &= xTaskCreate( kernel_task, ( signed portCHAR *) "kernel_task", USERTASK_STACK_SIZE, NULL, MED_PRIO, NULL);
-	return_value &= xTaskCreate( lightshow_task, ( signed portCHAR *) "lightshow_task", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL);
-	return_value &= xTaskCreate( update_task, ( signed portCHAR *) "update_task", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL);
+	//return_value &= xTaskCreate( lightshow_task, ( signed portCHAR *) "lightshow_task", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL);
+	//return_value &= xTaskCreate( update_task, ( signed portCHAR *) "update_task", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL);
 
 
 

@@ -61,7 +61,7 @@ void uart0_tx_task(void *pvParameters)
 		if (!(UART0_FR_R & UART_FR_TXFF))
 		{
 			// The TX-fifo is not full add one more char from tx_queue
-			if( xQueueReceive( uart0_tx_queue, &( recieve ), 200 ) )
+			if( xQueueReceive( uart0_tx_queue, &( recieve ), portMAX_DELAY ) )
 			{
 				UART0_DR_R = recieve;
 			}

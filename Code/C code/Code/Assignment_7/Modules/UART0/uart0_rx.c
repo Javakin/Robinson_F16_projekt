@@ -183,7 +183,7 @@ void uart0_rx_task()
 
 void send_state()
 {
-	if( xQueueReceive( uart0_rx_queue, &( uart0_rx_received ), portMAX_DELAY ) )
+	if( xQueueReceive( uart0_rx_queue, &( uart0_rx_received ), 10 ) )
 	{
 		if ( uart0_rx_received == CONFIG_CHAR)
 		{
