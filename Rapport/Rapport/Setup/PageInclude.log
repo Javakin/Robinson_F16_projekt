@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.12.8)  3 MAR 2016 10:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.12.17)  20 MAY 2016 11:10
 entering extended mode
 **PageInclude.tex
 (PageInclude.tex
@@ -27,14 +27,14 @@ Enter file name:
 ! Emergency stop.
 <read *> 
          
-l.11 \input{Sections/Indledning}
+l.13 \input{Sections/Indledning}
                                 
 *** (cannot \read from terminal in nonstop modes)
 
  
 Here is how much of TeX's memory you used:
  12 strings out of 493673
- 157 string characters out of 3141530
+ 157 string characters out of 3141526
  52455 words of memory out of 3000000
  3454 multiletter control sequences out of 15000+200000
  3640 words of font info for 14 fonts, out of 3000000 for 9000

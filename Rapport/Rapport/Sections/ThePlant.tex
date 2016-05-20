@@ -2,8 +2,7 @@
 
 The purpose of these tests is to analyse and generate a blackbox model for the motor based on its step response. 
 
-Setup:
 The motor was set up with a switch connected to a power supply set at the desired voltage to test. This would create a physical step response from the motor when the switch was toggled. The two encoders output on the EMG30 are open collectors, so the outputs were connected to pull-up resistance to produce a desired signal. The pull-up resistors for these tests was picked to be around 300 ohm.
 
-An oscilloscope was set to measure the two encoders outputs on its each own individual channel. The sampling starts on an edge trigger with a sampling rate of 2 mHz and stops the sampling after 0.5 seconds.
-These 2 set of samples would together be the data defining an step response.
+An oscilloscope was set to measure the two encoders outputs on its own individual channel. The sampling starts on an edge trigger with a sampling rate of 2 mHz and stops the sampling after 0.5 seconds.
+These 2 set of samples would together be the data defining a step response. 
