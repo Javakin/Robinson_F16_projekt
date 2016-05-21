@@ -43,8 +43,6 @@
 #include "PT_api/pt_api.h"
 //#include "PS2Controller/ps2controller.h"
 
-#include <stdio.h>
-#include <math.h>
 
 
 
@@ -83,9 +81,6 @@ xSemaphoreHandle pt_semaphore;
 static void setupHardware(void)
 {
   // put inits here
-	// testing
-	FP64 temp = 0;
-	FP64 temp2 = atan(temp);
 
 }
 

@@ -45,8 +45,6 @@ extern xQueueHandle spi_rx_queue;
 extern xSemaphoreHandle pt_semaphore;
 
 
-
-
 /*****************************   Functions   *******************************/
 
 
