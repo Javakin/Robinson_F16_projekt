@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.3.17)  21 MAY 2016 16:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.3.17)  21 MAY 2016 17:27
 entering extended mode
 **./Master.tex
 (Master.tex
@@ -10,8 +10,8 @@ Babel <3.9n> and hyphenation patterns for 69 languages loaded.
 (Setup/Packages.tex
 ("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\article.cls"
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\size12.clo"
-File: size12.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\size10.clo"
+File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
 \c@section=\count80
@@ -1336,7 +1336,12 @@ LaTeX Info: Redefining \Cpagerefrange on input line 2230.
 LaTeX Info: Redefining \labelcref on input line 2230.
 LaTeX Info: Redefining \labelcpageref on input line 2230.
 Package cleveref Info: `listings' support loaded on input line 2950.
-)) (Master.aux)
+))
+
+LaTeX Warning: Unused global option(s):
+    [15pt].
+
+(Master.aux)
 \openout1 = `Master.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 2.
@@ -1392,12 +1397,12 @@ File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 * \topmargin=-23.91173pt
 * \headheight=12.0pt
 * \headsep=25.0pt
-* \topskip=12.0pt
+* \topskip=10.0pt
 * \footskip=30.0pt
-* \marginparwidth=44.0pt
-* \marginparsep=10.0pt
+* \marginparwidth=65.0pt
+* \marginparsep=11.0pt
 * \columnsep=10.0pt
-* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
 * \hoffset=0.0pt
 * \voffset=0.0pt
 * \mag=1000
@@ -1465,9 +1470,13 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <24.88> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 14.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <24.88> not available
 (Font)              Font shape `OT1/ptm/b/it' tried instead on input line 14.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <20.74> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 16.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <20.74> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 16.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 20.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <17.28> not available
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 21.
 )
 <Billeder/SDU-logo.png, id=87, 855.195pt x 846.16125pt>
@@ -1516,14 +1525,7 @@ Package pdftex.def Info: Billeder/SDU-logo.png used on input line 2.
 
 
 {C:/Users/JARVIS/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <./Billeder
-/SDU-logo.png>] (sections/preface.tex)
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[2
+/SDU-logo.png>] (sections/preface.tex) [2
 
 
 ] (Master.toc)
@@ -1532,77 +1534,24 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 
  [3
 
-] (Sections/Indledning.tex) (sections/Problemformulation.tex
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[4]
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
+]
+(Sections/Indledning.tex) (sections/Problemformulation.tex [4]
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 8.
 LaTeX Font Info:    Try loading font information for TS1+ptm on input line 22.
 
 ("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\ts1ptm.fd"
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-)
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[5]) (sections/Projektafgraendsning.tex
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[6]
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[7]) (sections/Indledendeidefase.tex) (sections/ThePlant.tex)
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[8] (sections/Journaler.tex) (sections/Abstract.tex) (Sections/Konklusion.tex)
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[9] (Sections/Kildeliste.tex
+) [5]) (sections/Projektafgraendsning.tex [6]) (sections/Indledendeidefase.tex)
+[7] (sections/ThePlant.tex) (sections/Journaler.tex) (sections/Abstract.tex)
+(Sections/Konklusion.tex) [8] (Sections/Kildeliste.tex
 LaTeX Font Info:    Try loading font information for OT1+pcr on input line 6.
 
 ("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\ot1pcr.fd"
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-))
+)) [9
 
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[10
-
-] (Sections/Bilag.tex))
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[11
+] (Sections/Bilag.tex)) [10
 
 ] 
 AED: lastpage setting LastPage
@@ -1616,18 +1565,18 @@ Package rerunfilecheck Info: File `Master.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 5.
  ) 
 Here is how much of TeX's memory you used:
- 13989 strings out of 493634
- 222516 string characters out of 3134831
- 336051 words of memory out of 3000000
- 17065 multiletter control sequences out of 15000+200000
- 23021 words of font info for 49 fonts, out of 3000000 for 9000
+ 13976 strings out of 493634
+ 222417 string characters out of 3134831
+ 336034 words of memory out of 3000000
+ 17061 multiletter control sequences out of 15000+200000
+ 22720 words of font info for 43 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
- 40i,13n,45p,792b,461s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 40i,13n,45p,792b,535s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/JARVIS/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/fontname/8
 r.enc}<C:/Users/JARVIS/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/ams
-fonts/cm/cmmi12.pfb><C:/Users/JARVIS/AppData/Local/Programs/MiKTeX 2.9/fonts/ty
-pe1/public/amsfonts/cm/cmr12.pfb><C:/Users/JARVIS/AppData/Local/Programs/MiKTeX
- 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/JARVIS/AppData/Local/Pro
+fonts/cm/cmmi10.pfb><C:/Users/JARVIS/AppData/Local/Programs/MiKTeX 2.9/fonts/ty
+pe1/public/amsfonts/cm/cmr10.pfb><C:/Users/JARVIS/AppData/Local/Programs/MiKTeX
+ 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/JARVIS/AppData/Local/Pro
 grams/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb><C:/Users/JARVIS/AppData/Lo
 cal/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Users/JARVIS/AppDa
 ta/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/JARVIS
@@ -1635,9 +1584,9 @@ ta/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/JARVIS
 ARVIS/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Us
 ers/JARVIS/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
 
-Output written on Master.pdf (11 pages, 206273 bytes).
+Output written on Master.pdf (10 pages, 204960 bytes).
 PDF statistics:
- 240 PDF objects out of 1000 (max. 8388607)
- 50 named destinations out of 1000 (max. 500000)
+ 235 PDF objects out of 1000 (max. 8388607)
+ 49 named destinations out of 1000 (max. 500000)
  174 words of extra memory for PDF output out of 10000 (max. 10000000)
 
