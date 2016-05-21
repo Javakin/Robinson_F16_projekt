@@ -1,2 +1,103 @@
+\newpage
+
 \section{PID}
-Proportion integral differential controller. 
+\subsection{Introduction}
+A controller is an essential part of most autonomous systems. This project is no exception - having control over where the pan and tilt system is pointing at is crucial to meeting the specified requirements. The following questions might then transpire. 
+
+\begin{itemize}
+
+\item What controllers are available?
+
+\item Is a complex or simple controller desired?
+
+	\begin{itemize}
+    \item Pros and cons?
+    \end{itemize}
+
+\item How do you determine which one to use?
+
+\item How do you implement them?
+
+\end{itemize}
+
+When discussing what controller to use, figure \ref{fig:Standartsystem} is the point of reference, where the plant is the previously estimated transfer function, \textbf{SKRIV FORMLEN} EQUATION REF, of the motor of the system.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.5]{Billeder/Standartsystem.png}
+\caption{ A generic way of representing a close-looped control system }
+\label{fig:Standartsystem}
+\end{figure}
+
+\newpage
+
+\subsection{The Controller}
+For simplicity’s sakel Proportional (P), Proportional-Integral (PI), Proportional-Derivative (PD) and Proportional-Integral-Derivative (PID) be the only controllers taken into considerations for this project. Though Lead-Lag compensators could be considered as well, since in essence they can do the same as before mentioned controllers.\par
+
+A PID controller is made up by three parts: the proportional gain looks at the current error, the integral looks at the past errors and the derivative looks at current rate of change. Each term has a tuneable gain called the k constants. In general these constants are what defines a PID controller’s behavior. See figure \ref{fig:PID controller} for illustration. 
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.5]{Billeder/PIDcontroller.png}
+\caption{ A representation of the PID controller principle }
+\label{fig:PID controller}
+\end{figure}
+
+This is the equation of the standard PID controller in the time domain:\\$K_{p}e(t)+K_{i} \int\limits_0^t \mathrm{e}(t)\,\mathrm{d}t+K_{d}\frac{de(t)}{dt}$
+
+If transformed to the s domain the equations looks like this:\\
+$G(s)=K_{p}+\frac{K_{i}}{s}+K_{d}s$
+
+\subsection{Proportional Controller}
+
+The P controller is by far the most straightforward controller, being that it is simply adding a gain to the open-loop transfer function. A P controller is a desired controller, since it is very simple to implement and tune, though this project have to meet the stated requirements.\par
+
+To help analyse and give some intuition about how the motor’s transfer function behaves, a root locus of the open-loop transfer function is plotted (FIGURE5). As one would expect it seems like this kind of controller will not suffice for the project.\par
+
+As seen in figure \ref{fig:PStep}, the step response of the closed-loop transfer function, has an overshot of 14.1 percent, and a settling time of 0.055 seconds. Meeting the specified requirements  for the project with this controller is not going to happen. The overshot can be decreased by reducing the gain below 1, but this induces a longer settling time and vice versa. 
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.7]{Billeder/PStep.jpg}
+\caption{ Peak amplitude: 1.14 - Overshot(\%): 14.1 - At time(seconds): 0.0356
+		 Settling time (seconds): 0.055 }
+\label{fig:PStep}
+\end{figure}
+
+\subsection{•Proportional-Integral Controller}
+
+The PI controller accumulates past error terms over time to eliminate steady-state errors in the system. This can cause an increase in overshoot called the integrator wind up, and an increase in settling time. Tough if a requirement is complying a steady-state error of 0, then it is up to the designer to decide, if reaching state-state is more vital to the system, than having more overshot and a longer settling time.\par
+
+Using a PI controller is the same as adding a pole and a zero to the open-loop transfer function. As seen in FIGURE5, this controller does not seem to live up to the requirements either. Placing the zero and pole differently could make a better controller, but it would never be able to adjust to both design criterias.\par
+
+The step response of the PI controller is seen on FIGURE2, the only difference from the P controller is a slightly longer peak time and settling time and a larger overshoot, as expected. This controller would not meet the requirements. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
