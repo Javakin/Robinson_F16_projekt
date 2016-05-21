@@ -30,9 +30,6 @@
 #include "queue.h"
 #include "semphr.h"
 
-#include <stdio.h>
-#include <math.h>
-
 
 
 /*****************************    Defines    *******************************/
@@ -46,6 +43,9 @@ extern xQueueHandle spi_tx_queue;
 extern xQueueHandle spi_rx_queue;
 
 extern xSemaphoreHandle pt_semaphore;
+
+
+
 
 /*****************************   Functions   *******************************/
 
@@ -122,8 +122,8 @@ INT16U pt_api_convert_to_tach(INT8U PT, INT16U message)
 	// define variables
 	FP64 target = message - 5000;
 	FP64 span;
-	FP64 hight = get_msg_state(SSM_HEIGHT)*1000;
-	INT16U ret_val = 0;
+	FP64 height = get_msg_state(SSM_HEIGHT)*1000;
+	INT64U ret_val = 20;
 
 
 	// get the value for plant
@@ -133,10 +133,12 @@ INT16U pt_api_convert_to_tach(INT8U PT, INT16U message)
 		span = get_msg_state(SSM_DEPTH)*1000;
 
 	// perform calculation
-	FP64 temp = 0;
+	FP32 temp = 0;
 
-	temp = atan ((target * (span/2))/height);
-	temp *= 3;
+	// (target * (span/2))/height
+	//FP64 temp2 = (target * (span/2))/height;
+	//temp = atan(temp);
+	//temp *= 3;
 
 	ret_val = temp;
 	
