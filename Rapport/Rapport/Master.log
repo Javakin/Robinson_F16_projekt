@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.3.17)  22 MAY 2016 16:30
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.3.17)  22 MAY 2016 19:02
 entering extended mode
 **./Master.tex
 (Master.tex
@@ -1558,21 +1558,21 @@ File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 (sections/The_Microcontroller/The_Application.tex) [10])
 (sections/The_FPGA/The_FPGA.tex) (sections/The_Controller/The_Controller.tex
 (Sections/The_Controller/PIDcontroller/PIDcontroller.tex [11]
-<Billeder/Standartsystem.png, id=269, 692.5875pt x 111.41624pt>
+<Billeder/Standartsystem.png, id=268, 692.5875pt x 111.41624pt>
 File: Billeder/Standartsystem.png Graphic file (type png)
 
 <use Billeder/Standartsystem.png>
 Package pdftex.def Info: Billeder/Standartsystem.png used on input line 27.
 (pdftex.def)             Requested size: 346.2929pt x 55.70798pt.
  [12 <./Billeder/Standartsystem.png>]
-<Billeder/PIDcontroller.png, id=278, 700.6175pt x 222.8325pt>
+<Billeder/PIDcontroller.png, id=277, 700.6175pt x 222.8325pt>
 File: Billeder/PIDcontroller.png Graphic file (type png)
 
 <use Billeder/PIDcontroller.png>
 Package pdftex.def Info: Billeder/PIDcontroller.png used on input line 41.
 (pdftex.def)             Requested size: 350.30789pt x 111.41597pt.
 
-<Billeder/PStep.jpg, id=281, 454.69875pt x 252.945pt>
+<Billeder/PStep.jpg, id=280, 454.69875pt x 252.945pt>
 File: Billeder/PStep.jpg Graphic file (type jpg)
  <use Billeder/PStep.jpg>
 Package pdftex.def Info: Billeder/PStep.jpg used on input line 61.
@@ -1582,21 +1582,21 @@ Package pdftex.def Info: Billeder/PStep.jpg used on input line 61.
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [13 <./Billeder/PIDcontroller.png>]
-<Billeder/PIStep.jpg, id=297, 451.6875pt x 263.98625pt>
+<Billeder/PIStep.jpg, id=296, 451.6875pt x 263.98625pt>
 File: Billeder/PIStep.jpg Graphic file (type jpg)
 
 <use Billeder/PIStep.jpg>
 Package pdftex.def Info: Billeder/PIStep.jpg used on input line 77.
 (pdftex.def)             Requested size: 316.17908pt x 184.78911pt.
  [14 <./Billeder/PStep.jpg> <./Billeder/PIStep.jpg>]
-<Billeder/PDStep.jpg, id=305, 438.63875pt x 277.035pt>
+<Billeder/PDStep.jpg, id=304, 438.63875pt x 277.035pt>
 File: Billeder/PDStep.jpg Graphic file (type jpg)
 
 <use Billeder/PDStep.jpg>
 Package pdftex.def Info: Billeder/PDStep.jpg used on input line 93.
 (pdftex.def)             Requested size: 307.04501pt x 193.92317pt.
 
-<Billeder/PIDStep.jpg, id=308, 458.71375pt x 261.97874pt>
+<Billeder/PIDStep.jpg, id=307, 458.71375pt x 261.97874pt>
 File: Billeder/PIDStep.jpg Graphic file (type jpg)
 
 <use Billeder/PIDStep.jpg>
@@ -1606,7 +1606,7 @@ Package pdftex.def Info: Billeder/PIDStep.jpg used on input line 109.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Billeder/RlocusControllers.jpg, id=309, 563.85657pt x 440.39531pt>
+<Billeder/RlocusControllers.jpg, id=308, 563.85657pt x 440.39531pt>
 File: Billeder/RlocusControllers.jpg Graphic file (type jpg)
 
 <use Billeder/RlocusControllers.jpg>
@@ -1637,8 +1637,8 @@ Package rerunfilecheck Info: File `Master.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 10.
  ) 
 Here is how much of TeX's memory you used:
- 14092 strings out of 493634
- 226108 string characters out of 3134831
+ 14091 strings out of 493634
+ 226102 string characters out of 3134831
  338034 words of memory out of 3000000
  17106 multiletter control sequences out of 15000+200000
  22205 words of font info for 41 fonts, out of 3000000 for 9000
@@ -1658,9 +1658,9 @@ imes/utmbi8a.pfb><C:/Users/JARVIS/AppData/Local/Programs/MiKTeX 2.9/fonts/type1
 /urw/times/utmr8a.pfb><C:/Users/JARVIS/AppData/Local/Programs/MiKTeX 2.9/fonts/
 type1/urw/times/utmr8a.pfb><C:/Users/JARVIS/AppData/Local/Programs/MiKTeX 2.9/f
 onts/type1/urw/times/utmri8a.pfb>
-Output written on Master.pdf (19 pages, 409628 bytes).
+Output written on Master.pdf (19 pages, 409797 bytes).
 PDF statistics:
- 393 PDF objects out of 1000 (max. 8388607)
- 72 named destinations out of 1000 (max. 500000)
+ 392 PDF objects out of 1000 (max. 8388607)
+ 71 named destinations out of 1000 (max. 500000)
  353 words of extra memory for PDF output out of 10000 (max. 10000000)
 
