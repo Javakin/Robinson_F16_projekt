@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.3.17)  22 MAY 2016 13:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.5.21)  22 MAY 2016 20:09
 entering extended mode
 **./Master.tex
 (Master.tex
@@ -8,9 +8,9 @@ Babel <3.9n> and hyphenation patterns for 69 languages loaded.
 \openout2 = `Setup/Packages.aux'.
 
 (Setup/Packages.tex
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\article.cls"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\article.cls"
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\size10.clo"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\size10.clo"
 File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
@@ -25,19 +25,19 @@ File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\inputenc.sty
-"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\inputenc.sty"
 Package: inputenc 2015/03/17 v1.2c Input encoding file
 \inpenc@prehook=\toks14
 \inpenc@posthook=\toks15
- ("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\utf8.def"
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\utf8.def"
 File: utf8.def 2015/09/07 v1.1p UTF-8 support for inputenc
 Now handling font encoding OML ...
 ... no UTF-8 mapping file for font encoding OML
 Now handling font encoding T1 ...
 ... processing UTF-8 mapping file for font encoding T1
 
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\t1enc.dfu"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\t1enc.dfu"
 File: t1enc.dfu 2015/09/07 v1.1p UTF-8 support for inputenc
    defining Unicode char U+00A0 (decimal 160)
    defining Unicode char U+00A1 (decimal 161)
@@ -197,7 +197,7 @@ File: t1enc.dfu 2015/09/07 v1.1p UTF-8 support for inputenc
 Now handling font encoding OT1 ...
 ... processing UTF-8 mapping file for font encoding OT1
 
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\ot1enc.dfu"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ot1enc.dfu"
 File: ot1enc.dfu 2015/09/07 v1.1p UTF-8 support for inputenc
    defining Unicode char U+00A0 (decimal 160)
    defining Unicode char U+00A1 (decimal 161)
@@ -237,7 +237,8 @@ File: ot1enc.dfu 2015/09/07 v1.1p UTF-8 support for inputenc
 )
 Now handling font encoding OMS ...
 ... processing UTF-8 mapping file for font encoding OMS
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\omsenc.dfu"
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omsenc.dfu"
 File: omsenc.dfu 2015/09/07 v1.1p UTF-8 support for inputenc
    defining Unicode char U+00A7 (decimal 167)
    defining Unicode char U+00B6 (decimal 182)
@@ -261,12 +262,10 @@ Now handling font encoding U ...
    defining Unicode char U+2122 (decimal 8482)
    defining Unicode char U+2423 (decimal 9251)
 ))
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\setspace\setspace
-.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\setspace\setspace.sty"
 Package: setspace 2011/12/19 v6.7a set line spacing
 )
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tocloft\tocloft.s
-ty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tocloft\tocloft.sty"
 Package: tocloft 2013/05/02 v2.3f parameterised ToC, etc., typesetting
 Package tocloft Info: The document has section divisions on input line 44.
 \cftparskip=\skip43
@@ -303,30 +302,24 @@ Package tocloft Info: The document has section divisions on input line 44.
 \cfttabindent=\skip72
 \cfttabnumwidth=\skip73
 )
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsmath.s
-ty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty"
 Package: amsmath 2013/01/14 v2.14 AMS math features
 \@mathmargin=\skip74
 
 For additional information on amsmath, use the `?' option.
-
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amstext.s
-ty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amstext.sty"
 Package: amstext 2000/06/29 v2.01
 
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsgen.st
-y"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty"
 File: amsgen.sty 1999/11/30 v2.0
 \@emptytoks=\toks16
 \ex@=\dimen103
 ))
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsbsy.st
-y"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty"
 Package: amsbsy 1999/11/29 v1.2d
 \pmbraise@=\dimen104
 )
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsopn.st
-y"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty"
 Package: amsopn 1999/12/14 v2.01 operator names
 )
 \inf@bad=\count89
@@ -367,27 +360,22 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
 LaTeX Info: Redefining \[ on input line 2665.
 LaTeX Info: Redefining \] on input line 2666.
 )
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\geometry\geometry
-.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\geometry\geometry.sty"
 Package: geometry 2010/09/12 v5.6 Page Geometry
 
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\keyval.s
-ty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks21
 )
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.
-sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
 Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
 Package ifpdf Info: pdfTeX in PDF mode is detected.
 )
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\ifvtex
-.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ifvtex.sty"
 Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
 Package ifvtex Info: VTeX not detected.
 )
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\generic\ifxetex\ifxetex
-.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
 \Gm@cnth=\count101
@@ -403,49 +391,39 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@layoutvoffset=\dimen119
 \Gm@dimlist=\toks22
 
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\geometry\geometry
-.cfg"))
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\times.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\geometry\geometry.cfg"))
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\times.sty"
 Package: times 2005/04/12 PSNFSS-v9.2a (SPQR) 
 )
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\color.st
-y"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\color.sty"
 Package: color 2014/10/28 v1.1a Standard LaTeX Color (DPC)
 
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\00miktex\color.cf
-g"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\color.cfg"
 File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
 Package color Info: Driver file: pdftex.def on input line 142.
 
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pdftex-def\pdftex
-.def"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
 File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
 
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\infwar
-err.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
 Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
 )
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\ltxcmd
-s.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
 Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
 \Gread@gobject=\count104
 ))
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\graphicx
-.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
 Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\graphics
-.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
 Package: graphics 2014/10/28 v1.0p Standard LaTeX Graphics (DPC,SPQR)
 
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\trig.sty
-"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\trig.sty"
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\00miktex\graphics
-.cfg"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
 File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
 )
 Package graphics Info: Driver file: pdftex.def on input line 94.
@@ -453,12 +431,10 @@ Package graphics Info: Driver file: pdftex.def on input line 94.
 \Gin@req@height=\dimen120
 \Gin@req@width=\dimen121
 )
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lastpage\lastpage
-.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lastpage\lastpage.sty"
 Package: lastpage 2015/03/29 v1.2m Refers to last page's name (HMM; JPG)
 )
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\fancyhdr\fancyhdr
-.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\fancyhdr\fancyhdr.sty"
 \fancy@headwidth=\skip77
 \f@ncyO@elh=\skip78
 \f@ncyO@erh=\skip79
@@ -469,17 +445,14 @@ Package: lastpage 2015/03/29 v1.2m Refers to last page's name (HMM; JPG)
 \f@ncyO@olf=\skip84
 \f@ncyO@orf=\skip85
 )
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\hyperref
-.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty"
 Package: hyperref 2012/11/06 v6.83m Hypertext links for LaTeX
 
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\hobsub
--hyperref.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\hobsub-hyperref.sty"
 Package: hobsub-hyperref 2012/04/25 v1.12 Bundle oberdiek, subset hyperref (HO)
 
 
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\hobsub
--generic.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\hobsub-generic.sty"
 Package: hobsub-generic 2012/04/25 v1.12 Bundle oberdiek, subset generic (HO)
 Package: hobsub 2012/04/25 v1.12 Construct package bundles (HO)
 Package hobsub Info: Skipping package `infwarerr' (already loaded).
@@ -518,28 +491,24 @@ Package: atbegshi 2011/10/05 v1.16 At begin shipout hook (HO)
 Package: refcount 2011/10/16 v3.4 Data extraction from label references (HO)
 Package: hycolor 2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
 )
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\auxhook.
-sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\auxhook.sty"
 Package: auxhook 2011/03/04 v1.3 Hooks for auxiliary files (HO)
 )
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\kvoption
-s.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.sty"
 Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
 )
 \@linkdim=\dimen122
 \Hy@linkcounter=\count105
 \Hy@pagecounter=\count106
 
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\pd1enc.d
-ef"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\pd1enc.def"
 File: pd1enc.def 2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
 )
 \Hy@SavedSpaceFactor=\count107
 
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\00miktex\hyperref
-.cfg"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\hyperref.cfg"
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
 )
 Package hyperref Info: Hyper figures OFF on input line 4443.
@@ -550,7 +519,8 @@ Package hyperref Info: Backreferencing OFF on input line 4463.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4688.
 \c@Hy@tempcnt=\count108
- ("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\url\url.sty"
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\url\url.sty"
 \Urlmuskip=\muskip11
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
@@ -575,35 +545,29 @@ LaTeX Info: Redefining \pageref on input line 6369.
 
 Package hyperref Message: Driver (autodetected): hpdftex.
 
-
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\hpdftex.
-def"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\hpdftex.def"
 File: hpdftex.def 2012/11/06 v6.83m Hyperref driver for pdfTeX
 \Fld@listcount=\count113
 \c@bookmark@seq@number=\count114
 
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\rerunfil
-echeck.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\rerunfilecheck.sty"
 Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 )
 \Hy@SectionHShift=\skip86
 )
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\textgreek\textgre
-ek.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\textgreek\textgreek.sty"
 Package: textgreek 2011/10/09 v0.7 Greek symbols in text
 Package textgreek Info: Loading the definitions for the Greek fontencoding. on 
 input line 39.
 
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\greek-fontenc\lgr
-enc.def"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\greek-fontenc\lgrenc.def"
 File: lgrenc.def 2015/12/07 v0.13.1 LGR Greek font encoding definitions
 Now handling font encoding LGR ...
 ... processing UTF-8 mapping file for font encoding LGR
 
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\greek-inputenc\lg
-renc.dfu"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\greek-inputenc\lgrenc.dfu"
 File: lgrenc.dfu 2015/08/05 1.6 UTF-8 support for Greek
    defining Unicode char U+00A8 (decimal 168)
    defining Unicode char U+00AB (decimal 171)
@@ -960,16 +924,13 @@ File: lgrenc.dfu 2015/08/05 1.6 UTF-8 support for Greek
    defining Unicode char U+10146 (decimal 65862)
    defining Unicode char U+10147 (decimal 65863)
 )
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\greek-fontenc\gre
-ek-fontenc.def"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\greek-fontenc\greek-fontenc.def"
 File: greek-fontenc.def 2015/08/04 v0.13 Common Greek font encoding definitions
 
 ))
 Package textgreek Info: Loaded fontmap: {phv/*/*}{U/psy/*/*} {*/bx/n}{U/eur/b/n
 } {*/b/n}{U/eur/b/n} {*/*/n}{U/eur/m/n} {*/*/it}{OML/*/*/*}. on input line 69.
-)
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\listings
-.sty"
+) ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\listings.sty"
 \lst@mode=\count115
 \lst@gtempboxa=\box28
 \lst@token=\toks23
@@ -983,26 +944,22 @@ Package textgreek Info: Loaded fontmap: {phv/*/*}{U/psy/*/*} {*/bx/n}{U/eur/b/n
 \lst@lineno=\count120
 \lst@maxwidth=\dimen129
 
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\lstmisc.
-sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\lstmisc.sty"
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
 \c@lstnumber=\count121
 \lst@skipnumbers=\count122
 \lst@framebox=\box29
 )
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\listings
-.cfg"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\listings\listings.cfg"
 File: listings.cfg 2015/06/04 1.6 listings configuration
 ))
 Package: listings 2015/06/04 1.6 (Carsten Heinz)
 
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\frankenstein\newc
-lude.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\frankenstein\newclude.sty"
 Package: newclude 1999/11/02 v2 A new system for including files (Frankenstein'
 s backbone)
 
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\frankenstein\more
-defs.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\frankenstein\moredefs.sty"
 Package: moredefs 2001/08/31 v1.8 more defining commands (Frankenstein's brain)
 
 \sc@toks@a=\toks24
@@ -1011,14 +968,11 @@ Package: moredefs 2001/08/31 v1.8 more defining commands (Frankenstein's brain)
 \nc@toks@a=\toks26
 \c@IncludeDepth=\count123
 )
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\frankenstein\tag.
-sto")
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\caption\caption.s
-ty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\frankenstein\tag.sto")
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\caption\caption.sty"
 Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
 
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\caption\caption3.
-sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\caption\caption3.sty"
 Package: caption3 2016/02/04 v1.7-139 caption3 kernel (AR)
 Package caption3 Info: TeX engine: e-TeX on input line 67.
 \captionmargin=\dimen130
@@ -1033,14 +987,12 @@ Package caption3 Info: TeX engine: e-TeX on input line 67.
 Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 )
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\caption\subcaptio
-n.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\caption\subcaption.sty"
 Package: subcaption 2016/02/20 v1.1-142 Sub-captions (AR)
 \c@subfigure=\count125
 \c@subtable=\count126
 )
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\textcomp.sty
-"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\textcomp.sty"
 Package: textcomp 2005/09/27 v1.99g Standard LaTeX package
 Package textcomp Info: Sub-encoding information:
 (textcomp)               5 = only ISO-Adobe without \textcurrency
@@ -1054,11 +1006,13 @@ Package textcomp Info: Sub-encoding information:
 (textcomp)             Family '?' is the default used for unknown fonts.
 (textcomp)             See the documentation for details.
 Package textcomp Info: Setting ? sub-encoding to TS1/1 on input line 79.
- ("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\ts1enc.def"
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ts1enc.def"
 File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
 Now handling font encoding TS1 ...
 ... processing UTF-8 mapping file for font encoding TS1
- ("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\ts1enc.dfu"
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ts1enc.dfu"
 File: ts1enc.dfu 2015/09/07 v1.1p UTF-8 support for inputenc
    defining Unicode char U+00A2 (decimal 162)
    defining Unicode char U+00A3 (decimal 163)
@@ -1194,8 +1148,7 @@ Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 407.
 Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 408.
 Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 409.
 )
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\wrapfig\wrapfig.s
-ty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\wrapfig\wrapfig.sty"
 \wrapoverhang=\dimen137
 \WF@size=\dimen138
 \c@WF@wrappedlines=\count127
@@ -1203,15 +1156,13 @@ ty"
 \WF@everypar=\toks27
 Package: wrapfig 2003/01/31  v 3.6
 )
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\afterpage.s
-ty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\afterpage.sty"
 Package: afterpage 2014/10/28 v1.08 After-Page Package (DPC)
 \AP@output=\toks28
 \AP@partial=\box31
 \AP@footins=\box32
 )
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\enumitem\enumitem
-.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\enumitem\enumitem.sty"
 Package: enumitem 2011/09/28 v3.5.2 Customized lists
 \labelindent=\skip87
 \enit@outerparindent=\dimen139
@@ -1219,9 +1170,8 @@ Package: enumitem 2011/09/28 v3.5.2 Customized lists
 \enit@inbox=\box33
 \enitdp@description=\count128
 )
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\titlesec\titlesec
-.sty"
-Package: titlesec 2011/12/15 v2.10.0 Sectioning titles
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\titlesec\titlesec.sty"
+Package: titlesec 2016/03/21 v2.10.2 Sectioning titles
 \ttl@box=\box34
 \beforetitleunit=\skip88
 \aftertitleunit=\skip89
@@ -1232,12 +1182,10 @@ Package: titlesec 2011/12/15 v2.10.0 Sectioning titles
 \titlewidthlast=\dimen143
 \titlewidthfirst=\dimen144
 )
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\ncctools\watermar
-k.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ncctools\watermark.sty"
 Package: watermark 2004/12/09 v1.1 Watermarks (NCC)
 )
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\multicol.st
-y"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\multicol.sty"
 Package: multicol 2015/08/19 v1.8n multicolumn formatting (FMi)
 \c@tracingmulticols=\count129
 \mult@box=\box35
@@ -1286,13 +1234,13 @@ Package: multicol 2015/08/19 v1.8n multicolumn formatting (FMi)
 \colbreak@box=\box60
 \mc@col@check@num=\count137
 )
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pdfpages\pdfpages
-.sty"
-Package: pdfpages 2015/09/18 v0.5d Insert pages of external PDF documents (AM)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\pdfpages\pdfpages.sty"
+Package: pdfpages 2016/04/19 v0.5f Insert pages of external PDF documents (AM)
 
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\ifthen.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ifthen.sty"
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
-) ("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\calc.sty"
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\calc.sty"
 Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
 \calc@Acount=\count138
 \calc@Bcount=\count139
@@ -1305,24 +1253,22 @@ LaTeX Info: Redefining \addtolength on input line 81.
 \calc@Ccount=\count140
 \calc@Cskip=\skip94
 )
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\eso-pic\eso-pic.s
-ty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\eso-pic\eso-pic.sty"
 Package: eso-pic 2015/07/21 v2.0g eso-pic (RN)
 )
 \AM@pagewidth=\dimen156
 \AM@pageheight=\dimen157
 
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pdfpages\pppdftex
-.def"
-File: pppdftex.def 2015/09/18 v0.5d Pdfpages driver for pdfTeX (AM)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\pdfpages\pppdftex.def"
+File: pppdftex.def 2016/04/19 v0.5f Pdfpages driver for pdfTeX (AM)
 )
 \AM@pagebox=\box61
-\AM@toc@title=\toks31
+\AM@global@opts=\toks31
+\AM@toc@title=\toks32
 \c@AM@survey=\count141
 \AM@templatesizebox=\box62
 )
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\cleveref\cleveref
-.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\cleveref\cleveref.sty"
 Package: cleveref 2013/12/28 v0.19 Intelligent cross-referencing
 Package cleveref Info: `hyperref' support loaded on input line 2230.
 LaTeX Info: Redefining \cref on input line 2230.
@@ -1341,7 +1287,7 @@ Package cleveref Info: `listings' support loaded on input line 2950.
 LaTeX Warning: Unused global option(s):
     [15pt].
 
-(Master.aux)
+No file Master.aux.
 \openout1 = `Master.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 7.
@@ -1360,22 +1306,20 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 7.
 LaTeX Font Info:    ... okay on input line 7.
 LaTeX Font Info:    Checking defaults for LGR/cmr/m/n on input line 7.
 LaTeX Font Info:    Try loading font information for LGR+cmr on input line 7.
-
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\cbfonts-fd\lgrcmr
-.fd"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\cbfonts-fd\lgrcmr.fd"
 File: lgrcmr.fd 2016/03/04 v1.1 Greek European Computer Regular
 )
 LaTeX Font Info:    ... okay on input line 7.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 7.
 LaTeX Font Info:    Try loading font information for TS1+cmr on input line 7.
 
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 7.
 LaTeX Font Info:    Try loading font information for OT1+ptm on input line 7.
 
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\ot1ptm.fd"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\ot1ptm.fd"
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 *geometry* driver: auto-detecting
@@ -1412,34 +1356,29 @@ File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\context\base\supp-pdf.m
-kii"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count142
 \scratchdimen=\dimen158
 \scratchbox=\box63
 \nofMPsegments=\count143
 \nofMParguments=\count144
-\everyMPshowfont=\toks32
+\everyMPshowfont=\toks33
 \MPscratchCnt=\count145
 \MPscratchDim=\dimen159
 \MPnumerator=\count146
 \makeMPintoPDFobject=\count147
-\everyMPtoPDFconversion=\toks33
+\everyMPtoPDFconversion=\toks34
 )
 Package lastpage Info: Please have a look at the pageslts package at
 (lastpage)             https://www.ctan.org/pkg/pageslts
 (lastpage)             ! on input line 7.
 \AtBeginShipoutBox=\box64
 Package hyperref Info: Link coloring OFF on input line 7.
-
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\nameref.
-sty"
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\gettit
-lestring.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count148
@@ -1447,7 +1386,6 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 7.
 LaTeX Info: Redefining \pageref on input line 7.
 LaTeX Info: Redefining \nameref on input line 7.
- (Master.out) (Master.out)
 \@outlinefile=\write3
 \openout3 = `Master.out'.
 
@@ -1456,16 +1394,15 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: wrapfig package is loaded.
 Package caption Info: End \AtBeginDocument code.
 
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\pdflscap
-e.sty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\pdflscape.sty"
 Package: pdflscape 2008/08/11 v0.10 Display of landscape pages in PDF (HO)
 
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\lscape.s
-ty"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\lscape.sty"
 Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
 )
 Package pdflscape Info: Auto-detected driver: pdftex on input line 80.
-) (Setup/Settings.tex) (Setup/PageInclude.tex (Forside/Forside.tex
+)
+(Setup/Settings.tex) (Setup/PageInclude.tex (Forside/Forside.tex
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <24.88> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 14.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <24.88> not available
@@ -1479,7 +1416,7 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 21.
 )
-<Billeder/SDU-logo.png, id=127, 855.195pt x 846.16125pt>
+<Billeder/SDU-logo.png, id=3, 855.195pt x 846.16125pt>
 File: Billeder/SDU-logo.png Graphic file (type png)
 
 <use Billeder/SDU-logo.png>
@@ -1524,48 +1461,90 @@ Package pdftex.def Info: Billeder/SDU-logo.png used on input line 10.
 
 
 
-{C:/Users/JARVIS/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <./Billeder
-/SDU-logo.png>] (sections/Preface/Preface.tex) [2
+{C:/Users/Steen-Bjørn/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <./Bi
+lleder/SDU-logo.png>] (sections/Preface/Preface.tex)
+
+LaTeX Warning: Reference `LastPage' on page 2 undefined on input line 14.
+
+[2
+
+] (sections/Abstract/Abstract.tex)
+
+LaTeX Warning: Reference `LastPage' on page 3 undefined on input line 14.
+
+[3
 
 ]
-(sections/Abstract/Abstract.tex) [3
-
-] (Master.toc)
 \tf@toc=\write4
 \openout4 = `Master.toc'.
 
  [4
 
-]
-(Sections/Introduction/Introduction.tex)
-(sections/Stating_The_Problem/Stating_The_Problem.tex [5]
+] (Sections/Introduction/Introduction.tex)
+(sections/Stating_The_Problem/Stating_The_Problem.tex
+
+LaTeX Warning: Reference `LastPage' on page 5 undefined on input line 1.
+
+[5]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 8.
 LaTeX Font Info:    Try loading font information for TS1+ptm on input line 22.
-
-("C:\Users\JARVIS\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\ts1ptm.fd"
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\ts1ptm.fd"
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-) [6]) (sections/Project_Boundary/Project_Boundary.tex [7])
-(sections/initial_Idea_phase/initial_Idea_phase.tex) [8]
-(sections/The_system/The_system.tex)
+)
+
+LaTeX Warning: Reference `LastPage' on page 6 undefined on input line 51.
+
+[6]) (sections/Project_Boundary/Project_Boundary.tex
+
+LaTeX Warning: Reference `LastPage' on page 7 undefined on input line 35.
+
+[7]) (sections/initial_Idea_phase/initial_Idea_phase.tex)
+
+LaTeX Warning: Reference `LastPage' on page 8 undefined on input line 28.
+
+[8] (sections/The_system/The_system.tex)
 (sections/The_Microcontroller/The_Microcontroller.tex)
 (sections/The_FPGA/The_FPGA.tex) (sections/The_Controller/The_Controller.tex
-(Sections/The_Controller/PIDcontroller/PIDcontroller.tex [9]
-<Billeder/Standartsystem.png, id=216, 692.5875pt x 111.41624pt>
+(Sections/The_Controller/PIDcontroller/PIDcontroller.tex
+
+LaTeX Warning: Reference `LastPage' on page 9 undefined on input line 1.
+
+[9]
+
+LaTeX Warning: Reference `fig:Standartsystem' on page 10 undefined on input lin
+e 23.
+
+<Billeder/Standartsystem.png, id=72, 692.5875pt x 111.41624pt>
 File: Billeder/Standartsystem.png Graphic file (type png)
 
 <use Billeder/Standartsystem.png>
 Package pdftex.def Info: Billeder/Standartsystem.png used on input line 27.
 (pdftex.def)             Requested size: 346.2929pt x 55.70798pt.
- [10 <./Billeder/Standartsystem.png>]
-<Billeder/PIDcontroller.png, id=225, 700.6175pt x 222.8325pt>
+
+
+LaTeX Warning: Reference `LastPage' on page 10 undefined on input line 32.
+
+[10 <./Billeder/Standartsystem.png>]
+
+LaTeX Warning: Reference `fig:PID controller' on page 11 undefined on input lin
+e 37.
+
+<Billeder/PIDcontroller.png, id=81, 700.6175pt x 222.8325pt>
 File: Billeder/PIDcontroller.png Graphic file (type png)
 
 <use Billeder/PIDcontroller.png>
 Package pdftex.def Info: Billeder/PIDcontroller.png used on input line 41.
 (pdftex.def)             Requested size: 350.30789pt x 111.41597pt.
 
-<Billeder/PStep.jpg, id=228, 454.69875pt x 252.945pt>
+
+LaTeX Warning: Reference `fig:RlocusControllers' on page 11 undefined on input 
+line 55.
+
+
+LaTeX Warning: Reference `fig:PStep' on page 11 undefined on input line 57.
+
+<Billeder/PStep.jpg, id=82, 454.69875pt x 252.945pt>
 File: Billeder/PStep.jpg Graphic file (type jpg)
  <use Billeder/PStep.jpg>
 Package pdftex.def Info: Billeder/PStep.jpg used on input line 61.
@@ -1574,22 +1553,46 @@ Package pdftex.def Info: Billeder/PStep.jpg used on input line 61.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
+
+LaTeX Warning: Reference `LastPage' on page 11 undefined on input line 69.
+
 [11 <./Billeder/PIDcontroller.png>]
-<Billeder/PIStep.jpg, id=243, 451.6875pt x 263.98625pt>
+
+LaTeX Warning: Reference `fig:RlocusControllers' on page 12 undefined on input 
+line 71.
+
+
+LaTeX Warning: Reference `fig:PIStep' on page 12 undefined on input line 73.
+
+<Billeder/PIStep.jpg, id=95, 451.6875pt x 263.98625pt>
 File: Billeder/PIStep.jpg Graphic file (type jpg)
 
 <use Billeder/PIStep.jpg>
 Package pdftex.def Info: Billeder/PIStep.jpg used on input line 77.
 (pdftex.def)             Requested size: 316.17908pt x 184.78911pt.
- [12 <./Billeder/PStep.jpg> <./Billeder/PIStep.jpg>]
-<Billeder/PDStep.jpg, id=251, 438.63875pt x 277.035pt>
+
+
+LaTeX Warning: Reference `LastPage' on page 12 undefined on input line 86.
+
+[12 <./Billeder/PStep.jpg> <./Billeder/PIStep.jpg>]
+
+LaTeX Warning: Reference `fig:PDStep' on page 13 undefined on input line 89.
+
+<Billeder/PDStep.jpg, id=103, 438.63875pt x 277.035pt>
 File: Billeder/PDStep.jpg Graphic file (type jpg)
 
 <use Billeder/PDStep.jpg>
 Package pdftex.def Info: Billeder/PDStep.jpg used on input line 93.
 (pdftex.def)             Requested size: 307.04501pt x 193.92317pt.
 
-<Billeder/PIDStep.jpg, id=254, 458.71375pt x 261.97874pt>
+
+LaTeX Warning: Reference `fig:RlocusControllers' on page 13 undefined on input 
+line 103.
+
+
+LaTeX Warning: Reference `fig:PIDStep' on page 13 undefined on input line 105.
+
+<Billeder/PIDStep.jpg, id=104, 458.71375pt x 261.97874pt>
 File: Billeder/PIDStep.jpg Graphic file (type jpg)
 
 <use Billeder/PIDStep.jpg>
@@ -1599,7 +1602,7 @@ Package pdftex.def Info: Billeder/PIDStep.jpg used on input line 109.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Billeder/RlocusControllers.jpg, id=255, 563.85657pt x 440.39531pt>
+<Billeder/RlocusControllers.jpg, id=105, 563.85657pt x 440.39531pt>
 File: Billeder/RlocusControllers.jpg Graphic file (type jpg)
 
 <use Billeder/RlocusControllers.jpg>
@@ -1611,13 +1614,34 @@ Package pdftex.def Info: Billeder/RlocusControllers.jpg used on input line 117.
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 )) (sections/Perspectivation/Perspectivation.tex)
-(Sections/Conclution/Conclution.tex [13 <./Billeder/PDStep.jpg>]) [14 <./Billed
-er/PIDStep.jpg> <./Billeder/RlocusControllers.jpg>] [15]
-(Sections/Sources/Sources.tex) [16
+(Sections/Conclution/Conclution.tex
 
-] (Sections/Appendix/Appendix.tex)) [17
+LaTeX Warning: Reference `LastPage' on page 13 undefined on input line 1.
+
+[13 <./Billeder/PDStep.jpg>])
+
+LaTeX Warning: Reference `LastPage' on page 14 undefined on input line 45.
+
+[14 <./Billeder/PIDStep.jpg> <./Billeder/RlocusControllers.jpg>]
+
+LaTeX Warning: Reference `LastPage' on page 15 undefined on input line 45.
+
+[15] (Sections/Sources/Sources.tex)
+
+LaTeX Warning: Reference `LastPage' on page 16 undefined on input line 45.
+
+[16
+
+] (Sections/Appendix/Appendix.tex))
+
+LaTeX Warning: Reference `LastPage' on page 17 undefined on input line 10.
+
+[17
 
 ]
+
+Package lastpage Warning: Rerun to get the references right on input line 10.
+
 
 AED: lastpage setting LastPage
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 10.
@@ -1625,35 +1649,45 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 10.
 (Master.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 10.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 10.
-Package rerunfilecheck Info: File `Master.out' has not changed.
-(rerunfilecheck)             Checksum: 8EBFB79C07B00BB80EDCC27EC00D836F;1960.
+
+
+Package rerunfilecheck Warning: File `Master.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `Master.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  8EBFB79C07B00BB80EDCC27EC00D836F;1960.
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 10.
  ) 
 Here is how much of TeX's memory you used:
- 14036 strings out of 493634
- 224490 string characters out of 3134831
- 337034 words of memory out of 3000000
- 17084 multiletter control sequences out of 15000+200000
+ 14003 strings out of 493634
+ 220964 string characters out of 3141293
+ 336147 words of memory out of 3000000
+ 17059 multiletter control sequences out of 15000+200000
  22205 words of font info for 41 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
  40i,13n,45p,767b,535s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Users/JARVIS/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/fontname/8
-r.enc}<C:/Users/JARVIS/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/ams
-fonts/cm/cmex10.pfb><C:/Users/JARVIS/AppData/Local/Programs/MiKTeX 2.9/fonts/ty
-pe1/public/amsfonts/cm/cmmi10.pfb><C:/Users/JARVIS/AppData/Local/Programs/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/JARVIS/AppData/Local/P
-rograms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/JARVIS/Ap
-pData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Us
-ers/JARVIS/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr
-7.pfb><C:/Users/JARVIS/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/
-utmb8a.pfb><C:/Users/JARVIS/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/t
-imes/utmbi8a.pfb><C:/Users/JARVIS/AppData/Local/Programs/MiKTeX 2.9/fonts/type1
-/urw/times/utmr8a.pfb><C:/Users/JARVIS/AppData/Local/Programs/MiKTeX 2.9/fonts/
-type1/urw/times/utmr8a.pfb><C:/Users/JARVIS/AppData/Local/Programs/MiKTeX 2.9/f
-onts/type1/urw/times/utmri8a.pfb>
-Output written on Master.pdf (17 pages, 401874 bytes).
+{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Progra
+m Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program 
+Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Fi
+les (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Program Files
+ (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files (x
+86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files (x86)
+/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files (x86)/MiK
+TeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fon
+ts/type1/urw/times/utmbi8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/u
+rw/times/utmr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/ut
+mr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
+Output written on Master.pdf (17 pages, 384146 bytes).
 PDF statistics:
- 337 PDF objects out of 1000 (max. 8388607)
+ 188 PDF objects out of 1000 (max. 8388607)
  59 named destinations out of 1000 (max. 500000)
- 289 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 41 words of extra memory for PDF output out of 10000 (max. 10000000)
 
