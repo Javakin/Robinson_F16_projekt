@@ -11,6 +11,11 @@
 *.cb
 *.cb2
 
+/Master.aux
+/Master.pdf
+/Master.out
+/Master.toc
+
 ## Intermediate documents:
 *.dvi
 *-converted-to.*
