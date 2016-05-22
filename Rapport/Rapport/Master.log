@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.3.17)  22 MAY 2016 12:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.3.17)  22 MAY 2016 12:08
 entering extended mode
 **./Master.tex
 (Master.tex
@@ -1479,7 +1479,7 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 21.
 )
-<Billeder/SDU-logo.png, id=99, 855.195pt x 846.16125pt>
+<Billeder/SDU-logo.png, id=127, 855.195pt x 846.16125pt>
 File: Billeder/SDU-logo.png Graphic file (type png)
 
 <use Billeder/SDU-logo.png>
@@ -1529,13 +1529,13 @@ Package pdftex.def Info: Billeder/SDU-logo.png used on input line 10.
 
 
 ]
-(sections/Abstract/Abstract.tex) (Master.toc)
+(sections/Abstract/Abstract.tex) (Master.toc [3
+
+])
 \tf@toc=\write4
 \openout4 = `Master.toc'.
 
- [3
-
-] [4]
+ [4]
 (Sections/Introduction/Introduction.tex)
 (sections/Stating_The_Problem/Stating_The_Problem.tex [5]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
@@ -1553,9 +1553,70 @@ File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 (Sections/Conclution/Conclution.tex) [9] (Sections/Sources/Sources.tex)
 [10
 
-] (Sections/Appendix/Appendix.tex)) [11
+] (Sections/Appendix/Appendix.tex) (Sections/PIDcontroller/PIDcontroller.tex [1
+1
 
-] 
+] <Billeder/Standartsystem.png, id=229, 692.5875pt x 111.41624pt>
+File: Billeder/Standartsystem.png Graphic file (type png)
+
+<use Billeder/Standartsystem.png>
+Package pdftex.def Info: Billeder/Standartsystem.png used on input line 27.
+(pdftex.def)             Requested size: 346.2929pt x 55.70798pt.
+ [12 <./Billeder/Standartsystem.png>]
+<Billeder/PIDcontroller.png, id=238, 700.6175pt x 222.8325pt>
+File: Billeder/PIDcontroller.png Graphic file (type png)
+
+<use Billeder/PIDcontroller.png>
+Package pdftex.def Info: Billeder/PIDcontroller.png used on input line 41.
+(pdftex.def)             Requested size: 350.30789pt x 111.41597pt.
+
+<Billeder/PStep.jpg, id=241, 454.69875pt x 252.945pt>
+File: Billeder/PStep.jpg Graphic file (type jpg)
+ <use Billeder/PStep.jpg>
+Package pdftex.def Info: Billeder/PStep.jpg used on input line 61.
+(pdftex.def)             Requested size: 318.28694pt x 177.06029pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[13 <./Billeder/PIDcontroller.png>]
+<Billeder/PIStep.jpg, id=257, 451.6875pt x 263.98625pt>
+File: Billeder/PIStep.jpg Graphic file (type jpg)
+
+<use Billeder/PIStep.jpg>
+Package pdftex.def Info: Billeder/PIStep.jpg used on input line 77.
+(pdftex.def)             Requested size: 316.17908pt x 184.78911pt.
+ [14 <./Billeder/PStep.jpg> <./Billeder/PIStep.jpg>]
+<Billeder/PDStep.jpg, id=265, 438.63875pt x 277.035pt>
+File: Billeder/PDStep.jpg Graphic file (type jpg)
+
+<use Billeder/PDStep.jpg>
+Package pdftex.def Info: Billeder/PDStep.jpg used on input line 93.
+(pdftex.def)             Requested size: 307.04501pt x 193.92317pt.
+
+<Billeder/PIDStep.jpg, id=268, 458.71375pt x 261.97874pt>
+File: Billeder/PIDStep.jpg Graphic file (type jpg)
+
+<use Billeder/PIDStep.jpg>
+Package pdftex.def Info: Billeder/PIDStep.jpg used on input line 109.
+(pdftex.def)             Requested size: 321.09743pt x 183.38387pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<Billeder/RlocusControllers.jpg, id=269, 563.85657pt x 440.39531pt>
+File: Billeder/RlocusControllers.jpg Graphic file (type jpg)
+
+<use Billeder/RlocusControllers.jpg>
+Package pdftex.def Info: Billeder/RlocusControllers.jpg used on input line 117.
+
+(pdftex.def)             Requested size: 394.69691pt x 308.27461pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+)) [15 <./Billeder/PDStep.jpg>] [16 <./Billeder/PIDStep.jpg> <./Billeder/Rlocus
+Controllers.jpg>] 
 AED: lastpage setting LastPage
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 10.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 10.
@@ -1563,30 +1624,34 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 10.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 10.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 10.
 Package rerunfilecheck Info: File `Master.out' has not changed.
-(rerunfilecheck)             Checksum: C3B984C674E8A9F3F08CE393F738F317;1443.
+(rerunfilecheck)             Checksum: BF24EE2325403C0E56D64E22041D4FB3;1954.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 10.
  ) 
 Here is how much of TeX's memory you used:
- 13950 strings out of 493634
- 222726 string characters out of 3134831
- 336034 words of memory out of 3000000
- 17029 multiletter control sequences out of 15000+200000
+ 14034 strings out of 493634
+ 224383 string characters out of 3134831
+ 337034 words of memory out of 3000000
+ 17083 multiletter control sequences out of 15000+200000
  22205 words of font info for 41 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
  40i,13n,45p,801b,535s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/JARVIS/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/fontname/8
 r.enc}<C:/Users/JARVIS/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/ams
-fonts/cm/cmmi10.pfb><C:/Users/JARVIS/AppData/Local/Programs/MiKTeX 2.9/fonts/ty
-pe1/public/amsfonts/cm/cmr10.pfb><C:/Users/JARVIS/AppData/Local/Programs/MiKTeX
- 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/JARVIS/AppData/Local/Pro
-grams/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Users/JARVIS/AppData/Loca
-l/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/JARVIS/AppDat
-a/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Users/JARVIS/A
-ppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Users/JAR
-VIS/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Master.pdf (11 pages, 191059 bytes).
+fonts/cm/cmex10.pfb><C:/Users/JARVIS/AppData/Local/Programs/MiKTeX 2.9/fonts/ty
+pe1/public/amsfonts/cm/cmmi10.pfb><C:/Users/JARVIS/AppData/Local/Programs/MiKTe
+X 2.9/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/JARVIS/AppData/Local/P
+rograms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/JARVIS/Ap
+pData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Us
+ers/JARVIS/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr
+7.pfb><C:/Users/JARVIS/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/
+utmb8a.pfb><C:/Users/JARVIS/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/t
+imes/utmbi8a.pfb><C:/Users/JARVIS/AppData/Local/Programs/MiKTeX 2.9/fonts/type1
+/urw/times/utmr8a.pfb><C:/Users/JARVIS/AppData/Local/Programs/MiKTeX 2.9/fonts/
+type1/urw/times/utmr8a.pfb><C:/Users/JARVIS/AppData/Local/Programs/MiKTeX 2.9/f
+onts/type1/urw/times/utmri8a.pfb>
+Output written on Master.pdf (16 pages, 405178 bytes).
 PDF statistics:
- 231 PDF objects out of 1000 (max. 8388607)
- 39 named destinations out of 1000 (max. 500000)
- 198 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 332 PDF objects out of 1000 (max. 8388607)
+ 58 named destinations out of 1000 (max. 500000)
+ 289 words of extra memory for PDF output out of 10000 (max. 10000000)
 
