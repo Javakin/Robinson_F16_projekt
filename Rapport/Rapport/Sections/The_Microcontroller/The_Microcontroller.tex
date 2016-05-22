@@ -2,6 +2,56 @@
 \section{The Microcontroller}
 \label{sec:TheMicrocontroller}
 
-Here goes the tekst.
+This is a walk thorough the design process of making the program for the micro processor.
+
+Write an introduction to this section:\\
+- what is this sections domain of responsibility (inputs and outputs)\\
+- what is the goal of this program?
+- the notation used in this domain and why(task diagrams and state machines)
+
+- whitch criterias is to be set for this part of the project
+
+
+show the block diagram
+
+% program structure
+\input{sections/The_Microcontroller/Choice_of_Operating_System}
+
+\input{sections/The_Microcontroller/Program_Structure}
+
+\input{sections/The_Microcontroller/The_Application_Programmer_Interface}
+
+\input{sections/The_Microcontroller/Event_Queues_and_Shared_State_Memory}
+
+\input{sections/The_Microcontroller/Deadlock_Protection}
+
+\input{sections/The_Microcontroller/SPI-Master}
+
+\input{sections/The_Microcontroller/The_Application}
+
+% summery 
+\subsection{Overview}
+The above mentioned functionality was ment as a fully dressed system containing all the features that would be needed while working with a real spotlight. However, not all features was primary requirements, which makes it okay that it never got implemented. 
+ 
+The joystick: Even thought a driver was made for the joystick, it the the corresponding API was not. Therefore this 
+
+Point at a specific location. 
+
+This is the functions that did not made it to the implementation
+
+\begin{enumerate}[noitemsep]
+	
+	\item ps2 controller and its corresponding api
+	
+	\item calculating the tack-position from the relative coordinates given by the application  
+	
+	\item follow a waking person
+	
+
+\end{enumerate}
+
+
+
+
 
 
