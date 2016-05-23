@@ -3,7 +3,9 @@
 
 Since it is safe to assume that this program will be using multipliable task, an operating system (OS) is required. This OS must support the ARM Cortex M-4 processor, which is used in this project. It must be supported by Code Composer Studio, which is the software used for programming the processor. 
 
-Using a Real Time Operating System freeRTOS would give the advantages of preemptive scheduling. Being able to preempt a low priority task to pave the way for a task of higher priority will ensure better performance if the project have a serden sive to it. 
+Using a Real Time Operating System freeRTOS would give the advantages of preemptive scheduling. Being able to preempt a low priority task to pave the way for a task of higher priority. The application will only benefit from using a RTOS if its size extends 1 MB. Application smaller then 64KB simply would not be large enough for a RTOS to to have eny effect. 
+
+Using the preemptive thingy
 
 
  
