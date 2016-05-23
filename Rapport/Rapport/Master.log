@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.5.17)  20 MAY 2016 11:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.5.17)  23 MAY 2016 21:08
 entering extended mode
 **./Master.tex
 (Master.tex
@@ -10,8 +10,8 @@ Babel <3.9n> and hyphenation patterns for 69 languages loaded.
 (Setup/Packages.tex
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\article.cls"
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\size12.clo"
-File: size12.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\size10.clo"
+File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
 \c@section=\count80
@@ -1283,36 +1283,40 @@ LaTeX Info: Redefining \labelcref on input line 2230.
 LaTeX Info: Redefining \labelcpageref on input line 2230.
 Package cleveref Info: `listings' support loaded on input line 2950.
 ))
+
+LaTeX Warning: Unused global option(s):
+    [15pt].
+
 (Master.aux)
 \openout1 = `Master.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 2.
-LaTeX Font Info:    ... okay on input line 2.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 2.
-LaTeX Font Info:    ... okay on input line 2.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 2.
-LaTeX Font Info:    ... okay on input line 2.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 2.
-LaTeX Font Info:    ... okay on input line 2.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 2.
-LaTeX Font Info:    ... okay on input line 2.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 2.
-LaTeX Font Info:    ... okay on input line 2.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 2.
-LaTeX Font Info:    ... okay on input line 2.
-LaTeX Font Info:    Checking defaults for LGR/cmr/m/n on input line 2.
-LaTeX Font Info:    Try loading font information for LGR+cmr on input line 2.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for LGR/cmr/m/n on input line 7.
+LaTeX Font Info:    Try loading font information for LGR+cmr on input line 7.
  ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\cbfonts-fd\lgrcmr.fd"
 File: lgrcmr.fd 2016/03/04 v1.1 Greek European Computer Regular
 )
-LaTeX Font Info:    ... okay on input line 2.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 2.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 2.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 7.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 7.
  ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 2.
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 2.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 7.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\ot1ptm.fd"
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
@@ -1336,12 +1340,12 @@ File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 * \topmargin=-23.91173pt
 * \headheight=12.0pt
 * \headsep=25.0pt
-* \topskip=12.0pt
+* \topskip=10.0pt
 * \footskip=30.0pt
-* \marginparwidth=44.0pt
-* \marginparsep=10.0pt
+* \marginparwidth=65.0pt
+* \marginparsep=11.0pt
 * \columnsep=10.0pt
-* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
 * \hoffset=0.0pt
 * \voffset=0.0pt
 * \mag=1000
@@ -1367,9 +1371,9 @@ File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 Package lastpage Info: Please have a look at the pageslts package at
 (lastpage)             https://www.ctan.org/pkg/pageslts
-(lastpage)             ! on input line 2.
+(lastpage)             ! on input line 7.
 \AtBeginShipoutBox=\box64
-Package hyperref Info: Link coloring OFF on input line 2.
+Package hyperref Info: Link coloring OFF on input line 7.
  ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
@@ -1378,9 +1382,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count148
 )
-LaTeX Info: Redefining \ref on input line 2.
-LaTeX Info: Redefining \pageref on input line 2.
-LaTeX Info: Redefining \nameref on input line 2.
+LaTeX Info: Redefining \ref on input line 7.
+LaTeX Info: Redefining \pageref on input line 7.
+LaTeX Info: Redefining \nameref on input line 7.
 
 (Master.out) (Master.out)
 \@outlinefile=\write3
@@ -1404,16 +1408,20 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <24.88> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 14.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <24.88> not available
 (Font)              Font shape `OT1/ptm/b/it' tried instead on input line 14.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <20.74> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 16.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <20.74> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 16.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 20.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <17.28> not available
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 21.
 )
-<Billeder/SDU-logo.png, id=87, 855.195pt x 846.16125pt>
+<Billeder/SDU-logo.png, id=235, 855.195pt x 846.16125pt>
 File: Billeder/SDU-logo.png Graphic file (type png)
 
 <use Billeder/SDU-logo.png>
-Package pdftex.def Info: Billeder/SDU-logo.png used on input line 2.
+Package pdftex.def Info: Billeder/SDU-logo.png used on input line 10.
 (pdftex.def)             Requested size: 436.14369pt x 431.53653pt.
  [1
 
@@ -1455,124 +1463,248 @@ Package pdftex.def Info: Billeder/SDU-logo.png used on input line 2.
 
 
 {C:/Users/Bente p/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <./Billede
-r/SDU-logo.png>] (sections/preface.tex)
+r/SDU-logo.png>] (sections/Preface/Preface.tex) [2
 
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
+]
+(sections/Abstract/Abstract.tex) [3
 
-[2
+] (Master.toc [4
 
-
-] (Master.toc)
+])
 \tf@toc=\write4
 \openout4 = `Master.toc'.
 
- [3
+ [5]
+(Sections/Introduction/Introduction.tex)
+(sections/Stating_The_Problem/Stating_The_Problem.tex [6]
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 9.
+LaTeX Font Info:    Try loading font information for TS1+ptm on input line 26.
 
-] (Sections/Indledning.tex) (sections/Problemformulation.tex
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[4]
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 8.
-LaTeX Font Info:    Try loading font information for TS1+ptm on input line 22.
- ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\ts1ptm.fd"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\ts1ptm.fd"
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[5]) (sections/Projektafgraendsning.tex
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[6]
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[7]) (sections/Indledendeidefase.tex) (sections/ThePlant.tex)
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[8] (sections/Journaler.tex) (sections/Abstract.tex) (Sections/Konklusion.tex)
-
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[9] (Sections/Kildeliste.tex
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 6.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 42.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\ot1pcr.fd"
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-))
+) [7])
+(sections/initial_Idea_phase/initial_Idea_phase.tex)
+(sections/The_system/The_system.tex)
+(sections/The_Microcontroller/The_Microcontroller.tex [8]
+(sections/The_Microcontroller/Choice_of_Operating_System.tex)
+(sections/The_Microcontroller/Program_Structure.tex)
+(sections/The_Microcontroller/The_Application_Programmer_Interface.tex)
+(sections/The_Microcontroller/Event_Queues_and_Shared_State_Memory.tex [9])
+(sections/The_Microcontroller/Deadlock_Protection.tex
+<Billeder/Micro_Controller/Semaphore_code_example.png, id=357, 484.05844pt x 30
+1.8778pt>
+File: Billeder/Micro_Controller/Semaphore_code_example.png Graphic file (type p
+ng)
+ <use Billeder/Micro_Controller/Semaphore_code_example.png>
+Package pdftex.def Info: Billeder/Micro_Controller/Semaphore_code_example.png u
+sed on input line 26.
+(pdftex.def)             Requested size: 290.4373pt x 181.12807pt.
 
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
 
-[10
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-] (Sections/Bilag.tex))
+) (sections/The_Microcontroller/SPI-Master.tex)
+(sections/The_Microcontroller/The_Application.tex [10]))
+(sections/The_FPGA/The_FPGA.tex) (sections/The_FPGA/Driver.tex [11 <./Billeder/
+Micro_Controller/Semaphore_code_example.png>])
+(sections/The_FPGA/Motor_driver.tex [12] [13]) (sections/The_FPGA/Sensor.tex
+<Billeder/FPGA/Motor_Magnets.png, id=389, 2907.86375pt x 1481.535pt>
+File: Billeder/FPGA/Motor_Magnets.png Graphic file (type png)
 
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 14.49998pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
+<use Billeder/FPGA/Motor_Magnets.png>
+Package pdftex.def Info: Billeder/FPGA/Motor_Magnets.png used on input line 14.
 
-[11
+(pdftex.def)             Requested size: 273.14923pt x 139.16484pt.
 
-] 
+<Billeder/FPGA/Hallcounteksemple.PNG, id=390, 255.20343pt x 43.66313pt>
+File: Billeder/FPGA/Hallcounteksemple.PNG Graphic file (type png)
+
+<use Billeder/FPGA/Hallcounteksemple.PNG>
+Package pdftex.def Info: Billeder/FPGA/Hallcounteksemple.PNG used on input line
+ 20.
+(pdftex.def)             Requested size: 136.57462pt x 23.36786pt.
+ [14]
+<Billeder/FPGA/Shift_code_example.png, id=398, 499.8675pt x 79.04532pt>
+File: Billeder/FPGA/Shift_code_example.png Graphic file (type png)
+
+<use Billeder/FPGA/Shift_code_example.png>
+Package pdftex.def Info: Billeder/FPGA/Shift_code_example.png used on input lin
+e 36.
+(pdftex.def)             Requested size: 249.93314pt x 39.52255pt.
+
+<Billeder/FPGA/Pos_change_flowchart.png, id=400, 545.03625pt x 182.93344pt>
+File: Billeder/FPGA/Pos_change_flowchart.png Graphic file (type png)
+
+<use Billeder/FPGA/Pos_change_flowchart.png>
+Package pdftex.def Info: Billeder/FPGA/Pos_change_flowchart.png used on input l
+ine 46.
+(pdftex.def)             Requested size: 272.51746pt x 91.46649pt.
+
+<Billeder/FPGA/Calculate_pos_code_example.png, id=402, 457.71pt x 146.04562pt>
+File: Billeder/FPGA/Calculate_pos_code_example.png Graphic file (type png)
+
+<use Billeder/FPGA/Calculate_pos_code_example.png>
+Package pdftex.def Info: Billeder/FPGA/Calculate_pos_code_example.png used on i
+nput line 55.
+(pdftex.def)             Requested size: 228.85445pt x 73.02261pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[15 <./Billeder/FPGA/Motor_Magnets.png> <./Billeder/FPGA/Hallcounteksemple.PNG>
+ <./Billeder/FPGA/Shift_code_example.png> <./Billeder/FPGA/Pos_change_flowchart
+.png>]
+<Billeder/FPGA/Pos_change_testbench.png, id=416, 525.46312pt x 108.405pt>
+File: Billeder/FPGA/Pos_change_testbench.png Graphic file (type png)
+
+<use Billeder/FPGA/Pos_change_testbench.png>
+Package pdftex.def Info: Billeder/FPGA/Pos_change_testbench.png used on input l
+ine 68.
+(pdftex.def)             Requested size: 262.73091pt x 54.20236pt.
+)
+(sections/The_FPGA/SPI_Slave_block.tex [16 <./Billeder/FPGA/Calculate_pos_code_
+example.png> <./Billeder/FPGA/Pos_change_testbench.png>]
+<Billeder/FPGA/SPI_Slave/S_CLK_code_example.png, id=426, 628.749pt x 256.5585pt
+>
+File: Billeder/FPGA/SPI_Slave/S_CLK_code_example.png Graphic file (type png)
+ <use Billeder/FPGA/SPI_Slave/S_CLK_code_example.png>
+Package pdftex.def Info: Billeder/FPGA/SPI_Slave/S_CLK_code_example.png used on
+ input line 17.
+(pdftex.def)             Requested size: 314.37372pt x 128.27893pt.
+ [17 <./Billeder/FPGA/SPI_Slave/S_CLK_code_example.png>]
+<Billeder/FPGA/SPI_Slave/SS_code_example.png, id=435, 428.802pt x 169.8345pt>
+File: Billeder/FPGA/SPI_Slave/SS_code_example.png Graphic file (type png)
+
+<use Billeder/FPGA/SPI_Slave/SS_code_example.png>
+Package pdftex.def Info: Billeder/FPGA/SPI_Slave/SS_code_example.png used on in
+put line 28.
+(pdftex.def)             Requested size: 214.40047pt x 84.91704pt.
+ [18 <./Billeder/FPGA/SPI_Slave/SS_code_example.png>]
+<Billeder/FPGA/SPI_Slave/Testbench_of_SPI.png, id=445, 677.53125pt x 155.3805pt
+>
+File: Billeder/FPGA/SPI_Slave/Testbench_of_SPI.png Graphic file (type png)
+ <use Billeder/FPGA/SPI_Slave/Testbench_of_SPI.png>
+Package pdftex.def Info: Billeder/FPGA/SPI_Slave/Testbench_of_SPI.png used on i
+nput line 49.
+(pdftex.def)             Requested size: 338.76479pt x 77.69005pt.
+)
+(sections/The_Controller/The_Controller.tex
+(Sections/The_Controller/PIDcontroller/PIDcontroller.tex [19 <./Billeder/FPGA/S
+PI_Slave/Testbench_of_SPI.png>]
+<Billeder/Standartsystem.png, id=455, 692.5875pt x 111.41624pt>
+File: Billeder/Standartsystem.png Graphic file (type png)
+
+<use Billeder/Standartsystem.png>
+Package pdftex.def Info: Billeder/Standartsystem.png used on input line 27.
+(pdftex.def)             Requested size: 346.2929pt x 55.70798pt.
+ [20 <./Billeder/Standartsystem.png>]
+<Billeder/PIDcontroller.png, id=464, 700.6175pt x 222.8325pt>
+File: Billeder/PIDcontroller.png Graphic file (type png)
+
+<use Billeder/PIDcontroller.png>
+Package pdftex.def Info: Billeder/PIDcontroller.png used on input line 41.
+(pdftex.def)             Requested size: 350.30789pt x 111.41597pt.
+
+<Billeder/PStep.jpg, id=467, 454.69875pt x 252.945pt>
+File: Billeder/PStep.jpg Graphic file (type jpg)
+ <use Billeder/PStep.jpg>
+Package pdftex.def Info: Billeder/PStep.jpg used on input line 61.
+(pdftex.def)             Requested size: 318.28694pt x 177.06029pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[21 <./Billeder/PIDcontroller.png>]
+<Billeder/PIStep.jpg, id=482, 451.6875pt x 263.98625pt>
+File: Billeder/PIStep.jpg Graphic file (type jpg)
+
+<use Billeder/PIStep.jpg>
+Package pdftex.def Info: Billeder/PIStep.jpg used on input line 77.
+(pdftex.def)             Requested size: 316.17908pt x 184.78911pt.
+ [22 <./Billeder/PStep.jpg> <./Billeder/PIStep.jpg>]
+<Billeder/PDStep.jpg, id=490, 438.63875pt x 277.035pt>
+File: Billeder/PDStep.jpg Graphic file (type jpg)
+
+<use Billeder/PDStep.jpg>
+Package pdftex.def Info: Billeder/PDStep.jpg used on input line 93.
+(pdftex.def)             Requested size: 307.04501pt x 193.92317pt.
+
+<Billeder/PIDStep.jpg, id=493, 458.71375pt x 261.97874pt>
+File: Billeder/PIDStep.jpg Graphic file (type jpg)
+
+<use Billeder/PIDStep.jpg>
+Package pdftex.def Info: Billeder/PIDStep.jpg used on input line 109.
+(pdftex.def)             Requested size: 321.09743pt x 183.38387pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<Billeder/RlocusControllers.jpg, id=494, 563.85657pt x 440.39531pt>
+File: Billeder/RlocusControllers.jpg Graphic file (type jpg)
+
+<use Billeder/RlocusControllers.jpg>
+Package pdftex.def Info: Billeder/RlocusControllers.jpg used on input line 117.
+
+(pdftex.def)             Requested size: 394.69691pt x 308.27461pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+)) (sections/Perspectivation/Perspectivation.tex)
+(Sections/Conclution/Conclution.tex [23 <./Billeder/PDStep.jpg>]) [24 <./Billed
+er/PIDStep.jpg> <./Billeder/RlocusControllers.jpg>] [25]
+(Sections/Sources/Sources.tex) [26
+
+] (Sections/Appendix/Appendix.tex)) [27
+
+]
+
 AED: lastpage setting LastPage
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 5.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 5.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 10.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 10.
 (Master.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 5.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 5.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 10.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 10.
 Package rerunfilecheck Info: File `Master.out' has not changed.
-(rerunfilecheck)             Checksum: 976141AC9DE3A610A6D41511C5098CCB;1285.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 5.
+(rerunfilecheck)             Checksum: 580AC7CC909AF15C7E1C37C5255D0FFF;3689.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 10.
  ) 
 Here is how much of TeX's memory you used:
- 14003 strings out of 493634
- 219694 string characters out of 3141306
- 336164 words of memory out of 3000000
- 17079 multiletter control sequences out of 15000+200000
- 23021 words of font info for 49 fonts, out of 3000000 for 9000
+ 14308 strings out of 493634
+ 227697 string characters out of 3141306
+ 338147 words of memory out of 3000000
+ 17243 multiletter control sequences out of 15000+200000
+ 29748 words of font info for 57 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
- 40i,13n,45p,792b,461s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Progra
-m Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program 
-Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Fil
-es (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (
-x86)/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb><C:/Program Files (x86)/MiKT
-eX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/font
-s/type1/urw/times/utmbi8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/ur
-w/times/utmr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utm
-r8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Master.pdf (11 pages, 206342 bytes).
+ 40i,13n,45p,1049b,434s stack positions out of 5000i,500n,10000p,200000b,50000s
+pdfTeX warning (dest): name{page.28} has been referenced but does not exist, 
+replaced by a fixed one
+
+{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program 
+Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Fi
+les (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program File
+s (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Program Files (
+x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files (x86
+)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files (x86)/M
+iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files (x86)/MiKTe
+X 2.9/fonts/type1/urw/courier/ucrr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fon
+ts/type1/urw/times/utmb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/ur
+w/times/utmbi8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/ut
+mr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C
+:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
+Output written on Master.pdf (27 pages, 742805 bytes).
 PDF statistics:
- 240 PDF objects out of 1000 (max. 8388607)
- 50 named destinations out of 1000 (max. 500000)
- 174 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 591 PDF objects out of 1000 (max. 8388607)
+ 114 named destinations out of 1000 (max. 500000)
+ 555 words of extra memory for PDF output out of 10000 (max. 10000000)
 
