@@ -1,15 +1,9 @@
 \subsection{Choice of Operating System}
 \label{sec:ChoiceofOperatingSystem}
 
-Why use freeRTOS
-- The tool used in our semester
-- real tome system
+Since it is safe to assume that this program will be using multipliable task, an operating system (OS) is required. This OS must support the ARM Cortex M-4 processor, which is used in this project. It must be supported by Code Composer Studio, which is the software used for programming the processor. 
 
-what are the alternatives? 
-there are my own operating system but the options here are limited
+Using a Real Time Operating System freeRTOS would give the advantages of preemptive scheduling. Being able to preempt a low priority task to pave the way for a task of higher priority will ensure better performance if the project have a serden sive to it. 
 
-Witch limitations does FreeRTOS give os 
-- no messages, but events
-- no binary semaphores 
-- (handling floating point - whitch i have never tested)
 
+ 
