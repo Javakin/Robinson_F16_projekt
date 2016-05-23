@@ -18,7 +18,8 @@ The requirements will be divide into primary and secondary requirements, so as t
 
 \subsubsection{Primary requirements}
 
-\textit{Product requirements}
+% Requiremnts to the hardware
+\textit{Hardware requirements}
 
 \begin{itemize}
 
@@ -29,25 +30,34 @@ The requirements will be divide into primary and secondary requirements, so as t
 \item The FPGA has to control the PWM(Pulse-width modulation) signal for the motors.
 \end{itemize}
 
-\textit{Application requirements}
 
+% Requirements to the p&t driver 
+\textit{Driver requirements}
 \begin{itemize}
-\item The spotlight needs to be able to point its light towards a specific position on the stage, with a error margin of 10cm, no matter the position.
-
-\item The spotlight needs to be able to follow a walking person i.e. moving at around $2.5 m/s^{1}$.
-
 \item The system cannot have an overshoot of more than 10\%.
 
-\item The system has to have a settling time of at least 1.5 sec for one revolution of either pan or tilt.
+\item The system has to have a settling time of at least 1.5 sec for one revolution of either pan or tilt.	
 
-\item The spotlight is placed at a height of 5 meters.
+\item At a scene of dimension 5 m x 5 m, from a hight of 5 meters, the system must achieve a velocity of at least $2.5 m/s^{1}$ relative to the scene, which is the maximum velocity the average person would walk. 
+\footnote{Wikipedia, Preferred walking speed, \url{https://en.wikipedia.org/wiki/Preferred_walking_speed}, 23/05/16}
 
-\item The max stage size is 14x10 meters.
+\end{itemize}
+
+
+% requirements to the applicaiton
+\textit{Application requirements}
+\begin{itemize}
+
+
+\item The application must support for the spotlight to be placed at different hight
+
+\item The application must support different stage dimensions up to 14 m x 14 m. 
+
+\item The application must needs to be able to point its light towards a specific position on a 14 m x 14 m stage at a hight of 5 meter, with a error margin of +/- 10cm. 
 \end{itemize}
 
 
 \subsubsection{Secondary requirements}
-
 \begin{itemize}
 \item The movement between to points has to be smooth.
 
