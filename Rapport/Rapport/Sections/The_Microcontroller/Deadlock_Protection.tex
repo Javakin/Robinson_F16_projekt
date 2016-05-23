@@ -1,16 +1,19 @@
 \subsection{Deadlock Protection}
 \label{sec:DeadlockProtection}
 
-here three criterias neads to be held for a dead lock to take place 
+A deadlock is when one or more process cannot proceed because some of the resources it need is held by another process. The two processes will "compete" with each other and neither of them will finish.
+ 
 \begin{enumerate}[noitemsep]
 	
-	\item Mutual exclusion
+	\item \textbf{Mutual exclusion} is the concept of making sure that two or more concurrent processes are not in their critical section at the same time. The critical section is a part of the program that cant be used by more than one process at the time.\\ If more than one process is in the same critical section at the same time errors are bound to happen.
 	
-	\item Hold and wait 
+	\item \textbf{Hold and wait} is when a process holds on to a resources and wait for the rest of the resources it needs.% It can be avoided by requiring a process to take all of its need resources in one go % This means that if process 1 needs resource A and B, process 2 needs resource A and C and process 3 needs resource B and C, it can sometimes happen that one of the processes have one of the resources they need but the other resource is held by another process.
 	
-	\item No preemption
+	\item \textbf{no preemption} means that only the process that holds the resource can release it. If preemption is allowed, the program is able to take resources from a process and allocate it to another process.
 	
-	\item Circular wait (add source XXXX)
+	\item \textbf{Circular wait} is when one process is waiting for at resource that another process is has and the other process is waiting for a resource held by the first one. It could also be a chain of processes where every process needs a resource held by the next and the last one needs a resource held by the first.
+	
+\textbf{(add source XXXX)}
 	
 \end{enumerate}
 
