@@ -27,7 +27,7 @@ The Cortex M4 have a build in frescale spi module, that supports four different 
 
 The state machine for the task is illustrated in figure \ref{fig:SPI-master} is as simple at is gonna get. It consists of three states and is initiated waiting for a message to transmit from the spi\_tx\_queue. When a message is pulled from the queue it jumps to the send state, and after sending the message, the received message will be handled by the P\&T API in the Receive task. From here it will only switch back to the idle state if the API call was successful, else it will continue till it succeeds. 
 
-Mesure the performance 
+Now what is Mesure the performance of the system 
  
 
  
