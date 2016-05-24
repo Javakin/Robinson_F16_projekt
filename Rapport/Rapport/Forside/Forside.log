@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.5.17)  24 MAY 2016 11:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.5.17)  24 MAY 2016 23:36
 entering extended mode
 **./Forside.tex
 (Forside.tex
@@ -249,7 +249,7 @@ and I'll forget about whatever was undefined.
 ! You can't use `\raise' in vertical mode.
 \put (#1,#2)#3->\@killglue \raise 
                                   #2\unitlength \hb@xt@ \z@ {\kern #1\unitle...
-l.11 ...[scale=1.8]{Billeder/Spotlight_3D_v3.png}}
+l.11 ...ale=1.8]{Billeder/Spotlight_3D_v3_80.png}}
                                                    }
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn't ask for it.
@@ -263,7 +263,7 @@ Missing character: There is no 0 in font nullfont!
 ! Missing number, treated as zero.
 <to be read again> 
                    \hbox 
-l.11 ...[scale=1.8]{Billeder/Spotlight_3D_v3.png}}
+l.11 ...ale=1.8]{Billeder/Spotlight_3D_v3_80.png}}
                                                    }
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
@@ -272,7 +272,7 @@ look up `weird error' in the index to The TeXbook.)
 ! Illegal unit of measure (pt inserted).
 <to be read again> 
                    \hbox 
-l.11 ...[scale=1.8]{Billeder/Spotlight_3D_v3.png}}
+l.11 ...ale=1.8]{Billeder/Spotlight_3D_v3_80.png}}
                                                    }
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
@@ -283,8 +283,8 @@ two letters. (See Chapter 27 of The TeXbook.)
 
 ! Undefined control sequence.
 <argument> \includegraphics 
-                            [scale=1.8]{Billeder/Spotlight_3D_v3.png}
-l.11 ...[scale=1.8]{Billeder/Spotlight_3D_v3.png}}
+                            [scale=1.8]{Billeder/Spotlight_3D_v3_80.png}
+l.11 ...ale=1.8]{Billeder/Spotlight_3D_v3_80.png}}
                                                    }
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -324,7 +324,7 @@ Missing character: There is no t in font nullfont!
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.11 ...[scale=1.8]{Billeder/Spotlight_3D_v3.png}}
+l.11 ...ale=1.8]{Billeder/Spotlight_3D_v3_80.png}}
                                                    }
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -334,9 +334,9 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 11.
 ! Extra }, or forgotten $.
-<argument> ...e=1.8]{Billeder/Spotlight_3D_v3.png}
+<argument> ....8]{Billeder/Spotlight_3D_v3_80.png}
                                                   
-l.11 ...[scale=1.8]{Billeder/Spotlight_3D_v3.png}}
+l.11 ...ale=1.8]{Billeder/Spotlight_3D_v3_80.png}}
                                                    }
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -347,7 +347,7 @@ deleted material, e.g., by typing `I$}'.
 ! Extra }, or forgotten $.
 \put ... \hb@xt@ \z@ {\kern #1\unitlength #3\hss }
                                                   \ignorespaces 
-l.11 ...[scale=1.8]{Billeder/Spotlight_3D_v3.png}}
+l.11 ...ale=1.8]{Billeder/Spotlight_3D_v3_80.png}}
                                                    }
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -356,7 +356,7 @@ the way to recover is to insert both the forgotten and the
 deleted material, e.g., by typing `I$}'.
 
 ! Extra }, or forgotten $.
-l.11 ...cale=1.8]{Billeder/Spotlight_3D_v3.png}} }
+l.11 ...e=1.8]{Billeder/Spotlight_3D_v3_80.png}} }
                                                   
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -794,10 +794,33 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.55 \end
-         {center}
+l.55   \vspace
+              {12mm}
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
+
+
+! LaTeX Error: The font size command \normalsize is not defined:
+               there is probably something wrong with the class file.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.56   \normalsize
+                  
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Undefined control sequence.
+l.57   \texts
+             1{test}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
 
 ! LaTeX Error: Something's wrong--perhaps a missing \item.
@@ -806,7 +829,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.55 \end{center}
+l.58 \end{center}
                  
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -818,7 +841,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.55 \end{center}
+l.58 \end{center}
                  
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
@@ -826,7 +849,7 @@ If that doesn't work, type  X <return>  to quit.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.55 \end{center}
+l.58 \end{center}
                  
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -837,7 +860,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.55 \end{center}
+l.58 \end{center}
                  
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -859,5 +882,5 @@ Here is how much of TeX's memory you used:
  3501 multiletter control sequences out of 15000+200000
  5006 words of font info for 18 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
- 20i,5n,15p,134b,168s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 20i,5n,15p,137b,168s stack positions out of 5000i,500n,10000p,200000b,50000s
 !  ==> Fatal error occurred, no output PDF file produced!
