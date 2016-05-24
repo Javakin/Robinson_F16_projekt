@@ -30,7 +30,7 @@ The state machine for the task is illustrated in figure \ref{fig:SPI-master} is 
 
 \subsubsection{Performance Test} 
 \label{sec:PerformanceTest}
-After implementing the the SPI-master task in the final application the max bit-rate was tested by overloading the spi\_tx\_queue, and giving the SPI-master task High priority int the OS. This made the the task perform at maximum capacity. The measurements of the SPI connection can be seen in figure \ref{fig:HightPerformance}. Since it is able to transmit messages of 14 bots at 7.7 kHz the bitrate will be the product of these two values giving the result $107 kbit/sek$
+After implementing the the SPI-master task in the final application the max bit-rate was tested by overloading the spi\_tx\_queue, and giving the SPI-master task High priority int the OS. This made the the task perform at maximum capacity. The measurements of the SPI connection can be seen in figure \ref{fig:HightPerformance}. Since it is able to transmit messages of 14 bots at 7.7 kHz the bitrate will be the product of these two values giving the result $107 kbit/sek$. It is therefore safe to say that the SPI-module for fills the applications requirements. 
 
 
 \begin{figure}
