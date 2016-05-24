@@ -27,7 +27,18 @@ The Cortex M4 have a build in frescale spi module, that supports four different 
 
 The state machine for the task is illustrated in figure \ref{fig:SPI-master} is as simple at is gonna get. It consists of three states and is initiated waiting for a message to transmit from the spi\_tx\_queue. When a message is pulled from the queue it jumps to the send state, and after sending the message, the received message will be handled by the P\&T API in the Receive task. From here it will only switch back to the idle state if the API call was successful, else it will continue till it succeeds. 
 
-Now what is Mesure the performance of the system 
+
+\subsubsection{Performance Test} 
+\label{sec:PerformanceTest}
+After implementing the the SPI-master task in the final application the max bit-rate was tested by overloading the spi\_tx\_queue, and giving the SPI-master task High priority int the OS. This made the the task perform at maximum capacity. The measurements of the SPI connection can be seen in figure \ref{fig:HightPerformance}. Since it is able to transmit messages of 14 bots at 7.7 kHz the bitrate will be the product of these two values giving the result $107 kbit/sek$
+
+
+\begin{figure}
+	\centering
+	\includegraphics[scale = 0.7] {Billeder/HightPerformance}
+	\caption{Shows the max performance of the SPI-Master task}
+	\label{fig:HightPerformance}
+\end{figure}
  
 
  
