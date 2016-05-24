@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.3.17)  24 MAY 2016 07:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.3.17)  24 MAY 2016 07:43
 entering extended mode
 **./Master.tex
 (Master.tex
@@ -1564,13 +1564,13 @@ Package pdftex.def Info: Billeder/OverordnetStruktur-v3.png used on input line
 dnetStruktur-v3.png>]
 (sections/The_Microcontroller/Choice_of_Operating_System.tex)
 (sections/The_Microcontroller/Program_Structure.tex [10]
-<Billeder/microcontroller-Task-Diagram.png, id=404, 1391.1975pt x 629.35126pt>
+<Billeder/microcontroller-Task-Diagram.png, id=404, 1376.14125pt x 644.4075pt>
 File: Billeder/microcontroller-Task-Diagram.png Graphic file (type png)
 
 <use Billeder/microcontroller-Task-Diagram.png>
 Package pdftex.def Info: Billeder/microcontroller-Task-Diagram.png used on inpu
 t line 50.
-(pdftex.def)             Requested size: 556.46915pt x 251.73604pt.
+(pdftex.def)             Requested size: 550.44676pt x 257.75844pt.
 )
 (sections/The_Microcontroller/The_Application_Programmer_Interface.tex [11]
 [12 <./Billeder/microcontroller-Task-Diagram.png>])
@@ -1828,7 +1828,7 @@ r/ucrr8a.pfb><C:/Users/JARVIS/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw
 s/type1/urw/times/utmr8a.pfb><C:/Users/JARVIS/AppData/Local/Programs/MiKTeX 2.9
 /fonts/type1/urw/times/utmr8a.pfb><C:/Users/JARVIS/AppData/Local/Programs/MiKTe
 X 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Master.pdf (33 pages, 1008637 bytes).
+Output written on Master.pdf (33 pages, 1001416 bytes).
 PDF statistics:
  683 PDF objects out of 1000 (max. 8388607)
  131 named destinations out of 1000 (max. 500000)

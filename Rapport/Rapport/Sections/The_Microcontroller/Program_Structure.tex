@@ -40,9 +40,9 @@ Each queue needs to be semaphore protected in order to prevent a race condition 
 
 The shared state memory (SSM), needs semaphore protection as well. Since the number of memory locations is relatively small (less then 64), combined with the fact that the critical section only consists of one read ore write. the entire SSM will be handled by the same semaphore for simplicity. 
 
-The tow application tasks app\_update\_current\_task and app\_kernel\_task will both be accessing the spi\_tx\_queue, but unlike the application\_queue this queue requires that the target position
+The tow application tasks app\_update\_current\_task and app\_kernel\_task will both be accessing the spi\_tx\_queue, but this will only be a problem if they wish to send multiple messages in context, which is not the case for this application. The same goes for the application\_queue. Here the send messages and events content will be independent form each other.  
 
-Applying all these thoughts will make the final application task diagram as shown in figure \ref{fig:applicaiton_task_diagram}. Now when the task diagram has been made, it is time to considerer possible structural weakness such as deadlocks and handling og queues. 
+Applying all these thoughts will result in the final application task diagram as shown in figure \ref{fig:applicaiton_task_diagram}. Now when the task diagram has been made, it is time to considerer possible structural weakness such as deadlocks and handling og queues. 
 
 % full dreasd task diagram
 \begin{figure}
