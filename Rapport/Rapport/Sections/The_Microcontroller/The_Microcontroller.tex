@@ -1,7 +1,56 @@
 
+
+
+
+
 \section{The Microcontroller}
 \label{sec:TheMicrocontroller}
 
-Here goes the tekst.
+ Given the design requirements in section \ref{sec:RequirementsSpecification}, and the block diagram in section \ref{sec:TheSystem}. This includes all the functionality that is to be placed in the microcontroller. From here the next stage is to define the content of these blocks, and how they interact with each other. 
+ 
+ The microcontroller is to establish an application programmer interface (API) to the P\&T driver placed in the FPGA. The microcontroller will also run the application that uses this interface in order to help the user achieve his/her goal, which is to control the spotlight.
+ 
+ The program will be written in the C language, and it will be documented using task diagrams and states machines. 
+
+
+% program structure
+\input{sections/The_Microcontroller/Choice_of_Operating_System}
+
+\input{sections/The_Microcontroller/Program_Structure}
+
+\input{sections/The_Microcontroller/The_Application_Programmer_Interface}
+
+\input{sections/The_Microcontroller/Event_Queues_and_Shared_State_Memory}
+
+\input{sections/The_Microcontroller/Deadlock_Protection}
+
+\input{sections/The_Microcontroller/SPI-Master}
+
+\input{sections/The_Microcontroller/The_Application}
+
+% summery 
+\subsection{Overview}
+The above mentioned functionality was ment as a fully dressed system containing all the features that would be needed while working with a real spotlight. However, not all features was primary requirements, which makes it okay that it never got implemented. 
+ 
+The joystick: Even thought a driver was made for the joystick, it the the corresponding API was not. Therefore this 
+
+Point at a specific location. 
+
+This is the functions that did not made it to the implementation
+
+\begin{enumerate}[noitemsep]
+	
+	\item ps2 controller and its corresponding api
+	
+	\item calculating the tack-position from the relative coordinates given by the application  
+	
+	\item follow a waking person
+	
+
+\end{enumerate}
+
+
+
+
 
 
