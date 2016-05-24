@@ -1,9 +1,7 @@
-
-\section{The System}
+\section{Overview of the System}
 \label{sec:TheSystem}
-
-Here goes the tekst.
-
+In the process of brainstorming, it was a necessity to specify the responsibility of the system, and to create clear interfaces between the modules and components.
+In order to create a better overview of the system, a block diagram was made, to illustrate all the parts and peripherals of the system.
 
 \begin{figure}[p]
 	\centering
@@ -11,3 +9,10 @@ Here goes the tekst.
 	\caption{The overall system block diagram}
 	\label{fig:TheSystemBlockDiagram}
 \end{figure}
+
+The block diagram shows 3 main blocks; the application, the P\&T driver and the hardware.
+The application is the user's way of controlling the system, through the use of either the joystick or the console commands. This block only contains the necessary code to receive input, and to communicate with the P\&T API, which is done through inter-task communication.
+The P\&T driver is divided into 2 sub blocks: The MCU and the FPGA. In this system, a clear split between software and hardware is made, with the MCU containing all the software-related code, and the FPGA containing all the hardware-related code.
+The MCU block contains simple c code and memory, and passes necessary information to the FPGA via SPI. This block generally contains code which is non-critical to performance.
+The FPGA block contains the controller for the P\&T system, and sends PWM and direction to the P\&T hardware. Advantages to placing the controller in the FPGA, is getting quick response from the hardware, as well as low latency compared to placing the controller elsewhere.
+The hardware block contains the physical hardware, the P\&T system, and the feedback from the tachometers. This block receives input and returns feedback to the FPGA.
