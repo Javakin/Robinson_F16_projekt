@@ -1,7 +1,17 @@
 \subsection{Event Queues and Shared State Memory}
 \label{sec:EventQueuesandSharedStateMemory}
 
-When operating with tasks, it should come as no surprise that it will be implemented as a state machine.  
+When operating with tasks, it should come as no surprise that it will be implemented as a state machine. This structure will operate in one state until a specific condition is met, from here the state will change and the tasks will operate differently. For this application the tasks will mostly switch states as they receive the right events. In short an event is a number that the programmer has assigned a specific meaning by the programmer. It is therefor impotent for the application to know if it is reading an enven ore not.  
+
+Suppose an event is an eight bit unsigned integer, and it is send to a task through a queue. For the receiver task to know what data type it is, and who send it will either need more information like a header message in advance. The only alternative would be to assume that everything received from the queue must be an event. In other words, if the sending task uses the queue for both user data and events, it will be impossible for the reviver to know, if the number 214 is to be interpreted as the data, or the event "UPDATE\_DISPLAY". 
+
+It is possible to first send a header message telling what to do with the next message, however, this solution would not be particularly robust, since all it takes for the system to get lost is for one message to fail at either get send or received incorrectly. It will then go out of synchronization and header will be read as data and the other way around, and since this error only happens at rarely this error will be hard to debug. 
+
+The preferred alternative is to keep messages atomic, which means that all data needed will be in the same message. In order to obtain this only events will be send in the queue between the UART0\_rx\_task, joystick\_task and app\_kernel\_task. When ever the user 
+ 
+When ever an event is received form the tasks input queue, the task will perform 
+
+
 it will ensure that only events can be found in the queue, data will be saved and an event stating that data can be read will be send enstead
 
 this is so that the data never will look like an event.
