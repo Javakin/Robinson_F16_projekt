@@ -1,15 +1,15 @@
 \section{SPI slave block}
-
+\label{sec:SPIslaveblock}
 This section will describe in detail how the SPI slave in the FPGA receives and transmit data according to the description of the SPI communication protocol mentioned before.
 
 \subsection{Description}
 
 The SPI slave has two different tasks. The first task is to exchange data with the SPI master in the microcontroller. The second task is to store the information that is received and present it to the components that need the data. The SPI slave could be called also some sort of information bank for the driver.\\
-The data exchange part follow the SPI communication protocol mentioned before.
+The data exchange part follow the SPI communication protocol mentioned in section \ref{sec:SPIcommunication}.
 The information bank part is made by having the block hold the information in the actual output of the block. This is done so that the data is constantly supplied to the block in need of the data. However this requires a lot of data paths, but this is not much of a problem since this is going on internally in the FPGA. The reason the data is stored in the SPI slave component was also to make it more manageable since all of the data is stored at the same place.
 
 \subsection{Implementation}
-
+\label{sec:Implementation}
 The SPI slave could have been implemented as a state machine. However because of  the rather simplistic nature of the SPI communication protocol it was chosen not to implement it as a state machine. Instead it was implemented as a series of different events that trigger different responses in the SPI block. The first event is the S\_CLK pin is having an rising edge. This event makes the the SPI slave read the input from the MOSI pin and prepare the next output for the MISO pin. The code that handles this event can be seen in figure \ref{fig:S_CLK_code_example}. 
 
 \begin{figure}[h!]
