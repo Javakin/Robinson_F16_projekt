@@ -32,7 +32,7 @@ When discussing what controller to use, figure \ref{fig:Standartsystem} is the p
 \newpage
 
 \subsection{The Controller}
-For simplicity’s sakel Proportional (P), Proportional-Integral (PI), Proportional-Derivative (PD) and Proportional-Integral-Derivative (PID) be the only controllers taken into considerations for this project. Though Lead-Lag compensators could be considered as well, since in essence they can do the same as before mentioned controllers.\par
+For simplicity’s sake Proportional (P), Proportional-Integral (PI), Proportional-Derivative (PD) and Proportional-Integral-Derivative (PID) be the only controllers taken into considerations for this project. Though Lead-Lag compensators could be considered as well, since in essence they can do the same as before mentioned controllers.\par
 
 A PID controller is made up by three parts: the proportional gain looks at the current error, the integral looks at the past errors and the derivative looks at current rate of change. Each term has a tuneable gain called the k constants. In general these constants are what defines a PID controller’s behavior. See figure \ref{fig:PID controller} for illustration. 
 
@@ -46,7 +46,10 @@ A PID controller is made up by three parts: the proportional gain looks at the c
 This is the equation of the standard PID controller in the time domain:\\$K_{p}e(t)+K_{i} \int\limits_0^t \mathrm{e}(t)\,\mathrm{d}t+K_{d}\frac{de(t)}{dt}$
 
 If transformed to the s domain the equations looks like this:\\
-$G(s)=K_{p}+\frac{K_{i}}{s}+K_{d}s$
+
+\begin{equation}G(s)=K_{p}+\frac{K_{i}}{s}+K_{d}s
+\label{Eq_2}
+\end{equation}
 
 \subsection{Proportional Controller}
 
@@ -116,36 +119,203 @@ The step response of the PID controller, figure \ref{fig:PIDStep}, shows that in
 \centering
 \includegraphics[scale=0.7]{Billeder/RlocusControllers.jpg}
 \caption{ Open-loop transfer function Root Locus plots of the estimated motor transfer function, EQUATION REF, with different controllers. The shaded areas indicates designs not met if poles of the closed-loop transfer function is placed there. 
-The designs are: Overshot $>$ 10\%, settling time < 0.05 seconds. 7 }
+The designs are: Overshot $>$ 10\%, settling time < 0.05 seconds. }
 \label{fig:RlocusControllers}
 \end{figure}
 
 
+\subsection{K constants}
+
+Once either a P, PI, PD or PID controller has been chosen for the project, the next step would be to estimate the k constants of the respective controller. Finding these constants to meet one's requirements can be done in various ways. In this section the Manual tuning and Root Locus method will be discussed.
 
 
+\subsection{Manual tuning}
+
+This method requires the system to be online and running to tune it, though if a simulation of the system has been made this tuning method is still viable on the simulation - the catch is that a simulation’s artificiality cannot be denied, thus the actual online system proves more truthful.\par
+
+There is no right way to tune manual, since experience can lead to a quick tuning. A known procedure is, however, to first set one’s k\_i and k\_d to zero, and then increase the k\_p until the system starts to oscillate, k\_p should then be set to approximately half this value. The k\_i is now increased to correct for any offset within the desired time. Lastly, if needed, the k\_d is increased until the requirements are met.
 
 
+\subsection{Root Locus tuning method}
+
+This method is a mathematical approach with the help of software like MatLab to find k\_p, k\_i and k\_p from the root locus. It is not required to have the online system up and running to use this method, which in many cases can prove useful (imagine a system where unpredicted behavior can have fatal consequences). Though a mathematical model of the system is needed.\par
+
+The root loci on figure \ref{fig:RlocusControllers} can be used, since they are the open-loop transfer function of the system. It has already been established that using a PID controller would be a good choice to meet the project’s requirements. Therefore this example is based on the PID root locus from figure \ref{fig:RlocusControllers}. The root locus was made with the SISO tool from Matlab with the open-loop transfer function EQUATION REF. The two zeros at -90 and -55 on the real axis and a zero at the origin  is what makes up the PID controller, and they were placed there to satisfy the design requirements. The SISO tool Compensator Editor of this root locus shows these zeros and pole as an compensator, which is another way to represent a PID controller. In the example of the PID controller from figure \ref{fig:RlocusControllers}  the compensator looks like this:\\ 
+
+\begin{equation}
+200*\frac{(1+0.011s)(1+0.019s)}{s}
+\label{Eq_1} 
+\end{equation}
+
+Rewriting equation \ref{Eq_1} to look like equation \ref{Eq_2} makes it quite easy to read the K constants.
+
+\begin{equation}
+\frac{0.0396s2 +5.8s+200}{s}
+\label{Eq_3}
+\end{equation}
+
+As seen in \ref{Eq_3} the K constants for the PID controller are K\_P = 5.8, K\_I = 200 and K\_D = 0.0396.
+
+\subsection{Controller constants for Pan and Tilt systems}
+
+Applying the root locus method to the transfer functions for the Pan and Tilt systems, PD and PID controller constants were derived for both of these.
+
+\begin{equation}
+G_{pan}(s)=\frac{52}{0.212s+1}
+\end{equation}
 
 
+\textbf{Skriv konstanterne ind i latex}
 
 
+\subsection{Simulation}
+
+Making a simulation of the system is a good way to figure out whether the controller needs to be redesigned or tweaks needs to taken into consideration. Since the motors on the pan and tilt are expected to have similar characteristic as the load free motor (though pan and tilt are expected to have different time constants), the simulation is then first done on the load free motor transfer function with the PD controller from figure \ref{fig:RlocusControllers}. The K constants were found with the same method as discussed in the Rooth Locus tuning Method section. The constants are K\_P = 2 and K\_D = 0.02.
+The simulation is done in MatLab’s Simulink software, see figure \ref{fig:Simulinkmodel}. the Step block is a step input of 1, and since the DC gain of the plant is in the units of $\frac{tacs}{s*V}$, this simulation illustrates the system rotating the rotor 1 tach. The step input is fed to the feedback summation, where the feedback is subtracted from the reference input. The summation result is now the error signal, and this signal is then fed into the PD controller. The PD controller reacts depending on the rate of change of the error signal and passes on its calculated value. The motor plant produces physical rotation, which is integrated to tachs. The output is now sampled as feedback and is then fed back to the reference signal. The Time Scope will generate the plot of the simulation.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.7]{Billeder/simulinkmodel.jpg}
+\caption{ A simulink simulation of a PD controller of the load free motor’s transfer function. }
+\label{fig:Simulinkmodel}
+\end{figure}
+
+The step response of the simulation is expected to look like the step response from the PD analysis. As seen on figure \ref{fig:SimuStepPDNoConstrains} looks a lot like expected. Upon inspecting the time 0.0226 seconds, the amplitude is 0.982 which is within 2\% of the settling time, so the simulation is very accurate to the expected.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.7]{Billeder/SimuStepPDNoConstrains.jpg}
+\caption{ The step response of the simulation from figure \ref{fig:Simulinkmodel} }
+\label{fig:SimuStepPDNoConstrains}
+\end{figure}
+
+Since this is a simulation over the physical system, then the physical aspects that are obvious should be taken into consideration. The motor of the system cannot take inputs higher than 12 volts, therefore a saturation limit will be added to the PD controller to simulate this. Other than that, the friction and inertia in the system makes it impossible for the system to move below 2 volts. This means that inputs ranging from -2 volts to +2 volts to the plant, must always be set to 0 to simulate the idling of the motor. On figure \ref{fig:simulinkmodelwithconstrains} these changes can be seen.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.7]{Billeder/simulinkmodelwithconstrains.jpg}
+\caption{ A Simulink simulation of a PD controller of the load free motor’s transfer function with saturation of -12 and +12 voltage and constraints with output 0 at voltage range -2 to +2 volts . }
+\label{fig:simulinkmodelwithconstrains}
+\end{figure}
+
+The step response of figure \ref{fig:simulinkmodelwithconstrains} is seen on figure \ref, and as it is seen that the motor idles before reaching the target. This means in reality the motor never reaches the target, and since this is a secondary requirement this is something that would be nice to compensate for. Luckily an PID controller has been discussed and the constants for it is already known, and this controller is ready for simulation. On is FIGURE14 the step response of the simulation of the PID controller, with the constants found in the Root Locus tuning method section, in the same setup as FIGURE12. The step response shows that with a PID controller the simulation now reaches the desired target while still having a settling time below 50 milliseconds. In conclusion a controller for the load free motor has been designed and simulated to work for the desired requirements.
 
 
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.7]{Billeder/SimuStepPDWithConstrains.jpg}
+\caption{ The step response of  the simulation from figure \ref{fig:simulinkmodelwithconstrains} with a PD controller }
+\label{fig:SimuStepPDWithConstrains}
+\end{figure}
 
 
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.7]{Billeder/SimuStepPIDWithConstrains.jpg}
+\caption{ The step of the simulation from \ref{fig:simulinkmodelwithconstrains} with a PID controller }
+\label{fig:SimuStepPIDWithConstrains}
+\end{figure}
+
+Since the simulation of the load free motor needed a PID controller to meet the requirements, the pan and tilt motor on the actual system is expected to be of same behavior, and would also need a PID controller. Also the system constrains on the system might prove of a problem for the PID controllers of the pan and tilt, since the saturation and the deadband between -2 volts and +2 volts, has not been take into considerations while designing the control system. The transfer functions of the pan and tilt were simulated in the same manner as \ref{fig:simulinkmodelwithconstrains} with both PD and PID controller constants shown in the \textbf{Controller constants for Pan \& Tilt systems section.}
+
+On figure \ref{fig:SimuStepTiltPDAndPID} the step responses of the pan motor with PID and PD control can be seen, it is clear that, as expected, the PD control does not reach an acceptable steady state, while also being alot slower than the required settling time of 50 milliseconds. The PID control however reaches a steady state acceptable, nonetheless the settling time of 0.689 seconds is also too slow, also there is an overshoot of 11.2%..
+The slow settling time and overshoot can be explain by the saturation of the plant, and the deadband between -2 volts and +2 volts. Because the controllers designed does not compensate for these factors.   
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.7]{Billeder/SimuStepPanPDAndPID.jpg}
+\caption{ Step response of the simulation from figure \ref{fig:simulinkmodelwithconstrains} with pan motor and results of both PD and PID controllers.
+ }
+\label{fig:SimuStepTiltPDAndPID}
+\end{figure}
+
+Likewise on \ref{fig:SimuStepTiltPDAndPID} the step responses of the tilt motor with PID and PD control can be seen. As expected the PD control never reaches an acceptable steady state, and the settling time is slower. The PID controller reaches an acceptable steady state, but also have a long settling time of 0.491, while also having an overshot of 18.7%
+Same as for tilt motor, these behaviors can be explained by the saturation of the plant and the deadband between -2 volts and +2 volts.
 
 
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.7]{Billeder/SimuStepTiltPDAndPID.jpg}
+\caption{  Step response of the simulation from \ref{fig:simulinkmodelwithconstrains} with tilt motor and results of both PD and PID controllers.
+ }
+\label{fig:SimuStepTiltPDAndPID}
+\end{figure}
 
 
+Another simulation on the pan and tilt motors were run. This time an step input of 540 was set. This is equal to half a revolution on either motors. This simulation was run, because in practice the system should be able to handle the kind of inputs.
+On FIGURE17 the step response of 540 can be seen, as noted the pan and motors overshoot with about 100\% and the settling time is greatly increased because of this. This happens because of integrator windup, and was not compensated for when designing the controllers. In the simulation an anti windup can be set, to simulate an implementation of windup protection. On FIGURE18 the result of a step input of 540 with windup protection on can be seen. The pan and tilt on FIGURE18 seems to behave acceptable, the tilt has no overshoot and the pan has an overshot of 3.4 \% overshoot. Though the settling time is still slow, however this is to be expected as the system is saturated.
 
 
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.7]{Billeder/SimuStepPanAndTiltNoWindUpProtection.jpg}
+\caption{  Step response of the simulation from figure  \ref{fig:simulinkmodelwithconstrains} and 540 input instead of 1. The pan and tilt motor are without wind up protection. }
+\label{fig:SimuStepPanAndTiltNoWindUpProtection}
+\end{figure}
 
 
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.7]{Billeder/SimuStepPanAndTiltWithWindUpProtection.jpg}
+\caption{   Step response of the simulation from figure \ref{fig:simulinkmodelwithconstrains} and 540 input instead of 1. The pan and tilt motor are with wind up protection on.
+ }
+\label{fig:SimuStepPanAndTiltWithWindUpProtection}
+\end{figure}
+
+The transfer functions and the controllers for the pan and tilt have now been tested in simulation, and the designed controllers seems promising. The tilt motor would on a small step input not fulfil the requirements of less than 10\% overshoot and the settling time requirement is not met either. It would seem like that reaching a settling time of 0.05 seconds or less would be impossible for the tilt, since the system cannot move fast enough. Tough for a step input of a larger scale, the overshoot is nigh zero and well within the requirement.
+As for the pan motor, a small step input has an overshoot really close to 10\%, but a long settling time. The requirement of having overshoot less than 10\% is therefore not fulfilled, either is the having a settling time of 0.05 seconds for the pan motor. On a larger input the pan motor has an overshoot of only 3.4\% and is well within the requirement.
+
+In general, the overshoot requirement of 10\% seems to met for step inputs of a relative size, and the settling time requirement of 50 milliseconds is impossible for the system to meet, because of saturation and deadband.
+
+\subsection{Implementation - digital}
+
+\subsubsection{Direct implementation}
+
+One way of implementing the controller is a direct implementation of the PID-controller. In this case, the plant input will be a summation of the 3 PID contributions, that will all have to be calculated in real-time. This method makes a lot of sense intuitively, and provides easy access to modifying the K-constants during the tuning-process, as these are simply constants that are multiplied with the 3 contributions. In order to use this method, the mathematical operations of integration and differentiation will be have to implemented.
 
 
+\subsubsection{Filter approach}
 
+An alternative way to implement the PID controller is converting it into a discrete-time filter. This method has the advantage of not having to do any actual integration or differentiation on the FPGA. Given a continuous-time transfer function and a sampling rate, the matlab command “c2d” can convert the transfer function to the z-domain. Through algebraically isolating the current output of the controller, the filter coefficients for the implementation can be calculated.\par
 
+The sampling rate should ideally be as high as possible, as this will improve the accuracy of the discrete filter. Through matlab tests, it was found that sampling rates of higher than 10kHz do not create further improvement in the accuracy of the filter, and thus there was no need to increase the sampling rate beyond this value, even though it was technically possible.
 
+\subsubsection{Discrete filter for Pan-system [10 kHz]}
+
+\begin{equation}
+\frac{u(z)}{e(z)}=\frac{1.65z^2-3.3z+1.65}{z^2-2z+1}=\frac{1.65-3.3z^-1+1.65z^-2}{1-2
+z^-1+z^-2}
+\end{equation}
+
+\begin{equation}
+u(z)(1-2z^-1+z^-2)=e(z)(1.65-3.3z^-1+1.65z^-2
+\end{equation}
+
+\begin{equation}
+u[n]-2u[n-1]+u[n-2]=e[n]-3.3e[n-1]+1.65e[n-
+\end{equation}
+
+\begin{equation}
+u[n]=e[n]-3.3e[n-1]+1.65e[n-2]+2u[n-1]-u[n-2]
+\end{equation}
+
+\subsubsection{Discrete filter for Tilt-system [10 kHz]}
+
+\begin{equation}
+\frac{u(z)}{e(z)}=\frac{0.3z^2-0.5999z+0.2999}{z^2-2z+1}=\frac{0.3-0.05999z^-1+0.299z^-2}{1-2z^-1+z^-2} =>
+\end{equation}
+
+\begin{equation}
+u(z)(1-2z^-1+z^-2)=e(z)(0.3-0.05999z^-1+0.299z^-2
+\end{equation}
+
+\begin{equation}
+u[n]-2u[n-1]+u[n-2]=0.3e[n]-0.05999e[n-1]+0.299e[n-
+\end{equation}
+
+\begin{equation}
+u[n]=0.3e[n]-0.05999e[n-1]+0.299e[n-2]+2u[n-1]-u[n
+\end{equation}
 
 
 
