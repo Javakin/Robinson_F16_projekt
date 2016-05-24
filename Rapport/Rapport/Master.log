@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.3.17)  24 MAY 2016 07:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.3.17)  24 MAY 2016 08:17
 entering extended mode
 **./Master.tex
 (Master.tex
@@ -1588,7 +1588,7 @@ sed on input line 26.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-) (sections/The_Microcontroller/SPI-Master.tex [13])
+[13]) (sections/The_Microcontroller/SPI-Master.tex)
 (sections/The_Microcontroller/The_Application.tex) [14 <./Billeder/Micro_Contro
 ller/Semaphore_code_example.png>]) (sections/The_FPGA/The_FPGA.tex)
 (sections/The_FPGA/Driver.tex
@@ -1640,23 +1640,18 @@ File: Billeder/FPGA/Calculate_pos_code_example.png Graphic file (type png)
 Package pdftex.def Info: Billeder/FPGA/Calculate_pos_code_example.png used on i
 nput line 55.
 (pdftex.def)             Requested size: 228.85445pt x 73.02261pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[18 <./Billeder/FPGA/Motor_Magnets.png> <./Billeder/FPGA/Hallcounteksemple.PNG>
- <./Billeder/FPGA/Shift_code_example.png>]
-<Billeder/FPGA/Pos_change_testbench.png, id=476, 525.46312pt x 108.405pt>
+ [18 <./Billeder/FPGA/Motor_Magnets.png> <./Billeder/FPGA/Hallcounteksemple.PNG
+> <./Billeder/FPGA/Shift_code_example.png>]
+<Billeder/FPGA/Pos_change_testbench.png, id=475, 525.46312pt x 108.405pt>
 File: Billeder/FPGA/Pos_change_testbench.png Graphic file (type png)
 
 <use Billeder/FPGA/Pos_change_testbench.png>
 Package pdftex.def Info: Billeder/FPGA/Pos_change_testbench.png used on input l
 ine 68.
 (pdftex.def)             Requested size: 262.73091pt x 54.20236pt.
-)
-(sections/The_FPGA/SPI_Slave_block.tex [19 <./Billeder/FPGA/Pos_change_flowchar
-t.png> <./Billeder/FPGA/Calculate_pos_code_example.png> <./Billeder/FPGA/Pos_ch
-ange_testbench.png>]
+ [19 <./Billeder/FPGA/Pos_change_flowchart.png> <./Billeder/FPGA/Calculate_pos_
+code_example.png> <./Billeder/FPGA/Pos_change_testbench.png>]) (sections/The_FP
+GA/SPI_Slave_block.tex
 <Billeder/FPGA/SPI_Slave/S_CLK_code_example.png, id=488, 628.749pt x 256.5585pt
 >
 File: Billeder/FPGA/SPI_Slave/S_CLK_code_example.png Graphic file (type png)
@@ -1828,7 +1823,7 @@ r/ucrr8a.pfb><C:/Users/JARVIS/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw
 s/type1/urw/times/utmr8a.pfb><C:/Users/JARVIS/AppData/Local/Programs/MiKTeX 2.9
 /fonts/type1/urw/times/utmr8a.pfb><C:/Users/JARVIS/AppData/Local/Programs/MiKTe
 X 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Master.pdf (33 pages, 1001416 bytes).
+Output written on Master.pdf (33 pages, 998196 bytes).
 PDF statistics:
  683 PDF objects out of 1000 (max. 8388607)
  131 named destinations out of 1000 (max. 500000)
