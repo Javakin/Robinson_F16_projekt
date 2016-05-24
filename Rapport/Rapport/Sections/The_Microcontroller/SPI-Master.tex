@@ -5,7 +5,7 @@ The microcontroller have to share information with the FPGA, and according to th
 
 The requirements of the minimum bit-rate depends om what data that needs to be send, and how often it needs to send it. Since the PID-controller is placed in the FPGA, the application only needs to update the current position once every 5 ms, which is the minimal delay that freeRTOS can put on a task. 
 
-The SPI
+The length of the messages send is defined by the driver placed in the FPGA. As described in section \ref{sec:Implementation} all messages will have the length of 14 bits. Updating both pan and tilt requires two messages giving  considering the all other 
 
 set the limit for the respoce time from the user to the system
 
