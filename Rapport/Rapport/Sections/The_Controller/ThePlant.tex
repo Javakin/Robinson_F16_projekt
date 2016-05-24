@@ -1,15 +1,17 @@
 \section{The Plant}
-The purpose of these tests are to analyse and generate a blackbox model for the motor, based on its step response. 
+In order to properly understand and control the P\&T system, mathematical models for the pan and tilt systems (the plant) had to be developed. This section will discuss the process of initially testing for relevant DC motor data, the derivation of a mathematical model, then comparing this  model to the test data for validation of its accuracy. Finally, the same method will be used to develop models for the behaviour of the pan and tilt systems as a whole.
 
-\subsection{Setup}
+\subsection{DC Motor Modelling}
+\subsubsection{DC Motor Tests}
+The purpose of these tests are to analyse and generate a blackbox model for the DC motor, based on its step response. 
 
-The motor was set up with a switch connected to a power supply set at the desired voltage to test. This would create a physical step response from the motor when the switch was toggled. The two encoders output on the EMG30 are open collectors, so the outputs were connected to pull-up resistance to produce a desired signal. The pull-up resistors for these tests was picked to be around 300 ohm.
+The motor was set up with a switch connected to a power supply set at the desired voltage to test. This would create a physical step response from the motor when the switch was toggled. The two encoders output on the EMG30 are open collectors, so the outputs were connected to pull-up resistance to produce a desired signal. The pull-up resistors for these tests were picked to be around 300 ohm.
 
 An oscilloscope was set to measure the two encoders outputs on its each own individual channel. The sampling starts on an edge trigger with a sampling rate of 2 mHz and stops the sampling after 0.5 seconds.
 These 2 set of samples would together be the data defining an step response.
 
-Following step responses were sampled(Figure \ref{fig:stepresponses1to12V}), and the information extracted (Figure \ref{fig:StepResponseData}) from the data was calculated in matlab. See files for actual data.
-% REFERENCE TO MATLAB FILES???
+Following step responses were sampled(Figure \ref{fig:stepresponses1to12V}), and the information extracted (Figure \ref{fig:StepResponseData}) from the data was calculated in matlab. 
+% Optional reference to actual matlab data if we want and add it to CD.
 
 \begin{figure}[h!]
 \centering
@@ -37,7 +39,7 @@ The DC gain is the steady state value divided by the steady state (constant) val
 \frac{216}{12V}=18\frac{rpm}{V}
 \end{equation}
 
-This indicates that RPM is directly proportional to a voltage. The expected proportionality (in blue) is plotted below together with the actual measured RPM (in green) in figure \ref{fig:RPMLinearityAnalysis}
+This indicates that RPM is directly proportional to a voltage. The expected proportionality (in blue) is plotted below together with the actual measured RPM (in green) in figure \ref{fig:RPMLinearityAnalysis}.
 
 \begin{figure}[h!]
 \centering
@@ -57,9 +59,9 @@ The time constant tau is the time when the step response reaches $1-1/e\approx63
 \label{fig:TimeConstantLinearityAnalysis}
 \end{figure}
 
-This behavior can be explained by variations in the actual experiments. Since the encoders are not uniformly placed in the motor. The start position of the encoders can then have some impact regarding the experimental results. Other than that, it would be expected to see some differences from the lower voltages compared to the higher, since the DC gain of the system indicated some nonlinearity. The time constant, Tau, is then estimated to be the mean value from 1 to 12 volts $\approx 0.009 seconds$.
+This behavior can be explained by variations in the actual experiments, since the encoders are not uniformly placed in the motor. The start position of the encoders can then have some impact regarding the experimental results. Other than that, it would be expected to see some differences from the lower voltages compared to the higher, since the DC gain of the system indicated some nonlinearity. The time constant, Tau, is then estimated to be the mean value from 1 to 12 volts $\approx 0.009 seconds$.
 
-The transfer function for the motor is therefore now approximated as follows:
+The transfer function for the DC motor is therefore now defined as follows:
 
 \begin{equation}
 G(s)=\frac{17.6}{0.009s+1}
@@ -74,20 +76,20 @@ As seen on Figure \ref{fig:FirstOrderApproximation} the first-order approximatio
 \label{fig:FirstOrderApproximation}
 \end{figure}
 
-\subsection{Discussion}
+\subsubsection{Discussion}
 Having modelled our DC-motor as a first order LTI system, it is relevant to discuss the reliability and accuracy of this model. In reality, the transfer function for the motor includes both an external, mechanical part and an internal, electrical part (the armature).\footnote{Model and transfer function from Control Systems: Twelfth Edition p. 72}
 
 \begin{equation}
 \frac{\theta(s)}{V_f (s)}=G(s)=\frac{K_m / (bR_f}{s(\tau_f s+1)(\tau_L s+1)}
 \end{equation}
 
-This model is actually a second order system. However the time constant Tf, denoting the response time of the internal electronics of the motor, is negligible compared to the mechanical dynamics of the motor. This makes sense both intuitively and mathematically, as the relatively faster armature with an associated pole further away from origin will have less of an impact on the overall system response, and can thus be omitted for the sake of simplicity. Typical values for these time constants show this aswell.
+This model is actually a second order system. However the time constant $\tau_f$, denoting the response time of the internal electronics of the motor, is usually negligible compared to the mechanical dynamics of the motor\footnote{Modern Control Systems: Twelfth Edition p72}. This makes sense both intuitively and mathematically, as the relatively faster armature with an associated pole further away from origin will have less of an impact on the overall system response, and can thus be omitted for the sake of simplicity. Typical values for these time constants show this aswell.
 
 The first and second order transfer functions generated using these time constants are close to identical, as can be seen in figure \ref{fig:1st2ndorderstep}. The motor constants used:
 
 Field time constant: $\tau_f = 1ms$ 
 
-Rotor time constant: $\tau = 100ms$ \footnote{from Modern Control Systems: Twelfth edition p77.} 
+Rotor time constant: $\tau = 100ms$ \footnote{Modern Control Systems: Twelfth edition p77.} 
 
 \begin{figure}[h!]
 \centering
@@ -96,14 +98,14 @@ Rotor time constant: $\tau = 100ms$ \footnote{from Modern Control Systems: Twelf
 \label{fig:1st2ndorderstep}
 \end{figure}
 
-Omitting the armature from the derived transfer function gives us the following, which essentially equals our first order estimation.
+Omitting the armature from the derived transfer function gives us the following, which essentially equals our first order estimation. This indicates that a first order approximation of the motor can be very accurate, while simultaneously simplifying the controller design process.
 
 \begin{equation}
 \frac{K_m /(R_a b+K_b K_m )}{s(\tau_1 s +1)}
 \end{equation}
 
-\subsection{SI-units for DC Gain}
-Looking at the model in the larger context of our control system, it is evident that using $RPM/Vas$ the SI-unit for DC-gain is less than optimal. The feedback from the Hall sensors is in the form of tachs, and would thus require a conversion in order to be interpreted as motor rotations. In addition to that, the controlled variable of our system is the position of the motor in terms of tachs. The transfer function can easily be modified to reflect this through an integration, effectively making our transfer function a second order system.
+\subsubsection{SI-units for DC Gain}
+Looking at the model in the larger context of our control system, it is evident that using $RPM/V$ as the SI-unit for DC-gain is less than optimal. The feedback from the Hall sensors is in the form of tachs, and would thus require a conversion in order to be interpreted as motor rotations. In addition to that, the controlled variable of our system is the position of the motor in terms of tachs. The transfer function can easily be modified to reflect this through an integration, effectively making our transfer function a second order system.
 
 Speed:
 \begin{equation}
@@ -115,7 +117,7 @@ Position:
 G(s)=\frac{105}{0.009s^2+s} \frac{[tachs/sec]}{[V]}
 \end{equation}
 
-The behaviour of these transfer functions given a step input can be seen in figure \ref{fig:SpeedPosSim12V}.
+The behaviour of these transfer functions given a step input can be seen in figure \ref{fig:SpeedPosSim12V}. This behavior looks very promising. The speed transfer function step response shows an acceleration, until the speed reaches the $DC Gain * 12V$. The position transfer function also behaves as respected, as the area below the speed transfer function. 
 
 \begin{figure}[h!]
 \centering
@@ -124,10 +126,13 @@ The behaviour of these transfer functions given a step input can be seen in figu
 \label{fig:SpeedPosSim12V}
 \end{figure}
 
-\subsection{Inertia in the P\&T system}
-Because of inertia present in the pan and tilt system parts, it can be expected that the constants of the individual motors will look different than those describing the motor without load. Also, because transfer function of the DC motor without load is approximated to be linear, we assume the same from the specific transfer functions of the P\& T motors.
+\subsection{P\&T System Modelling}
+Having modelled the DC motor, it is now time to move on to the modelling of the entire plant. The same methods will be used, except now we are testing and considering the Pan \& Tilt loads and their influence on the system.
 
-\subsection{Tests of the P\&T motors}
+\subsubsection{Inertia in the P\&T system}
+Because of inertia present in the pan and tilt system parts, it can be expected that the constants of the individual motors will look different than those describing the motor without load. Also, because transfer function of the DC motor without load is approximated to be linear, we assume the same from the specific transfer functions of the P\&T motors.
+
+\subsubsection{Tests of the P\&T motors}
 Step response tests were applied to the motors on the actual Pan and Tilt system. Because of restrictions on the pan part of the system, voltages tested ranged from 3V to 8V. The data has been analysed to find values of constants related to the method of approximating a plant of a DC motor.
 
 \begin{figure}[h!]
@@ -143,7 +148,7 @@ As seen below in figure \ref{fig:PTStepResponseGraph}, the step response spikes 
 \item In the gear network connecting the actual motor and the pan or tilt part, there are small gaps between individual teeth. The motor is then switched on and while the collective gap closes, the motor runs as if it had no inertia.When the gap is closed the motor is slowed drastically because of the inertia of the pan or tilt part. 
 \end{itemize}
 
-The two things together create the spike we see on GRAF below. Because we assume linearity of the actual systems, we disregard the spike and look at the graphs after the spike has ended to find Tau.
+The two things together create the spike we see on figure \ref{fig:PTStepResponseGraph} below. Because we assume linearity of the actual systems, we disregard the spike and look at the graphs after the spike has ended to find Tau.
 
 \begin{figure}[h!]
 \centering
@@ -163,3 +168,7 @@ G_{pan} (s) = \frac{52}{0.212s+1}
 G_{tilt} (s) = \frac{82.7}{0.07s+1}
 \label{eq:Gtilt}
 \end{equation}
+
+\subsection{Overview}
+HOW GOOD ARE THESE?
+HOW COULD THEY BE IMPROVED?
