@@ -8,12 +8,56 @@
 	\centering
 	\caption{Instruction list}
 	\label{InstructionList}
-	\begin{tabular}{lllll}
 
-		test & test & tezy & ea & mas \\
-		&  &  &  &  \\
-		&  &  &  & 
-	\end{tabular}
+
+    \begin{tabular}{ | l | l | l | p{5cm} |}
+    \hline
+    Function &  Opcode (char) & Parameters & Notes \\ 
+    \hline
+    
+    Connection\_Check & o & 0 & Returns a message to the console \\
+    \hline
+    
+    Enable\_FPGA & f & 1 & Enable = 1, Disable = 0, by default FPGA is enabled \\
+    \hline
+    
+     Goto\_Coordinate & g & 2 & Updates current target in MCU, and sends a new input to    		the FPGA  \\
+    \hline
+    
+    Set\_Height & h & 1 & Sends height constraint to MCU \\
+    \hline
+
+    Set\_Width & w & 1 & Sends width constraint to MCU \\
+    \hline
+    
+    Set\_Depth & d & 1 & Sends depth constraint to MCU \\
+    \hline
+    
+     Set\_Scene & s & 1 & Select a predefined scene, and update MCU to those constraints \\
+    \hline
+    
+     Set\_Min\_Vel\_Pan & p & 1 & Sends minimum speed setting for pan to FPGA \\
+    \hline
+    
+     Set\_Max\_Vel\_Pan & P & 1 & Sends maximum speed setting for pan to FPGA \\
+    \hline
+    
+     Set\_Min\_Vel\_Tilt & t & 1 & Sends minimum speed setting for tilt to FPGA \\
+    \hline
+    
+     Set\_Max\_Vel\_Tilt & T & 1 & Sends maximum speed setting for tilt to FPGA \\
+    \hline
+    
+     Run\_Lightshow & l & 1 & Starts lightshow corresponding to parameter value \\
+    \hline
+    
+     Stop\_Lightshow & c & 0 & Stops lightshow \\
+    \hline
+    
+    Enable\_Joystick & j & 1 & Starts joystick user input \\
+    \hline
+    \end{tabular}
+    
 \end{table}
 
 % recepie
