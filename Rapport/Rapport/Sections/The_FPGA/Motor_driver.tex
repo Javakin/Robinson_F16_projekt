@@ -15,7 +15,7 @@ This section will describe the theories used for the implementation.
 The \textbf{PWM} signal is created based on a looping counter and a threshold. Imagine a counter resetting whenever it reaches a certain value, creating a loop. If the value is set to the period of the wanted \textbf{PWM} signal and the \textbf{PWM} signal output is dependent on the counter value relative to a threshold, then you will be able create a looping output that is dependant on the threshold. Figure \# PWM implementaion principle \# show an illustration of the behavior of \textbf{PWM} signal based on the looping counter and threshold.
 
 \subsubsection{H-bridge}
-An H-bridge is a collection of 4 transistors, designed to control a DC motor. In figure \ref{fig:H-bridge} the concept is illustrated. When the red switches are on, the motor runs in one direction and vica versa for the blue switches. There are two H-bridges in the system, one for the pan motor and one for the tilt motor. For further information about H-bridges, consult the \# DATASHEET H-BRO \# in the notes.
+An H-bridge is a collection of 4 transistors, designed to control a DC motor. In figure \ref{fig:H-bridge} the concept is illustrated. When the red switches are on, the motor runs in one direction and vica versa for the blue switches. There are two H-bridges in the system, one for the pan motor and one for the tilt motor. For further information about H-bridges, consult the \# DATASHEET H-BRO \# in the appendix.
 
 \begin{figure}[h!]
 \centering
@@ -44,7 +44,7 @@ To further verify the test, the edges of the PWM signal was measured and used to
 
 \subsection{Discussion}
 
-The tests show a deviation from the desired duty cycle of a small percentage. However these deviations have been deemed insignificant. The errors is created by the method that is used to calculate the PWM from the duty cycle, when converting the bit string, it is multiplied by the PWM period and divided by 256. This yields an integer, that when combined with the counter, yields a PWM very close to the desired duty cycle. Beyond that margin of error, a single clock cycle is lost due to resetting the counter, which corresponds to 1 ns.
+The tests show a deviation from the desired duty cycle of a small percentage. However these deviations have been deemed insignificant. The errors are created by the method that is used to calculate the PWM from the duty cycle. When converting the bit string, it is multiplied by the PWM period and divided by 256. This yields an integer, that when combined with the counter, yields a PWM very close to the desired duty cycle. Beyond that margin of error, a single clock cycle is lost due to resetting the counter, which corresponds to 1 ns.
 
 
 \subsection{Conclusion}

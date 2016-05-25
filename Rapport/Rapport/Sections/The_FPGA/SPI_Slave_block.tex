@@ -1,6 +1,6 @@
 \section{SPI slave block}
 \label{sec:SPIslaveblock}
-This section will describe in detail how the SPI slave in the FPGA receives and transmit data according to the description of the SPI communication protocol mentioned before.
+This section will describe in detail how the SPI slave in the FPGA receives and transmits data according to the description of the SPI communication protocol mentioned before.
 
 \subsection{Description}
 
@@ -10,7 +10,7 @@ The information bank part is made by having the block hold the information in th
 
 \subsection{Implementation}
 \label{sec:Implementation}
-The SPI slave could have been implemented as a state machine. However because of  the rather simplistic nature of the SPI communication protocol it was chosen not to implement it as a state machine. Instead it was implemented as a series of different events that trigger different responses in the SPI block. The first event is the S\_CLK pin is having an rising edge. This event makes the the SPI slave read the input from the MOSI pin and prepare the next output for the MISO pin. The code that handles this event can be seen in figure \ref{fig:S_CLK_code_example}. 
+The SPI slave could have been implemented as a state machine. However because of the rather simplistic nature of the SPI communication protocol it was chosen not to implement it as a state machine. Instead it was implemented as a series of different events that trigger different responses in the SPI block. The first event is the S\_CLK pin is having an rising edge. This event makes the the SPI slave read the input from the MOSI pin and prepare the next output for the MISO pin. The code that handles this event can be seen in figure \ref{fig:S_CLK_code_example}. 
 
 \begin{figure}[h!]
 \centering
@@ -31,10 +31,10 @@ The second event is when the SS pin has a rising edge. This signifies that the t
 \end{figure}
 
 Under the data transaction two temporary registers are used, one for the input and one for the output. This is done to stabilize the data send so that it does not change mid transmission which would cause the data to become corrupt.
-There are 4 different kinds of settings that can be controlled via the SPI slave.The first setting is the target position used in the controller block, the second setting is the maximum speed for the motor, the third setting is the minimum speed of the motor and the last setting is the enabling of the motor. All of these 4  settings can be set for the pan and tilt part separately. This results in 8 different values needing an address resulting in an address length of 3 bits.
+There are 4 different kinds of settings that can be controlled via the SPI slave. The first setting is the target position used in the controller block, the second setting is the maximum speed for the motor, the third setting is the minimum speed of the motor and the last setting is the enabling of the motor. All of these 4  settings can be set for the pan and tilt part separately. This results in 8 different values needing an address resulting in an address length of 3 bits.
 Since the data length has to be constant, the data length was chosen according to the largest value needed to be sent. This was the target position, needing 11 data bits hence the data length was chosen to be 11 bits. 
 
-The output from the SPI slave to the SPI master was chosen to mimic the address and then send some data according to the address received under the transmission. This means that the output buffer has to be changed under the transmission. This would be a problem in most cases, however since the FPGA works much faster than the microcontroller this is not a problem. Since the only information the SPI master is interested in is the current position, the output buffer is only changed when this information is polled. It was made so that this information was always polled when a target position was sent, meaning that if only a poll on the current position is wanted the target position is resend with the same value. In all other scenarios then the master sending the target position, the value returned to the master is the address the master sent and a data containing zeroes. The code handling this can also be seen in \ref{fig:S_CLK_code_example}.
+The output from the SPI slave to the SPI master was chosen to mimic the address and then send some data according to the address received under the transmission. This means that the output buffer has to be changed under the transmission. This would be a problem in most cases, however since the FPGA works much faster than the microcontroller this is not a problem. Since the only information the SPI master is interested in is the current position, the output buffer is only changed when this information is polled. It was made so that this information was always polled when a target position was sent, meaning that if only a poll on the current position is wanted. the target position is resent with the same value. In all other scenarios than the master sending the target position, the value returned to the master is the address the master sent and a data containing zeroes. The code handling this can also be seen in \ref{fig:S_CLK_code_example}.
 
 \subsection{Tests}
 
@@ -42,7 +42,7 @@ The SPI slave component has been tested in a Xillinx ISE testbench. This was don
 
 \newpage
 
-The S\_CLK then starts to toggle and the data is shifted into the input register and as SS goes high the data from the input register is set to the placement the address is pointing to. In this case, a value to the target of the pan is being send. This has the address of 001 which can also be seen on the three first bits on in the input register.
+The S\_CLK then starts to toggle and the data is shifted into the input register and as SS goes high the data from the input register is set to the placement the address is pointing to. In this case, a value to the target of the pan is being send. This has the address of 001 which can also be seen on the three first bits in the input register.
 
 \begin{figure}[h!]
 \centering
@@ -50,8 +50,6 @@ The S\_CLK then starts to toggle and the data is shifted into the input register
 \caption{ An Xilinx testbench simulation of the SPI }
 \label{fig:Testbench_of_SPI}
 \end{figure}
-
-
 
 \subsection{Discussion}
 
