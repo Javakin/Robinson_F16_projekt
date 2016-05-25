@@ -1,9 +1,9 @@
 \subsection{SPI-Master}
 \label{sec:SPIMaster}
 
-The microcontroller has to share information with the FPGA, and according to the requirements mentioned in section \ref{sec:Primaryrequirements}, this communication has to happen using Serial Peripheral Interface (SPI). The protocol will operate as described in section \ref{sec:SPIcommunication}. It is therefore important that this link will never be a bottleneck for the system application. 
+The microcontroller have to share information with the FPGA, and according to the requirements mentioned in section \ref{sec:Primaryrequirements}, this communication has to happen using Serial Peripheral Interface (SPI). The protocol will operate as descriped in section \ref{sec:SPIcommunication}. It is therefore important that this link never will be a bottleneck for the system application. 
 
-The requirements of the minimum bit-rate depends on what data needs to be sent, and how often it needs to send it. Since the PID-controller is placed in the FPGA, the application only needs to update the current position once every 5 ms, which is the minimal delay that freeRTOS can put on a task. 
+The requirements of the minimum bit-rate depends on what data that needs to be send, and how often it needs to send it. Since the PID-controller is placed in the FPGA, the application only needs to update the current position once every 5 ms, which is the minimal delay that freeRTOS can put on a task. 
 
 The length of the messages sent is defined by the driver placed in the FPGA. As described in section \ref{sec:Implementation} all messages will have the length of 14 bits. Updating both pan and tilt requires two messages. Considering all other messages but the main pulling sequence as negligible results in a total bitrate of:
 
