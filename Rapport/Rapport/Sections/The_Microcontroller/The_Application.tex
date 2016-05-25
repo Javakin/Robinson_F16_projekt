@@ -1,8 +1,8 @@
 \subsection{The Application}
 \label{sec:TheApplication}
-Now when the interface for the application is set up, the only thing left is to program the actiual applocation , the 
+When the interface for the drivers is set up, the only thing left, is to implement the application. The first part in the application to implement is the app\_update\_current\_task. This tasks responsibility is to update the SSM holding the current position of both pan and tilt. This will be implemented by the use of one api call int the P\&T API.
 
-\subsubsection{The Kernel task}
+The next task to implement is the app\_lightshow\_task. This tasks responsibility is to feed positions to the P\&T driver, doing the light-show. This is implemented by sending a new target position to the driver once it has reached the previous target position. 
 
 
 \begin{figure}[h]
@@ -11,14 +11,13 @@ Now when the interface for the application is set up, the only thing left is to 
 	\caption{The kernel state machine}
 	\label{fig:KernelStateMachine}
 \end{figure}
-making the state mashine for the kernel-task
+
+
+The final task to implement is the app\_kernel\_task. This task has to handle the commands and parameter given by the user. 
 
 separating commands in groups depending on the number of parameters to use. 
 
 the list of commands that will be supported (se the list on google drive XXXX)
-
-\subsubsection{The light-show task}
-making the state machine for the light-show-task
 
 
 
