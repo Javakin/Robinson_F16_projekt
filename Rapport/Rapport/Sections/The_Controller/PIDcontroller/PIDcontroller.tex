@@ -1,6 +1,6 @@
 \newpage
 
-\section{Controller}
+\section{Control Theory}
 \subsection{Introduction}
 A controller is an essential part of most autonomous systems. This project is no exception - having control over where the pan and tilt system is pointing at is crucial to meeting the specified requirements.
 
@@ -39,7 +39,7 @@ If transformed to the s domain the equations looks like this:\\
 \label{Eq_2}
 \end{equation}
 
-\subsection{Proportional Controller}
+\subsubsection{Proportional Controller}
 
 The P controller is by far the most straightforward controller, being that it is simply adding a gain to the open-loop transfer function. A P controller is a desired controller, since it is very simple to implement and tune, though this project have to meet the stated requirements.\par
 
@@ -55,7 +55,7 @@ As seen in figure \ref{fig:PStep}, the step response of the closed-loop transfer
 \label{fig:PStep}
 \end{figure}
 
-\subsection{Proportional-Integral Controller}\label{PI_Controller}
+\subsubsection{Proportional-Integral Controller}
 
 The PI controller accumulates past error terms over time to eliminate steady-state errors in the system. This can cause an increase in overshoot called the integrator wind-up, and an increase in settling time. Though if a requirement is complying with a steady-state error of 0, then it is up to the designer to decide, if reaching steady-state is more vital to the system, than having more overshoot and a longer settling time.\par
 
@@ -71,7 +71,7 @@ The step response of the PI controller is seen on figure \ref{fig:PIStep}, the o
 \label{fig:PIStep}
 \end{figure}
 
-\subsection{Proportional-Derivative Controller}
+\subsubsection{Proportional-Derivative Controller}
 
 A PD controller is equivalent to the addition of a simple zero, which improves the transient response. From a different point of view, the PD controller may also be used to improve the settling time or stability, because it anticipates large errors and attempts corrective action before they occur. 
 
@@ -87,7 +87,7 @@ The step response on figure \ref{fig:PDStep} shows, that in fact this controller
 \label{fig:PDStep}
 \end{figure}
 
-\subsection{Proportional-Integral-Derivative Controller}
+\subsubsection{Proportional-Integral-Derivative Controller}
 
 The PID controller is the most complex controller which is going to be discussed. As noted earlier a PD controller was sufficient for generating the wanted response. So why discuss the PID? The reason is that real world systems might have limitations that the analysis have not taken into account yet. Reaching a steady-state error of 0 is actually a problem with a PD controller for this project, since the pan and tilt system does not function below a certain range of voltage, which means that an integral is needed.\par
 
@@ -117,14 +117,14 @@ The designs are: Overshoot $>$ 10\%, settling time < 0.05 seconds. }
 Once either a P, PI, PD or PID controller has been chosen for the project, the next step would be the estimation of k-constants for the respective controller. Finding these constants to meet one's requirements can be done in various ways. In this section the Manual tuning and Root Locus method will be discussed.
 
 
-\subsection{Manual tuning}
+\subsubsection{Manual tuning}
 
 This method requires the system to be online and running for tuning, though if a simulation of the system has been made this tuning method is still viable on the simulation - the catch is that a simulation’s artificiality cannot be denied, thus the actual online system proves more truthful.\par
 
 There is no right way to tune manually, since experience can lead to a quick tuning. A known procedure is, however, to first set one’s k\_i and k\_d to zero, and then increase the k\_p until the system starts to oscillate, k\_p should then be set to approximately half this value. The k\_i is now increased to correct for any offset within the desired time. Lastly, if needed, the k\_d is increased until the requirements are met.
 
 
-\subsection{Root Locus tuning method}
+\subsubsection{Root Locus tuning method}
 
 This method is a mathematical approach with the help of software like MatLab to find k\_p, k\_i and k\_p from the root locus. It is not required to have the online system up and running to use this method, which in many cases can prove useful (imagine a system where unpredicted behavior can have fatal consequences). Though a mathematical model of the system is needed.\par
 
@@ -144,7 +144,7 @@ Rewriting equation \ref{Eq_1} to look like equation \ref{Eq_2} makes it quite ea
 
 As seen in \ref{Eq_3} the K constants for the PID controller are K\_P = 5.8, K\_I = 200 and K\_D = 0.0396.
 
-\subsection{Controller constants for Pan and Tilt systems}
+\subsubsection{Controller constants for Pan and Tilt systems}
 
 Applying the root locus method to the transfer functions for the Pan and Tilt systems, PD and PID controller constants were derived for both of these. These constants can be found in figure \ref{fig:PIDControllerTable}.
 
