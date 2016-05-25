@@ -1,7 +1,7 @@
 \subsection{Deadlock Protection}
 \label{sec:DeadlockProtection}
 
-A deadlock has happed when two or more process wait for each other to release a resource, but since they all are waiting, no one will ever finish their task. The tasks and resources will therefore be unusable or deadlocked for the rest of the applications lifetime. 
+A deadlock has happened when two or more processes wait for each other to release a resource, but since they all are waiting, no one will ever finish their task. The tasks and resources will therefore be unusable or deadlocked for the rest of the applications lifetime. 
 
 
 \begin{enumerate}[noitemsep]
@@ -17,19 +17,6 @@ A deadlock has happed when two or more process wait for each other to release a 
 	
 \end{enumerate}
 
-All four conditions needs to hold true in order for a deadlock to occur. You can therefore provide a deadlock-free environment by avoiding one of these conditions\footnote{Operating system Concepts 9th edition, by Abraham Silbershatz, page 319}. 
+All four conditions need to hold true in order for a deadlock to occur. You can therefore provide a deadlock-free environment, by avoiding one of these conditions\footnote{Operating system Concepts 9th edition, by Abraham Silbershatz, page 319}. 
 
 To avoid deadlocks in the system, the circular wait condition is removed via semaphores. However since the system only have one semaphore circular wait will never be an option. 
-
-
-
-
-
-
-
-
-
-
-
-
-

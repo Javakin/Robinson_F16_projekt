@@ -1,10 +1,10 @@
 \subsection{Event Queues and Shared State Memory}
 \label{sec:EventQueuesandSharedStateMemory}
 
-When operating with tasks, it should come as no surprise that it will be implemented as a state machine. This structure will operate in one state until a specific condition is met, from here the tasks will operate en ways defined by the new state. For this application the tasks will mostly switch states as they receive the correct events. In short an event is a number that the programmer has assigned a specific meaning to. It is therefor impotent for the application to know if it is reading an envent ore not.  In other words, if the sending task uses the queue for both user data and events, it will be impossible for the reviver to know, if the number 214 is to be interpreted as the value, or the event e.g "UPDATE\_DISPLAY". 
+When operating with tasks, it should come as no surprise that it will be implemented as a state machine. This structure will operate in one state until a specific condition is met, from here the tasks will operate in ways defined by the new state. For this application the tasks will mostly switch states as they receive the correct events. In short an event is a number that the programmer has assigned a specific meaning to. It is therefore important for the application to know if it is reading an event or not. In other words, if the sending task uses the queue for both user data and events, it will be impossible for the receiver to know, if the number 214 is to be interpreted as the value, or the event e.g "UPDATE\_DISPLAY". 
 
-Suppose an event is an eight bit unsigned integer, and it is send to a task through a queue. It is impossible for the receiver task to know what data type it is, and who send it. It will therefore have to send extra information stating the data type in the shape of a header message. 
-An alternative would splitting up the communication in a event\_queue and a SSM buffer. Only events will go in the queue, and data will first be placed in the SSM and then an SSM\_READ event is send to the receiver task. Form here the receiver will read the data and set it to zero. This structure is shown in figure \ref{fig:TaskQueue}.
+Suppose an event is an eight bit unsigned integer, and it is sent to a task through a queue. It is impossible for the receiver task to know what data type it is, and who sent it. It will therefore have to send extra information stating the data type in the shape of a header message. 
+An alternative would be splitting up the communication in a event\_queue and a SSM buffer. Only events will go in the queue, and data will first be placed in the SSM and then an SSM\_READ event is send to the receiver task. Form here the receiver will read the data and set it to zero. This structure is shown in figure \ref{fig:TaskQueue}.
 
 % full dreasd task diagram
 \begin{figure}[h]
@@ -14,13 +14,5 @@ An alternative would splitting up the communication in a event\_queue and a SSM 
 	\label{fig:TaskQueue}
 \end{figure}
 
-It is possible to first send a header message telling what to do with the next message, however, this solution would not be particularly robust, since all it takes for the system to get lost is for one message to fail at either get send or received incorrectly. It will then go out of synchronization and header will be read as data and the other way around, and since this error only happens at rarely this error will be hard to debug. It is therefore preferred to keep the messages atomic, by using a queue and a SSM address. 
+It is possible to first send a header message telling what to do with the next message, however, this solution would not be particularly robust, since all it takes for the system to get lost is for one message to fail at either get sent or received incorrectly. It will then go out of synchronization and header will be read as data and the other way around, and since this error only happens at rarely this error will be hard to debug. It is therefore preferred to keep the messages atomic, by using a queue and a SSM address. 
  
-
-
-
-
-
-
-
-
