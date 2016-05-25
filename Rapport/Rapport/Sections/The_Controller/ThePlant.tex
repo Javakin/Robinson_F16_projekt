@@ -7,7 +7,7 @@ The purpose of these tests are to analyse and generate a blackbox model for the 
 
 The motor was set up with a switch connected to a power supply set at the desired voltage to test. This would create a physical step response from the motor when the switch was toggled. The two encoders output on the EMG30 are open collectors, so the outputs were connected to pull-up resistance to produce a desired signal. The pull-up resistors for these tests were picked to be around 300 ohm.
 
-An oscilloscope was set to measure the two encoders outputs on its each own individual channel. The sampling starts on an edge trigger with a sampling rate of 2 mHz and stops the sampling after 0.5 seconds.
+An oscilloscope was set to measure the two encoder outputs on their own individual channels. The sampling starts on an edge trigger with a sampling rate of 2 MHz and stops the sampling after 0.5 seconds.
 These 2 set of samples would together be the data defining an step response.
 
 Following step responses were sampled(Figure \ref{fig:stepresponses1to12V}), and the information extracted (Figure \ref{fig:StepResponseData}) from the data was calculated in matlab. 
@@ -30,7 +30,7 @@ Following step responses were sampled(Figure \ref{fig:stepresponses1to12V}), and
 As noted, the step responses of the motor appear to be of a first-order linear-time-invariant (LTI) system. This means the system can be estimated as:
 
 \begin{equation}
-DCgain\frac{1}{\tau+1}
+DCgain\frac{1}{\tau s+1}
 \end{equation}
 
 The DC gain is the steady state value divided by the steady state (constant) value of the input step.
@@ -59,7 +59,7 @@ The time constant tau is the time when the step response reaches $1-1/e\approx63
 \label{fig:TimeConstantLinearityAnalysis}
 \end{figure}
 
-This behavior can be explained by variations in the actual experiments, since the encoders are not uniformly placed in the motor. The start position of the encoders can then have some impact regarding the experimental results. Other than that, it would be expected to see some differences from the lower voltages compared to the higher, since the DC gain of the system indicated some nonlinearity. The time constant, Tau, is then estimated to be the mean value from 1 to 12 volts $\approx 0.009 seconds$.
+This behavior can be explained by variations in the actual experiments, since the encoders are not uniformly placed in the motor. The start position of the encoders can have some impact regarding the experimental results. Other than that, it would be expected to see some differences from the lower voltages compared to the higher, since the DC gain of the system indicated some nonlinearity. The time constant, Tau, is then estimated to be the mean value from 1 to 12 volts, $\tau\approx0.009 seconds$.
 
 The transfer function for the DC motor is therefore now defined as follows:
 
@@ -80,7 +80,7 @@ As seen on Figure \ref{fig:FirstOrderApproximation} the first-order approximatio
 Having modelled our DC-motor as a first order LTI system, it is relevant to discuss the reliability and accuracy of this model. In reality, the transfer function for the motor includes both an external, mechanical part and an internal, electrical part (the armature).\footnote{Model and transfer function from Control Systems: Twelfth Edition p. 72}
 
 \begin{equation}
-\frac{\theta(s)}{V_f (s)}=G(s)=\frac{K_m / (bR_f}{s(\tau_f s+1)(\tau_L s+1)}
+\frac{\theta(s)}{V_f (s)}=G(s)=\frac{K_m / (bR_f)}{s(\tau_f s+1)(\tau_L s+1)}
 \end{equation}
 
 This model is actually a second order system. However the time constant $\tau_f$, denoting the response time of the internal electronics of the motor, is usually negligible compared to the mechanical dynamics of the motor\footnote{Modern Control Systems: Twelfth Edition p72}. This makes sense both intuitively and mathematically, as the relatively faster armature with an associated pole further away from origin will have less of an impact on the overall system response, and can thus be omitted for the sake of simplicity. Typical values for these time constants show this aswell.
@@ -89,12 +89,12 @@ The first and second order transfer functions generated using these time constan
 
 Field time constant: $\tau_f = 1ms$ 
 
-Rotor time constant: $\tau = 100ms$ \footnote{Modern Control Systems: Twelfth edition p77.} 
+Rotor time constant\footnote{Modern Control Systems: Twelfth edition p77.}: $\tau = 100ms$ 
 
 \begin{figure}[h!]
 \centering
 \includegraphics[scale=0.6]{Billeder/1st2ndorderstep.png}
-\caption{Comparing 1st and 2nd order transfer function step responses.}
+\caption{Comparing 1st and 2nd order transfer function step responses. x-axis: sec, y-axis: normalized DC gain}
 \label{fig:1st2ndorderstep}
 \end{figure}
 
@@ -117,7 +117,7 @@ Position:
 G(s)=\frac{105}{0.009s^2+s} \frac{[tachs/sec]}{[V]}
 \end{equation}
 
-The behaviour of these transfer functions given a step input can be seen in figure \ref{fig:SpeedPosSim12V}. This behavior looks very promising. The speed transfer function step response shows an acceleration, until the speed reaches the $DC Gain * 12V$. The position transfer function also behaves as respected, as the area below the speed transfer function. 
+The behavior of these transfer functions given a step input can be seen in figure \ref{fig:SpeedPosSim12V}. This behavior looks very promising. The speed transfer function step response shows an acceleration, until the speed reaches the $DC Gain * 12V$. The position transfer function also behaves as expected, as the area below the speed transfer function. 
 
 \begin{figure}[h!]
 \centering
@@ -127,13 +127,13 @@ The behaviour of these transfer functions given a step input can be seen in figu
 \end{figure}
 
 \subsection{P\&T System Modelling}
-Having modelled the DC motor, it is now time to move on to the modelling of the entire plant. The same methods will be used, except now we are testing and considering the Pan \& Tilt loads and their influence on the system.
+Having modelled the DC motor, it is now time to move on to the modelling of the entire plant. The same methods will be used, except now we are testing and considering the P\&T loads and their influence on the system.
 
 \subsubsection{Inertia in the P\&T system}
-Because of inertia present in the pan and tilt system parts, it can be expected that the constants of the individual motors will look different than those describing the motor without load. Also, because transfer function of the DC motor without load is approximated to be linear, we assume the same from the specific transfer functions of the P\&T motors.
+Because of inertia present in the P\&T system parts, it can be expected that the constants of the individual motors will look different than those describing the motor without load. Also, because transfer function of the DC motor without load is approximated to be linear, we assume the same from the specific transfer functions of the P\&T motors.
 
 \subsubsection{Tests of the P\&T motors}
-Step response tests were applied to the motors on the actual Pan and Tilt system. Because of restrictions on the pan part of the system, voltages tested ranged from 3V to 8V. The data has been analysed to find values of constants related to the method of approximating a plant of a DC motor.
+Step response tests were applied to the motors on the actual P\&T system. Because of restrictions on the pan part of the system, voltages tested ranged from 3V to 8V. The data has been analysed to find values of constants related to the method of approximating a plant of a DC motor (Figure \ref{fig:PanTiltStepDataTable}).
 
 \begin{figure}[h!]
 \centering
@@ -144,9 +144,7 @@ Step response tests were applied to the motors on the actual Pan and Tilt system
 
 As seen below in figure \ref{fig:PTStepResponseGraph}, the step response spikes at first. It is assumed this spike occurs primarily because of the following:
 
-\begin{itemize}
-\item In the gear network connecting the actual motor and the pan or tilt part, there are small gaps between individual teeth. The motor is then switched on and while the collective gap closes, the motor runs as if it had no inertia.When the gap is closed the motor is slowed drastically because of the inertia of the pan or tilt part. 
-\end{itemize}
+In the gear network connecting the actual motor and the pan or tilt part, there are small gaps between individual teeth. The motor is then switched on and while the collective gap closes, the motor runs as if it had no inertia.When the gap is closed the motor is slowed drastically because of the inertia of the pan or tilt part. 
 
 The two things together create the spike we see on figure \ref{fig:PTStepResponseGraph} below. Because we assume linearity of the actual systems, we disregard the spike and look at the graphs after the spike has ended to find Tau.
 
