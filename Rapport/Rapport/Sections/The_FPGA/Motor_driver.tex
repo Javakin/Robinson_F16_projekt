@@ -14,7 +14,15 @@ This section will describe the theories used for the implementation.
 
 The \textbf{PWM} signal is created based on a looping counter and a threshold. Imagine a counter resetting whenever it reaches a certain value, creating a loop. If the value is set to the period of the wanted \textbf{PWM} signal and the \textbf{PWM} signal output is dependent on the counter value relative to a threshold, then you will be able create a looping output that is dependant on the threshold. Figure \# PWM implementaion principle \# show an illustration of the behavior of \textbf{PWM} signal based on the looping counter and threshold.
 
-NOGET MED H BRO
+\subsubsection{H-bridge}
+An H-bridge is a collection of 4 transistors, designed to control a DC motor. In figure \ref{fig:H-bridge} the concept is illustrated. When the red switches are on, the motor runs in one direction and vica versa for the blue switches. There are two H-bridges in the system, one for the pan motor and one for the tilt motor. For further information about H-bridges, consult the \# DATASHEET H-BRO \# in the notes.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.5]{Billeder/H-bridge.png}
+\caption{ An example of a H-bridge }
+\label{fig:H-bridge}
+\end{figure}
 
 \subsection{Implementation}
 
@@ -42,40 +50,3 @@ The tests show a deviation from the desired duty cycle of a small percentage. Ho
 \subsection{Conclusion}
 
 The motor driver has been sufficiently explained and tested, and has become a solid module to create a PWM signal for the P \& T system. The PWM calculation can be optimized very slightly by improving the conversion from duty cycle to PWM, and optimizing the counter, as to never lose any clock cycles.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
