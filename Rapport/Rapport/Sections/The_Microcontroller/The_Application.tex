@@ -1,6 +1,6 @@
 \subsection{The Application}
 \label{sec:TheApplication}
-When the interface for the drivers is set up, the only thing left is to implement the application. The first part in the application to implement is the app\_update\_current\_task. This tasks responsibility is to update the SSM holding the current position of both pan and tilt. This will be implemented by the use of one api call int the P\&T API.
+When the interface for the drivers is set up, the only thing left is to implement the application. The first part in the application to implement is the app\_update\_current\_task. The responsibility of this task is to update the SSM holding the current position of both pan and tilt. This will be implemented by the use of one api call int the P\&T API.
 
 The next task to implement is the app\_lightshow\_task. This tasks responsibility is to feed positions to the P\&T driver, doing the light-show. This is implemented by sending a new target position to the driver once it has reached the previous target position. 
 

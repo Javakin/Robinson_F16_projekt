@@ -1,11 +1,11 @@
 \section{The Microcontroller}
 \label{sec:TheMicrocontroller}
 
- Given the design requirements in section \ref{sec:RequirementsSpecification}, and the block diagram in section \ref{sec:TheSystem}. These include all the functionality that is to be placed in the microcontroller. From here the next stage is to define the content of these blocks, and how they interact with each other. 
+ Given the design requirements in section \ref{sec:RequirementsSpecification}, and the block diagram in section \ref{sec:TheSystem}, all the functionality that is to be placed in the microcontroller is defined. From here the next stage is to define the content of these blocks and how they interact with each other. 
  
  The microcontroller is to establish an application programmer interface (API) to the P\&T driver placed in the FPGA. The microcontroller will also run the application that uses this interface in order to help the user achieve his/her goal, which is to control the spotlight.
  
- The program will be written in the C language, and it will be documented using task diagrams and state machines. 
+ The program will be written in the C language and it will be documented using task diagrams and state machines. 
 
 
 % program structure
@@ -24,17 +24,17 @@
 \input{sections/The_Microcontroller/The_Application}
 
 % summery 
-\subsection{Application conclusion}
+\subsection{Application Conclusion}
 
-The functionality described in this report represents the fully dressed system containing all the features that would be needed while working with a real spotlight. However, do to time constraints, some of the secondary requirements was cut from the final product.
+The functionality described in this report represents the fully-dressed system containing all the features that would be needed while working with a real spotlight. However, due to time constraints, some of the secondary requirements were cut from the final product.
 
 \textbf{The joystick:} Being able to control the spotlight via a PS2 controller is a secondary requirement. A working driver was made but the corresponding API was not. This meant that the feature was not implemented. This is not a problem, as it is possible to control the system via the UART connection to the PC.
 
 
-\textbf{Position vs given coordinates:} The input from the P\&T system is tachs(falling and rising edges from the Hall effect sensors). This correspond to an orientation on a sphere. As the target for the spotlight is a flat surface, some conversions is needed in order to translate the desired position on the scene to an amount of tachs. The translation takes place in P\&T API, and must handle conversion in both directions.
+\textbf{Position vs given coordinates:} The input from the P\&T system is tachs(falling and rising edges from the Hall effect sensors). This corresponds to an orientation on a sphere. Since the target for the spotlight is a flat surface, some conversions are needed in order to translate the desired position on the scene to an amount of tachs. The translation takes place in P\&T API, and must handle conversion in both directions.
  
  
-\textbf{Following a walking person:} The kernel is build with the option to change the speed, based on user input, but the only way to change this dynamically and fast enough will be through the analog input of the joystick. But since the joystick never got implemented, tracking a person would not be an option.
+\textbf{Following a walking person:} The kernel is built with the option to change the speed, based on user input, but the only way to change this dynamically and fast enough will be through the analog input of the joystick. But since the joystick was never implemented, tracking a person was not an option.
  
 
 

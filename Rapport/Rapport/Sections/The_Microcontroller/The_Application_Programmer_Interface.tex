@@ -1,8 +1,8 @@
-\subsection{The Application Programmer Interface}
+\subsection{The Application Programming Interface}
 \label{sec:TheApplicationProgrammerInterface}
 
 When handling a piece of hardware like the P\&T system or the UART0 unit, it is favorable to make reusable drivers, but if the unit is to interact with the application following specific protocols, you quickly lose the reusability. 
-Instead you may be writing a seperate module called an Application Programmer Interface (API), containing all the features necessary, for the application to handle the driver easily and correct.
+Instead you may be writing a seperate module called an Application Programming Interface (API), containing all the features necessary, for the application to handle the driver easily and correct.
 
-An example of this can be found in the P\&T API. This module basically handles the format of the messages sent to the spi\_tx\_queue and received by the spi\_master\_task. Here the message must have "n" address bits and "m" message bits, but say that we one day were to change this message format to something different, then it would only effect the P\&T API module, while leaving the rest of the application as is. Using API's will therefore make the application more agile. 
+An example of this can be found in the P\&T API. This module handles the format of the messages sent to the spi\_tx\_queue and received by the spi\_master\_task. Here the message must have "n" address bits and "m" message bits, but say that we one day were to change this message format to something different, then it would only effect the P\&T API module, while leaving the rest of the application as is. Using API's will therefore make the application more agile. 
 

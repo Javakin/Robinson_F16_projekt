@@ -1,11 +1,11 @@
 \subsection{Program Structure}
 \label{sec:ProgramStructure}
 
-Now when the operating system is defined, the next stage will be to define the actual application that needs to be implemented. Given the block diagram of figure \ref{fig:TheSystemBlockDiagram}, the blocks that make up the system are already defined.
+After the definition of the operating system, the next stage was to define the actual application that needs to be implemented. Given the block diagram of figure \ref{fig:TheSystemBlockDiagram}, the blocks that make up the system were already defined.
 
 \subsubsection{Defining tasks}
 \label{sec:DefiningTasks}
-First step is to identify the tasks that make up the system. A good rule of thumb is to make a driver task for every piece of hardware that the system is to interact with. This idea is based on the Parallel criteria, which implies that things can be separated into different tasks if the functionality runs independently and simultaneously, which indeed will be the case for a hardware driver.
+First step is to identify the tasks that make up the system. A good rule of thumb is to make a driver task for every piece of hardware that the system is to interact with. This idea is based on the Parallel criteria, which implies that things can be separated into different tasks if the functionality run independently and simultaneously, which indeed will be the case for a hardware driver.
 However the UART0 driver that supports connection between the PC and micro controller, can send and receive data independently. Therefore this task is split up in to two tasks. A receive task, and a transmit task.
 Doing so also have the advantage of reusability, for other applications requiring the same hardware. 
 
@@ -34,15 +34,15 @@ Application tasks:
 \subsubsection{Connecting the tasks}
 Now the tasks are to be linked together. This will happen in a structure so that every task that requires input from other tasks has one and only one queue to pull from. This is decried since the OS can pause the task while waiting for one queue. The UART tasks and the joystick tasks will both send commands to kernel via the application queue, and a shared state memory. The same goes for the connection between the kernel task and the light-show task. 
 
-Each queue needs to be semaphore protected in order to prevent a race condition when reading an writing to the queue, but since freeRTOS handles who gets to use the queues, it must be safe to amuse that such conditions is taken care of in the OS. 
+Each queue needs to be semaphore protected in order to prevent a race condition when reading an writing to the queue, but since freeRTOS handles who gets to use the queues, it must be safe to assume that such conditions is taken care of in the OS. 
 
-The shared state memory (SSM), needs semaphore protection as well. Since the number of memory locations is relatively small (less then 64), combined with the fact that the critical section only consists of one read ore write. the entire SSM will be handled by the same semaphore for simplicity. 
+The shared state memory (SSM), needs semaphore protection as well. Since the number of memory locations is relatively small (less then 64), combined with the fact that the critical section only consists of one read or write. the entire SSM will be handled by the same semaphore for simplicity. 
 
-The tow application tasks app\_update\_current\_task and app\_kernel\_task will both be accessing the spi\_tx\_queue, but this will only be a problem if they wish to send multiple messages in context, which is not the case for this application. The same goes for the application\_queue. Here the send messages and events content will be independent form each other.  
+The tow application tasks app\_update\_current\_task and app\_kernel\_task will both be accessing the spi\_tx\_queue, but this will only be a problem if they wish to send multiple messages in context, which is not the case for this application. The same goes for the application\_queue. Here the send messages and events content will be independent from each other.  
 
-Applying all these thoughts will result in the final application task diagram as shown in figure \ref{fig:applicaiton_task_diagram}. Now when the task diagram has been made, it is time to considerer possible structural weakness such as deadlocks and handling og queues. 
+Applying all these thoughts will result in the final application task diagram as shown in figure \ref{fig:applicaiton_task_diagram}. Now when the task diagram has been made, it is time to consider possible structural weaknesses such as deadlocks and handling of queues. 
 
-% full dreasd task diagram
+% full dreas task diagram
 \begin{figure}
 	\centering
 	\includegraphics[scale= 0.4, angle = 90] {Billeder/microcontroller-Task-Diagram}

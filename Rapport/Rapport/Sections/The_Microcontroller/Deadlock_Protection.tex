@@ -6,17 +6,17 @@ A deadlock has happened when two or more processes wait for each other to releas
 
 \begin{enumerate}[noitemsep]
 	
-	\item \textbf{Mutual exclusion}: is the concept of making sure that two or more concurrent processes are not in their critical section at the same time. 
+	\item \textbf{Mutual Exclusion}: is the concept of making sure that two or more concurrent processes are not in their critical section at the same time. 
 	
-	\item \textbf{Hold and wait}: is when a process holds on to a resources and wait for the rest of the resources it needs.
+	\item \textbf{Hold and Wait}: is when a process holds on to a resources and waits for the rest of the resources it needs.
 	
-	\item \textbf{no preemption}: means that only the process that holds the resource can release it. If preemption is allowed, the program is able to take resources from a process and allocate it to another process if needed.
+	\item \textbf{No Preemption}: means that only the process that holds the resource can release it. If preemption is allowed, the program is able to take resources from a process and allocate it to another process if needed.
 	
-	\item \textbf{Circular wait}: is when one process is waiting for at resource that another process have, and the new process is waiting for a resource held by the first one. As long at this makes up a closed chain of waiting processes there is a circular wait.
+	\item \textbf{Circular Wait}: is when one process is waiting for at resource that another process has, and the new process is waiting for a resource held by the first one. As long at this makes up a closed chain of waiting processes, there is a circular wait.
 
 	
 \end{enumerate}
 
 All four conditions need to hold true in order for a deadlock to occur. You can therefore provide a deadlock-free environment, by avoiding one of these conditions\footnote{Operating system Concepts 9th edition, by Abraham Silbershatz, page 319}. 
 
-To avoid deadlocks in the system, the circular wait condition is removed via semaphores. However since the system only have one semaphore circular wait will never be an option. 
+To avoid deadlocks in the system, the circular wait condition is removed via semaphores. However since the system only has one semaphore, circular wait will never be an option. 

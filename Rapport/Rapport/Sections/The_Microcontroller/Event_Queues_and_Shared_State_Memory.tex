@@ -14,5 +14,5 @@ An alternative would be splitting up the communication in a event\_queue and a S
 	\label{fig:TaskQueue}
 \end{figure}
 
-It is possible to first send a header message telling what to do with the next message, however, this solution would not be particularly robust, since all it takes for the system to get lost is for one message to fail at either get sent or received incorrectly. It will then go out of synchronization and header will be read as data and the other way around, and since this error only happens at rarely this error will be hard to debug. It is therefore preferred to keep the messages atomic, by using a queue and a SSM address. 
+It is possible to first send a header message telling what to do with the next message, however, this solution would not be particularly robust, since all it takes for the system to get lost is for one message to fail at either getting sent or received. It will then go out of synchronization and the header will be read as data and the other way around, and since this error only happens rarely, this error will be hard to debug. It is therefore preferred to keep the messages atomic, by using a queue and a SSM address. 
  
