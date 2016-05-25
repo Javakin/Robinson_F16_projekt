@@ -26,27 +26,17 @@
 % summery 
 \subsection{Application conclusion}
 
-The functionality of the system was meant as a fully dressed system containing all the features that would be needed while working with a real spotlight. However some of the secondary requirements were cut from the final project.
+The functionality described in this report represents the fully dressed system containing all the features that would be needed while working with a real spotlight. However, do to time constraints, some of the secondary requirements was cut from the final product.
 
-\textbf{SKRIV GRUND SO DET IKKE LYDER SOM EN UNDSKYLDNING}
-
-\textbf{The joystick:} Being able to control the spotlight via a PS2 controller is a secondary requirement. A working driver was made but the corresponding API was not. This meant that this feature was not implemented. This is not a problem as it is possible to control the system via the a PC though the UART.
+\textbf{The joystick:} Being able to control the spotlight via a PS2 controller is a secondary requirement. A working driver was made but the corresponding API was not. This meant that the feature was not implemented. This is not a problem, as it is possible to control the system via the UART connection to the PC.
 
 
-\textbf{Position vs given coordinates:} The input from the P\&T system is tachs(falling and rising edges from the Hall effect sensors). This correspond to an orientation on a sphere. As the target for the spotlight is a flat surface, some conversions is needed in order to translate the desired position on the scene to an amount of tachs. The conversion takes place in \textbf{HVOR SKER DET?}.
+\textbf{Position vs given coordinates:} The input from the P\&T system is tachs(falling and rising edges from the Hall effect sensors). This correspond to an orientation on a sphere. As the target for the spotlight is a flat surface, some conversions is needed in order to translate the desired position on the scene to an amount of tachs. The translation takes place in P\&T API, and must handle conversion in both directions.
+ 
+ 
+\textbf{Following a walking person:} The kernel is build with the option to change the speed, based on user input, but the only way to change this dynamically and fast enough will be through the analog input of the joystick. But since the joystick never got implemented, tracking a person would not be an option.
+ 
 
 
-\textbf{Following a walking person:} The system is not built with the option to change the speed, based on user input, between points. This means that rather than following a walking person, the system points at different points of the stage.
 
 
-These are the functions that did not make it to the implementation
-
-\begin{enumerate}[noitemsep]
-	
-	\item PS2 controller and its corresponding api
-	
-	\item Calculating the tach-position from the relative coordinates given by the application  
-	
-	
-
-\end{enumerate}
