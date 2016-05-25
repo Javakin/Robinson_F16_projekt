@@ -12,10 +12,17 @@ This section will describe the theories used for the implementation.
 
 \subsubsection{PWM generation}
 
-The \textbf{PWM} signal is created based on a looping counter and a threshold. Imagine a counter resetting whenever it reaches a certain value, creating a loop. If the value is set to the period of the wanted \textbf{PWM} signal and the \textbf{PWM} signal output is dependent on the counter value relative to a threshold, then you will be able create a looping output that is dependant on the threshold. Figure \# PWM implementaion principle \# show an illustration of the behavior of \textbf{PWM} signal based on the looping counter and threshold.
+The \textbf{PWM} signal is created based on a looping counter and a threshold. Imagine a counter resetting whenever it reaches a certain value, creating a loop. If the value is set to the period of the wanted \textbf{PWM} signal and the \textbf{PWM} signal output is dependent on the counter value relative to a threshold, then you will be able create a looping output that is dependant on the threshold. Figure \ref{fig:PWMimplementationprinciple} shows an illustration of the behavior of \textbf{PWM} signal based on the looping counter and threshold.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.5]{Billeder/PWMimplementationprinciple.png}
+	\caption{ An example of a H-bridge }
+	\label{fig:PWMimplementationprinciple}
+\end{figure}
 
 \subsubsection{H-bridge}
-An H-bridge is a collection of 4 transistors, designed to control a DC motor. In figure \ref{fig:H-bridge} the concept is illustrated. When the red switches are on, the motor runs in one direction and vica versa for the blue switches. There are two H-bridges in the system, one for the pan motor and one for the tilt motor. For further information about H-bridges, consult the \# DATASHEET H-BRO \# in the appendix.
+An H-bridge is a collection of 4 transistors, designed to control a DC motor. In figure \ref{fig:H-bridge} the concept is illustrated. When the red switches are on, the motor runs in one direction and vica versa for the blue switches. There are two H-bridges in the system, one for the pan motor and one for the tilt motor. For further information about H-bridges, consult the datasheet of the H-bridge in appendix \ref{sec:ContentonCD}.
 
 \begin{figure}[h!]
 \centering
@@ -40,11 +47,18 @@ This block is simply implemented as a switch that toggles on the wanted directio
 \subsection{Tests}
 
 To verify that this motor controller is working as intended, a test bench was created and various inputs was tested. The enable was set and a duty cycle of 8 bits was input, which corresponds to a certain duty cycle. A clear spike in PWM output could be seen, of the same length every time PWM is outputting.
-To further verify the test, the edges of the PWM signal was measured and used to find the exact duty cycle. Table \# Table from other motor driver \# showcases the tests of PWM.
+To further verify the test, the edges of the PWM signal was measured and used to find the exact duty cycle. Figure \ref{fig:MotorDriverTable} showcases the tests of PWM.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.8]{Billeder/MotorDriverTabe.png}
+	\caption{ PWM Tests }
+	\label{fig:MotorDriverTable}
+\end{figure}
 
 \subsection{Discussion}
 
-The tests show a deviation from the desired duty cycle of a small percentage. However these deviations have been deemed insignificant. The errors are created by the method that is used to calculate the PWM from the duty cycle. When converting the bit string, it is multiplied by the PWM period and divided by 256. This yields an integer, that when combined with the counter, yields a PWM very close to the desired duty cycle. Beyond that margin of error, a single clock cycle is lost due to resetting the counter, which corresponds to 1 ns.
+The tests show a deviation from the desired duty cycle of a small percentage. However these deviations have been deemed insignificant. The errors are created by the method that is used to calculate the PWM from the duty cycle. When converting the bit string, it is multiplied by the PWM period and divided by 256. This yields an integer, that when combined with the counter, yields a PWM very close to the desired duty cycle. Beyond that margin of error, a single clock cycle is lost due to resetting the counter, which corresponds to 1ns.
 
 
 \subsection{Conclusion}

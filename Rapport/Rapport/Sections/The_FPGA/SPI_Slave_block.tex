@@ -1,12 +1,12 @@
 \section{SPI slave block}
 \label{sec:SPIslaveblock}
-This section will describe in detail how the SPI slave in the FPGA receives and transmits data according to the description of the SPI communication protocol mentioned before.
+This section will describe in detail how the SPI slave in the FPGA receives and transmits data, according to the description of the SPI communication protocol mentioned before.
 
 \subsection{Description}
 
 The SPI slave has two different tasks. The first task is to exchange data with the SPI master in the microcontroller. The second task is to store the information that is received and present it to the components that need the data. The SPI slave could be called also some sort of information bank for the driver.\\
 The data exchange part follow the SPI communication protocol mentioned in section \ref{sec:SPIcommunication}.
-The information bank part is made by having the block hold the information in the actual output of the block. This is done so that the data is constantly supplied to the block in need of the data. However this requires a lot of data paths, but this is not much of a problem since this is going on internally in the FPGA. The reason the data is stored in the SPI slave component was also to make it more manageable since all of the data is stored at the same place.
+The information bank part is made by having the block hold the information in the actual output of the block. This is done so that the data is constantly supplied to the block in need of the data. However this requires a lot of data paths, but this is not much of a problem since this is going on internally in the FPGA. The reason the data is stored in the SPI slave component was also to make it more manageable, since all of the data is stored at the same place.
 
 \subsection{Implementation}
 \label{sec:Implementation}
@@ -30,7 +30,7 @@ The second event is when the SS pin has a rising edge. This signifies that the t
 \label{fig:SS_code_example}
 \end{figure}
 
-Under the data transaction two temporary registers are used, one for the input and one for the output. This is done to stabilize the data send so that it does not change mid transmission which would cause the data to become corrupt.
+During the data transaction, two temporary registers are used, one for the input and one for the output. This is done to stabilize the data send so that it does not change mid transmission which would cause the data to become corrupt.
 There are 4 different kinds of settings that can be controlled via the SPI slave. The first setting is the target position used in the controller block, the second setting is the maximum speed for the motor, the third setting is the minimum speed of the motor and the last setting is the enabling of the motor. All of these 4  settings can be set for the pan and tilt part separately. This results in 8 different values needing an address resulting in an address length of 3 bits.
 Since the data length has to be constant, the data length was chosen according to the largest value needed to be sent. This was the target position, needing 11 data bits hence the data length was chosen to be 11 bits. 
 
@@ -39,8 +39,6 @@ The output from the SPI slave to the SPI master was chosen to mimic the address 
 \subsection{Tests}
 
 The SPI slave component has been tested in a Xillinx ISE testbench. This was done by simulating a transaction to the SPI slave. In figure \ref{fig:Pos_change_testbench} the test bench can be seen. SS can be seen going low signifying the start of the data transfer.
-
-\newpage
 
 The S\_CLK then starts to toggle and the data is shifted into the input register and as SS goes high the data from the input register is set to the placement the address is pointing to. In this case, a value to the target of the pan is being send. This has the address of 001 which can also be seen on the three first bits in the input register.
 
