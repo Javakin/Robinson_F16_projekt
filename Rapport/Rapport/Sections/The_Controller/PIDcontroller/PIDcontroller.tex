@@ -4,21 +4,25 @@
 \subsection{Introduction}
 A controller is an essential part of most autonomous systems. This project is no exception - having control over where the pan and tilt system is pointing at is crucial to meeting the specified requirements.
 
-When discussing what controller to use, figure \ref{fig:Standartsystem} is the point of reference, where the plant is the previously estimated transfer function, \textbf{SKRIV FORMLEN} EQUATION REF, of the motor of the system.
+When discussing what controller to use, figure \ref{fig:Standartsystem} is the point of reference, where the plant is the previously estimated transfer function, of the DC motor used in the system:
+
+\begin{equation}
+G(s)=\frac{105}{0.009s^2+s} \frac{[tachs/sec]}{[V]}
+\end{equation}
 
 \begin{figure}[h!]
 \centering
 \includegraphics[scale=0.5]{Billeder/Standartsystem.png}
-\caption{ A generic way of representing a close-looped control system }
+\caption{ A generic way of representing a closed-loop control system }
 \label{fig:Standartsystem}
 \end{figure}
 
 \newpage
 
 \subsection{The Controller}
-For simplicity’s sake Proportional (P), Proportional-Integral (PI), Proportional-Derivative (PD) and Proportional-Integral-Derivative (PID) be the only controllers taken into considerations for this project. Though Lead-Lag compensators could be considered as well, since in essence they can do the same as before mentioned controllers.\par
+For simplicitys sake Proportional (P), Proportional-Integral (PI), Proportional-Derivative (PD) and Proportional-Integral-Derivative (PID) was the only controllers taken into considerations for this project. Though Lead-Lag compensators could be considered as well, since in essence they can have similar functionality\par
 
-A PID controller is made up by three parts: the proportional gain looks at the current error, the integral looks at the past errors and the derivative looks at current rate of change. Each term has a tuneable gain called the k constants. In general these constants are what defines a PID controller’s behavior. See figure \ref{fig:PID controller} for illustration. 
+A PID controller is made up by three parts: the proportional gain looks at the current error, the integral looks at the past errors and the derivative looks at current rate of change. Each term has a tuneable gain called the k constants. In general, these constants are what defines a PID controller’s behavior. See figure \ref{fig:PID controller} for illustration. 
 
 \begin{figure}[h!]
 \centering
@@ -41,7 +45,7 @@ The P controller is by far the most straightforward controller, being that it is
 
 To help analyse and give some intuition about how the motor’s transfer function behaves, a root locus of the open-loop transfer function is plotted see figure \ref{fig:RlocusControllers}. As one would expect it seems like this kind of controller will not suffice for the project.\par
 
-As seen in figure \ref{fig:PStep}, the step response of the closed-loop transfer function, has an overshot of 14.1 percent, and a settling time of 0.055 seconds. Meeting the specified requirements  for the project with this controller is not going to happen. The overshot can be decreased by reducing the gain below 1, but this induces a longer settling time and vice versa. 
+As seen in figure \ref{fig:PStep}, the step response of the closed-loop transfer function, has an overshot of 14.1 percent, and a settling time of 0.055 seconds. Meeting the specified requirements  for the project with this controller is not going to happen. The overshot can be decreased by reducing the gain below 1, but this induces a longer settling time and vice-versa. 
 
 \begin{figure}[h!]
 \centering
@@ -53,7 +57,7 @@ As seen in figure \ref{fig:PStep}, the step response of the closed-loop transfer
 
 \subsection{Proportional-Integral Controller}
 
-The PI controller accumulates past error terms over time to eliminate steady-state errors in the system. This can cause an increase in overshoot called the integrator wind up, and an increase in settling time. Tough if a requirement is complying a steady-state error of 0, then it is up to the designer to decide, if reaching state-state is more vital to the system, than having more overshot and a longer settling time.\par
+The PI controller accumulates past error terms over time to eliminate steady-state errors in the system. This can cause an increase in overshoot called the integrator wind-up, and an increase in settling time. Though if a requirement is complying with a steady-state error of 0, then it is up to the designer to decide, if reaching steady-state is more vital to the system, than having more overshoot and a longer settling time.\par
 
 Using a PI controller is the same as adding a pole and a zero to the open-loop transfer function. As seen in figure \ref{fig:RlocusControllers}, this controller does not seem to live up to the requirements either. Placing the zero and pole differently could make a better controller, but it would never be able to adjust to both design criterias.\par
 
@@ -69,23 +73,23 @@ The step response of the PI controller is seen on figure \ref{fig:PIStep}, the o
 
 \subsection{Proportional-Derivative Controller}
 
-A PD controller is equivalent to the addition of a simple zero, \textbf{INSERT EQUATION HERE}, which improves the transient response. From a different point of view, the PD controller may also be used to improve the settling time or stability, because it anticipates large errors and attempts corrective action before they occur. 
+A PD controller is equivalent to the addition of a simple zero, which improves the transient response. From a different point of view, the PD controller may also be used to improve the settling time or stability, because it anticipates large errors and attempts corrective action before they occur. 
 
-FIGURE5 shows a promising root locus of the PD controller, it seems like that with the right amount of gain the system would fulfill the requirements.
+Figure \ref{fig:RlocusControllers} shows a promising root locus of the PD controller, it seems like that with the right amount of gain the system would fulfill the requirements.
 
-The step response on figure \ref{fig:PDStep} shows, that in fact this controller would be ideal for this project. There is no overshot, and the settling time is well below 0.05 seconds.
+The step response on figure \ref{fig:PDStep} shows, that in fact this controller would be ideal for this project. There is no overshoot, and the settling time is well below 0.05 seconds.
 
 \begin{figure}[h!]
 \centering
 \includegraphics[scale=0.7]{Billeder/PDStep.jpg}
-\caption{ Peak amplitude: $>$= 0.998 - Overshot(\%): 0 - At time(seconds): $>$ 0.07
+\caption{ Peak amplitude: $>$= 0.998 - Overshoot(\%): 0 - At time(seconds): $>$ 0.07
 		 Settling time (seconds): 0.0411 }
 \label{fig:PDStep}
 \end{figure}
 
 \subsection{Proportional-Integral-Derivative Controller}
 
-The PID controller is the most complex controller which is going to be discussed. As noted earlier an PD controller was sufficient for a controller. So why discuss the PID? The reason is that, in reality systems might have limitations which analysis have not taken into account yet. Reaching a steady-state error of 0 is actually a problem with a PD controller for this project, since the pan and tilt system does not function below a certain range of voltage, which means that an integral is needed.\par
+The PID controller is the most complex controller which is going to be discussed. As noted earlier a PD controller was sufficient for generating the wanted response. So why discuss the PID? The reason is that real world systems might have limitations that the analysis have not taken into account yet. Reaching a steady-state error of 0 is actually a problem with a PD controller for this project, since the pan and tilt system does not function below a certain range of voltage, which means that an integral is needed.\par
 
 Notice on figure \ref{fig:RlocusControllers}, that an PID controller is the addition of 2 zeros and 1 pole to the open-loop transfer function. The root locus shows that this system with a relative gain still meets the requirements of the design.\par
 
