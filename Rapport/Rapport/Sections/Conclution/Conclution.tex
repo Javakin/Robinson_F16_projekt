@@ -1,1 +1,12 @@
 \section{Conclusion}
+A controller based on a mathematical system model has been implemented on the FPGA. This controller works, but does not completely fulfill the requirements for overshoot and settling time. This was found to be because of real-world constraints, such as maximum and minimum voltage for the motor and unlinear behavior for the P\&T systems. It does, however, fulfill the steady-state requirement, reaching the desired position with great accuracy.
+
+The controller uses PWM to dictate the motor speed and an H-bridge to control motor direction, which has been tested to work perfectly.
+
+This controller can communicate with a developed application through SPI. This communication supports a bitrate of 107k bits/sec, which is more than enough for the intended purpose.
+
+The application creates an interface for a user to manipulate constraints and the position of the system. However, an important algorithm used for the conversion between stage-dimensions and P\&T angle position has not been implemented in the application, due to time constraints, even though it has been derived. It is therefore plausible that the application can fulfill the height and stage-dimension requirements, once this feature is implemented.
+
+As for the secondary requirements, only the application was implemented, as working on the primary requirements was deemed more important.
+
+Because of time constraints and minor shortcomings, the system as a whole was not able to be tested extensively. However, the individual parts were all tested or mathematically proven to work.
