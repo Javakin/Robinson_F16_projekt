@@ -13,14 +13,7 @@ The next task to implement is the app\_lightshow\_task. This tasks responsibilit
 \end{figure}
 
 
-The final task to implement is the app\_kernel\_task. This task has to handle the commands and parameter given by the user. 
-
-separating commands in groups depending on the number of parameters to use. 
-
-the list of commands that will be supported (se the list on google drive XXXX)
-
-
-
+The final task to implement is the app\_kernel\_task. This task has to handle the commands and parameter given by the user. First, the commands are separated in to three groups, depending on the number of parameters it requires. After a command is received the kernel waits for the user to enter the parameters needed for the kernel to execute the command. This structure is implemented in a state machine as shown in figure \ref{fig:KernelStateMachine}. 
 
 
 
