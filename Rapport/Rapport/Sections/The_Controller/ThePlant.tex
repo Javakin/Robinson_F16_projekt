@@ -109,12 +109,13 @@ Looking at the model in the larger context of our control system, it is evident 
 
 Speed:
 \begin{equation}
-G(s)=\frac{105}{0.009s+1} \frac{[tachs/sec]}{[V]}
+G(s)=\frac{105.6}{0.009s+1} \frac{[tachs/sec]}{[V]}
 \end{equation}
 
 Position:
 \begin{equation}
-G(s)=\frac{105}{0.009s^2+s} \frac{[tachs/sec]}{[V]}
+G(s)=\frac{105.6}{0.009s^2+s} \frac{[tachs/sec]}{[V]}
+\label{eq:PosTF}
 \end{equation}
 
 The behavior of these transfer functions given a step input can be seen in figure \ref{fig:SpeedPosSim12V}. This behavior looks very promising. The speed transfer function step response shows an acceleration, until the speed reaches the $DC Gain * 12V$. The position transfer function also behaves as expected, as the area below the speed transfer function. 
@@ -144,7 +145,7 @@ Step response tests were applied to the motors on the actual P\&T system. Becaus
 
 As seen below in figure \ref{fig:PTStepResponseGraph}, the step response spikes at first. It is assumed this spike occurs primarily because of the following:
 
-In the gear network connecting the actual motor and the pan or tilt part, there are small gaps between individual teeth. The motor is then switched on and while the collective gap closes, the motor runs as if it had no inertia.When the gap is closed the motor is slowed drastically because of the inertia of the pan or tilt part. 
+In the gear network connecting the actual motor and the pan or tilt part, there are small gaps between individual teeth. The motor is then switched on and while the collective gap closes, the motor runs as if it had no inertia. When the gap is closed the motor is slowed drastically because of the inertia of the pan or tilt part. 
 
 The two things together create the spike we see on figure \ref{fig:PTStepResponseGraph} below. Because we assume linearity of the actual systems, we disregard the spike and look at the graphs after the spike has ended to find Tau.
 
@@ -158,12 +159,12 @@ The two things together create the spike we see on figure \ref{fig:PTStepRespons
 Applying the method for creating a plant for a DC motor, discussed earlier, the actual constants for the pan and tilt systems are used in this context to create dedicated transfer functions for each motor in the P\&T system. The plants can be seen as equation \ref{eq:Gpan} for the pan part and equation \ref{eq:Gtilt} for the tilt part:
 
 \begin{equation}
-G_{pan} (s) = \frac{52}{0.212s+1}
+G_{pan} (s) = \frac{52}{0.212s+1}\frac{[tachs/sec]}{[V]}
 \label{eq:Gpan}
 \end{equation}
 
 \begin{equation}
-G_{tilt} (s) = \frac{82.7}{0.07s+1}
+G_{tilt} (s) = \frac{82.7}{0.07s+1}\frac{[tachs/sec]}{[V]}
 \label{eq:Gtilt}
 \end{equation}
 
