@@ -73,7 +73,7 @@ xQueueHandle user_input_queue;
 // semaphores
 xSemaphoreHandle uart0_tx_semaphore;
 xSemaphoreHandle ssm_semaphore;
-xSemaphoreHandle pt_semaphore;
+
 
 /*****************************   Functions   *******************************/
 
@@ -106,14 +106,13 @@ int main(void)
 	// create all semaphores
 	uart0_tx_semaphore = xSemaphoreCreateMutex();
 	ssm_semaphore 	   = xSemaphoreCreateMutex();
-	pt_semaphore	   = xSemaphoreCreateMutex();
+
 
 	// Variable used to check if all tasks has been created correcty
 	portBASE_TYPE return_value = pdTRUE;
 
 
 	// Start the tasks defined within this file
-	//return_value &= xTaskCreate( status_led_task, ( signed portCHAR * ) "Status_led", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL );
 	return_value &= xTaskCreate( uart0_rx_task, ( signed portCHAR *) "uart0_rx_task", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL);
 	return_value &= xTaskCreate( uart0_tx_task, ( signed portCHAR *) "uart0_tx_task", USERTASK_STACK_SIZE, NULL, LOW_PRIO, NULL);
 	return_value &= xTaskCreate( spi_master_task, ( signed portCHAR * ) "spi_master_task", USERTASK_STACK_SIZE, NULL, HIGH_PRIO, NULL );

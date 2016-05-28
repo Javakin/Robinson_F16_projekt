@@ -42,7 +42,7 @@
 extern xQueueHandle spi_tx_queue;
 extern xQueueHandle spi_rx_queue;
 
-extern xSemaphoreHandle pt_semaphore;
+//extern xSemaphoreHandle pt_semaphore;
 
 
 /*****************************   Functions   *******************************/
@@ -55,27 +55,23 @@ INT8U pt_api_send_message( INT8U address, INT8U PT, INT8U ssm_address)
 	INT8U return_val = 0;
 	INT16U data_holder;
 
-	if (xSemaphoreTake(pt_semaphore, portMAX_DELAY) == pdTRUE)
-	{
-		data_holder = get_msg_state(ssm_address);
+	data_holder = get_msg_state(ssm_address);
 
-		// convert the relative number to tacks
-		if (address == ADR_TARGET_POS)
-			//message = pt_api_convert_to_tach(PT, 5000);
-			pt_api_convert_to_tach(PT, 5000);
+	// convert the relative number to tacks
+	if (address == ADR_TARGET_POS)
+		//message = pt_api_convert_to_tach(PT, 5000);
+		pt_api_convert_to_tach(PT, 5000);
 
 
-		// 2 adress bit 1 p/t bit and 11 message bits
-		// 0 0 a a pt d d d d d  d d d d d d
-		placeholder = data_holder & 0x07FF;
-		placeholder |= ((PT & 0x0001) << 11);
-		placeholder |= ( address << 12 );
-	
-		// send the message via spi_master
-		return_val = xQueueSend(spi_tx_queue, &( placeholder ), portMAX_DELAY);
-	
-		xSemaphoreGive(pt_semaphore);
-	}
+	// 2 adress bit 1 p/t bit and 11 message bits
+	// 0 0 a a pt d d d d d  d d d d d d
+	placeholder = data_holder & 0x07FF;
+	placeholder |= ((PT & 0x0001) << 11);
+	placeholder |= ( address << 12 );
+
+	// send the message via spi_master
+	return_val = xQueueSend(spi_tx_queue, &( placeholder ), portMAX_DELAY);
+
 
 	return return_val;
 }
