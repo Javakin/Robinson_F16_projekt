@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2016-05-20T15:41:46</DateModified>
+  <DateModified>2016-05-28T18:58:42</DateModified>
   <ModuleName>PT_driver</ModuleName>
   <SummaryTimeStamp>2016-05-20T12:13:42</SummaryTimeStamp>
-  <SavedFilePath>C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver/iseconfig/PT_driver.xreport</SavedFilePath>
-  <ImplementationReportsDirectory>C:/Users/black_000/Dropbox/Programmering/VHDL/Project Robinson/PT_driver\</ImplementationReportsDirectory>
+  <SavedFilePath>D:/Git/4.semester-projekt/Code/VHDL code/PT_driver/iseconfig/PT_driver.xreport</SavedFilePath>
+  <ImplementationReportsDirectory>D:/Git/4.semester-projekt/Code/VHDL code/PT_driver\</ImplementationReportsDirectory>
   <DateInitialized>2016-05-19T16:15:49</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>

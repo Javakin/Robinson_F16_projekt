@@ -59,9 +59,15 @@ INT8U pt_api_send_message( INT8U address, INT8U PT, INT8U ssm_address)
 
 	// convert the relative number to tacks
 	if (address == ADR_TARGET_POS)
-		//message = pt_api_convert_to_tach(PT, 5000);
-		pt_api_convert_to_tach(PT, 5000);
+	{
+		// desable preemption or interrupt
+		//taskENTER_CRITICAL();
 
+		//message = pt_api_convert_to_tach(PT, 5000);
+		//pt_api_convert_to_tach(PT, 2000);
+
+		//taskEXIT_CRITICAL();
+	}
 
 	// 2 adress bit 1 p/t bit and 11 message bits
 	// 0 0 a a pt d d d d d  d d d d d d
@@ -114,11 +120,9 @@ void pt_api_receive_message(INT16U message)
 INT16U pt_api_convert_to_tach(INT8U PT, INT16U message)
 {
 	// define variables
-	FP64 target = message - 5000;
+	FP64 pos = message - 5000;
 	FP64 span;
 	FP64 height = get_msg_state(SSM_HEIGHT)*1000;
-	INT64U ret_val = 20;
-
 
 	// get the value for plant
 	if (PT == SUB_ADR_PAN)
@@ -127,17 +131,49 @@ INT16U pt_api_convert_to_tach(INT8U PT, INT16U message)
 		span = get_msg_state(SSM_DEPTH)*1000;
 
 	// perform calculation
-	FP32 temp = 0;
+	FP64 a = span/10000;
+	a *= pos;
 
-	// (target * (span/2))/height
-	//FP64 temp2 = (target * (span/2))/height;
-	//temp = atan(temp);
-	//temp *= 3;
+	FP64 Tak = 1080/(2*3.1415);
 
-	ret_val = temp;
-	
+	Tak = pt_api_atan(a/height);
+
+	Tak = pt_api_atan(1);
+	Tak = pt_api_atan(0.5);
+
+	Tak += 540;
+
+	INT16S ret_val = Tak;
+
 	return ret_val;
-	
+}
+
+FP64 pt_api_atan(FP64 value)
+{
+	//initiate values
+	FP64 result = 0;
+	FP64 sub_result;
+
+	for (INT8U i = 1; i < 4; i++)
+	{
+		// reset sub result
+		sub_result = value;
+
+		// z power
+		for(INT8U j = 1; j < (i*2 - 1); j++)
+			sub_result *= value;
+
+		// divide
+		sub_result /= (i*2 - 1);
+
+		// append part
+		if (i % 2)
+			result += sub_result;
+		else
+			result -= sub_result;
+	}
+
+	return result;
 }
 
 INT8U pt_api_set_coord(INT16U pan, INT16U tilt)
@@ -154,6 +190,7 @@ INT8U pt_api_set_coord(INT16U pan, INT16U tilt)
 
 	return ret_val;
 }
+
 
 /****************************** End Of Module *******************************/
 

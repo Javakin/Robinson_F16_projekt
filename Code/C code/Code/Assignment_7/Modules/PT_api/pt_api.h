@@ -72,6 +72,11 @@ INT16U pt_api_convert_to_tach(INT8U PT, INT16U message);
 //  Output   : the tacs for pt-system
 //  Function : converts the number to tacks
 
+FP64 pt_api_atan(FP64 value);
+//  Input    : value that must be handled
+//  Output   : the invers tangent of the input value
+//  Function : caldulates the invers tangent of the input value
+
 INT8U pt_api_set_coord(INT16U pan, INT16U tilt);
 //  Input    : -
 //  Output   : -
