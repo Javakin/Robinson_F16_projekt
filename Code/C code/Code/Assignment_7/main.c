@@ -103,6 +103,7 @@ int main(void)
 
 	user_input_queue = 	xQueueCreate(32, sizeof(INT8U));
 
+
 	// create all semaphores
 	uart0_tx_semaphore = xSemaphoreCreateMutex();
 	ssm_semaphore 	   = xSemaphoreCreateMutex();
