@@ -105,7 +105,9 @@ void uart0_interrupt_enable_rx()
 	// UART Receive Time-Out Interrupt Mask
 	UART0_IM_R |= 0x40;
 
+	// set the interrupt priority larger then FreeRTOS
 	NVIC_PRI1_R |= 0x0000DF00;
+
 	// enable interrrupt for uart0
 	NVIC_EN0_R |= 0x00000020;
 }
